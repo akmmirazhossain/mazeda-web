@@ -28,7 +28,7 @@ function Navbar() {
 
   return (
     <nav className=" fixed mx-auto border w-full top-0 z-40 bg-[#FFFFFF] bg-opacity-90">
-      <div className="py-2 lg:py-4 mx-auto px-6 lg:px-4 max-w-7xl ">
+      <div className="mx-auto px-6 lg:px-4 max-w-7xl ">
         <div className=" flex items-center justify-between">
           <div className="flex items-center">
             <div className="pr-10">
@@ -36,10 +36,10 @@ function Navbar() {
                 <img alt="" src="/logo.webp" />
               </Link>
             </div>
-            <ul className=" items-center hidden space-x-8 lg:flex text-base font-medium">
+            <ul className=" items-center hidden space-x-6 lg:flex text-base font-medium h-full">
               {items.map((item) => (
                 <Link href={item.href} key={item.id}>
-                  <li>{item.label}</li>
+                  <li className="p-2 lg:p-4 ">{item.label}</li>
                 </Link>
               ))}
             </ul>
