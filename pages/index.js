@@ -21,13 +21,17 @@ function Home() {
         <HeroSection />
         <div className="container_akm ">
           <ServicesSection />
+        </div>
+        <div className="container_akm ">
           <LinksSection />
-
+        </div>
+        <div className="container_akm ">
           <PackagesSection />
-
+        </div>
+        <div className="container_akm ">
           {/* <PromotionsSection /> */}
           {/* <StrengthSection /> */}
-          <ContactForm />
+          {/* <ContactForm /> */}
           <ClientsSection />
         </div>
         <Footer />

@@ -69,7 +69,7 @@
 //CONTAINERS AND DIVS
 
 .section_akm {
-    @apply mx-auto py-4;
+    @apply mx-auto py-4 max-w-7xl;
 
     @screen sm {
         @apply py-4;
@@ -90,7 +90,7 @@
 
 
 .container_akm {
-    @apply container mx-auto px-4 max-w-7xl;
+    @apply  mx-auto ;
 
     @screen sm {
         @apply px-5;
@@ -285,5 +285,9 @@
     }
 
 
+/*BG COLORS*/
+.red_white_green {
+    @apply bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500;
+}
 
 

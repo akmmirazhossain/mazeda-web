@@ -30,23 +30,25 @@
   .text-balance {
     text-wrap: balance;
   }
+}
 
-  /*FONT COLORS*/
+/******* CUSTOM COLORS *********/
 
-  .text_red {
-    color: #e6242d;
-  }
-  .bg_red {
-    background-color: #e6242d;
-  }
+/*FONT COLORS*/
 
-  .text_green {
-    color: #03738c;
-  }
+.text_red {
+  color: #e6242d;
+}
+.bg_red {
+  background-color: #e6242d;
+}
 
-  .bg_green {
-    background-color: #03738c;
-  }
+.text_green {
+  color: #03738c;
+}
+
+.bg_green {
+  background-color: #03738c;
 }
 
 body {
@@ -110,78 +112,3 @@ body {
 }
 
 /* CSS file for animation */
-.wifi-symbol {
-  display: none;
-}
-
-.wifi-symbol[foo],
-.wifi-symbol {
-  display: block;
-  position: absolute;
-  top: 50%;
-  display: inline-block;
-  margin-top: 0;
-}
-
-.wifi-symbol[foo] {
-  width: 150px;
-  height: 150px;
-  transform: rotate(-45deg) translate(-100px);
-}
-
-.wifi-circle {
-  box-sizing: border-box;
-  display: block;
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  border-color: #ffffcc;
-  border-style: solid;
-  border-width: 1em 1em 0 0;
-  border-radius: 0 100% 0 0;
-  opacity: 0;
-  animation: wifianimation 3s infinite;
-}
-
-.wifi-circle.first {
-  animation-delay: 800ms;
-}
-
-.wifi-circle.second {
-  width: 5em;
-  height: 5em;
-  animation-delay: 400ms;
-}
-
-.wifi-circle.third {
-  width: 3em;
-  height: 3em;
-}
-
-.wifi-circle.fourth {
-  width: 1em;
-  height: 1em;
-  opacity: 1;
-  background-color: #ffffcc;
-  animation: none;
-}
-
-@keyframes wifianimation {
-  0% {
-    opacity: 0.4;
-  }
-
-  5% {
-    opacity: 1;
-  }
-
-  6% {
-    opacity: 0.1;
-  }
-
-  100% {
-    opacity: 0.1;
-  }
-}
