@@ -28,12 +28,12 @@ function Navbar() {
 
   return (
     <nav className=" fixed mx-auto border w-full top-0 z-40 bg-[#FFFFFF] bg-opacity-90">
-      <div className="mx-auto px-6 lg:px-4 max-w-7xl ">
+      <div className="mx-auto pl-6 lg:px-4 max-w-7xl ">
         <div className=" flex items-center justify-between">
           <div className="flex items-center">
-            <div className="pr-10">
+            <div className="py-2 lg:py-4 ">
               <Link href="/">
-                <img alt="" src="/logo.webp" />
+                <img alt="" src="/logo.webp" className="pr-10" />
               </Link>
             </div>
             <ul className=" items-center hidden space-x-6 lg:flex text-base font-medium h-full">
@@ -78,7 +78,7 @@ function Navbar() {
 
             <button
               onClick={toggleMenu}
-              className="p-2  hover:text-deep-purple-accent-400 focus:outline-none focus:text-deep-purple-accent-400"
+              className="py-2 pl-2 pr-6  hover:text-deep-purple-accent-400 focus:outline-none focus:text-deep-purple-accent-400"
             >
               <div className="lg:hidden">
                 <FontAwesomeIcon className="text-lg" icon={faBars} />
