@@ -39,7 +39,7 @@ function Navbar() {
             <ul className=" items-center hidden space-x-6 lg:flex text-base font-medium h-full">
               {items.map((item) => (
                 <Link href={item.href} key={item.id}>
-                  <li className="p-2 lg:p-4 ">{item.label}</li>
+                  <li className="p-2 lg:p-4">{item.label}</li>
                 </Link>
               ))}
             </ul>
@@ -93,25 +93,11 @@ function Navbar() {
           style={{ transform: "translate3d(0, 0, 0)" }}
         >
           <ul className="flex flex-col items-center mt-4 space-y-4">
-            <Link href="/">
-              <li>Home</li>
-            </Link>
-            <Link href="/about">
-              <li className="w-full">About</li>
-            </Link>
-            <li>
-              <Link href="/packages">Packages</Link>
-            </li>
-
-            <li>
-              <Link href="/coverage">Coverage</Link>
-            </li>
-            <li>
-              <Link href="/pay-bill">Pay Bill</Link>
-            </li>
-            <li>
-              <Link href="/contact">Contact</Link>
-            </li>
+            {items.map((item) => (
+              <Link href={item.href} key={item.id}>
+                <li className="p-2 lg:p-4">{item.label}</li>
+              </Link>
+            ))}
           </ul>
 
           <ul className="flex sm:hidden justify-center my-4 space-x-2">
