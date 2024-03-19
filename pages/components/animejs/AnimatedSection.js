@@ -1,6 +1,6 @@
 import { useEffect, useRef } from "react";
 
-const AnimatedComponent = () => {
+const AnimatedSection = () => {
   const slideRef = useRef(null);
 
   useEffect(() => {
@@ -30,7 +30,7 @@ const AnimatedComponent = () => {
     };
   }, []);
 
-  return slideRef;
+  return <div ref={slideRef}>{/* Your content here */}</div>;
 };
 
-export default AnimatedComponent;
+export default AnimatedSection;

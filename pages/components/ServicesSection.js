@@ -6,7 +6,6 @@ import {
   faVideo,
 } from "@fortawesome/free-solid-svg-icons";
 import theme from "../../config/theme";
-import AnimatedSection from "./animejs/AnimatedSection";
 
 const services = [
   {
@@ -30,9 +29,8 @@ const services = [
 ];
 
 const Services = () => {
-  const slideRef = AnimatedSection();
   return (
-    <section className="section_akm slideContainer" ref={slideRef}>
+    <section className="section_akm">
       <div className="heading_akm content">Our Services</div>
 
       <div className="grid gap_akm sm:grid-cols-2 lg:grid-cols-3">
