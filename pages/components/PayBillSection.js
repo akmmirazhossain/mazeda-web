@@ -74,7 +74,11 @@ const PayBillSection = () => {
       <div className="box_round_shadow mb_akm">
         <div className="mb_akm flex items-center">
           <div className="rounded-full border mr-3 h-12 w-12">
-            <img src="images/logos/bkash-logo.png" className=" rounded-full" />
+            <img
+              alt=""
+              src="images/logos/bkash-logo.png"
+              className=" rounded-full"
+            />
           </div>
           <div>
             <p className="subheading_akm">Steps for Bkash app payment</p>
@@ -257,7 +261,11 @@ const PayBillSection = () => {
       <div className="box_round_shadow mb_akm">
         <div className="mb_akm flex items-center">
           <div className="rounded-full border mr-3 h-12 w-12">
-            <img src="images/logos/nagad.jpg" className=" rounded-full" />
+            <img
+              alt=""
+              src="images/logos/nagad.jpg"
+              className=" rounded-full"
+            />
           </div>
           <div>
             <p className="subheading_akm">Steps for Nagad app payment</p>
