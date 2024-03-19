@@ -12,17 +12,17 @@ import Link from "next/link";
 const HeroSection = () => {
   return (
     <Swiper
-      className="mySwiper mt-14 sm:mt-14 md:mt-14 lg:mt-16 xl:mt-18"
+      className="mySwiper mt-14 sm:mt-14 md:mt-14 lg:mt-14 xl:mt-14"
       effect="fade"
       slidesPerView={1}
       pagination={{
         dynamicBullets: true,
       }}
-      autoplay={{
-        delay: 5000,
-        disableOnInteraction: false,
-        pauseOnMouseEnter: false,
-      }}
+      // autoplay={{
+      //   delay: 5000,
+      //   disableOnInteraction: false,
+      //   pauseOnMouseEnter: false,
+      // }}
       modules={[EffectFade, Pagination, Autoplay]}
       loop={true}
     >
@@ -87,23 +87,31 @@ const HeroSection = () => {
       </SwiperSlide>
 
       <SwiperSlide className="bg-secondary ">
-        <div
-          className="bg-cover bg-center relative"
-          style={{
-            backgroundImage: 'url("/images/slider/smart-home.webp")',
-          }}
-        >
-          <div className="absolute inset-0 bg-gradient-to-b from-black via-transparent "></div>
-          <div className="container mx-auto sm:px-5 md:px-6 lg:px-4 max-w-7xl text-white h-full h-600 lg:h-600">
-            <div className="flex flex-col justify-end items-center text-white -skew-x-12 ">
-              <div className="text-center font-semibold pt-4 px-3 lg:pt-8 text-2xl sm:text-3xl lg:text-5xl">
-                <p className="skew-x-12">IPv6 Ready</p>
+        <div className="bg-cover bg-center relative bg-[url('/images/slider/ip-v6-narrow.jpg')] md:bg-[url('/images/slider/ip-v6-wide.jpg')]">
+          <div className="container mx-auto sm:px-5 md:px-6 lg:px-4 max-w-7xl  h-full h-600 lg:h-600">
+            <div className="grid grid-cols-1 md:grid-cols-9 h-full">
+              <div className="md:col-span-4 flex justify-center items-start md:items-center">
+                <div className="mt-20 md:mt-0 px-6 md:px-0">
+                  <div className="font-semibold text-2xl sm:text-3xl lg:text-6xl">
+                    IPv6 Ready
+                  </div>
+                  <div className="lg:p-3 text-md text-xl sm:text-2xl lg:text-3xl">
+                    Connect & control your smart devices anywhere from the
+                    world.
+                  </div>
+                  <div className="flex justify-center">
+                    <div className="w-44">
+                      <img
+                        src="/images/slider/ipv6-ready-logo.png"
+                        alt="IPv6 Ready Logo"
+                        className="w-36"
+                      />
+                    </div>
+                  </div>
+                </div>
               </div>
-              <div className="text-center justify-center font-semibold  py-1 px-3 lg:p-3 text-md sm:text-2xl lg:text-3xl">
-                <p className="skew-x-12">
-                  Connect & control your smart devices anywhere from the world.
-                </p>
-              </div>
+
+              <div className="md:col-span-5"></div>
             </div>
           </div>
         </div>

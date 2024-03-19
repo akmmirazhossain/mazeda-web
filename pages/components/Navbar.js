@@ -1,14 +1,12 @@
-// components/Navbar.js
-import Image from "next/image";
-import { useState } from "react";
-import "../../config/theme";
+import React, { useEffect, useState } from "react";
+import { useRouter } from "next/router";
+import Link from "next/link";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faPhoneVolume,
   faCreditCard,
   faBars,
 } from "@fortawesome/free-solid-svg-icons";
-import Link from "next/link";
 
 const items = [
   { href: "/", label: "Home" },
@@ -21,41 +19,48 @@ const items = [
 
 function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const router = useRouter();
 
   const toggleMenu = () => {
     setMenuOpen(!menuOpen);
   };
 
+  const isActive = (href) => {
+    return router.pathname === href ? "border-b-2 border-red-500" : "";
+  };
+
   return (
-    <nav className=" fixed mx-auto border w-full top-0 z-40 bg-[#FFFFFF] bg-opacity-90">
+    <nav className="fixed mx-auto border-b md:border-none w-full top-0 z-40 bg-[#FFFFFF]">
       <div className="mx-auto pl-6 lg:px-4 max-w-7xl ">
-        <div className=" flex items-center justify-between">
+        <div className="flex items-center justify-between">
           <div className="flex items-center">
-            <div className="py-2 lg:py-4 ">
+            <div className="py-2">
               <Link href="/">
                 <img alt="" src="/logo.webp" className="pr-10" />
               </Link>
             </div>
-            <ul className=" items-center hidden space-x-6 lg:flex text-base font-medium h-full">
-              {items.map((item) => (
-                <Link href={item.href} key={item.id}>
-                  <li className="p-2 lg:p-4">{item.label}</li>
+            <ul className="items-center hidden space-x-6 lg:flex text-base font-medium h-full">
+              {items.map((item, index) => (
+                <Link href={item.href} key={index}>
+                  <li className={`p-2 lg:p-4 ${isActive(item.href)}`}>
+                    {item.label}
+                  </li>
                 </Link>
               ))}
             </ul>
           </div>
 
-          <div className="flex ">
-            <ul className=" items-center  space-x-2 hidden sm:flex">
+          <div className="flex">
+            <ul className="items-center space-x-2 hidden sm:flex">
               <li>
                 <Link
                   href="https://isperp.mazedanetworks.net/ispcare"
                   target="_blank"
-                  className="justify-center px-4 py-2 font-sm bg-[#03738C] hover:bg-red-700 text-[#FFF]  rounded-full shadow-md "
+                  className="justify-center px-4 py-2 font-sm bg-[#03738C] hover:bg-red-700 text-[#FFF]  rounded-full shadow-md"
                 >
                   <FontAwesomeIcon
                     size="xs"
-                    className=" pr-1"
+                    className="pr-1"
                     icon={faCreditCard}
                   />
                   Quick Pay
@@ -64,11 +69,11 @@ function Navbar() {
               <li>
                 <Link
                   href="/support"
-                  className="justify-center px-4 py-2 font-sm bg-[#03738C] hover:bg-red-700 text-[#FFF]  rounded-full shadow-md "
+                  className="justify-center px-4 py-2 font-sm bg-[#03738C] hover:bg-red-700 text-[#FFF]  rounded-full shadow-md"
                 >
                   <FontAwesomeIcon
                     size="xs"
-                    className=" pr-1"
+                    className="pr-1"
                     icon={faPhoneVolume}
                   />
                   Support
@@ -89,13 +94,15 @@ function Navbar() {
       </div>
       {menuOpen && (
         <div
-          className="  overflow-auto w-full bg-[#FFFFFF] bg-opacity-90"
+          className="overflow-auto w-full bg-[#FFFFFF] bg-opacity-90"
           style={{ transform: "translate3d(0, 0, 0)" }}
         >
           <ul className="flex flex-col items-center mt-4 space-y-4">
-            {items.map((item) => (
-              <Link href={item.href} key={item.id}>
-                <li className="p-2 lg:p-4">{item.label}</li>
+            {items.map((item, index) => (
+              <Link href={item.href} key={index}>
+                <li className={`p-2 lg:p-4 ${isActive(item.href)}`}>
+                  {item.label}
+                </li>
               </Link>
             ))}
           </ul>

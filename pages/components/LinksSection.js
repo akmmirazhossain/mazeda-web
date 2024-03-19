@@ -3,6 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faImage } from "@fortawesome/free-solid-svg-icons";
 import Image from "next/image";
 import Link from "next/link";
+import AnimatedSection from "./animejs/AnimatedSection";
 
 const data = [
   {
@@ -25,8 +26,9 @@ const data = [
 ];
 
 const LinkSection = () => {
+  const slideRef = AnimatedSection();
   return (
-    <section className="section_akm">
+    <section className="section_akm slideContainer" ref={slideRef}>
       <div className="grid sm:grid-cols-2  md:grid-cols-3 lg:grid-cols-4 text-center gap_akm">
         {data.map((item, index) => (
           <Link key={index} href={item.link}>
