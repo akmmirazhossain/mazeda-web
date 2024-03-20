@@ -19,7 +19,7 @@ function Home() {
       <main>
         <Navbar />
         <HeroSection />
-        <div className="container_akm ">
+        <div className="container_akm custom-utility">
           <ServicesSection />
         </div>
         <div className="container_akm ">
