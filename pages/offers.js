@@ -34,13 +34,25 @@ const OffersPage = () => {
                   <div className="mb-2">
                     <p className="subheading_akm border-b">Current Offers</p>
                   </div>
-                  <div className="grid grid-cols-5">
-                    <div className="col-span-2">
+                  <div
+                    className="grid grid-cols-1 lg:grid-cols-5 bg-cover bg-center rounded-2xl"
+                    style={{ backgroundImage: "url('/images/offers-bg.png')" }}
+                  >
+                    <div className="col-span-2 pt-2 flex items-center justify-center">
                       <img
                         src="/images/price-drop.png"
                         alt=""
                         className="rounded-2xl"
                       />
+                    </div>
+                    <div className="col-span-3 flex flex-col items-center justify-center px-6 pb-8 sm:pb-0">
+                      <p className="text-4xl font-semibold italic text-center tracking-tight">
+                        Get 50% off on your connection charge with every new
+                        connection.
+                      </p>
+                      <p className="font-semibold text-center">
+                        (Call us now! 09613 334455)
+                      </p>
                     </div>
                   </div>
                 </div>
