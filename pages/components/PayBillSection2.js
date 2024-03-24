@@ -300,7 +300,7 @@ const PayBillSection = () => {
             </div>
 
             <p className="leading-relaxed">
-              Complete the transaction safely by entering your card details.
+              Enter your card details and make a safe transaction.
             </p>
           </div>
         </div>
