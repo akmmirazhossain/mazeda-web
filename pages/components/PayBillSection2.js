@@ -28,25 +28,6 @@ const PayBillSection = () => {
     setCurrentMonthYear(`${month} ${year}`);
   }, []);
 
-  const [isBkashModalOpen, setIsBkashModalOpen] = useState(false);
-  const [isNagadModalOpen, setIsNagadModalOpen] = useState(false);
-
-  const openBkashModal = () => {
-    setIsBkashModalOpen(true);
-  };
-
-  const closeBkashModal = () => {
-    setIsBkashModalOpen(false);
-  };
-
-  const openNagadModal = () => {
-    setIsNagadModalOpen(true);
-  };
-
-  const closeNagadModal = () => {
-    setIsNagadModalOpen(false);
-  };
-
   return (
     <section className="section_akm">
       <div className="text-center pb-4 bg-[url('/images/pay-bill-cover.png')] bg-cover bg-center h-36 sm:h-52 md:h-64 lg:h-96 flex items-center justify-center text-white ">
@@ -58,7 +39,7 @@ const PayBillSection = () => {
           This page shows a comprehensive range of payment solutions, find your
           best suited option to make a safe online transection.
         </div>
-        <div className="text-center lg:text-right">
+        <div className="flex items-center justify-center flex-col text-center lg:text-right">
           <button className=" items-center mt-auto text-center text-white bg-[#03738C] border-0 py-2 px-4 focus:outline-none hover:bg-red-700 rounded-full">
             <Link
               href="https://isperp.mazedanetworks.net/ispcare"
@@ -68,6 +49,9 @@ const PayBillSection = () => {
               Pay from online portal
             </Link>
           </button>
+          <span className="text-xs mt-1">
+            (Pay with Visa, Debit, or Credit cards.)
+          </span>
         </div>
       </div>
 
@@ -237,6 +221,86 @@ const PayBillSection = () => {
               <span className="font-bold">Bill Reference Name</span> and tap
               <span className="font-bold"> NEXT </span>
               untill the payment is successful.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div className="box_round_shadow mb_akm">
+        <div className="mb_akm flex items-center">
+          <div className="rounded-full border mr-3 h-12 w-12">
+            <img
+              alt=""
+              src="images/logos/user-portal.jpg"
+              className=" rounded-full"
+            />
+          </div>
+          <div>
+            <p className="subheading_akm">
+              Steps for Visa, Debit, or Credit card payment
+            </p>
+          </div>
+        </div>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap_akm">
+          <div className=" pad_akm relative">
+            <div className="absolute flex items-center justify-center -right-2 -top-1 bg-[#03738c] text-white w-10 h-10 rounded-full text-2xl  font-bold">
+              1
+            </div>
+
+            <div className="my-2  rounded-2xl border-2  overflow-hidden">
+              <img src="images/slider/user-portal/up1.jpg" />
+            </div>
+            <p className="leading-relaxed ">
+              <Link
+                href="https://isperp.mazedanetworks.net/ispcare"
+                target="_blank"
+                className="text-blue-700 font-bold"
+              >
+                Click here
+              </Link>{" "}
+              and login
+            </p>
+          </div>
+
+          <div className=" pad_akm relative">
+            <div className="absolute flex items-center justify-center -right-2 -top-1 bg-[#03738c] text-white w-10 h-10 rounded-full text-2xl  font-bold">
+              2
+            </div>
+
+            <div className="my-2  rounded-2xl border-2 overflow-hidden">
+              <img src="images/slider/user-portal/up2.jpg" />
+            </div>
+            <p className="leading-relaxed">
+              Click on <span className="font-bold">PAY BILL</span>
+            </p>
+          </div>
+
+          <div className=" pad_akm relative">
+            <div className="absolute flex items-center justify-center -right-2 -top-1 bg-[#03738c] text-white w-10 h-10 rounded-full text-2xl  font-bold">
+              3
+            </div>
+
+            <div className="my-2  rounded-2xl border-2 overflow-hidden">
+              <img src="images/slider/user-portal/up3.jpg" />
+            </div>
+
+            <p className="leading-relaxed">
+              Click on <span className="font-bold">PAY NOW - SSL GATEWAY</span>
+            </p>
+          </div>
+
+          <div className=" pad_akm relative">
+            <div className="absolute flex items-center justify-center -right-2 -top-1 bg-[#03738c] text-white w-10 h-10 rounded-full text-2xl  font-bold">
+              <FontAwesomeIcon icon={faCheck} />
+            </div>
+
+            <div className="my-2  rounded-2xl border-2 overflow-hidden">
+              <img src="images/slider/user-portal/up4.jpg" />
+            </div>
+
+            <p className="leading-relaxed">
+              Complete the transaction safely by entering your card details.
             </p>
           </div>
         </div>
