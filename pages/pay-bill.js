@@ -1,5 +1,5 @@
 import Navbar from "./components/Navbar";
-import PayBillSection from "./components/PayBillSection";
+import PayBillSection2 from "./components/PayBillSection2";
 import Footer from "./components/Footer";
 
 function PayBillPage() {
@@ -8,7 +8,7 @@ function PayBillPage() {
       <main>
         <Navbar />
         <div className="container_akm nav_space_akm">
-          <PayBillSection />
+          <PayBillSection2 />
         </div>
         <Footer />
       </main>
