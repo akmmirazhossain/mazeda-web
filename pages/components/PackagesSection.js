@@ -233,7 +233,7 @@ const PackagesSection = () => {
           </button>
         </div>
         <div className="col-span-1 lg:col-span-3 w-full">
-          <div className="grid grid-cols-4  items-center rounded-2xl shadow-xl overflow-hidden mt_akm">
+          <div className="grid grid-cols-4  items-center rounded-2xl shadow-xl overflow-hidden mt_akm bg-white">
             <div className="w-full flex justify-center items-center">
               <TabButton
                 title="Basic"
