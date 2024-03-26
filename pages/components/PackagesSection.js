@@ -103,7 +103,7 @@ const pricingData = [
   {
     type: "STARTUP",
     speed: "50",
-    price: "Negotiable",
+    price: "(Call for Price)",
     features: [
       "Ideal for small offices",
       "Dedicated bandwidth",
@@ -116,7 +116,7 @@ const pricingData = [
   {
     type: "PROFESSIONAL",
     speed: "75",
-    price: "Negotiable",
+    price: "(Call for Price)",
     features: [
       "Ideal for medium offices",
       "Dedicated bandwidth",
@@ -128,8 +128,8 @@ const pricingData = [
   },
   {
     type: "ENTERPRISE",
-    speed: "100+",
-    price: "Negotiable",
+    speed: "100",
+    price: "(Call for Price)",
     features: [
       "Ideal for big multi-level office complexes",
       "Dedicated bandwidth",
@@ -289,11 +289,11 @@ const PackagesSection = () => {
                         </div>
                         <div>
                           <p className=" inline-block align-baseline leading-none">
-                            <div>
+                            <div className="flex items-end">
                               <p
                                 className={
-                                  pricing.price === "Negotiable"
-                                    ? "text-slate-500 text-lg"
+                                  pricing.price === "(Call for Price)"
+                                    ? "text-slate-500 text-sm italic"
                                     : "text-2xl"
                                 }
                               >
