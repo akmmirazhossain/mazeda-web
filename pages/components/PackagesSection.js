@@ -222,7 +222,7 @@ const PackagesSection = () => {
               <div>{feature}</div>
             </div>
           ))}
-          <p className="text-sm flex items-center justify-center text_gray">
+          <p className="text-sm flex items-center justify-center text_red pb-1">
             Internet bandwidth shared ratio 1:8
           </p>
           <button className=" items-center mt-auto text-center text-white bg-[#03738C] border-0 py-2 px-4 w-full focus:outline-none hover:bg-red-700 rounded-full">
