@@ -145,6 +145,7 @@ const features = [
   "Fiber optic connection",
   "4k Youtube, Facebook and more",
   "Gaming cache (100 Mbps)",
+  "Gaming cache (100 Mbps)",
   "FTP access (Over 11,500 Movies)",
   "10 Gbps BDIX Connection",
   "24/7 call Support",
@@ -221,6 +222,9 @@ const PackagesSection = () => {
               <div>{feature}</div>
             </div>
           ))}
+          <p className="text-sm flex items-center justify-center">
+            Internet share ratio 1:8
+          </p>
           <button className=" items-center mt-auto text-center text-white bg-[#03738C] border-0 py-2 px-4 w-full focus:outline-none hover:bg-red-700 rounded-full">
             <Link href="../files/Mazeda_tariff_permission_of_BTRC.pdf">
               {" "}
@@ -289,7 +293,7 @@ const PackagesSection = () => {
                         </div>
                         <div>
                           <p className=" inline-block align-baseline leading-none">
-                            <div className="flex items-end">
+                            <div className="flex flex-row-reverse">
                               <p
                                 className={
                                   pricing.price === "(Call for Price)"
