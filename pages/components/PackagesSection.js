@@ -1,4 +1,3 @@
-// components/PricingSection.js
 import React, { useState, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -13,11 +12,18 @@ import { useRouter } from "next/router";
 
 const pricingData = [
   {
+    type: "ONE",
+    speed: "7",
+    price: "৳500",
+    features: ["Up to 15 Mbps", "Ideal for 1 concurrent user"],
+    group: "basic",
+  },
+  {
     type: "TWO",
     speed: "20",
     price: "৳700",
     features: ["Up to 30 Mbps", "Ideal for 2 concurrent users"],
-    group: "standard",
+    group: "basic",
   },
   {
     type: "THREE",
@@ -97,7 +103,7 @@ const pricingData = [
   {
     type: "STARTUP",
     speed: "50",
-    price: "৳5000",
+    price: "Negotiable",
     features: [
       "Ideal for small offices",
       "Dedicated bandwidth",
@@ -110,7 +116,7 @@ const pricingData = [
   {
     type: "PROFESSIONAL",
     speed: "75",
-    price: "৳7000",
+    price: "Negotiable",
     features: [
       "Ideal for medium offices",
       "Dedicated bandwidth",
@@ -123,7 +129,7 @@ const pricingData = [
   {
     type: "ENTERPRISE",
     speed: "100+",
-    price: "৳9000",
+    price: "Negotiable",
     features: [
       "Ideal for big multi-level office complexes",
       "Dedicated bandwidth",
@@ -132,13 +138,6 @@ const pricingData = [
       "Very high priority support",
     ],
     group: "corporate",
-  },
-  {
-    type: "ONE",
-    speed: "7",
-    price: "৳500",
-    features: ["Up to 15 Mbps", "Ideal for 1 concurrent user"],
-    group: "standard",
   },
 ];
 
@@ -160,18 +159,22 @@ const PackagesSection = () => {
     // Set the default tab content to "Standard" group when the component mounts
     const defaultData = pricingData.filter((item) => item.group === "standard");
     setFilteredData(defaultData);
+    setActiveTab(2); // Set the activeTab state to 2 (index of the "Standard" category)
   }, []);
 
   const handleTabClick = (tabIndex) => {
     let group;
     switch (tabIndex) {
       case 1:
-        group = "standard";
+        group = "basic";
         break;
       case 2:
-        group = "power";
+        group = "standard";
         break;
       case 3:
+        group = "power";
+        break;
+      case 4:
         group = "corporate";
         break;
       default:
@@ -226,26 +229,33 @@ const PackagesSection = () => {
           </button>
         </div>
         <div className="col-span-1 lg:col-span-3 w-full">
-          <div className="grid grid-cols-3  items-center tab_round_shadow">
+          <div className="grid grid-cols-4  items-center rounded-2xl shadow-xl overflow-hidden mt_akm">
             <div className="w-full flex justify-center items-center">
               <TabButton
-                title="Standard"
+                title="Basic"
                 onClick={() => handleTabClick(1)}
                 isActive={activeTab === 1}
               />
             </div>
             <div className="w-full flex justify-center items-center">
               <TabButton
-                title="Power"
+                title="Standard"
                 onClick={() => handleTabClick(2)}
                 isActive={activeTab === 2}
               />
             </div>
             <div className="w-full flex justify-center items-center">
               <TabButton
-                title="Corporate"
+                title="Power"
                 onClick={() => handleTabClick(3)}
                 isActive={activeTab === 3}
+              />
+            </div>
+            <div className="w-full flex justify-center items-center">
+              <TabButton
+                title="Corporate"
+                onClick={() => handleTabClick(4)}
+                isActive={activeTab === 4}
               />
             </div>
           </div>
@@ -278,8 +288,18 @@ const PackagesSection = () => {
                           <p className="flex items-end">Mbps</p>
                         </div>
                         <div>
-                          <p className="text-2xl inline-block align-baseline leading-none">
-                            {pricing.price}
+                          <p className=" inline-block align-baseline leading-none">
+                            <div>
+                              <p
+                                className={
+                                  pricing.price === "Negotiable"
+                                    ? "text-slate-500 text-lg"
+                                    : "text-2xl"
+                                }
+                              >
+                                {pricing.price}
+                              </p>
+                            </div>
                           </p>
                         </div>
                       </div>
@@ -321,11 +341,13 @@ const TabButton = ({ title, onClick, isActive }) => {
   return (
     <button
       onClick={onClick}
-      className={`flex-grow py-2 px-4 font-semibold focus:outline-none`}
+      className={`flex-grow py-2 px-4 font-semibold focus:outline-none ${
+        isActive ? "text-white" : ""
+      }`}
       style={{
-        borderBottom: isActive
-          ? `2px solid ${theme.colorPalette.primaryGreen}`
-          : "none",
+        backgroundColor: isActive
+          ? theme.colorPalette.primaryGreen
+          : "transparent",
       }}
     >
       {title}
