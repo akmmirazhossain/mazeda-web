@@ -191,7 +191,7 @@ const PackagesSection = () => {
   return (
     <section className="section_akm">
       {isMyPage ? (
-        <div className="grid grid-cols-1 sm:grid-cols-12  bg-white mb_akm rounded-b-2xl">
+        <div className="grid grid-cols-1 sm:grid-cols-12  bg-white">
           <div className="hidden sm:block sm:col-span-4 pl-4 pt-4">
             <img alt="" src="/images/female-gamer.webp" />
           </div>
@@ -206,8 +206,8 @@ const PackagesSection = () => {
         <div className="heading_akm">Monthly Pricing</div>
       )}
 
-      <div className="grid grid-cols-1 grid-flow-row   lg:grid-flow-col  lg:grid-cols-6   gap_akm justify-items-center">
-        <div className="box_round_shadow w-full lg:col-span-2">
+      <div className="grid grid-cols-1 grid-flow-row sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 sm:grid-flow-col gap_akm justify-items-center">
+        <div className="box_round_shadow w-full">
           <p className="body_text_akm font-bold pb-4">
             All packages include these features.
           </p>
@@ -232,8 +232,8 @@ const PackagesSection = () => {
             </Link>
           </button>
         </div>
-        <div className="w-full lg:col-span-4">
-          <div className="grid grid-cols-4  items-center rounded-2xl shadow-xl overflow-hidden  bg-white">
+        <div className="col-span-1 lg:col-span-3 w-full">
+          <div className="grid grid-cols-4  items-center rounded-2xl shadow-xl overflow-hidden mt_akm bg-white">
             <div className="w-full flex justify-center items-center">
               <TabButton
                 title="Basic"
@@ -265,11 +265,14 @@ const PackagesSection = () => {
           </div>
           <div className="mt-4">
             <TabContent>
-              <div className="grid grid-cols-1 gap_akm ">
+              <div className="grid md:grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-4 sm:gap-5 md:gap-6 ">
                 {filteredData.map((pricing, index) => (
-                  <div key={index} className="  rounded-2xl shadow-xl bg-white">
+                  <div
+                    key={index}
+                    className="p-2  rounded-2xl shadow-xl bg-white"
+                  >
                     <div
-                      className={`h-full  rounded-lg  ${
+                      className={`h-full p-6 rounded-lg  ${
                         pricing.popular ? "border-2 border-red-500" : ""
                       } flex flex-col relative overflow-hidden`}
                     >
@@ -278,61 +281,54 @@ const PackagesSection = () => {
                           POPULAR
                         </span>
                       )}
-
-                      <div className="grid grid-col-1 md:grid-col-9 grid-flow-row md:grid-flow-col  ">
-                        <div className="flex flex-row md:col-span-2 justify-center items-center pr-4  p-6 bg-gradient-to-b md:bg-gradient-to-r from-[#d4f8e8] to-white">
-                          <div className="">
-                            <h2 className="text-sm tracking-widest title-font mb-1 font-medium  ">
-                              {pricing.type}
-                            </h2>
-                            <div className="flex flex-row">
-                              <p className="text-5xl  leading-none">
-                                {pricing.speed}
-                              </p>
-                              <p className="flex items-end">Mbps</p>
-                            </div>
-                          </div>
-                        </div>
-                        <div className="md:col-span-4 flex flex-col justify-center pl-4 p-6 ">
-                          {pricing.features.map((feature, idx) => (
-                            <div key={idx} className="flex mb-2">
-                              <div className="mr-2 text-white rounded-full">
-                                <FontAwesomeIcon
-                                  icon={faCircleCheck}
-                                  className="text-[#03738C]"
-                                />
-                              </div>
-                              {feature}
-                            </div>
-                          ))}
-                        </div>
-                        <div className="md:col-span-3 flex flex-col justify-center  items-center p-6 bg-gradient-to-t md:bg-gradient-to-l from-[#d4f8e8] to-white">
-                          <p
-                            className={
-                              pricing.price === "(Call for Price)"
-                                ? "text-slate-500 text-sm italic"
-                                : "text-2xl"
-                            }
-                          >
-                            {pricing.price}
+                      <h2 className="text-sm tracking-widest title-font mb-1 font-medium">
+                        {pricing.type}
+                      </h2>
+                      <div className="flex justify-between  border-b  pb-4 mb-4 ">
+                        <div className="flex flex-row">
+                          <p className="text-5xl  leading-none">
+                            {pricing.speed}
                           </p>
-                          <button className=" items-center text-center text-white bg-[#03738C] border-0 py-2 px-4 mt-2 focus:outline-none hover:bg-red-700 rounded-full">
-                            <Link href="/contact">
-                              {" "}
-                              Purchase{" "}
-                              <FontAwesomeIcon icon={faArrowRightLong} />
-                            </Link>
-                          </button>
+                          <p className="flex items-end">Mbps</p>
+                        </div>
+                        <div>
+                          <p className=" inline-block align-baseline leading-none">
+                            <div className="flex flex-row-reverse">
+                              <p
+                                className={
+                                  pricing.price === "(Call for Price)"
+                                    ? "text-slate-500 text-sm italic"
+                                    : "text-2xl"
+                                }
+                              >
+                                {pricing.price}
+                              </p>
+                            </div>
+                          </p>
                         </div>
                       </div>
 
-                      {/* <button className=" items-center mt-auto text-center text-white bg-[#03738C] border-0 py-2 px-4 w-full focus:outline-none hover:bg-red-700 rounded-full">
+                      <div className="mb-4">
+                        {pricing.features.map((feature, idx) => (
+                          <div key={idx} className="flex mb-2">
+                            <div className="mr-2 text-white rounded-full">
+                              <FontAwesomeIcon
+                                icon={faCircleCheck}
+                                className="text-[#03738C]"
+                              />
+                            </div>
+                            {feature}
+                          </div>
+                        ))}
+                      </div>
+
+                      <button className=" items-center mt-auto text-center text-white bg-[#03738C] border-0 py-2 px-4 w-full focus:outline-none hover:bg-red-700 rounded-full">
                         <Link href="/contact">
                           {" "}
                           Proceed with this plan{" "}
                           <FontAwesomeIcon icon={faArrowRightLong} />
                         </Link>
-                      </button> */}
+                      </button>
                     </div>
                   </div>
                 ))}
