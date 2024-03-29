@@ -191,16 +191,8 @@ const PackagesSection = () => {
   return (
     <section className="section_akm">
       {isMyPage ? (
-        <div className="grid grid-cols-1 sm:grid-cols-12  bg-white mb_akm rounded-b-2xl">
-          <div className="hidden sm:block sm:col-span-4 pl-4 pt-4">
-            <img alt="" src="/images/female-gamer.webp" />
-          </div>
-          <div className=" sm:col-span-4 flex items-center justify-center">
-            <div className="heading_akm">Monthly Pricing</div>
-          </div>
-          <div className="hidden sm:block sm:col-span-4 pr-4 pt-4">
-            <img alt="" src="/images/male-gamer.webp" />
-          </div>
+        <div className="text-center pb-4 bg-[url('/images/purchase.jpg')] bg-cover bg-center h-36 sm:h-52 md:h-64 lg:h-96 flex items-center justify-center text-white ">
+          <h1 className="heading_akm ">Monthly Pricing</h1>
         </div>
       ) : (
         <div className="heading_akm">Monthly Pricing</div>
@@ -306,7 +298,7 @@ const PackagesSection = () => {
                             </div>
                           ))}
                         </div>
-                        <div className="md:col-span-3 flex flex-col justify-center  items-center p-6 bg-gradient-to-t md:bg-gradient-to-l from-[#d4f8e8] to-white">
+                        <div className="md:col-span-3 flex flex-col justify-center  items-center p-6 bg-gradient-to-t md:bg-gradient-to-l from-[#d4f8e8] to-white font-medium">
                           <p
                             className={
                               pricing.price === "(Call for Price)"
