@@ -280,7 +280,10 @@ const PackagesSection = () => {
             <TabContent>
               <div className="grid grid-cols-1 gap_akm ">
                 {filteredData.map((pricing, index) => (
-                  <div key={index} className="  rounded-2xl shadow-xl bg-white">
+                  <div
+                    key={index}
+                    className="  rounded-2xl shadow-xl hover:shadow-2xl bg-white relative transition duration-300 ease-in-out transform hover:-translate-y-1"
+                  >
                     <div
                       className={`h-full  rounded-2xl  ${
                         pricing.popular
