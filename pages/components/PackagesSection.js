@@ -295,20 +295,20 @@ const PackagesSection = () => {
                       )}
 
                       <div className="grid grid-col-1 md:grid-col-9 grid-flow-row md:grid-flow-col  ">
-                        <div className="flex flex-row md:col-span-2 justify-center items-center pr-4  p-6 bg-gradient-to-b md:bg-gradient-to-r from-[#d4f8e8] to-white">
-                          <div className="">
-                            <h2 className="text-sm tracking-widest title-font mb-1 font-medium  ">
+                        <div className="flex flex-row md:col-span-2 justify-center items-center pr-4  p-6 ">
+                          <div className=" lg:-mt-1 lg:pl-3">
+                            <h2 className="text-lg tracking-widest title-font  pl-1 ">
                               {pricing.type}
                             </h2>
                             <div className="flex flex-row">
-                              <p className="text-5xl  leading-none">
+                              <p className="text-6xl font-light leading-none mr-1">
                                 {pricing.speed}
                               </p>
-                              <p className="flex items-end">Mbps</p>
+                              <p className="flex items-end text-lg ">Mbps</p>
                             </div>
                           </div>
                         </div>
-                        <div className="md:col-span-4 flex flex-col justify-center pl-4 p-6 ">
+                        <div className="md:col-span-4 flex flex-col justify-center  pl-4 p-6 ">
                           {pricing.features.map((feature, idx) => (
                             <div key={idx} className="flex mb-2">
                               <div className="mr-2 text-white rounded-full">
@@ -321,12 +321,12 @@ const PackagesSection = () => {
                             </div>
                           ))}
                         </div>
-                        <div className="md:col-span-3 flex flex-col justify-center  items-center p-6 bg-gradient-to-t md:bg-gradient-to-l from-[#d4f8e8] to-white font-medium">
+                        <div className="md:col-span-3 flex flex-col justify-center  items-center p-6 ">
                           <p
                             className={
                               pricing.price === "(Call for Price)"
                                 ? "text-slate-500 text-sm italic"
-                                : "text-2xl"
+                                : "text-3xl"
                             }
                           >
                             {pricing.price}
