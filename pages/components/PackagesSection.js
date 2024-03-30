@@ -15,21 +15,21 @@ const pricingData = [
     type: "ONE",
     speed: "7",
     price: "৳500",
-    features: ["Up to 15 Mbps", "Ideal for 1 concurrent user"],
+    features: ["Up to 7 Mbps", "Ideal for 1 concurrent user"],
     group: "basic",
   },
   {
     type: "TWO",
     speed: "20",
     price: "৳700",
-    features: ["Up to 30 Mbps", "Ideal for 2 concurrent users"],
+    features: ["Up to 20 Mbps", "Ideal for 2 concurrent users"],
     group: "basic",
   },
   {
     type: "THREE",
     speed: "30",
     price: "৳1000",
-    features: ["Up to 40 Mbps", "Ideal for 3 concurrent users"],
+    features: ["Up to 30 Mbps", "Ideal for 3 concurrent users"],
     group: "standard",
   },
   {
@@ -37,7 +37,7 @@ const pricingData = [
     speed: "35",
     price: "৳1200",
     features: [
-      "Up to 50 Mbps",
+      "Up to 35 Mbps",
       "Ideal for 4 concurrent users",
       "FHD TV/Netflix streaming",
     ],
@@ -50,7 +50,7 @@ const pricingData = [
     speed: "45",
     price: "৳1500",
     features: [
-      "Up to 60 Mbps",
+      "Up to 45 Mbps",
       "Ideal for 5 concurrent users",
       "2K TV/Netflix streaming",
       "Seamless online gaming",
@@ -63,7 +63,7 @@ const pricingData = [
     speed: "60",
     price: "৳2000",
     features: [
-      "Up to 80 Mbps",
+      "Up to 60 Mbps",
       "Ideal for 6 concurrent users",
       "4K TV/Netflix streaming",
       "Seamless online gaming",
@@ -77,7 +77,7 @@ const pricingData = [
     speed: "80",
     price: "৳3000",
     features: [
-      "Up to 100 Mbps",
+      "Up to 80 Mbps",
       "Ideal for 6 - 10 concurrent users",
       "4K TV/Netflix streaming",
       "Seamless online gaming",
@@ -91,7 +91,7 @@ const pricingData = [
     speed: "110",
     price: "৳4000",
     features: [
-      "Up to 150 Mbps",
+      "Up to 110 Mbps",
       "Ideal for 10 - 20 concurrent users",
       "4K TV/Netflix streaming",
       "Seamless online gaming",
@@ -191,7 +191,7 @@ const PackagesSection = () => {
   return (
     <section className="section_akm">
       {isMyPage ? (
-        <div className="text-center pb-4 bg-[url('/images/purchase.jpg')] bg-cover bg-center h-36 sm:h-52 md:h-64 lg:h-96 flex items-center justify-center text-white ">
+        <div className="text-center mb_akm bg-[url('/images/purchase.jpg')] bg-cover bg-center h-36 sm:h-52 md:h-64 lg:h-96 flex items-center justify-center text-white ">
           <h1 className="heading_akm ">Monthly Pricing</h1>
         </div>
       ) : (
