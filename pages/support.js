@@ -72,6 +72,18 @@ const Support = () => {
               </div>
               <div className="mt-10 pt_akm border-t">
                 <div className="mb-2">
+                  <p className="subheading_akm">Home Network Diagram</p>
+                </div>
+                <div>
+                  <img
+                    alt=""
+                    src="/images/home-network-diagram.png"
+                    className="rounded-2xl"
+                  />
+                </div>
+              </div>
+              <div className="mt-10 pt_akm border-t">
+                <div className="mb-2">
                   <p className="subheading_akm">Popular Inquiries</p>
                 </div>
                 {faqContent.map((item, index) => (
