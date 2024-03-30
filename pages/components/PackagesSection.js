@@ -261,9 +261,9 @@ const PackagesSection = () => {
                 {filteredData.map((pricing, index) => (
                   <div key={index} className="  rounded-2xl shadow-xl bg-white">
                     <div
-                      className={`h-full  rounded-lg  ${
+                      className={`h-full  rounded-2xl  ${
                         pricing.popular
-                          ? "border-2 border-red-500"
+                          ? "border-2 border-red-500 rounded-2xl"
                           : " border-2 lg:border-0"
                       } flex flex-col relative overflow-hidden`}
                     >

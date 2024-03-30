@@ -267,12 +267,9 @@ const PackagesSection = () => {
             <TabContent>
               <div className="grid md:grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-4 sm:gap-5 md:gap-6 ">
                 {filteredData.map((pricing, index) => (
-                  <div
-                    key={index}
-                    className="p-2  rounded-2xl shadow-xl bg-white"
-                  >
+                  <div key={index} className="p-2   shadow-xl bg-white">
                     <div
-                      className={`h-full p-6 rounded-lg  ${
+                      className={`h-full p-6 rounded-2xl  ${
                         pricing.popular ? "border-2 border-red-500" : ""
                       } flex flex-col relative overflow-hidden`}
                     >
