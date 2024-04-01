@@ -60,6 +60,27 @@ const Support = () => {
               </div>
               <div className="mt-10 pt_akm border-t">
                 <div className="mb-2">
+                  <p className="subheading_akm">Popular Inquiries</p>
+                </div>
+                {faqContent.map((item, index) => (
+                  <div key={index} className="my-6">
+                    <div className="flex items-start my-1">
+                      <div>
+                        <FontAwesomeIcon icon={faCircleQuestion} />
+                      </div>
+                      <div>
+                        <p className="body_text_akm text-left pl-2 font-semibold">
+                          {item.question}
+                        </p>
+                      </div>
+                    </div>
+                    <div className="pl-6 text-left">{item.answer}</div>
+                  </div>
+                ))}
+              </div>
+
+              <div className="mt-10 pt_akm border-t">
+                <div className="mb-2">
                   <p className="subheading_akm">Support Workflow</p>
                 </div>
                 <div>
@@ -81,26 +102,6 @@ const Support = () => {
                     className="rounded-2xl"
                   />
                 </div>
-              </div>
-              <div className="mt-10 pt_akm border-t">
-                <div className="mb-2">
-                  <p className="subheading_akm">Popular Inquiries</p>
-                </div>
-                {faqContent.map((item, index) => (
-                  <div key={index} className="my-6">
-                    <div className="flex items-start my-1">
-                      <div>
-                        <FontAwesomeIcon icon={faCircleQuestion} />
-                      </div>
-                      <div>
-                        <p className="body_text_akm text-left pl-2 font-semibold">
-                          {item.question}
-                        </p>
-                      </div>
-                    </div>
-                    <div className="pl-6 text-left">{item.answer}</div>
-                  </div>
-                ))}
               </div>
             </div>
           </div>

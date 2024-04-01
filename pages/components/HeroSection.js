@@ -134,28 +134,28 @@ const HeroSection = () => {
                     </p>
                   </div>
                   <div className="pad_akm body_text_akm  md:text-2xl">
-                    <button class="bg_green hover:bg_red text-white font-semibold py-2 px-4 rounded-full m-1">
+                    <button className="bg_green hover:bg_red text-white font-semibold py-2 px-4 rounded-full m-1">
                       99.99% Uptime
                     </button>
-                    <button class="bg_green hover:bg_red text-white font-semibold py-2 px-4 rounded-full m-1">
+                    <button className="bg_green hover:bg_red text-white font-semibold py-2 px-4 rounded-full m-1">
                       4k YouTube, Facebook Anytime
                     </button>
-                    <button class="bg_green hover:bg_red text-white font-semibold py-2 px-4 rounded-full m-1">
+                    <button className="bg_green hover:bg_red text-white font-semibold py-2 px-4 rounded-full m-1">
                       Multiple Local CDN Servers
                     </button>
-                    <button class="bg_green hover:bg_red text-white font-semibold py-2 px-4 rounded-full m-1">
+                    <button className="bg_green hover:bg_red text-white font-semibold py-2 px-4 rounded-full m-1">
                       10 Gbps BDIX
                     </button>
 
-                    <button class="bg_green hover:bg_red text-white font-semibold py-2 px-4 rounded-full m-1">
+                    <button className="bg_green hover:bg_red text-white font-semibold py-2 px-4 rounded-full m-1">
                       IPv6 Network
                     </button>
 
-                    <button class="bg_green  hover:bg_red text-white font-semibold py-2 px-4 rounded-full m-1">
+                    <button className="bg_green  hover:bg_red text-white font-semibold py-2 px-4 rounded-full m-1">
                       Available Real IPs
                     </button>
 
-                    <button class="bg_green hover:bg_red text-white font-semibold py-2 px-4 rounded-full m-1">
+                    <button className="bg_green hover:bg_red text-white font-semibold py-2 px-4 rounded-full m-1">
                       Quick Doorstep Support
                     </button>
                   </div>
