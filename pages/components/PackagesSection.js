@@ -298,8 +298,8 @@ const PackagesSection = () => {
                       )}
 
                       <div className="grid grid-col-1 md:grid-col-9 grid-flow-row md:grid-flow-col  ">
-                        <div className="flex flex-row md:col-span-3 justify-center items-center  pl-6 bg_green -skew-x-12 -ml-6 text-white bg-gradient-to-b from-[#0296b8] via-[#03738c] to-[#0296b8]">
-                          <div className=" lg:-mt-1 lg:pl-3 skew-x-12">
+                        <div className="flex flex-row md:col-span-3 justify-center items-center  pl-6 bg_green md:-skew-x-12 -ml-6 text-white bg-gradient-to-b from-[#0296b8] via-[#03738c] to-[#0296b8]">
+                          <div className=" lg:-mt-1 lg:pl-3 md:skew-x-12 py-3">
                             <h2 className="text-2xl tracking-widest title-font  pl-1 text_red font-extrabold">
                               {pricing.type}
                             </h2>
@@ -328,17 +328,17 @@ const PackagesSection = () => {
                             ))}
                           </div>
                         </div>
-                        <div className="md:col-span-3 flex flex-col justify-center  items-center p-6 -skew-x-12 bg-gradient-to-b from-[#0296b8] via-[#03738c] to-[#0296b8] -mr-5 text-white">
+                        <div className="md:col-span-3 flex flex-col justify-center  items-center p-6 md:-skew-x-12 bg-gradient-to-b from-[#0296b8] via-[#03738c] to-[#0296b8] -mr-5 text-white">
                           <p
                             className={
                               pricing.price === "(Call for Price)"
                                 ? "text-white text-sm italic font-bold tracking-wide"
-                                : "text-3xl skew-x-12 -ml-4 tracking-wide font-semibold"
+                                : "text-3xl md:skew-x-12 -ml-4 tracking-wide font-semibold"
                             }
                           >
                             {pricing.price}
                           </p>
-                          <button className=" items-center text-center skew-x-12 text-white bg_red border-0 py-2 px-4 mt-2 focus:outline-none hover:bg-red-700 rounded-full">
+                          <button className=" items-center text-center md:skew-x-12 text-white bg_red border-0 py-2 px-4 mt-2 focus:outline-none hover:bg-red-700 rounded-full">
                             <Link href="/contact">
                               {" "}
                               Purchase{" "}
