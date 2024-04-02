@@ -167,10 +167,10 @@ const features = [
   "4k Youtube, Facebook, Netflix and more Streaming",
   "Bufferless Cached Content",
   "Gaming Cache (100 Mbps)",
-  "100 Mbps BDIX and other BD NIX speed",
-  "FTP access (Over 11,500 Movies)",
-  "24x7 call Support",
-  "Doorstep support (9 am - 10 pm)",
+  "100 Mbps BDIX and other BD NIX Speed",
+  "Home Packages 1:8 Contention Ratio",
+  "24x7 Call Support",
+  "Doorstep Support (9 am - 10 pm)",
 ];
 
 const PackagesSection = () => {
@@ -235,10 +235,8 @@ const PackagesSection = () => {
               <div>{feature}</div>
             </div>
           ))}
-          <p className="text-sm flex items-center justify-center text_red pb-1">
-            Home Packages 1:8 Contention Ratio
-          </p>
-          <button className=" items-center mt-auto text-center text-white bg-[#03738C] border-0 py-2 px-4 w-full focus:outline-none hover:bg-red-700 rounded-full">
+
+          <button className=" items-center mt-2 text-center text-white bg-[#03738C] border-0 py-2 px-4 w-full focus:outline-none hover:bg-red-700 rounded-full">
             <Link href="../files/Mazeda_tariff_permission_of_BTRC.pdf">
               {" "}
               BTRC Approved Tariff <FontAwesomeIcon icon={faInfoCircle} />

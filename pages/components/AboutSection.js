@@ -5,8 +5,10 @@ import Image from "next/image";
 function AboutSection() {
   return (
     <section className="section_akm">
-      <h1 className="heading_akm">About Mazeda Networks</h1>
-      <div className="flex flex-col sm:flex-row gap_akm">
+      <div className="text-center pb-4 bg-[url('/images/servers.jpg')] bg-cover bg-center h-36 sm:h-52 md:h-64 lg:h-96 flex items-center justify-center text-white ">
+        <h1 className="heading_akm ">About Us</h1>
+      </div>
+      <div className="flex flex-col sm:flex-row gap_akm mt_akm">
         <div
           className="sm:w-1/3 text-center sm:pr-8 sm:py-8 box_round_shadow min-h-48"
           style={{
@@ -20,7 +22,10 @@ function AboutSection() {
         </div>
         <div className="sm:w-2/3 sm:pl-8 sm:py-8  box_round_shadow   mt-4 pt-4 sm:mt-0 text-center sm:text-left">
           <div className=" body-font">
-            <div className="container mx-auto py-8">
+            <div className="container mx-auto ">
+              <div className="mb_akm pb-1 border-b">
+                <span className="subheading_akm ">About Mazeda Networks</span>
+              </div>
               <p className="text-lg leading-relaxed mb-8">
                 Mazeda Networks Limited stands as a leading internet service
                 provider, headquartered in Dhanmondi, Dhaka-1209, Bangladesh,
