@@ -10,7 +10,7 @@ function AboutSection() {
       </div>
       <div className="flex flex-col sm:flex-row gap_akm mt_akm">
         <div
-          className="sm:w-1/3 text-center sm:pr-8 sm:py-8 box_round_shadow min-h-48"
+          className="md:w-1/3 text-center sm:pr-8 sm:py-8 box_round_shadow min-h-48 max-h-[600px] hidden md:block"
           style={{
             backgroundImage: `url('/images/slide-bg-internet.webp')`,
             backgroundSize: "cover",
@@ -20,7 +20,7 @@ function AboutSection() {
         >
           {/* Content */}
         </div>
-        <div className="sm:w-2/3 sm:pl-8 sm:py-8  box_round_shadow   mt-4 pt-4 sm:mt-0 text-center sm:text-left">
+        <div className="md:w-2/3 sm:pl-8 sm:py-8  box_round_shadow   mt-4 pt-4 sm:mt-0 text-center sm:text-left">
           <div className=" body-font">
             <div className="container mx-auto ">
               <div className="mb_akm pb-1 border-b">

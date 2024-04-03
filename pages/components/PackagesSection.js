@@ -4,6 +4,7 @@ import {
   faCircleCheck,
   faArrowRightLong,
   faInfoCircle,
+  faBullhorn,
 } from "@fortawesome/free-solid-svg-icons";
 import theme from "@/config/theme";
 import Link from "next/link";
@@ -212,8 +213,12 @@ const PackagesSection = () => {
   return (
     <section className="section_akm">
       {isMyPage ? (
-        <div className="text-center mb_akm bg-[url('/images/packages-banner.jpg')] bg-cover bg-center h-36 sm:h-52 md:h-64 lg:h-96 flex items-center justify-center text-white ">
-          <h1 className="heading_akm ">Monthly Pricing</h1>
+        <div className="text-center mb_akm bg-[url('/images/packages-banner.jpg')] bg-cover bg-center h-36 sm:h-52 md:h-64 lg:h-96 flex items-center justify-center flex-col text-white ">
+          <h1 className="heading_akm -mb-8 ">Monthly Pricing</h1>
+          <p className="subheading_akm relative inline-block bg-black bg-opacity-50 text-white py-2 px-4 transform -skew-x-12">
+            <FontAwesomeIcon icon={faBullhorn} /> {""}
+            Get connection within 1 hour!
+          </p>
         </div>
       ) : (
         <div className="heading_akm">Monthly Pricing</div>
