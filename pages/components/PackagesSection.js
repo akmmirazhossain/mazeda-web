@@ -218,15 +218,15 @@ const PackagesSection = () => {
         <div className="text-center mb_akm bg-[url('/images/packages-banner.jpg')] bg-cover bg-center h-36 sm:h-52 md:h-64 lg:h-96 flex items-center justify-center flex-col text-white ">
           <h1 className="heading_akm -mb-8 ">Monthly Pricing</h1>
           <div className="flex flex-col">
-            <p className="text-xl inline-block rounded-full bg-opacity-80 text-white py-1 px-4 transform  font-medium tracking-wide  mr-16 my-0.5 border bg-gradient-to-b from-[#03738c] via-[#015a6e] to-[#03738c]">
+            <p className="text-lg inline-block rounded-full bg-opacity-80 text-white py-1 px-6 transform   tracking-wide  mr-16 my-0.5 border bg-gradient-to-b from-[#03738c] via-[#015a6e] to-[#03738c]">
               <FontAwesomeIcon icon={faBullhorn} /> {""}
               Get connection within 1 hour!
             </p>
-            <p className="text-xl inline-block rounded-full  bg-opacity-80 text-white py-1 px-4 transform  font-medium tracking-wide ml-8 mr-8 my-0.5 border bg-gradient-to-b from-[#e6242d] via-[#db020c] to-[#e6242d]">
+            <p className="text-lg inline-block rounded-full  bg-opacity-80 text-white py-1 px-6 transform   tracking-wide ml-8 mr-8 my-0.5 border bg-gradient-to-b from-[#e6242d] via-[#db020c] to-[#e6242d]">
               <FontAwesomeIcon icon={faPeopleGroup} /> {""}A support team with
               21 years of experience
             </p>
-            <p className="text-xl inline-block rounded-full bg-opacity-80 text-white py-1 px-4 transform  font-medium tracking-wide  ml-16 my-0.5 border bg-gradient-to-b from-[#ffa34d] via-[#db6a00] to-[#ffa34d]">
+            <p className="text-lg inline-block rounded-full bg-opacity-80 text-white py-1 px-6 transform tracking-wide  ml-16 my-0.5 border bg-gradient-to-b from-[#ffa34d] via-[#db6a00] to-[#ffa34d]">
               <FontAwesomeIcon icon={faInfinity} /> {""}
               24 hours unlimited internet
             </p>
