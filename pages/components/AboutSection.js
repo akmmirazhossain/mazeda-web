@@ -45,8 +45,8 @@ function AboutSection() {
             <p className="text-lg leading-relaxed mb-8">
               Our customer service operates round-the-clock, offering
               personalized assistance via phone, chat, or email. At Mazeda,
-              we're committed to staying ahead of the competition and empowering
-              users with seamless, reliable internet experiences.
+              we&apos;re committed to staying ahead of the competition and
+              empowering users with seamless, reliable internet experiences.
             </p>
           </div>
 
