@@ -217,7 +217,7 @@ const PackagesSection = () => {
       {isMyPage ? (
         <div className="text-center mb_akm bg-[url('/images/packages-banner.jpg')] bg-cover bg-center h-36 sm:h-52 md:h-64 lg:h-96 flex items-center justify-center flex-col text-white ">
           <h1 className="heading_akm -mb-8 ">Monthly Pricing</h1>
-          <div className="flex flex-col">
+          {/* <div className="flex flex-col">
             <p className="text-lg inline-block rounded-full bg-opacity-80 text-white py-1 px-6 transform   tracking-wide  mr-16 my-0.5 border bg-gradient-to-b from-[#03738c] via-[#015a6e] to-[#03738c]">
               <FontAwesomeIcon icon={faBullhorn} /> {""}
               Get connection within 1 hour!
@@ -230,7 +230,7 @@ const PackagesSection = () => {
               <FontAwesomeIcon icon={faInfinity} /> {""}
               24 hours unlimited internet
             </p>
-          </div>
+          </div> */}
         </div>
       ) : (
         <div className="heading_akm">Monthly Pricing</div>
