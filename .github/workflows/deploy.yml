@@ -19,4 +19,6 @@ jobs:
           server: ${{ secrets.FTP_SERVER }}
           username: ${{ secrets.FTP_USER }}
           password: ${{ secrets.FTP_PASS }}
-          args: --local-dir=public/data --include=*.json
+          local-dir: public/data
+          exclude: "*"
+          include: "*.json"
