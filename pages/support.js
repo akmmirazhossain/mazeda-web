@@ -7,36 +7,11 @@ import Footer from "./components/Footer";
 import PhoneNumbers from "./components/common/phone-numbers";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircleQuestion } from "@fortawesome/free-solid-svg-icons";
-
+import supportData from "../public/data/supportData.json";
 const Support = () => {
-  const faqContent = [
-    {
-      question: "If I experience slow internet, what steps should I take?",
-      answer:
-        "i) Reboot the WiFi router, ii) Attempt to use the internet in close proximity to the router. If you continue to experience slow internet, please reach out to our support hotline.",
-    },
-    {
-      question:
-        "If I shift to a different location, will I need to pay the new connection fee again?",
-      answer:
-        "If the new residence is within proximity to our closest fiber optic hub, no further payments will be required. However, if it's too distant, there may be additional charges for the extra fiber optic cable.",
-    },
-    {
-      question:
-        "Upon activating an internet connection, does the support team offer free support for setting up WiFi router?",
-      answer:
-        "Yes, we provide free-of-charge router configuration services for any model upon each new connection.",
-    },
+  const { faqContent, workflowImage, networkDiagramImage, subtitle } =
+    supportData;
 
-    {
-      question:
-        "If I decide to relocate my router, ONU, or cables to another room, what do I need to do?",
-      answer:
-        "In this case our support team will be able to help, there could be a basic charge for initial adjustments, with costs for changes like wire length or drilling to be determined after gathering all necessary information.",
-    },
-
-    // Add more objects here for additional FAQs
-  ];
   return (
     <main>
       <Navbar />
@@ -45,9 +20,7 @@ const Support = () => {
         <section className="section_akm">
           <div className="text-center pb_akm">
             <h1 className="heading_akm">Support</h1>
-            <p className="subheading_akm ">
-              Guiding your internet journey, expert support at your fingertips
-            </p>
+            <p className="subheading_akm ">{subtitle}</p>
           </div>
 
           <div className="flex flex-col sm:flex-row gap_akm">
@@ -84,11 +57,7 @@ const Support = () => {
                   <p className="subheading_akm">Support Workflow</p>
                 </div>
                 <div>
-                  <img
-                    alt=""
-                    src="/images/support-workflow.png"
-                    className="rounded-2xl"
-                  />
+                  <img alt="" src={workflowImage} className="rounded-2xl" />
                 </div>
               </div>
               <div className="mt-10 pt_akm border-t">
@@ -98,7 +67,7 @@ const Support = () => {
                 <div>
                   <img
                     alt=""
-                    src="/images/home-network-diagram.png"
+                    src={networkDiagramImage}
                     className="rounded-2xl"
                   />
                 </div>

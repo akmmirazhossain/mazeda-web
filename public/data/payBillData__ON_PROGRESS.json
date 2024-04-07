@@ -1,0 +1,60 @@
+{
+  "bkash": [
+    {
+      "step": "Select the Pay Bill option.",
+      "image": "images/slider/bkash/b1.png"
+    },
+    {
+      "step": "Search Mazeda Networks Ltd and tap on it.",
+      "image": "images/slider/bkash/b2.png"
+    },
+    {
+      "step": "Choose current month (e.g. ${currentMonthYear}) and enter your Subscriber ID.",
+      "image": "images/slider/bkash/b3.png",
+      "note": "No Subscriber ID? Please contact us 09666 334455"
+    },
+    {
+      "step": "Tap and hold for Pay Bill until the payment is successful.",
+      "image": "images/slider/bkash/b5.png"
+    }
+  ],
+  "nagad": [
+    {
+      "step": "Select the Bill Pay option.",
+      "image": "images/slider/nagad/n1.jpg"
+    },
+    {
+      "step": "Search Mazeda Networks Ltd and tap on it.",
+      "image": "images/slider/nagad/n2.jpg"
+    },
+    {
+      "step": "Type your Customer ID, then tap on NEXT.",
+      "image": "images/slider/nagad/n3.jpg",
+      "note": "No Subscriber ID? Please contact us 09666 334455"
+    },
+    {
+      "step": "Type your name on Bill Reference Name and tap NEXT until the payment is successful.",
+      "image": "images/slider/nagad/n4.png"
+    }
+  ],
+  "userPortal": [
+    {
+      "step": "Click here and login.",
+      "image": "images/slider/user-portal/up1.jpg",
+      "link": "https://isperp.mazedanetworks.net/ispcare",
+      "linkText": "Click here"
+    },
+    {
+      "step": "Click on PAY BILL.",
+      "image": "images/slider/user-portal/up2.jpg"
+    },
+    {
+      "step": "Click on PAY NOW - SSL GATEWAY.",
+      "image": "images/slider/user-portal/up3.jpg"
+    },
+    {
+      "step": "Enter your card details and make a safe transaction.",
+      "image": "images/slider/user-portal/up4.jpg"
+    }
+  ]
+}

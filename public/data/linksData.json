@@ -1,0 +1,22 @@
+[
+  {
+    "image": "coverage.webp",
+    "count": "Coverage",
+    "link": "/coverage"
+  },
+  {
+    "image": "pay.webp",
+    "count": "Steps to Pay",
+    "link": "/pay-bill"
+  },
+  {
+    "image": "faq.webp",
+    "count": "FAQ",
+    "link": "/support"
+  },
+  {
+    "image": "new-connection.webp",
+    "count": "New Connection",
+    "link": "/contact"
+  }
+]

@@ -11,12 +11,7 @@ import {
   faCircleXmark,
 } from "@fortawesome/free-solid-svg-icons";
 import Link from "next/link";
-
-// Import Swiper styles
-import { Swiper, SwiperSlide } from "swiper/react";
-import { EffectCoverflow, Pagination, Autoplay } from "swiper/modules";
-import "swiper/css";
-import "swiper/css/pagination";
+//import payBillData from "../../public/data/payBillData.json";
 
 const PayBillSection = () => {
   const [currentMonthYear, setCurrentMonthYear] = useState("");
@@ -28,29 +23,10 @@ const PayBillSection = () => {
     setCurrentMonthYear(`${month} ${year}`);
   }, []);
 
-  const [isBkashModalOpen, setIsBkashModalOpen] = useState(false);
-  const [isNagadModalOpen, setIsNagadModalOpen] = useState(false);
-
-  const openBkashModal = () => {
-    setIsBkashModalOpen(true);
-  };
-
-  const closeBkashModal = () => {
-    setIsBkashModalOpen(false);
-  };
-
-  const openNagadModal = () => {
-    setIsNagadModalOpen(true);
-  };
-
-  const closeNagadModal = () => {
-    setIsNagadModalOpen(false);
-  };
-
   return (
     <section className="section_akm">
-      <div className="text-center pb-4">
-        <h1 className="heading_akm">Seeking payment options?</h1>
+      <div className="text-center pb-4 bg-[url('/images/pay-bill-cover.png')] bg-cover bg-center h-36 sm:h-52 md:h-64 lg:h-96 flex items-center justify-center text-white ">
+        <h1 className="heading_akm ">Seeking payment options?</h1>
       </div>
 
       <div className="box_round_shadow mb_akm grid grid-cols-1 md:grid-cols-3">
@@ -58,7 +34,7 @@ const PayBillSection = () => {
           This page shows a comprehensive range of payment solutions, find your
           best suited option to make a safe online transection.
         </div>
-        <div className="text-center lg:text-right">
+        <div className="flex items-center justify-center flex-col text-center lg:text-right">
           <button className=" items-center mt-auto text-center text-white bg-[#03738C] border-0 py-2 px-4 focus:outline-none hover:bg-red-700 rounded-full">
             <Link
               href="https://isperp.mazedanetworks.net/ispcare"
@@ -68,6 +44,9 @@ const PayBillSection = () => {
               Pay from online portal
             </Link>
           </button>
+          <span className="text-xs mt-1">
+            (Pay with Visa, Debit, or Credit cards.)
+          </span>
         </div>
       </div>
 
@@ -84,176 +63,74 @@ const PayBillSection = () => {
             <p className="subheading_akm">Steps for Bkash app payment</p>
           </div>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-6 lg:grid-cols-9 gap_akm">
-          <div className="md:col-span-3 lg:col-span-7">
-            <div className="flex relative pb-12">
-              <div className="h-full w-12 absolute inset-0 flex items-center justify-center">
-                <div className="h-full w-1 bg-gray-200 pointer-events-none" />
-              </div>
-              <div className="steps_circle_akm">
-                <FontAwesomeIcon icon={faRightToBracket} />
-              </div>
-              <div className="flex-grow pl-4">
-                <h2 className="font-medium title-font text-sm text-gray-900 mb-1 tracking-wider">
-                  STEP 1
-                </h2>
-                <p className="leading-relaxed">
-                  Sign in to your bKash account using your account PIN, then
-                  select the <span className="font-bold"> Pay Bill </span>{" "}
-                  option.
-                </p>
-              </div>
-            </div>
-            <div className="flex relative pb-12">
-              <div className="h-full w-12 absolute inset-0 flex items-center justify-center">
-                <div className="h-full w-1 bg-gray-200 pointer-events-none" />
-              </div>
-              <div className="steps_circle_akm">
-                <FontAwesomeIcon icon={faLightbulb} />
-              </div>
-              <div className="flex-grow pl-4">
-                <h2 className="font-medium title-font text-sm text-gray-900 mb-1 tracking-wider">
-                  STEP 2
-                </h2>
-                <p className="leading-relaxed">
-                  In the <span className="font-bold"> Pay Bill </span> section
-                  under <span className="font-bold"> Search Organization</span>,
-                  type Mazeda and look for{" "}
-                  <span className="font-bold"> Mazeda Networks Ltd. </span> to
-                  proceed.
-                </p>
-              </div>
-            </div>
-            <div className="flex relative pb-12">
-              <div className="h-full w-12 absolute inset-0 flex items-center justify-center">
-                <div className="h-full w-1 bg-gray-200 pointer-events-none" />
-              </div>
-              <div className="steps_circle_akm">
-                <FontAwesomeIcon icon={faCalendarDays} />
-              </div>
-              <div className="flex-grow pl-4">
-                <h2 className="font-medium title-font text-sm text-gray-900 mb-1 tracking-wider">
-                  STEP 3
-                </h2>
-                <p className="leading-relaxed">
-                  From the <span className="font-bold">Bill Period</span>{" "}
-                  dropdown choose the{" "}
-                  <span className="font-bold"> current month </span> (e.g.{" "}
-                  {currentMonthYear}) for which you wish to pay your bill and
-                  enter your
-                  <span className="font-bold"> Subscriber ID</span>, then tap on{" "}
-                  <span className="font-bold"> Proceed to pay</span>.
-                </p>
-                <div
-                  className="mt_akm bg-orange-100 border-l-4  border-orange-500 text-orange-700 p-4"
-                  role="alert"
-                >
-                  <p>
-                    If you don&apos;t have the Subscriber ID, you may contact
-                    our support{" "}
-                    <span className="font-bold">
-                      {" "}
-                      09613 334455, 09666 334455
-                    </span>
-                  </p>
-                </div>
-              </div>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap_akm">
+          <div className=" pad_akm relative">
+            <div className="absolute flex items-center justify-center -right-2 -top-1 bg-[#03738c] text-white w-10 h-10 rounded-full text-2xl  font-bold">
+              1
             </div>
 
-            <div className="flex relative">
-              <div className="flex-shrink-0 w-12 h-10 rounded-full bg-indigo-500 inline-flex items-center justify-center text-white relative z-10">
-                <div className="steps_circle_akm">
-                  <FontAwesomeIcon icon={faCheck} />
-                </div>
-              </div>
-              <div className="flex-grow pl-4">
-                <h2 className="font-medium title-font text-sm text-gray-900 mb-1 tracking-wider">
-                  FINISH
-                </h2>
-                <p className="leading-relaxed">
-                  Upon completion, a payment successful message will confirm
-                  that all steps were executed correctly.
-                </p>
-              </div>
+            <div className="my-2  rounded-2xl border-2  overflow-hidden">
+              <img src="images/slider/bkash/b1.png" />
+            </div>
+            <p className="leading-relaxed">
+              Select the <span className="font-bold"> Pay Bill </span> option.
+            </p>
+          </div>
+
+          <div className=" pad_akm relative">
+            <div className="absolute flex items-center justify-center -right-2 -top-1 bg-[#03738c] text-white w-10 h-10 rounded-full text-2xl  font-bold">
+              2
+            </div>
+
+            <div className="my-2  rounded-2xl border-2 overflow-hidden">
+              <img src="images/slider/bkash/b2.png" />
+            </div>
+            <p className="leading-relaxed">
+              Search
+              <span className="font-bold"> Mazeda Networks Ltd </span> and tap
+              on it
+            </p>
+          </div>
+
+          <div className=" pad_akm relative">
+            <div className="absolute flex items-center justify-center -right-2 -top-1 bg-[#03738c] text-white w-10 h-10 rounded-full text-2xl  font-bold">
+              3
+            </div>
+
+            <div className="my-2  rounded-2xl border-2 overflow-hidden">
+              <img src="images/slider/bkash/b3.png" />
+            </div>
+
+            <p className="leading-relaxed">
+              Choose <span className="font-bold"> current month </span> (e.g.{" "}
+              {currentMonthYear}) and enter your
+              <span className="font-bold"> Subscriber ID</span>
+            </p>
+            <div
+              className="mt_akm bg-orange-100 border-l-4  border-orange-500 text-orange-700 p-4"
+              role="alert"
+            >
+              <p>
+                No Subscriber ID? Please contact us
+                <span className="font-bold"> 09666 334455</span>
+              </p>
             </div>
           </div>
-          <div className="md:col-span-3 lg:col-span-2  pad_akm">
-            <div
-              className="relative h-96 md:h-full transition duration-300 transform hover:scale-105 cursor-pointer"
-              onClick={openBkashModal}
-            >
-              <img
-                src="images/slider/bkash/b1.jpg"
-                className=" w-full h-full object-contain rounded-2xl brightness-90"
-                alt="Background Image"
-              />
-              <div className="absolute inset-0 flex justify-center items-center">
-                <div className="flex justify-center items-center flex-col">
-                  <FontAwesomeIcon
-                    className="text-6xl text-slate-900"
-                    icon={faCirclePlay}
-                  />
-                  <p className="bg-slate-900 text-white pad_akm rounded-full text-xs mt-1">
-                    Watch tutorial
-                  </p>
-                </div>
-              </div>
+
+          <div className=" pad_akm relative">
+            <div className="absolute flex items-center justify-center -right-2 -top-1 bg-[#03738c] text-white w-10 h-10 rounded-full text-2xl  font-bold">
+              <FontAwesomeIcon icon={faCheck} />
             </div>
 
-            {/* Modal */}
-            {isBkashModalOpen && (
-              <div
-                onClick={() => closeBkashModal(true)}
-                className="fixed top-0 left-0 w-full h-full bg-black bg-opacity-75 flex justify-center items-center z-50"
-              >
-                <div className="relative bg-white w-5/6 sm:w-2/3 md:w-1/4 lg:w-1/5 rounded-2xl">
-                  <div
-                    className="absolute z-40 -right-2 -top-3"
-                    onClick={(e) => e.stopPropagation()}
-                  >
-                    <button className="" onClick={() => closeBkashModal(true)}>
-                      <FontAwesomeIcon
-                        className="text-4xl  text-white"
-                        icon={faCircleXmark}
-                      />
-                    </button>
-                  </div>
-                  <div onClick={(e) => e.stopPropagation()}>
-                    <Swiper
-                      className="mySwiper rounded-2xl"
-                      effect="c"
-                      slidesPerView={1}
-                      pagination={{
-                        dynamicBullets: true,
-                      }}
-                      autoplay={{
-                        delay: 5000,
-                        disableOnInteraction: false,
-                        pauseOnMouseEnter: false,
-                      }}
-                      modules={[EffectCoverflow, Pagination, Autoplay]}
-                      loop={true}
-                    >
-                      <SwiperSlide className="">
-                        <img alt="" src="images/slider/bkash/b1.jpg" />
-                      </SwiperSlide>
-                      <SwiperSlide className="">
-                        <img alt="" src="images/slider/bkash/b2.jpg" />
-                      </SwiperSlide>
-                      <SwiperSlide className="">
-                        <img alt="" src="images/slider/bkash/b3.jpg" />
-                      </SwiperSlide>
-                      <SwiperSlide className="">
-                        <img alt="" src="images/slider/bkash/b4.jpg" />
-                      </SwiperSlide>
-                      <SwiperSlide className="">
-                        <img alt="" src="images/slider/bkash/b5.jpg" />
-                      </SwiperSlide>
-                    </Swiper>
-                  </div>
-                </div>
-              </div>
-            )}
+            <div className="my-2  rounded-2xl border-2 overflow-hidden">
+              <img src="images/slider/bkash/b5.png" />
+            </div>
+
+            <p className="leading-relaxed">
+              <span className="font-bold">Tap and hold for Pay Bill </span>
+              untill the payment is successful.
+            </p>
           </div>
         </div>
       </div>
@@ -271,167 +148,155 @@ const PayBillSection = () => {
             <p className="subheading_akm">Steps for Nagad app payment</p>
           </div>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-6 lg:grid-cols-9 gap_akm">
-          <div className="md:col-span-3 lg:col-span-7">
-            <div className="flex relative pb-12">
-              <div className="h-full w-12 absolute inset-0 flex items-center justify-center">
-                <div className="h-full w-1 bg-gray-200 pointer-events-none" />
-              </div>
-              <div className="steps_circle_akm">
-                <FontAwesomeIcon icon={faRightToBracket} />
-              </div>
-              <div className="flex-grow pl-4">
-                <h2 className="font-medium title-font text-sm text-gray-900 mb-1 tracking-wider">
-                  STEP 1
-                </h2>
-                <p className="leading-relaxed">
-                  Sign in to your Nagad account using your account PIN, then
-                  select the <span className="font-bold"> Bill Pay</span>{" "}
-                  option.
-                </p>
-              </div>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap_akm">
+          <div className=" pad_akm relative">
+            <div className="absolute flex items-center justify-center -right-2 -top-1 bg-[#03738c] text-white w-10 h-10 rounded-full text-2xl  font-bold">
+              1
             </div>
 
-            <div className="flex relative pb-12">
-              <div className="h-full w-12 absolute inset-0 flex items-center justify-center">
-                <div className="h-full w-1 bg-gray-200 pointer-events-none" />
-              </div>
-              <div className="steps_circle_akm">
-                <FontAwesomeIcon icon={faCalendarDays} />
-              </div>
-              <div className="flex-grow pl-4">
-                <h2 className="font-medium title-font text-sm text-gray-900 mb-1 tracking-wider">
-                  STEP 2
-                </h2>
-                <p className="leading-relaxed">
-                  In the <span className="font-bold"> Biller </span> section,
-                  type Mazeda and search{" "}
-                  <span className="font-bold"> Mazeda Networks Ltd.</span> to
-                  proceed.
-                </p>
-              </div>
+            <div className="my-2  rounded-2xl border-2  overflow-hidden">
+              <img src="images/slider/nagad/n1.jpg" />
+            </div>
+            <p className="leading-relaxed">
+              Select the <span className="font-bold"> Bill Pay</span> option.
+            </p>
+          </div>
+
+          <div className=" pad_akm relative">
+            <div className="absolute flex items-center justify-center -right-2 -top-1 bg-[#03738c] text-white w-10 h-10 rounded-full text-2xl  font-bold">
+              2
             </div>
 
-            <div className="flex relative pb-12">
-              <div className="h-full w-12 absolute inset-0 flex items-center justify-center">
-                <div className="h-full w-1 bg-gray-200 pointer-events-none" />
-              </div>
-              <div className="steps_circle_akm">
-                <FontAwesomeIcon icon={faCalendarDays} />
-              </div>
-              <div className="flex-grow pl-4">
-                <h2 className="font-medium title-font text-sm text-gray-900 mb-1 tracking-wider">
-                  STEP 3
-                </h2>
-                <p className="leading-relaxed">
-                  Type your <span className="font-bold"> Customer ID</span>,
-                  then tap on <span className="font-bold">NEXT</span>.
-                </p>
-                <div
-                  className="mt_akm bg-orange-100 border-l-4  border-orange-500 text-orange-700 p-4"
-                  role="alert"
-                >
-                  <p>
-                    If you don&apos;t have the Customer ID, you may contact our
-                    support{" "}
-                    <span className="font-bold">
-                      09613 334455, 09666 334455
-                    </span>
-                  </p>
-                </div>
-              </div>
+            <div className="my-2  rounded-2xl border-2 overflow-hidden">
+              <img src="images/slider/nagad/n2.jpg" />
+            </div>
+            <p className="leading-relaxed">
+              Search
+              <span className="font-bold"> Mazeda Networks Ltd </span> and tap
+              on it
+            </p>
+          </div>
+
+          <div className=" pad_akm relative">
+            <div className="absolute flex items-center justify-center -right-2 -top-1 bg-[#03738c] text-white w-10 h-10 rounded-full text-2xl  font-bold">
+              3
             </div>
 
-            <div className="flex relative">
-              <div className="flex-shrink-0 w-12 h-10 rounded-full bg-indigo-500 inline-flex items-center justify-center text-white relative z-10">
-                <div className="steps_circle_akm">
-                  <FontAwesomeIcon icon={faCheck} />
-                </div>
-              </div>
-              <div className="flex-grow pl-4">
-                <h2 className="font-medium title-font text-sm text-gray-900 mb-1 tracking-wider">
-                  FINISH
-                </h2>
-                <p className="leading-relaxed">
-                  Upon completion, a payment successful message will confirm
-                  that all steps were executed correctly.
-                </p>
-              </div>
+            <div className="my-2  rounded-2xl border-2 overflow-hidden">
+              <img src="images/slider/nagad/n3.jpg" />
+            </div>
+
+            <p className="leading-relaxed">
+              Type your <span className="font-bold"> Customer ID</span>, then
+              tap on <span className="font-bold">NEXT</span>
+            </p>
+            <div
+              className="mt_akm bg-orange-100 border-l-4  border-orange-500 text-orange-700 p-4"
+              role="alert"
+            >
+              <p>
+                No Subscriber ID? Please contact us
+                <span className="font-bold"> 09666 334455</span>
+              </p>
             </div>
           </div>
-          <div className="md:col-span-3 lg:col-span-2 pad_akm">
-            <div
-              className="relative h-96 md:h-full transition duration-300 transform hover:scale-105 cursor-pointer "
-              onClick={openNagadModal}
-            >
-              <img
-                src="images/slider/nagad/n1.jpg"
-                className="w-full h-full object-contain rounded-2xl brightness-90"
-                alt="Background Image"
-              />
-              <div className="absolute inset-0 flex justify-center items-center">
-                <div className="flex justify-center items-center flex-col">
-                  <FontAwesomeIcon
-                    className="text-6xl text-slate-900"
-                    icon={faCirclePlay}
-                  />
-                  <p className="bg-slate-900 text-white pad_akm rounded-full text-xs mt-1">
-                    Watch tutorial
-                  </p>
-                </div>
-              </div>
+
+          <div className=" pad_akm relative">
+            <div className="absolute flex items-center justify-center -right-2 -top-1 bg-[#03738c] text-white w-10 h-10 rounded-full text-2xl  font-bold">
+              <FontAwesomeIcon icon={faCheck} />
             </div>
 
-            {isNagadModalOpen && (
-              <div
-                onClick={() => closeNagadModal(true)}
-                className="fixed top-0 left-0 w-full h-full bg-black bg-opacity-75 flex justify-center items-center z-50"
+            <div className="my-2  rounded-2xl border-2 overflow-hidden">
+              <img src="images/slider/nagad/n4.png" />
+            </div>
+
+            <p className="leading-relaxed">
+              Type your name on{" "}
+              <span className="font-bold">Bill Reference Name</span> and tap
+              <span className="font-bold"> NEXT </span>
+              untill the payment is successful.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div className="box_round_shadow mb_akm">
+        <div className="mb_akm flex items-center">
+          <div className="rounded-full border mr-3 h-12 w-12">
+            <img
+              alt=""
+              src="images/logos/user-portal.jpg"
+              className=" rounded-full"
+            />
+          </div>
+          <div>
+            <p className="subheading_akm">
+              Steps for Visa, Debit, or Credit card payment
+            </p>
+          </div>
+        </div>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap_akm">
+          <div className=" pad_akm relative">
+            <div className="absolute flex items-center justify-center -right-2 -top-1 bg-[#03738c] text-white w-10 h-10 rounded-full text-2xl  font-bold">
+              1
+            </div>
+
+            <div className="my-2  rounded-2xl border-2  overflow-hidden">
+              <img src="images/slider/user-portal/up1.jpg" />
+            </div>
+            <p className="leading-relaxed ">
+              <Link
+                href="https://isperp.mazedanetworks.net/ispcare"
+                target="_blank"
+                className="text-blue-700 font-bold"
               >
-                <div className="relative bg-white w-5/6 sm:w-2/3 md:w-1/4 lg:w-1/5 rounded-2xl">
-                  <div className="absolute z-40 -right-2 -top-3">
-                    <button className="" onClick={() => closeNagadModal(true)}>
-                      <FontAwesomeIcon
-                        className="text-4xl  text-white"
-                        icon={faCircleXmark}
-                      />
-                    </button>
-                  </div>
-                  <div onClick={(e) => e.stopPropagation()}>
-                    <Swiper
-                      className="mySwiper rounded-2xl"
-                      effect="c"
-                      slidesPerView={1}
-                      pagination={{
-                        dynamicBullets: true,
-                      }}
-                      autoplay={{
-                        delay: 5000,
-                        disableOnInteraction: false,
-                        pauseOnMouseEnter: false,
-                      }}
-                      modules={[EffectCoverflow, Pagination, Autoplay]}
-                      loop={true}
-                    >
-                      <SwiperSlide className="">
-                        <img alt="" src="images/slider/nagad/n1.jpg" />
-                      </SwiperSlide>
-                      <SwiperSlide className="">
-                        <img alt="" src="images/slider/nagad/n2.jpg" />
-                      </SwiperSlide>
-                      <SwiperSlide className="">
-                        <img alt="" src="images/slider/nagad/n3.jpg" />
-                      </SwiperSlide>
-                      <SwiperSlide className="">
-                        <img alt="" src="images/slider/nagad/n4.jpg" />
-                      </SwiperSlide>
-                      <SwiperSlide className="">
-                        <img alt="" src="images/slider/nagad/n5.jpg" />
-                      </SwiperSlide>
-                    </Swiper>
-                  </div>
-                </div>
-              </div>
-            )}
+                Click here
+              </Link>{" "}
+              and login
+            </p>
+          </div>
+
+          <div className=" pad_akm relative">
+            <div className="absolute flex items-center justify-center -right-2 -top-1 bg-[#03738c] text-white w-10 h-10 rounded-full text-2xl  font-bold">
+              2
+            </div>
+
+            <div className="my-2  rounded-2xl border-2 overflow-hidden">
+              <img src="images/slider/user-portal/up2.jpg" />
+            </div>
+            <p className="leading-relaxed">
+              Click on <span className="font-bold">PAY BILL</span>
+            </p>
+          </div>
+
+          <div className=" pad_akm relative">
+            <div className="absolute flex items-center justify-center -right-2 -top-1 bg-[#03738c] text-white w-10 h-10 rounded-full text-2xl  font-bold">
+              3
+            </div>
+
+            <div className="my-2  rounded-2xl border-2 overflow-hidden">
+              <img src="images/slider/user-portal/up3.jpg" />
+            </div>
+
+            <p className="leading-relaxed">
+              Click on <span className="font-bold">PAY NOW - SSL GATEWAY</span>
+            </p>
+          </div>
+
+          <div className=" pad_akm relative">
+            <div className="absolute flex items-center justify-center -right-2 -top-1 bg-[#03738c] text-white w-10 h-10 rounded-full text-2xl  font-bold">
+              <FontAwesomeIcon icon={faCheck} />
+            </div>
+
+            <div className="my-2  rounded-2xl border-2 overflow-hidden">
+              <img src="images/slider/user-portal/up4.jpg" />
+            </div>
+
+            <p className="leading-relaxed">
+              Enter your card details and make a safe transaction.
+            </p>
           </div>
         </div>
       </div>

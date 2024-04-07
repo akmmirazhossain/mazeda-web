@@ -1,0 +1,17 @@
+[
+  {
+    "icon": "faHouseSignal",
+    "title": "Home Internet",
+    "description": "Elevate your home experience with high-speed internet at your fingertips."
+  },
+  {
+    "icon": "faBriefcase",
+    "title": "Corporate Internet",
+    "description": "Boost your business efficiency with our Corporate Internet: fast, secure, and reliable connectivity solutions."
+  },
+  {
+    "icon": "faVideo",
+    "title": "CCTV Solutions",
+    "description": "Securing peace of mind with our advanced CCTV solutions for comprehensive and reliable surveillance."
+  }
+]
