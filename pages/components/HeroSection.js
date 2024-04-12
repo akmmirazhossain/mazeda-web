@@ -13,7 +13,6 @@ const HeroSection = () => {
   return (
     <Swiper
       className="mySwiper mt-14 sm:mt-14 md:mt-14 lg:mt-14 xl:mt-14"
-      effect="fade"
       slidesPerView={1}
       pagination={{
         dynamicBullets: true,
@@ -23,7 +22,7 @@ const HeroSection = () => {
         disableOnInteraction: false,
         pauseOnMouseEnter: false,
       }}
-      modules={[EffectFade, Pagination, Autoplay]}
+      modules={[Pagination, Autoplay]}
       loop={true}
     >
       <SwiperSlide className="bg-secondary">
@@ -33,7 +32,7 @@ const HeroSection = () => {
             backgroundImage: 'url("/images/slider/slide-bg-dhaka.webp")',
           }}
         >
-          <div className="container mx-auto sm:px-5 md:px-6 lg:px-4  max-w-7xl text-white h-full h-600 lg:h-600">
+          <div className="container mx-auto sm:px-5 md:px-6 lg:px-4  max-w-7xl text-white h-600">
             <div className="grid grid-rows-8 h-full">
               <div className="row-span-3 flex flex-col justify-end items-center text-[#03738C]  -skew-x-12">
                 <div className="text-center font-semibold bg-white bg-opacity-70  py-1 px-3 lg:p-3  text-xl sm:text-3xl lg:text-5xl">
@@ -77,7 +76,7 @@ const HeroSection = () => {
                   </Link>
                 </div>
 
-                <div className="  xl:pr-8">
+                <div className="  xl:pr-8  max-w-full ">
                   <img alt="" src="/images/slider/man_on_phone.webp" />
                 </div>
               </div>
@@ -126,43 +125,43 @@ const HeroSection = () => {
         >
           <div className="container mx-auto sm:px-5 md:px-6 lg:px-4  max-w-7xl text-white h-full h-600 lg:h-600">
             <div className="grid grid-cols-1  lg:grid-cols-3 grid-rows-5 lg:grid-rows-1 h-full">
-              <div className="col-span-1 lg:col-span-2 row-span-3 flex flex-col justify-center items-center text-[#03738C] ">
+              <div className="col-span-1 lg:col-span-2 row-span-2 flex flex-col justify-center items-center text-[#03738C] ">
                 <div className="text-center  ">
                   <div>
                     <p className="font-semibold text-xl sm:text-3xl lg:text-5xl">
                       What makes Mazeda stand out?{" "}
                     </p>
                   </div>
-                  <div className="pad_akm body_text_akm  md:text-2xl">
-                    <button className="bg_green hover:bg_red text-white font-semibold py-2 px-4 rounded-full m-1">
+                  <div className=" body_text_akm  md:text-2xl">
+                    <button className="bg_green hover:bg_red text-white font-semibold py-1.5 px-4 rounded-full m-1">
                       99.99% Uptime
                     </button>
-                    <button className="bg_green hover:bg_red text-white font-semibold py-2 px-4 rounded-full m-1">
+                    <button className="bg_green hover:bg_red text-white font-semibold py-1.5 px-4 rounded-full m-1">
                       4k YouTube, Facebook Anytime
                     </button>
-                    <button className="bg_green hover:bg_red text-white font-semibold py-2 px-4 rounded-full m-1">
+                    <button className="bg_green hover:bg_red text-white font-semibold py-1.5 px-4 rounded-full m-1">
                       Multiple Local CDN Servers
                     </button>
-                    <button className="bg_green hover:bg_red text-white font-semibold py-2 px-4 rounded-full m-1">
+                    <button className="bg_green hover:bg_red text-white font-semibold py-1.5 px-4 rounded-full m-1">
                       10 Gbps BDIX
                     </button>
 
-                    <button className="bg_green hover:bg_red text-white font-semibold py-2 px-4 rounded-full m-1">
+                    <button className="bg_green hover:bg_red text-white font-semibold py-1.5 px-4 rounded-full m-1">
                       IPv6 Network
                     </button>
 
-                    <button className="bg_green  hover:bg_red text-white font-semibold py-2 px-4 rounded-full m-1">
+                    <button className="bg_green  hover:bg_red text-white font-semibold py-1.5 px-4 rounded-full m-1">
                       Available Real IPs
                     </button>
 
-                    <button className="bg_green hover:bg_red text-white font-semibold py-2 px-4 rounded-full m-1">
+                    <button className="bg_green hover:bg_red text-white font-semibold py-1.5 px-4 rounded-full m-1">
                       Quick Doorstep Support
                     </button>
                   </div>
                 </div>
               </div>
 
-              <div className="flex col-span-1 row-span-2 justify-center ">
+              <div className="flex col-span-1 row-span-3 justify-center ">
                 <div className="px-2">
                   <img
                     alt=""
