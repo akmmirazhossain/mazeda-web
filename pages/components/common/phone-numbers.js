@@ -1,29 +1,18 @@
 import React from "react";
 import Image from "next/image";
+import phoneNumbers from "../../../public/data/phoneNumbers.json";
 
 const PhoneNumbers = () => {
   return (
     <>
       <div className="grid grid-cols-2 lg:grid-cols-4 gap_akm">
-        <div className=" text-center border pad_akm rounded-2xl">
-          <p className="font-bold body_text_akm">Inqueries</p>
-
-          <img src="/images/chat.webp" alt="" className="p-4" />
-          <p className="font-bold body_text_akm">09613 334455</p>
-        </div>
-        <div className=" text-center border pad_akm rounded-2xl">
-          <p className="font-bold body_text_akm">Support</p>
-
-          <img src="/images/customer-service.webp" alt="" className="p-4" />
-          <p className="font-bold body_text_akm">09666 334455</p>
-        </div>
-
-        <div className=" text-center border pad_akm rounded-2xl">
-          <p className="font-bold body_text_akm">New Connection</p>
-
-          <img src="/images/lan.webp" alt="" mg className="p-4" />
-          <p className="font-bold body_text_akm">09613 334455</p>
-        </div>
+        {phoneNumbers.phoneNumbers.map((contact, index) => (
+          <div key={index} className="text-center border pad_akm rounded-2xl">
+            <p className="font-bold body_text_akm">{contact.title}</p>
+            <img src={contact.image} alt="" className="p-4" />
+            <p className="font-bold body_text_akm">{contact.number}</p>
+          </div>
+        ))}
       </div>
     </>
   );

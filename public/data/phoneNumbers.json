@@ -1,0 +1,19 @@
+{
+  "phoneNumbers": [
+    {
+      "title": "Inqueries",
+      "image": "/images/chat.webp",
+      "number": "09613 334455"
+    },
+    {
+      "title": "Support",
+      "image": "/images/customer-service.webp",
+      "number": "09666 334455"
+    },
+    {
+      "title": "New Connection",
+      "image": "/images/lan.webp",
+      "number": "09613 334455"
+    }
+  ]
+}
