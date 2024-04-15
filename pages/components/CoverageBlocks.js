@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faChevronDown,
@@ -6,94 +6,32 @@ import {
   faSearch,
   faLocationDot,
 } from "@fortawesome/free-solid-svg-icons";
-import Link from "next/link";
-
-const initialData = [
-  {
-    region: "Dhaka",
-    area: "Dhanmondi",
-  },
-
-  {
-    region: "Dhaka",
-    area: "Uttara ",
-  },
-  {
-    region: "Dhaka",
-    area: "Banani ",
-  },
-  {
-    region: "Dhaka",
-    area: "Bashundhara",
-  },
-  {
-    region: "Dhaka",
-    area: "Sher-e-Bangla Nagor",
-  },
-  {
-    region: "Dhaka",
-    area: "Mohammadpur ",
-  },
-  {
-    region: "Dhaka",
-    area: "Kallyanpur",
-  },
-  {
-    region: "Dhaka",
-    area: "Kamrangirchor",
-  },
-  {
-    region: "Dhaka",
-    area: "Ati Bazar",
-  },
-  {
-    region: "Dhaka",
-    area: "Rayer Bazar",
-  },
-  {
-    region: "Dhaka",
-    area: "Khilkhet",
-  },
-  {
-    region: "Dhaka",
-    area: "Jigatola",
-  },
-  {
-    region: "Dhaka",
-    area: "Bosila",
-  },
-  {
-    region: "Dhaka",
-    area: "Green Road Area",
-  },
-  {
-    region: "Dhaka",
-    area: "North Balur-Chor",
-  },
-  {
-    region: "Dhaka",
-    area: "Kolatia",
-  },
-  {
-    region: "Dhaka",
-    area: "Chakbazar",
-  },
-  {
-    region: "Dhaka",
-    area: "Elephant Road",
-  },
-  {
-    region: "Tangail",
-    area: "Tangail Main City",
-  },
-];
+import coverageData from "../../public/data/coverageData.json";
 
 const CoverageBlocks = () => {
+  const [initialData, setInitialData] = useState([]);
+  const [regionData, setRegionData] = useState({});
   const [isOpen, setIsOpen] = useState(false);
   const [selectedOption, setSelectedOption] = useState("Select a region");
-  const [filteredData, setFilteredData] = useState(initialData);
+  const [filteredData, setFilteredData] = useState([]);
   const [loading, setLoading] = useState(false);
   const [searchValue, setSearchValue] = useState("");
+
+  useEffect(() => {
+    setInitialData(coverageData);
+  }, []);
+
+  useEffect(() => {
+    // Update regionData when initialData changes
+    const updatedRegionData = {};
+    initialData.forEach((item) => {
+      if (!updatedRegionData[item.region]) {
+        updatedRegionData[item.region] = [];
+      }
+      updatedRegionData[item.region].push(item);
+    });
+    setRegionData(updatedRegionData);
+  }, [initialData]);
 
   const toggleDropdown = () => {
     setIsOpen(!isOpen);
@@ -205,11 +143,11 @@ const CoverageBlocks = () => {
         </div>
       </div>
       <div className="grid grid-cols-1  gap-4">
-        {Object.keys(groupedData).map((region, regionIndex) => (
+        {Object.keys(regionData).map((region, regionIndex) => (
           <div key={regionIndex} className="">
             <h2 className="subheading_akm pad_akm">{region}</h2>
             <div className="grid grid-cols-1 md:grid-cols-4 xl:grid-cols-6 gap-4">
-              {groupedData[region].map((item, index) => (
+              {regionData[region].map((item, index) => (
                 <div
                   key={index}
                   className="box_round_shadow_small flex flex-col justify-center items-center"

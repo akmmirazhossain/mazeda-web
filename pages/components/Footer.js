@@ -5,7 +5,7 @@ const Footer = () => {
   return (
     <>
       <footer className="text-gray-600 body-font bg-slate-200 ">
-        {/* <div className="container px-5 py-6 mx-auto flex md:items-center max-w-7xl lg:items-start md:flex-row md:flex-nowrap flex-wrap flex-col">
+        <div className="container px-5 py-6 mx-auto flex md:items-center max-w-7xl lg:items-start md:flex-row md:flex-nowrap flex-wrap flex-col">
           <div className="w-64 flex-shrink-0 md:mx-0 mx-auto text-center md:text-left">
             <div className="flex title-font font-medium items-center md:justify-start justify-center text-gray-900">
               <span className="text-xl">Mazeda Networks</span>
@@ -119,7 +119,7 @@ const Footer = () => {
               </nav>
             </div>
           </div>
-        </div> */}
+        </div>
         <div className="bg-gray-100">
           <div className="container mx-auto max-w-7xl py-4 px-5 flex flex-wrap flex-col sm:flex-row">
             <p className="text-gray-500 text-sm text-center sm:text-left">
