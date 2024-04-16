@@ -35,7 +35,7 @@ const Support = () => {
               <div className="container mx-auto ">
                 <PhoneNumbers />
               </div>
-              <div className="mt-10 pt_akm border-t">
+              <div id="faqSection" className="mt-10 pt_akm border-t">
                 <div className="mb-2">
                   <p className="subheading_akm">Popular Inquiries</p>
                 </div>
