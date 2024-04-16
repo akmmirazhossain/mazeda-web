@@ -43,8 +43,15 @@ function Navbar() {
             <ul className="items-center hidden space-x-6 lg:flex text-base font-medium h-full">
               {items.map((item, index) => (
                 <Link href={item.href} key={index}>
-                  <li className={`p-2 lg:p-4 ${isActive(item.href)}`}>
+                  <li className={`p-2 lg:p-4 ${isActive(item.href)} relative`}>
                     {item.label}
+                    {item.label === "Offers" && (
+                      <div class="flex items-center justify-center h-full absolute -top-1.5 -right-1">
+                        <div class="bg-red-500 h-5 w-5 rounded-full flex items-center justify-center text-white text-xs">
+                          1
+                        </div>
+                      </div>
+                    )}
                   </li>
                 </Link>
               ))}

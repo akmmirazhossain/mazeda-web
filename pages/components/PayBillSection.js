@@ -145,7 +145,7 @@ const PayBillSection = () => {
                 {index + 1}
               </div>
               <div className="my-2 rounded-2xl border-2 overflow-hidden">
-                <img src={step.image} />
+                <img src={step.image} alt="" />
               </div>
               <div className="leading-relaxed">
                 {step.link ? (

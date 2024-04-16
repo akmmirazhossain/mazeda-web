@@ -1,14 +1,20 @@
 {
   "mixedData": [
-  {
-    "title": "Privacy Policy",
-    "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-    "url": "privacy-policy"
-  },
-  {
-    "title": "Terms & Conditions",
-    "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-    "url": "terms-conditions"
-  }
-]
+    {
+      "title": "Privacy Policy",
+      "content": "Your privacy is important to us. At Mazeda Networks, we are committed to protecting your personal information and ensuring its confidentiality. We collect and use your data only for the purpose of providing our services and improving your experience. We do not sell or share your information with third parties without your consent, except as required by law. We take reasonable security measures to safeguard your data from unauthorized access, disclosure, or alteration. By using our services, you consent to the terms of this Privacy Policy.",
+      "url": "privacy-policy"
+    },
+    {
+      "title": "Terms & Conditions",
+      "content": "By accessing and using the services provided by Mazeda networks, you agree to abide by the following terms and conditions. You must use our services in compliance with applicable laws and regulations. We reserve the right to suspend or terminate your account if you violate these terms or engage in illegal or harmful activities. Our services are provided without any warranties, express or implied, regarding their availability, reliability, or suitability for any purpose. We may modify or terminate our services at any time without prior notice. You are responsible for maintaining the confidentiality of your account credentials and for all activities that occur under your account. We are not liable for any damages arising from your use of our services. By using our services, you consent to our Privacy Policy and agree to receive communications from us electronically. These terms constitute the entire agreement between you and Mazeda Networks regarding the use of our services.",
+      "url": "terms-conditions"
+    }
+    ,
+    {
+      "title": "About Refund",
+      "content": "<p class=' bullet_akm mb-3'>Refund Policy</p><p class='mb_akm '>At Mazeda Networks, we are committed to providing high-quality services and support to our valued customers. Please note that <span class='font-semibold'>we do not offer refunds</span> for any of our services.</p><p class=' bullet_akm mb-3'>No Refunds</p><p class='mb_akm '>Once you have purchased a subscription or service from Mazeda Networks, it is non-refundable. We encourage you to carefully review your selection before making a purchase.</p><p class=' bullet_akm mb-3'>Contact Us</p><p class='mb_akm '>If you have any questions or concerns regarding our refund policy, please feel free to contact our customer support team <span class='font-semibold'>(09613 334455)</span>. We are here to assist you and ensure that you have a positive experience with our services.</p>",
+      "url": "about-refund"
+    }
+  ]
 }

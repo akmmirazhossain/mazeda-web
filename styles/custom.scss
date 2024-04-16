@@ -46,6 +46,26 @@
     }
 }
 
+.bullet_akm {
+    @apply text-lg  font-semibold tracking-tight;
+
+    @screen sm {
+        // @apply text-2xl;
+    }
+
+    @screen md {
+        // @apply text-2xl ;
+    }
+
+    @screen lg {
+        @apply text-lg;
+    }
+
+    @screen xl {
+        @apply text-lg;
+    }
+}
+
 .body_text_akm {
     @apply text-base ;
 

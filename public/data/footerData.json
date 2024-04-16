@@ -68,15 +68,15 @@
         },
         {
           "text": "Privacy Policy",
-          "url": "info/privacy-policy"
+          "url": "privacy-policy"
         },
         {
           "text": "Terms & Conditions",
-          "url": "#"
+          "url": "terms-conditions"
         },
         {
           "text": "About Refund",
-          "url": "#"
+          "url": "about-refund"
         }
       ]
     }

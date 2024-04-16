@@ -15,7 +15,7 @@ const Footer = () => {
               </Link>
             </div>
 
-            <p className="mt-2  ">
+            <p className="mt-2  text-sm">
               We&apos;re more than an ISP, your digital ally for robust,
               high-speed internet and exceptional customer care.
             </p>
