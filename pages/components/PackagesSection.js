@@ -215,14 +215,16 @@ const PackagesSection = () => {
   return (
     <section className="section_akm">
       {isMyPage ? (
-        <div className="text-center mb_akm bg-[url('/images/packages-banner.jpg')] bg-cover bg-center h-36 sm:h-52 md:h-64 lg:h-96 flex items-center justify-center flex-col text-white ">
+        <div className="relative text-center mb_akm bg-[url('/images/packages-banner.jpg')] bg-cover bg-center h-36 sm:h-52 md:h-64 lg:h-96 flex items-center justify-center flex-col text-white ">
           <h1 className="heading_akm -mb-8 ">Monthly Pricing</h1>
-          {/* <div className="flex flex-col">
-            <p className="text-lg inline-block rounded-full bg-opacity-80 text-white py-1 px-6 transform   tracking-wide  border bg-gradient-to-b from-[#03738c] via-[#015a6e] to-[#03738c]">
-              <FontAwesomeIcon icon={faBullhorn} /> {""}
-              Get connection within 1 hour!
-            </p>
-          </div> */}
+          <div className="absolute bottom-0 right-0 lg:mr-3 xl:mr-16 mb-6 hidden lg:block">
+            <div className="flex flex-col font-medium border text-white">
+              <p className="text-lg inline-block  bg-opacity-80  py-1 px-6 transform tracking-wide  bg-gradient-to-b from-[#03738c] via-[#015a6e] to-[#03738c]">
+                <FontAwesomeIcon icon={faBullhorn} /> Get connection within 1
+                hour!
+              </p>
+            </div>
+          </div>
         </div>
       ) : (
         <div className="heading_akm">Monthly Pricing</div>
@@ -244,13 +246,19 @@ const PackagesSection = () => {
               <div>{feature}</div>
             </div>
           ))}
-
-          <button className=" items-center mt-2 text-center text-white bg-[#03738C] border-0 py-2 px-4 w-full focus:outline-none hover:bg-red-700 rounded-full">
-            <Link href="../files/Mazeda_tariff_permission_of_BTRC.pdf">
+          <Link href="../files/Mazeda_tariff_permission_of_BTRC.pdf">
+            <button className=" items-center mt-2 text-center text-white green_gradient border-0 py-2 px-4 w-full focus:outline-none hover:red_gradient rounded-full">
               {" "}
               BTRC Approved Tariff <FontAwesomeIcon icon={faInfoCircle} />
-            </Link>
-          </button>
+            </button>
+          </Link>
+          <div className="p-14 bounce">
+            <img
+              src="/images/connect-in-1-hour.png" // Replace with the path to your image
+              alt="Your Image"
+              className="w-full"
+            />
+          </div>
         </div>
         <div className="w-full lg:col-span-4">
           <div className="grid grid-cols-4  items-center rounded-2xl shadow-xl overflow-hidden  bg-white">
@@ -305,7 +313,7 @@ const PackagesSection = () => {
                       )}
 
                       <div className="grid grid-col-1 md:grid-col-9 grid-flow-row md:grid-flow-col  ">
-                        <div className="flex flex-row md:col-span-3 justify-center items-center  pl-6 bg_green md:-skew-x-12 -ml-6 text-white bg-gradient-to-b from-[#0296b8] via-[#03738c] to-[#0296b8]">
+                        <div className="flex flex-row md:col-span-3 justify-center items-center  pl-6 bg_green md:-skew-x-12 -ml-6 text-white green_gradient">
                           <div className=" lg:-mt-1 lg:pl-3 md:skew-x-12 py-3">
                             <h2 className="text-2xl tracking-widest title-font  pl-1 text_red font-extrabold">
                               {pricing.type}
@@ -345,13 +353,14 @@ const PackagesSection = () => {
                           >
                             {pricing.price}
                           </p>
-                          <button className=" items-center text-center md:skew-x-12 text-white bg_red border-0 py-2 px-4 mt-2 focus:outline-none hover:bg-red-700 rounded-full">
-                            <Link href="/contact">
-                              {" "}
-                              Purchase{" "}
-                              <FontAwesomeIcon icon={faArrowRightLong} />
-                            </Link>
-                          </button>
+
+                          <Link
+                            href="/contact"
+                            className="items-center rounded-full text-center md:skew-x-12 text-white red_gradient hover:deep_red_gradient  py-2 px-4 mt-2 font-semibold"
+                          >
+                            <button className="mr-1 ">Purchase </button>
+                            <FontAwesomeIcon icon={faArrowRightLong} />
+                          </Link>
                         </div>
                       </div>
 
@@ -379,12 +388,10 @@ const TabButton = ({ title, onClick, isActive }) => {
     <button
       onClick={onClick}
       className={`flex-grow py-2 px-4 font-semibold focus:outline-none ${
-        isActive ? "text-white" : ""
+        isActive ? "text-white green_gradient" : ""
       }`}
       style={{
-        backgroundColor: isActive
-          ? theme.colorPalette.primaryGreen
-          : "transparent",
+        backgroundColor: isActive ? "" : "transparent",
       }}
     >
       {title}

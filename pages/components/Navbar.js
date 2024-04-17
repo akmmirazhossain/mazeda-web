@@ -47,8 +47,9 @@ function Navbar() {
                     {item.label}
                     {item.label === "Offers" && (
                       <div class="flex items-center justify-center h-full absolute -top-1.5 -right-1">
-                        <div class="bg-red-500 h-5 w-5 rounded-full flex items-center justify-center text-white text-xs">
+                        <div class="relative bg-red-500 h-5 w-5 rounded-full flex items-center justify-center  text-white text-xs">
                           1
+                          {/* <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-500 opacity-50"></span> */}
                         </div>
                       </div>
                     )}
@@ -64,7 +65,7 @@ function Navbar() {
                 <Link
                   href="https://isperp.mazedanetworks.net/ispcare"
                   target="_blank"
-                  className="justify-center px-4 py-2 font-sm bg-[#03738C] hover:bg-red-700 text-[#FFF]  rounded-full shadow-md"
+                  className="justify-center px-4 py-2 font-sm green_gradient hover:red_gradient text-[#FFF]  rounded-full shadow-md"
                 >
                   <FontAwesomeIcon
                     size="xs"
@@ -77,7 +78,7 @@ function Navbar() {
               <li>
                 <Link
                   href="/support"
-                  className="justify-center px-4 py-2 font-sm bg-[#03738C] hover:bg-red-700 text-[#FFF]  rounded-full shadow-md"
+                  className="justify-center px-4 py-2 font-sm green_gradient hover:red_gradient text-[#FFF]  rounded-full shadow-md"
                 >
                   <FontAwesomeIcon
                     size="xs"
@@ -118,7 +119,7 @@ function Navbar() {
           <ul className="flex sm:hidden justify-center my-4 space-x-2">
             <li>
               <Link
-                className="justify-center px-4 py-2 font-sm bg-[#03738C] hover:bg-red-700 text-[#FFF]  rounded-full shadow-md "
+                className="justify-center px-4 py-2 font-sm green_gradient hover:red_gradient text-[#FFF]  rounded-full shadow-md "
                 href="https://isperp.mazedanetworks.net/ispcare"
                 target="_blank"
               >
@@ -128,7 +129,7 @@ function Navbar() {
             </li>
             <li>
               <Link
-                className="justify-center px-4 py-2 font-sm bg-[#03738C] hover:bg-red-700 text-[#FFF]  rounded-full shadow-md "
+                className="justify-center px-4 py-2 font-sm green_gradient hover:red_gradient text-[#FFF]  rounded-full shadow-md "
                 href="/support"
               >
                 <FontAwesomeIcon

@@ -23,16 +23,13 @@ const Footer = () => {
           <div className="flex-grow flex flex-wrap md:pl-20 -mb-10 md:mt-0 mt-10 md:text-left text-center">
             {footerData.footerData.map((section, index) => (
               <div key={index} className="lg:w-1/4 md:w-1/2 w-full px-4">
-                <h2 className="title-font font-medium text-gray-900 tracking-widest text-sm mb-3">
+                <h2 className="title-font font-bold text_green tracking-widest text-sm mb-3">
                   {section.title}
                 </h2>
                 <nav className="list-none mb-10">
                   {section.links.map((link, linkIndex) => (
                     <li key={linkIndex} className="py-0.5">
-                      <Link
-                        href={link.url}
-                        className="text-gray-600 hover:text-gray-800 "
-                      >
+                      <Link href={link.url} className=" hover:text_red ">
                         {link.text}
                       </Link>
                     </li>

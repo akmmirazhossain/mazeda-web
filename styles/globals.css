@@ -30,12 +30,55 @@
   .text-balance {
     text-wrap: balance;
   }
+
+  /*FONT COLORS*/
+  .text_red {
+    color: #e6242d;
+  }
+  .bg_red {
+    background-color: #e6242d;
+  }
+
+  .text_green {
+    color: #03738c;
+  }
+
+  .bg_green {
+    background-color: #03738c;
+  }
+
+  .text_gray {
+    color: #64748b;
+  }
+
+  .bg_orange {
+    background-color: #ffa34d;
+  }
+
+  .bg_mint {
+    background-color: #d4f8e8;
+  }
+
+  .green_gradient {
+    background: linear-gradient(to bottom, #0296b8, #03738c, #0296b8);
+  }
+
+  .red_gradient {
+    background: linear-gradient(to bottom, #fc323c, #e6242d, #fc323c);
+  }
+
+  .deep_red_gradient {
+    background: linear-gradient(to bottom, #c71e26, #b41b23, #c71e26);
+  }
+
+  .deep_red_radial_gradient {
+    background: radial-gradient(circle, #b41b23, #e6242d, #fc323c);
+  }
 }
 
 /******* CUSTOM COLORS *********/
 
-/*FONT COLORS*/
-
+/* 
 .text_red {
   color: #e6242d;
 }
@@ -61,7 +104,7 @@
 
 .bg_mint {
   background-color: #d4f8e8;
-}
+} */
 
 body {
   background: #f4f4f4;
@@ -142,5 +185,50 @@ body {
   .slide {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+.bounce {
+  /* -moz-animation: bounce 6s infinite;
+  -webkit-animation: bounce 6s infinite; */
+  animation: bounce 10s infinite;
+}
+
+@keyframes bounce {
+  0%,
+  2%,
+  4%,
+  6%,
+  8%,
+  10%,
+  12%,
+  14% {
+    transform: translateY(0);
+  }
+
+  1% {
+    transform: translateY(-25px);
+  }
+
+  3% {
+    transform: translateY(-20px);
+  }
+
+  5% {
+    transform: translateY(-15px);
+  }
+
+  7% {
+    transform: translateY(-10px);
+  }
+
+  9% {
+    transform: translateY(-5px);
+  }
+  11% {
+    transform: translateY(-3px);
+  }
+  13% {
+    transform: translateY(-1px);
   }
 }
