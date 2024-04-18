@@ -1,6 +1,7 @@
-Live Demo: https://mazeda-web.netlify.app/
+## Live Demo
+https://www.mazedanetworks.net/
 
-## Technologies Used
+## Technologies
 
 - Next.js
 - Tailwind CSS
@@ -8,7 +9,14 @@ Live Demo: https://mazeda-web.netlify.app/
 - SwiperJS (Hero Section)
 - Designed by me on Figma
 
-Home
+## Pages
+[**Home**](https://www.mazedanetworks.net/) | 
+[**About**](https://www.mazedanetworks.net/about) | [**Packages**](https://www.mazedanetworks.net/packages) | [**Coverage**](https://www.mazedanetworks.net/coverage) | [**Offers**](https://www.mazedanetworks.net/offers) | 
+[**Pay Bill**](https://www.mazedanetworks.net/pay-bill) | [**Contact**](https://www.mazedanetworks.net/contact) | [**Support**](https://www.mazedanetworks.net/contact)
+
+
+## Screenshots
+_Home_
 ![Website Screenshot](public/images/home-screenshot.webp)
 
 ![Website Screenshot](public/images/home-screenshot-responsive.webp)
