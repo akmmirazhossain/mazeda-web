@@ -10,9 +10,14 @@ https://www.mazedanetworks.net/
 - Designed by me on Figma
 
 ## Pages
-[**Home**](https://www.mazedanetworks.net/) | 
-[**About**](https://www.mazedanetworks.net/about) | [**Packages**](https://www.mazedanetworks.net/packages) | [**Coverage**](https://www.mazedanetworks.net/coverage) | [**Offers**](https://www.mazedanetworks.net/offers) | 
-[**Pay Bill**](https://www.mazedanetworks.net/pay-bill) | [**Contact**](https://www.mazedanetworks.net/contact) | [**Support**](https://www.mazedanetworks.net/contact)
+<a href="https://www.mazedanetworks.net/" target="_blank" >**Home**</a> |
+<a href="https://www.mazedanetworks.net/about" target="_blank" >**About**</a> |
+<a href="https://www.mazedanetworks.net/packages" target="_blank" >**Packages**</a> |
+<a href="https://www.mazedanetworks.net/coverage" target="_blank" >**Coverage**</a> |
+<a href="https://www.mazedanetworks.net/offers" target="_blank" >**Offers**</a> |
+<a href="https://www.mazedanetworks.net/pay-bill" target="_blank" >**Pay Bill**</a> |
+<a href="https://www.mazedanetworks.net/contact" target="_blank" >**Contact**</a> |
+<a href="https://www.mazedanetworks.net/support" target="_blank" >**Support**</a> 
 
 
 ## Screenshots
