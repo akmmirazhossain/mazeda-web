@@ -103,14 +103,22 @@ function Navbar() {
       </div>
       {menuOpen && (
         <div
-          className="overflow-auto w-full bg-[#FFFFFF] bg-opacity-90"
+          className="overflow-auto w-full bg-[#FFFFFF] bg-opacity-90 border-t"
           style={{ transform: "translate3d(0, 0, 0)" }}
         >
           <ul className="flex flex-col items-center mt-4 space-y-4">
             {items.map((item, index) => (
               <Link href={item.href} key={index}>
-                <li className={`p-2 lg:p-4 ${isActive(item.href)}`}>
+                <li className={`p-2 lg:p-4 ${isActive(item.href)} relative`}>
                   {item.label}
+                  {item.label === "Offers" && (
+                    <div class="flex items-center justify-center h-full absolute -top-2 -right-3">
+                      <div class="relative bg-red-500 h-5 w-5 rounded-full flex items-center justify-center  text-white text-xs">
+                        1
+                        {/* <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-500 opacity-50"></span> */}
+                      </div>
+                    </div>
+                  )}
                 </li>
               </Link>
             ))}

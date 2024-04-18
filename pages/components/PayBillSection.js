@@ -11,7 +11,7 @@ const PayBillSection = () => {
 
   return (
     <section className="section_akm">
-      <div className="text-center pb-4 bg-[url('/images/pay-bill-cover.png')] bg-cover bg-center h-36 sm:h-52 md:h-64 lg:h-96 flex items-center justify-center text-white ">
+      <div className="text-center pb-4 bg-[url('/images/pay-bill-cover.webp')] bg-cover bg-center h-36 sm:h-52 md:h-64 lg:h-96 flex items-center justify-center text-white ">
         <h1 className="heading_akm ">Seeking payment options?</h1>
       </div>
 
