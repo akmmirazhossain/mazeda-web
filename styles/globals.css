@@ -191,7 +191,7 @@ body {
 .bounce {
   /* -moz-animation: bounce 6s infinite;
   -webkit-animation: bounce 6s infinite; */
-  animation: bounce 10s infinite;
+  animation: bounce 20s infinite;
 }
 
 @keyframes bounce {

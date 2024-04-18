@@ -253,11 +253,13 @@ const PackagesSection = () => {
             </button>
           </Link>
           <div className="p-14 bounce">
-            <img
-              src="/images/connect-in-1-hour.png" // Replace with the path to your image
-              alt="Your Image"
-              className="w-full"
-            />
+            <Link href="contact">
+              <img
+                src="/images/connect-in-1-hour.png" // Replace with the path to your image
+                alt="Your Image"
+                className="w-full"
+              />
+            </Link>
           </div>
         </div>
         <div className="w-full lg:col-span-4">
