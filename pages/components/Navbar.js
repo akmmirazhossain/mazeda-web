@@ -46,8 +46,8 @@ function Navbar() {
                   <li className={`p-2 lg:p-4 ${isActive(item.href)} relative`}>
                     {item.label}
                     {item.label === "Offers" && (
-                      <div class="flex items-center justify-center h-full absolute -top-1.5 -right-1">
-                        <div class="relative bg-red-500 h-5 w-5 rounded-full flex items-center justify-center  text-white text-xs">
+                      <div className="flex items-center justify-center h-full absolute -top-1.5 -right-1">
+                        <div className="relative bg-red-500 h-5 w-5 rounded-full flex items-center justify-center  text-white text-xs">
                           1
                           {/* <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-500 opacity-50"></span> */}
                         </div>
@@ -112,8 +112,8 @@ function Navbar() {
                 <li className={`p-2 lg:p-4 ${isActive(item.href)} relative`}>
                   {item.label}
                   {item.label === "Offers" && (
-                    <div class="flex items-center justify-center h-full absolute -top-2 -right-3">
-                      <div class="relative bg-red-500 h-5 w-5 rounded-full flex items-center justify-center  text-white text-xs">
+                    <div className="flex items-center justify-center h-full absolute -top-2 -right-3">
+                      <div className="relative bg-red-500 h-5 w-5 rounded-full flex items-center justify-center  text-white text-xs">
                         1
                         {/* <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-500 opacity-50"></span> */}
                       </div>
