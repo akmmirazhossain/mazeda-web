@@ -12,7 +12,7 @@ const LinkSection = () => {
       <div className="grid sm:grid-cols-2  md:grid-cols-3 lg:grid-cols-4 text-center gap_akm">
         {linkData.map((item, index) => (
           <Link key={index} href={item.link}>
-            <div className="box_round_shadow">
+            <div className="box_round_shadow hover:shadow-2xl bg-white relative transition duration-300 ease-in-out transform hover:-translate-y-1">
               <img
                 alt=""
                 src={`/images/${item.image}`}

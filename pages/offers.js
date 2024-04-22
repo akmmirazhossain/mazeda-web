@@ -13,9 +13,11 @@ const OffersPage = () => {
 
         <div className="container_akm nav_space_akm">
           <section className="section_akm">
-            <div className="text-center pb_akm">
-              <h1 className="heading_akm">Exclusive Offers</h1>
-              <p className="subheading_akm ">
+            <div className="flex items-center justify-center flex-col text-center pb-4 bg-[url('/images/offers.png')] bg-cover bg-center h-36 sm:h-52 md:h-64 lg:h-96  text-white ">
+              <h1 className="heading_akm text_shadow_black">
+                Exclusive Offers
+              </h1>
+              <p className="subheading_akm text_shadow_black">
                 Unlock exclusive deals and incentives as you get our internet
                 connection.
               </p>

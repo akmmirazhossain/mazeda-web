@@ -215,8 +215,10 @@ const PackagesSection = () => {
   return (
     <section className="section_akm">
       {isMyPage ? (
-        <div className="relative text-center mb_akm bg-[url('/images/packages-banner.jpg')] bg-cover bg-center h-36 sm:h-52 md:h-64 lg:h-96 flex items-center justify-center flex-col text-white ">
-          <h1 className="heading_akm -mb-8 ">Monthly Pricing</h1>
+        <div className="relative text-center mb_akm bg-[url('/images/packages-banner.jpg')] bg-cover bg-center h-36 sm:h-52 md:h-64 lg:h-96 flex items-center justify-center text-white ">
+          <h1 className="heading_akm -mb-8 text_shadow_black">
+            Monthly Pricing
+          </h1>
           <div className="absolute bottom-0 right-0 lg:mr-3 xl:mr-16 mb-6 hidden lg:block">
             <div className="flex flex-col font-medium border text-white">
               <p className="text-lg inline-block  bg-opacity-80  py-1 px-6 transform tracking-wide  bg-gradient-to-b from-[#03738c] via-[#015a6e] to-[#03738c]">

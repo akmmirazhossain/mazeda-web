@@ -13,7 +13,7 @@ function AboutSection() {
     <section className="section_akm">
       {/* Render title and background image */}
       <div className="text-center pb-4 bg-[url('/images/servers.jpg')] bg-cover bg-center h-36 sm:h-52 md:h-64 lg:h-96 flex items-center justify-center text-white ">
-        <h1 className="heading_akm ">About Us</h1>
+        <h1 className="heading_akm text_shadow_black">About Us</h1>
       </div>
 
       {/* Render description */}

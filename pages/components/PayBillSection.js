@@ -12,7 +12,9 @@ const PayBillSection = () => {
   return (
     <section className="section_akm">
       <div className="text-center pb-4 bg-[url('/images/pay-bill-cover.webp')] bg-cover bg-center h-36 sm:h-52 md:h-64 lg:h-96 flex items-center justify-center text-white ">
-        <h1 className="heading_akm ">Seeking payment options?</h1>
+        <h1 className="heading_akm text_shadow_black">
+          Seeking payment options?
+        </h1>
       </div>
 
       <div className="box_round_shadow mb_akm grid grid-cols-1 md:grid-cols-3">
@@ -21,7 +23,7 @@ const PayBillSection = () => {
           best suited option to make a safe online transection.
         </div>
         <div className="flex items-center justify-center flex-col text-center lg:text-right">
-          <button className=" items-center mt-auto text-center text-white bg-[#03738C] border-0 py-2 px-4 focus:outline-none hover:bg-red-700 rounded-full">
+          <button className=" items-center mt-auto text-center rounded-full text-white green_gradient hover:red_gradient  border-0 py-2 px-4 focus:outline-nonerounded-full">
             <Link
               href="https://isperp.mazedanetworks.net/ispcare"
               target="_blank"

@@ -74,6 +74,10 @@
   .deep_red_radial_gradient {
     background: radial-gradient(circle, #b41b23, #e6242d, #fc323c);
   }
+
+  .text_shadow_black {
+    text-shadow: 2px 4px 2px rgba(0, 0, 0, 0.5), 1px 2px 1px rgba(0, 0, 0, 0.1);
+  }
 }
 
 /******* CUSTOM COLORS *********/
