@@ -1,75 +1,11 @@
 [
   {
     "region": "Dhaka",
-    "area": "Dhanmondi"
+    "areas": "Dhanmondi, Uttara, Banani, Bashundhara, Sher-e-Bangla Nagor, Mohammadpur, Nobodoy Housing Society, Salimullah Road, Azimpur, Chawk Bazar, Panthapath, Malibagh, Mirpur, Matikata, Banasree, Rupnagar, Hazaribag, Khilgaon, Kallyanpur, Kamrangirchor, Ati Bazar, Rayer Bazar, Khilkhet, Jigatola, Bosila, Green Road Area, North Balur-Chor, Kolatia, Elephant Road"
   },
   {
-    "region": "Dhaka",
-    "area": "Uttara"
-  },
-  {
-    "region": "Dhaka",
-    "area": "Banani"
-  },
-  {
-    "region": "Dhaka",
-    "area": "Bashundhara"
-  },
-  {
-    "region": "Dhaka",
-    "area": "Sher-e-Bangla Nagor"
-  },
-  {
-    "region": "Dhaka",
-    "area": "Mohammadpur"
-  },
-  {
-    "region": "Dhaka",
-    "area": "Kallyanpur"
-  },
-  {
-    "region": "Dhaka",
-    "area": "Kamrangirchor"
-  },
-  {
-    "region": "Dhaka",
-    "area": "Ati Bazar"
-  },
-  {
-    "region": "Dhaka",
-    "area": "Rayer Bazar"
-  },
-  {
-    "region": "Dhaka",
-    "area": "Khilkhet"
-  },
-  {
-    "region": "Dhaka",
-    "area": "Jigatola"
-  },
-  {
-    "region": "Dhaka",
-    "area": "Bosila"
-  },
-  {
-    "region": "Dhaka",
-    "area": "Green Road Area"
-  },
-  {
-    "region": "Dhaka",
-    "area": "North Balur-Chor"
-  },
-  {
-    "region": "Dhaka",
-    "area": "Kolatia"
-  },
-  {
-    "region": "Dhaka",
-    "area": "Chakbazar"
-  },
-  {
-    "region": "Dhaka",
-    "area": "Elephant Road"
+    "region": "Gazipur",
+    "area": "Gazipur City"
   },
   {
     "region": "Tangail",

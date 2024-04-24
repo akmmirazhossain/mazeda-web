@@ -11,69 +11,81 @@ import coverageData from "../../public/data/coverageData.json";
 const CoverageBlocks = () => {
   const [initialData, setInitialData] = useState([]);
   const [regionData, setRegionData] = useState({});
-  const [isOpen, setIsOpen] = useState(false);
-  const [selectedOption, setSelectedOption] = useState("Select a region");
-  const [filteredData, setFilteredData] = useState([]);
-  const [loading, setLoading] = useState(false);
   const [searchValue, setSearchValue] = useState("");
+  const [filteredData, setFilteredData] = useState({ regions: [], areas: {} });
+  const [selectedRegion, setSelectedRegion] = useState("All regions");
+  const [isOpen, setIsOpen] = useState(false);
 
   useEffect(() => {
     setInitialData(coverageData);
   }, []);
 
   useEffect(() => {
-    // Update regionData when initialData changes
     const updatedRegionData = {};
     initialData.forEach((item) => {
       if (!updatedRegionData[item.region]) {
         updatedRegionData[item.region] = [];
       }
-      updatedRegionData[item.region].push(item);
+      if (item.areas) {
+        const areas = item.areas.split(",");
+        updatedRegionData[item.region].push(...areas);
+      } else {
+        updatedRegionData[item.region].push(item.area);
+      }
     });
     setRegionData(updatedRegionData);
-  }, [initialData]);
 
-  const toggleDropdown = () => {
-    setIsOpen(!isOpen);
-  };
-
-  const handleOptionSelect = (option) => {
-    setSelectedOption(option);
-    setIsOpen(false);
-    setLoading(true); // Show loading spinner
-
-    setTimeout(() => {
-      let filtered;
-      if (option === "All over Bangladesh") {
-        // Show all data if "All over Bangladesh" is selected
-        filtered = initialData;
-      } else {
-        // Filter data based on the selected region
-        filtered = initialData.filter((item) => item.region === option);
-      }
-      setFilteredData(filtered);
-      setLoading(false); // Hide loading spinner
-    }, 500); // Wait for 0.5 seconds before updating data
-  };
+    if (searchValue === "") {
+      setFilteredData({
+        regions: Object.keys(updatedRegionData),
+        areas: updatedRegionData,
+      });
+    }
+  }, [initialData, searchValue]);
 
   const handleSearchChange = (e) => {
     const updatedSearchValue = e.target.value.toLowerCase();
     setSearchValue(updatedSearchValue);
 
-    // Filter data based on updated search value
-    const filtered = initialData.filter((item) =>
-      item.area.toLowerCase().includes(updatedSearchValue)
+    const filteredRegions = Object.keys(regionData).filter((region) =>
+      region.toLowerCase().includes(updatedSearchValue)
     );
-    setFilteredData(filtered);
+
+    const filteredAreas = {};
+    Object.keys(regionData).forEach((region) => {
+      const filteredAreasInRegion = regionData[region].filter((area) =>
+        area.toLowerCase().includes(updatedSearchValue)
+      );
+      if (filteredAreasInRegion.length > 0) {
+        filteredAreas[region] = filteredAreasInRegion;
+      }
+    });
+
+    setFilteredData({ regions: filteredRegions, areas: filteredAreas });
   };
 
-  const groupedData = {};
-  filteredData.forEach((item) => {
-    if (!groupedData[item.region]) {
-      groupedData[item.region] = [];
+  const handleRegionSelect = (region, event) => {
+    setSelectedRegion(region);
+    setSearchValue("");
+
+    if (region === "All regions") {
+      setFilteredData({ regions: Object.keys(regionData), areas: regionData });
+    } else {
+      setFilteredData({
+        regions: [region],
+        areas: { [region]: regionData[region] },
+      });
     }
-    groupedData[item.region].push(item);
-  });
+
+    setIsOpen(false); // Close dropdown after selecting a region
+
+    // Prevent default behavior (page scrolling to top) when clicking on dropdown item
+    event.preventDefault();
+  };
+
+  const toggleDropdown = () => {
+    setIsOpen(!isOpen);
+  };
 
   return (
     <section className="section_akm">
@@ -83,29 +95,28 @@ const CoverageBlocks = () => {
           Our network grows daily, so stay tuned for updates here.
         </p>
       </div>
-
-      <div className="grid grid-cols-1 md:grid-cols-3  box_round_shadow mb_akm gap_akm sticky ">
-        <div className="w-full flex items-center pr-3 cursor-pointer border rounded-2xl">
+      <div className="grid grid-cols-1 md:grid-cols-3  box_round_shadow mb_akm gap_akm  ">
+        <div className="flex items-center pr-3 cursor-pointer border rounded-2xl">
           <input
             type="text"
             placeholder="Search a location"
             value={searchValue}
             onChange={handleSearchChange}
             className="block px-4 py-2 w-full rounded-2xl cursor-pointer focus:outline-none"
-            onClick={() => setSearchValue("")} // Clear placeholder text on click
+            onClick={() => setSearchValue("")}
           />
           <FontAwesomeIcon icon={faSearch} className="text-gray-400 ml-2" />
         </div>
-        <div className="relative w-full">
+        <div className="relative w-full ">
           <div
-            className="flex items-center  pr-3 cursor-pointer border rounded-2xl"
+            className="flex items-center pr-3 cursor-pointer border rounded-2xl"
             onClick={toggleDropdown}
           >
             <input
               id="region"
               type="text"
               readOnly
-              value={selectedOption}
+              value={selectedRegion}
               className="block px-4 py-2 w-full rounded-2xl cursor-pointer focus:outline-none "
             />
             <FontAwesomeIcon
@@ -120,34 +131,30 @@ const CoverageBlocks = () => {
               <a
                 href="#"
                 className="block px-4 py-2 text-gray-800 hover:bg-gray-200"
-                onClick={() => handleOptionSelect("All over Bangladesh")}
+                onClick={(e) => handleRegionSelect("All regions", e)}
               >
-                All over Bangladesh
+                All regions
               </a>
-              <a
-                href="#"
-                className="block px-4 py-2 text-gray-800 hover:bg-gray-200"
-                onClick={() => handleOptionSelect("Dhaka")}
-              >
-                Dhaka
-              </a>
-              <a
-                href="#"
-                className="block px-4 py-2 text-gray-800 hover:bg-gray-200"
-                onClick={() => handleOptionSelect("Tangail")}
-              >
-                Tangail
-              </a>
+              {Object.keys(regionData).map((region) => (
+                <a
+                  key={region}
+                  href="#"
+                  className="block px-4 py-2 text-gray-800 hover:bg-gray-200"
+                  onClick={(e) => handleRegionSelect(region, e)}
+                >
+                  {region}
+                </a>
+              ))}
             </div>
           )}
         </div>
       </div>
       <div className="grid grid-cols-1  gap-4">
-        {Object.keys(regionData).map((region, regionIndex) => (
+        {Object.keys(filteredData.areas).map((region, regionIndex) => (
           <div key={regionIndex} className="">
             <h2 className="subheading_akm pad_akm">{region}</h2>
             <div className="grid grid-cols-1 md:grid-cols-4 xl:grid-cols-6 gap-4">
-              {regionData[region].map((item, index) => (
+              {filteredData.areas[region].map((area, index) => (
                 <div
                   key={index}
                   className="box_round_shadow_small flex flex-col justify-center items-center"
@@ -157,7 +164,7 @@ const CoverageBlocks = () => {
                       icon={faLocationDot}
                       className="pr-2 text-lg text-red-500"
                     />
-                    <p className="text-md">{item.area}</p>
+                    <p className="text-md">{area}</p>
                   </div>
                 </div>
               ))}
