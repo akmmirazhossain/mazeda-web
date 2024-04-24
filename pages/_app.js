@@ -25,10 +25,6 @@ import { config } from "@fortawesome/fontawesome-svg-core";
 export default function App({ Component, pageProps }) {
   return (
     <>
-      <Head>
-        <title>Mazeda Networks</title>
-        {/* Other meta tags, stylesheets, etc. can also be added here */}
-      </Head>
       <Component {...pageProps} />
     </>
   );

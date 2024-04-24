@@ -2,10 +2,14 @@ import React from "react";
 import PackagesSection from "./components/PackagesSection";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
+import Head from "next/head";
 
 const PackagesPage = () => {
   return (
     <>
+      <Head>
+        <title>Packages</title>
+      </Head>
       <main>
         <Navbar />
 

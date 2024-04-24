@@ -1,13 +1,14 @@
 import React from "react";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
-import PhoneNumbers from "./components/common/phone-numbers";
-import Image from "next/image";
-import Link from "next/link";
+import Head from "next/head";
 
 const OffersPage = () => {
   return (
     <>
+      <Head>
+        <title>Offers</title>
+      </Head>
       <main>
         <Navbar />
 
@@ -24,7 +25,7 @@ const OffersPage = () => {
             </div>
 
             <div className="flex flex-col sm:flex-row gap_akm">
-              <div className="sm:w-1/3 text-center sm:pr-8 sm:py-8 box_round_shadow">
+              <div className="sm:w-1/3 text-center sm:pr-8 sm:py-8 box_round_shadow hidden sm:block">
                 <img
                   src="/images/laptop-girl.jpg"
                   alt=""

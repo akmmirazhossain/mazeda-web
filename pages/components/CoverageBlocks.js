@@ -149,7 +149,7 @@ const CoverageBlocks = () => {
           )}
         </div>
       </div>
-      <div className="grid grid-cols-1  gap-4">
+      <div className="grid grid-cols-1 box_round_shadow gap_akm">
         {Object.keys(filteredData.areas).map((region, regionIndex) => (
           <div key={regionIndex} className="">
             <h2 className="subheading_akm pad_akm">{region}</h2>
@@ -157,14 +157,14 @@ const CoverageBlocks = () => {
               {filteredData.areas[region].map((area, index) => (
                 <div
                   key={index}
-                  className="box_round_shadow_small flex flex-col justify-center items-center"
+                  className="green_gradient pad_akm rounded-2xl text-white  flex flex-col justify-center items-center"
                 >
                   <div className="flex justify-center items-center">
                     <FontAwesomeIcon
                       icon={faLocationDot}
-                      className="pr-2 text-lg text-red-500"
+                      className="pr-2 text-lg text_red"
                     />
-                    <p className="text-md">{area}</p>
+                    <p className="text-lg ">{area}</p>
                   </div>
                 </div>
               ))}

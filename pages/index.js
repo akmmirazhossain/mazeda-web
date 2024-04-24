@@ -1,21 +1,23 @@
 // pages/index.js
-
 import Navbar from "./components/Navbar";
 import HeroSection from "./components/HeroSection";
 import ServicesSection from "./components/ServicesSection";
 import LinksSection from "./components/LinksSection";
 import PackagesSection from "./components/PackagesSection";
-import PayBillSection from "./components/PayBillSection";
-import PromotionsSection from "./components/PromotionsSection";
-import StrengthSection from "./components/StrengthSection";
 import ClientsSection from "./components/ClientsSection";
-import ContactForm from "./components/ContactForm";
 import Footer from "./components/Footer";
-import theme from "../config/theme";
+import Head from "next/head";
 
 function Home() {
   return (
     <>
+      <Head>
+        <title>Mazeda Networks</title>
+        <meta
+          name="description"
+          content="Discover the fastest internet service provider in Dhaka and Bangladesh, offering home internet, corporate internet, SME internet, and broadband internet solutions. Experience reliable network security and data connectivity with our fiber optic connection. Explore dedicated server hosting options for optimal performance. Enjoy bufferless streaming on 4K platforms like YouTube, Facebook, and Netflix. Benefit from gaming cache and 100 Mbps BDIX and other BD NIX speeds. Our home packages feature a 1:8 contention ratio for seamless browsing. Plus, access 24x7 call support and doorstep assistance from 9 am to 10 pm. Choose us for unparalleled speed, reliability, and support."
+        />
+      </Head>
       <main>
         <Navbar />
         <HeroSection />

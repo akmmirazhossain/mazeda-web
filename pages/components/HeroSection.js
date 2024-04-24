@@ -70,7 +70,7 @@ const HeroSection = () => {
                   </p>
                   <Link
                     href="/about"
-                    className="rounded-full skew-x-12 my-4 bg-[#03738C] text-white px-4 py-2 hidden lg:inline-block"
+                    className="rounded-full skew-x-12 my-4 green_gradient text-white px-4 py-2 hidden lg:inline-block"
                   >
                     Know more
                   </Link>
@@ -133,28 +133,28 @@ const HeroSection = () => {
                     </p>
                   </div>
                   <div className=" body_text_akm  md:text-2xl">
-                    <button className="bg_green hover:bg_red text-white font-semibold py-1.5 px-4 rounded-full m-1">
+                    <button className="green_gradient hover:bg_red text-white font-semibold py-1.5 px-4 rounded-full m-1">
                       99.99% Uptime
                     </button>
-                    <button className="bg_green hover:bg_red text-white font-semibold py-1.5 px-4 rounded-full m-1">
+                    <button className="green_gradient hover:bg_red text-white font-semibold py-1.5 px-4 rounded-full m-1">
                       4k YouTube, Facebook Anytime
                     </button>
-                    <button className="bg_green hover:bg_red text-white font-semibold py-1.5 px-4 rounded-full m-1">
+                    <button className="green_gradient hover:bg_red text-white font-semibold py-1.5 px-4 rounded-full m-1">
                       Multiple Local CDN Servers
                     </button>
-                    <button className="bg_green hover:bg_red text-white font-semibold py-1.5 px-4 rounded-full m-1">
+                    <button className="green_gradient hover:bg_red text-white font-semibold py-1.5 px-4 rounded-full m-1">
                       10 Gbps BDIX
                     </button>
 
-                    <button className="bg_green hover:bg_red text-white font-semibold py-1.5 px-4 rounded-full m-1">
+                    <button className="green_gradient hover:bg_red text-white font-semibold py-1.5 px-4 rounded-full m-1">
                       IPv6 Network
                     </button>
 
-                    <button className="bg_green  hover:bg_red text-white font-semibold py-1.5 px-4 rounded-full m-1">
+                    <button className="green_gradient  hover:bg_red text-white font-semibold py-1.5 px-4 rounded-full m-1">
                       Available Real IPs
                     </button>
 
-                    <button className="bg_green hover:bg_red text-white font-semibold py-1.5 px-4 rounded-full m-1">
+                    <button className="green_gradient hover:bg_red text-white font-semibold py-1.5 px-4 rounded-full m-1">
                       Quick Doorstep Support
                     </button>
                   </div>

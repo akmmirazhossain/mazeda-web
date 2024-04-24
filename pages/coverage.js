@@ -3,10 +3,14 @@ import React from "react";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import CoverageBlocks from "./components/CoverageBlocks";
+import Head from "next/head";
 
 const CoveragePage = () => {
   return (
     <>
+      <Head>
+        <title>Coverage</title>
+      </Head>
       <main>
         <Navbar />
 

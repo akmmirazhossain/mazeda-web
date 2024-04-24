@@ -4,7 +4,8 @@ import Footer from "./components/Footer";
 import PhoneNumbers from "./components/common/phone-numbers";
 import Image from "next/image";
 import Link from "next/link";
-import contactData from "../public/data/contactData.json"; // Import JSON data
+import Head from "next/head";
+import contactData from "../public/data/contactData.json";
 
 const ContactPage = () => {
   const [data, setData] = useState(null);
@@ -16,6 +17,9 @@ const ContactPage = () => {
 
   return (
     <>
+      <Head>
+        <title>Contact Us</title>
+      </Head>
       <main>
         <Navbar />
 
@@ -31,7 +35,7 @@ const ContactPage = () => {
             </div>
 
             <div className="flex flex-col sm:flex-row gap_akm">
-              <div className="sm:w-1/3 text-center sm:pr-8 sm:py-8 box_round_shadow">
+              <div className="sm:w-1/3 text-center sm:pr-8 sm:py-8 box_round_shadow hidden sm:block">
                 <img src={data && data.image} alt="" className="rounded-2xl" />
               </div>
               <div className="sm:w-2/3 sm:pl-8 sm:py-8 box_round_shadow mt-4 pt-4 sm:mt-0 text-center sm:text-left">
