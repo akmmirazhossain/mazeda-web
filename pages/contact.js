@@ -19,6 +19,10 @@ const ContactPage = () => {
     <>
       <Head>
         <title>Contact Us</title>
+        <meta
+          name="description"
+          content="Get in touch with Mazeda Networks' dedicated support team for any inquiries, assistance, or feedback. Contact us via phone, email, or visit our office to experience unparalleled customer service and resolve any queries swiftly."
+        />
       </Head>
       <main>
         <Navbar />

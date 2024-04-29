@@ -17,6 +17,10 @@ const Support = () => {
     <>
       <Head>
         <title>Support</title>
+        <meta
+          name="description"
+          content="Experience the reliability of Mazeda Networks' support team, adept at swiftly resolving network issues and providing expert assistance. With their quick response and extensive experience, rest assured your internet connection is in capable hands."
+        />
       </Head>
 
       <main>

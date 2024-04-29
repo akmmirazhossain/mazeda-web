@@ -89,7 +89,7 @@ const CoverageBlocks = () => {
 
   return (
     <section className="section_akm">
-      <div className="flex items-center justify-center flex-col text-center pb-4 bg-[url('/images/coverage-page.webp')] bg-cover bg-center h-36 sm:h-52 md:h-64 lg:h-96  text-white ">
+      <div className="flex items-center justify-center flex-col text-center   bg-[url('/images/coverage-page.webp')] bg-cover bg-center h-36 sm:h-52 md:h-64 lg:h-96  text-white ">
         <h1 className="heading_akm text_shadow_black">Our coverage</h1>
         <p className="subheading_akm text_shadow_black">
           Our network grows daily, so stay tuned for updates here.
