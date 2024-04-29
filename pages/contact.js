@@ -25,7 +25,7 @@ const ContactPage = () => {
 
         <div className="container_akm nav_space_akm">
           <section className="section_akm">
-            <div className="flex items-center justify-center flex-col text-center pb-4 bg-[url('/images/call-center-banner.webp')] bg-cover bg-center h-36 sm:h-52 md:h-64 lg:h-96  text-white px-6">
+            <div className="flex items-center mb_akm justify-center flex-col text-center pb-4 bg-[url('/images/call-center-banner.webp')] bg-cover bg-center h-36 sm:h-52 md:h-64 lg:h-96  text-white px-6">
               <h1 className="heading_akm text_shadow_black">
                 {data && data.title}
               </h1>

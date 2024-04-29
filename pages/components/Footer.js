@@ -7,11 +7,11 @@ const Footer = () => {
   return (
     <>
       <footer className="border-t text-gray-500">
-        <div className="section_akm flex md:items-center px-6  lg:items-start md:flex-row md:flex-nowrap flex-wrap flex-col">
-          <div className="w-64 flex-shrink-0 md:mx-0 mx-auto text-center md:text-left">
-            <div className="flex items-center md:justify-start justify-center ">
+        <div className="grid grid-col-1 md:grid-cols-11 section_akm   items-center   lg:items-start ">
+          <div className="md:col-span-3 w-64  md:mx-0 my-6 md:my-0 mx-auto text-center justify-center md:text-left">
+            <div className="grid place-items-center md:place-items-start">
               <Link href="/">
-                <img alt="" src="/logo.webp" className="pr-10" />
+                <img alt="" src="/logo.webp" />
               </Link>
             </div>
 
@@ -20,9 +20,9 @@ const Footer = () => {
               high-speed internet and exceptional customer care.
             </p>
           </div>
-          <div className="flex-grow flex flex-wrap md:pl-20 -mb-10 md:mt-0 mt-10 md:text-left text-center">
+          <div className="grid grid-cols-2 md:col-span-8  md:grid-cols-4 px-8 md:pl-20 -mb-10 md:mt-0 mt-10 md:text-left text-center">
             {footerData.footerData.map((section, index) => (
-              <div key={index} className="lg:w-1/4 md:w-1/2 w-full px-4">
+              <div key={index} className=" w-full px-4">
                 <h2 className="title-font font-bold text_green tracking-widest text-sm mb-3">
                   {section.title}
                 </h2>
@@ -39,7 +39,7 @@ const Footer = () => {
             ))}
           </div>
         </div>
-        <div className="bg-gray-100 border-t">
+        <div className=" border-t">
           <div className="container mx-auto max-w-7xl py-4 px-5 flex flex-wrap flex-col sm:flex-row">
             <p className="text-gray-500 text-sm text-center sm:text-left">
               © 2024 Mazeda Networks Ltd.
