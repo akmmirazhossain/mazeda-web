@@ -64,13 +64,15 @@ function AboutSection() {
               <h1 className="subheading_akm mb_akm pb-1 border-b">
                 Partnered With
               </h1>
-              <div className="grid grid-cols-1 md:grid-cols-5 gap_akm">
+              <div className="grid grid-cols-2 md:grid-cols-4 gap_akm ">
                 {data &&
                   data.partners.map((partner, index) => (
-                    <div
+                    <img
                       key={index}
-                      className="bg-slate-400 w-full h-20 rounded-2xl"
-                    ></div>
+                      src={`/images/logos/partners-logo/${partner}`} // Assuming the images are located in the /images directory
+                      alt={`${partner} logo`} // Assuming the file name serves as the alt text for the logo
+                      className="rounded-2xl border shadow-[inset_0_-12px_14px_rgba(0,0,0,0.07)] py-4 px-2" // Adjust styling as needed
+                    />
                   ))}
               </div>
             </div>
