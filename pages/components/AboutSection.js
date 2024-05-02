@@ -71,7 +71,7 @@ function AboutSection() {
                       key={index}
                       src={`/images/logos/partners-logo/${partner}`} // Assuming the images are located in the /images directory
                       alt={`${partner} logo`} // Assuming the file name serves as the alt text for the logo
-                      className="rounded-2xl border shadow-[inset_0_-12px_14px_rgba(0,0,0,0.07)] py-4 px-2" // Adjust styling as needed
+                      className="rounded-2xl border shadow-[inset_0_-12px_8px_rgba(0,0,0,0.06)] py-4 px-2" // Adjust styling as needed
                     />
                   ))}
               </div>
