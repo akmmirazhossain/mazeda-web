@@ -26,7 +26,7 @@ const ContactPage = () => {
       </Head>
       <main>
         <Navbar />
-        <div className="flex items-center  justify-center flex-col text-center  bg-[url('/images/call-center-banner.webp')] bg-cover bg-center h-36 sm:h-52 md:h-64 lg:h-[450px]  text-white px-6">
+        <div className="flex items-center  justify-center flex-col text-center  bg-[url('/images/call-center-banner.webp')] bg-cover bg-center h-36 sm:h-52 md:h-64 lg:h-[400px]  text-white px-6">
           <h1 className="heading_akm text_shadow_black">
             {data && data.title}
           </h1>
