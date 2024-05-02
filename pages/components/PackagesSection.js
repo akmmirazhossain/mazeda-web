@@ -5,8 +5,6 @@ import {
   faArrowRightLong,
   faInfoCircle,
   faBullhorn,
-  faPeopleGroup,
-  faInfinity,
 } from "@fortawesome/free-solid-svg-icons";
 import theme from "@/config/theme";
 import Link from "next/link";
@@ -214,7 +212,7 @@ const PackagesSection = () => {
   const isMyPage = router.pathname === "/packages";
   return (
     <section className="section_akm">
-      {isMyPage ? (
+      {/* {isMyPage ? (
         <div className="relative text-center mb_akm bg-[url('/images/packages-banner.jpg')] bg-cover bg-center h-36 sm:h-52 md:h-64 lg:h-96 flex items-center justify-center text-white ">
           <h1 className="heading_akm -mb-8 text_shadow_black">
             Monthly Pricing
@@ -230,7 +228,7 @@ const PackagesSection = () => {
         </div>
       ) : (
         <div className="heading_akm">Monthly Pricing</div>
-      )}
+      )} */}
 
       <div className="grid grid-cols-1 grid-flow-row   lg:grid-flow-col  lg:grid-cols-6   gap_akm justify-items-center">
         <div className="box_round_shadow w-full lg:col-span-2">

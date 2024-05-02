@@ -11,11 +11,6 @@ function AboutSection() {
 
   return (
     <section className="section_akm">
-      {/* Render title and background image */}
-      <div className="text-center pb-4 bg-[url('/images/about-us.webp')] bg-cover bg-center h-36 sm:h-52 md:h-64 lg:h-96 flex items-center justify-center  text-white ">
-        <h1 className="heading_akm text_shadow_black">About Us</h1>
-      </div>
-
       {/* Render description */}
       <div className="grid grid-cols-1 md:grid-cols-6 gap_akm mt_akm">
         <div

@@ -11,12 +11,6 @@ const PayBillSection = () => {
 
   return (
     <section className="section_akm">
-      <div className="text-center pb-4 bg-[url('/images/pay-bill-cover.webp')] bg-cover  bg-center h-36 sm:h-52 md:h-64 lg:h-96 flex items-center justify-center text-white ">
-        <h1 className="heading_akm text_shadow_black">
-          Seeking payment options?
-        </h1>
-      </div>
-
       <div className="box_round_shadow mb_akm grid grid-cols-1 md:grid-cols-3">
         <div className="col-span-2 mb-4 md:mb-0">
           This page shows a comprehensive range of payment solutions, find your

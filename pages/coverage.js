@@ -17,7 +17,12 @@ const CoveragePage = () => {
       </Head>
       <main>
         <Navbar />
-
+        <div className="flex items-center justify-center flex-col text-center   bg-[url('/images/coverage-page.webp')] bg-cover bg-center h-36 sm:h-52 md:h-64 lg:h-96  text-white ">
+          <h1 className="heading_akm text_shadow_black">Our coverage</h1>
+          <p className="subheading_akm text_shadow_black">
+            Our network grows daily, so stay tuned for updates here.
+          </p>
+        </div>
         <div className="container_akm nav_space_akm min-h-screen">
           <div>
             <CoverageBlocks />
