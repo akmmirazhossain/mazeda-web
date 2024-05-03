@@ -93,18 +93,18 @@
 //CONTAINERS AND DIVS
 
 .section_akm {
-    @apply mx-auto py-4 max-w-7xl;
+    @apply mx-auto py-6 max-w-7xl;
 
     @screen sm {
-        @apply py-4;
+        @apply py-8;
     }
 
     @screen md {
-        @apply py-5;
+        @apply py-10;
     }
 
     @screen lg {
-        @apply py-6;
+        @apply py-12;
     }
 
     @screen xl {
@@ -134,10 +134,10 @@
 }
 
 .page_body {
-    @apply mx-auto py-4 max-w-7xl;
+    @apply mx-auto py-4 max-w-7xl ;
 
     @screen sm {
-        @apply py-4;
+        @apply py-4 ;
     }
 
     @screen md {
@@ -145,7 +145,7 @@
     }
 
     @screen lg {
-        @apply py-6;
+        @apply py-6 px-6;
     }
 
     @screen xl {
