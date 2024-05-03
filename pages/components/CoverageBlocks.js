@@ -88,7 +88,7 @@ const CoverageBlocks = () => {
   };
 
   return (
-    <section className="section_akm">
+    <section className="page_body">
       <div className="grid grid-cols-1 md:grid-cols-3  box_round_shadow mb_akm gap_akm  ">
         <div className="flex items-center pr-3 cursor-pointer border rounded-2xl">
           <input
@@ -147,11 +147,11 @@ const CoverageBlocks = () => {
         {Object.keys(filteredData.areas).map((region, regionIndex) => (
           <div key={regionIndex} className="">
             <h2 className="subheading_akm pad_akm">{region}</h2>
-            <div className="grid grid-cols-1 md:grid-cols-4 xl:grid-cols-6 gap-4">
+            <div className="grid grid-cols-2 md:grid-cols-4 xl:grid-cols-6 gap-4">
               {filteredData.areas[region].map((area, index) => (
                 <div
                   key={index}
-                  className="green_gradient pad_akm rounded-2xl text-white  flex flex-col justify-center items-center"
+                  className="green_gradient h-20 pad_akm rounded-2xl text-white  flex flex-col justify-center items-center"
                 >
                   <div className="flex justify-center items-center">
                     <FontAwesomeIcon

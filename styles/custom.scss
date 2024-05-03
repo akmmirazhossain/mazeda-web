@@ -108,7 +108,7 @@
     }
 
     @screen xl {
-        //@apply py-14;
+        @apply py-12;
     }
 }
 
@@ -133,6 +133,84 @@
     // }
 }
 
+.page_body {
+    @apply mx-auto py-4 max-w-7xl;
+
+    @screen sm {
+        @apply py-4;
+    }
+
+    @screen md {
+        @apply py-5;
+    }
+
+    @screen lg {
+        @apply py-6;
+    }
+
+    @screen xl {
+        @apply pt-6 pb-12;
+    }
+}
+
+
+.banner_bg {
+     @apply flex items-center justify-center flex-col text-center nav_space_akm bg-cover bg-center h-36   text-white;
+
+    @screen sm {
+        @apply h-52;
+    }
+    @screen md {
+        @apply h-64;
+    }
+    @screen lg {
+        @apply h-80;
+    }
+
+    // @screen xl {
+    //     @apply text-4xl py-9;
+    // }
+}
+
+.banner_title {
+    @apply text-2xl  font-semibold tracking-tight text-center;
+    
+        @screen sm {
+            @apply text-2xl font-semibold;
+        }
+    
+        @screen md {
+            @apply text-2xl py-2;
+        }
+    
+        @screen lg {
+            @apply text-3xl py-2;
+        }
+    
+        @screen xl {
+            @apply text-4xl py-4;
+        }
+}
+
+.banner_subtitle {
+@apply text-base py-1 font-semibold tracking-tight w-4/5;
+
+    @screen sm {
+        @apply text-lg;
+    }
+
+    @screen md {
+        @apply text-xl;
+    }
+
+    @screen lg {
+        @apply text-2xl;
+    }
+
+    @screen xl {
+        @apply text-2xl;
+    }
+}
 
 // SPACINGS
 
@@ -219,23 +297,23 @@
 
 
 .nav_space_akm {
-    @apply mt-8;
+    @apply mt-14;
 
-    @screen sm {
-        @apply mt-8;
-    }
+    // @screen sm {
+    //     @apply mt-8;
+    // }
 
-    @screen md {
-        @apply mt-8;
-    }
+    // @screen md {
+    //     @apply mt-8;
+    // }
 
-    @screen lg {
-        @apply mt-8;
-    }
+    // @screen lg {
+    //     @apply mt-8;
+    // }
 
-    @screen xl {
-        @apply mt-0;
-    }
+    // @screen xl {
+    //     @apply mt-14;
+    // }
 }
 
 

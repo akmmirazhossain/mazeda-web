@@ -211,24 +211,8 @@ const PackagesSection = () => {
   const router = useRouter();
   const isMyPage = router.pathname === "/packages";
   return (
-    <section className="section_akm">
-      {/* {isMyPage ? (
-        <div className="relative text-center mb_akm bg-[url('/images/packages-banner.jpg')] bg-cover bg-center h-36 sm:h-52 md:h-64 lg:h-96 flex items-center justify-center text-white ">
-          <h1 className="heading_akm -mb-8 text_shadow_black">
-            Monthly Pricing
-          </h1>
-          <div className="absolute bottom-0 right-0 lg:mr-3 xl:mr-16 mb-6 hidden lg:block">
-            <div className="flex flex-col font-medium border text-white">
-              <p className="text-lg inline-block  bg-opacity-80  py-1 px-6 transform tracking-wide  bg-gradient-to-b from-[#03738c] via-[#015a6e] to-[#03738c]">
-                <FontAwesomeIcon icon={faBullhorn} /> Get connection within 1
-                hour!
-              </p>
-            </div>
-          </div>
-        </div>
-      ) : (
-        <div className="heading_akm">Monthly Pricing</div>
-      )} */}
+    <section className="page_body">
+      {isMyPage ? <></> : <div className="heading_akm">Monthly Pricing</div>}
 
       <div className="grid grid-cols-1 grid-flow-row   lg:grid-flow-col  lg:grid-cols-6   gap_akm justify-items-center">
         <div className="box_round_shadow w-full lg:col-span-2">
@@ -293,7 +277,7 @@ const PackagesSection = () => {
               />
             </div>
           </div>
-          <div className="mt-4">
+          <div className="mt_akm">
             <TabContent>
               <div className="grid grid-cols-1 gap_akm ">
                 {filteredData.map((pricing, index) => (
@@ -389,7 +373,7 @@ const TabButton = ({ title, onClick, isActive }) => {
   return (
     <button
       onClick={onClick}
-      className={`flex-grow py-2 px-4 font-semibold focus:outline-none ${
+      className={`flex-grow py-4 px-2 text-xs sm:text-base sm:px-0 font-semibold  focus:outline-none ${
         isActive ? "text-white green_gradient" : ""
       }`}
       style={{

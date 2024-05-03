@@ -26,15 +26,13 @@ const Support = () => {
       <main>
         <Navbar />
 
-        <div className="flex items-center justify-center flex-col text-center pb-4 bg-[url('/images/call-center-banner.webp')] bg-cover bg-center h-36 sm:h-52 md:h-64 lg:h-96  text-white px-6">
-          <h1 className="heading_akm text_shadow_black">{title}</h1>
-          <p className="subheading_akm text_shadow_black w-full lg:w-6/12">
-            {subtitle}
-          </p>
+        <div className="banner_bg bg-[url('/images/call-center-banner.webp')] ">
+          <h1 className="banner_title text_shadow_black">{title}</h1>
+          <p className="banner_subtitle text_shadow_black ">{subtitle}</p>
         </div>
 
-        <div className="container_akm nav_space_akm">
-          <section className="section_akm">
+        <div className="container_akm ">
+          <section className="page_body">
             <div className="flex flex-col sm:flex-row gap_akm">
               <div className="sm:w-1/3 text-center sm:pr-8 sm:py-8 box_round_shadow hidden sm:block">
                 <img

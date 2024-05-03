@@ -28,7 +28,6 @@ function Home() {
           <LinksSection />
         </div>
         <div className="container_akm ">
-          <div className="heading_akm">Monthly Pricing</div>
           <PackagesSection />
         </div>
         <div className="container_akm ">

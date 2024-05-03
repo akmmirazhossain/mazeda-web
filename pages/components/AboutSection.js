@@ -10,9 +10,9 @@ function AboutSection() {
   }, []);
 
   return (
-    <section className="section_akm">
+    <section className="page_body">
       {/* Render description */}
-      <div className="grid grid-cols-1 md:grid-cols-6 gap_akm mt_akm">
+      <div className="grid grid-cols-1 md:grid-cols-6 gap_akm ">
         <div
           className="col-span-2 text-center pad_akm box_round_shadow min-h-48 max-h-[600px] hidden md:block"
           style={{
@@ -25,7 +25,7 @@ function AboutSection() {
           {/* Content */}
         </div>
 
-        <div className="col-span-4 pad_akm    mt-4 pt-4 sm:mt-0 text-center sm:text-left">
+        <div className="col-span-4     sm:mt-0 text-center sm:text-left">
           <div className="box_round_shadow">
             <h1 className="subheading_akm mb_akm pb-1 border-b">
               {data && data.title}

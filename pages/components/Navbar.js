@@ -27,33 +27,35 @@ function Navbar() {
   };
 
   const isActive = (href) => {
-    return router.pathname === href ? "border-b-2 border-red-500" : "";
+    return router.pathname === href;
   };
 
   return (
-    <nav className="fixed mx-auto border-b md:border-none w-full top-0 z-40 bg-[#FFFFFF]">
-      <div className="mx-auto pl-6 lg:px-4 max-w-7xl ">
-        <div className="flex items-center justify-between">
+    <nav className="fixed mx-auto  h-14 w-full top-0 z-40 bg-[#FFFFFF]  ">
+      <div className="mx-auto pl-6 lg:px-4 max-w-7xl h-full">
+        <div className="flex items-center justify-between h-full">
           <div className="flex items-center">
             <div className="py-2">
               <Link href="/">
                 <img alt="" src="/logo.webp" className="pr-10" />
               </Link>
             </div>
-            <ul className="items-center hidden space-x-6 lg:flex text-base font-medium h-full">
+            <ul className="items-center hidden space-x-6 lg:flex text-base font-medium ">
               {items.map((item, index) => (
-                <Link href={item.href} key={index}>
-                  <li className={`p-2 lg:p-4 ${isActive(item.href)} relative`}>
+                <Link href={item.href} key={index} className="relative">
+                  <li className={`p-2 lg:p-4  relative`}>
                     {item.label}
                     {item.label === "Offers" && (
                       <div className="flex items-center justify-center h-full absolute -top-1.5 -right-1">
-                        <div className="relative bg-red-500 h-5 w-5 rounded-full flex items-center justify-center  text-white text-xs">
+                        <div className=" bg-red-500 h-5 w-5 rounded-full flex items-center justify-center  text-white text-xs">
                           1
-                          {/* <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-500 opacity-50"></span> */}
                         </div>
                       </div>
                     )}
                   </li>
+                  {isActive(item.href) && (
+                    <div className="border-b-2 border-red-500 absolute bottom-0 left-0 w-full"></div>
+                  )}
                 </Link>
               ))}
             </ul>
@@ -103,7 +105,7 @@ function Navbar() {
       </div>
       {menuOpen && (
         <div
-          className="overflow-auto w-full bg-[#FFFFFF] bg-opacity-90 border-t"
+          className="overflow-auto  w-full bg-[#FFFFFF] bg-opacity-90 border-t"
           style={{ transform: "translate3d(0, 0, 0)" }}
         >
           <ul className="flex flex-col items-center mt-4 space-y-4">
@@ -115,9 +117,11 @@ function Navbar() {
                     <div className="flex items-center justify-center h-full absolute -top-2 -right-3">
                       <div className="relative bg-red-500 h-5 w-5 rounded-full flex items-center justify-center  text-white text-xs">
                         1
-                        {/* <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-500 opacity-50"></span> */}
                       </div>
                     </div>
+                  )}
+                  {isActive(item.href) && (
+                    <div className="border-b-2 border-red-500 absolute bottom-0 left-0 w-full"></div>
                   )}
                 </li>
               </Link>

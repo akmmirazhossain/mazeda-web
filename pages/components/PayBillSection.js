@@ -10,7 +10,7 @@ const PayBillSection = () => {
   const [currentMonthYear, setCurrentMonthYear] = useState("");
 
   return (
-    <section className="section_akm">
+    <section className="page_body">
       <div className="box_round_shadow mb_akm grid grid-cols-1 md:grid-cols-3">
         <div className="col-span-2 mb-4 md:mb-0">
           This page shows a comprehensive range of payment solutions, find your

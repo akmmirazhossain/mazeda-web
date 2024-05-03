@@ -6,7 +6,7 @@ import footerData from "../../public/data/footerData.json";
 const Footer = () => {
   return (
     <>
-      <footer className="border-t text-gray-500">
+      <footer className="shadow-xl text_gray bg-white px-6">
         <div className="grid grid-col-1 md:grid-cols-11 section_akm   items-center   lg:items-start ">
           <div className="md:col-span-3 w-64  md:mx-0 my-6 md:my-0 mx-auto text-center justify-center md:text-left">
             <div className="grid place-items-center md:place-items-start">
@@ -28,7 +28,7 @@ const Footer = () => {
                 </h2>
                 <nav className="list-none mb-10">
                   {section.links.map((link, linkIndex) => (
-                    <li key={linkIndex} className="py-0.5">
+                    <li key={linkIndex} className="py-1.5 lg:py-1">
                       <Link href={link.url} className=" hover:text_red ">
                         {link.text}
                       </Link>
