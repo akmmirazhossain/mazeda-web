@@ -9,7 +9,7 @@ import servicesData from "../../public/data/servicesData.json";
 
 const Services = () => {
   return (
-    <section className="section_akm">
+    <section className="page_body">
       <div className="heading_akm content">Our Services</div>
 
       <div className="grid gap_akm sm:grid-cols-2 lg:grid-cols-3">

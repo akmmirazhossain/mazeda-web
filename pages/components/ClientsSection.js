@@ -3,7 +3,7 @@ import clientLogos from "../../public/data/clientLogos.json";
 
 const ClientsSection = () => {
   return (
-    <section className="section_akm">
+    <section className="page_body">
       <div className="heading_akm">Our Successful Clients</div>
       <div className="grid grid-cols-2  lg:grid-cols-5 gap_akm pad_akm box_round_shadow">
         {" "}

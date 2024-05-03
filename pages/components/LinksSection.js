@@ -8,7 +8,7 @@ import linkData from "../../public/data/linksData.json";
 
 const LinkSection = () => {
   return (
-    <section className="section_akm ">
+    <section className="page_body ">
       <div className="grid grid-cols-2  md:grid-cols-3 lg:grid-cols-4 text-center gap_akm">
         {linkData.map((item, index) => (
           <Link key={index} href={item.link}>
