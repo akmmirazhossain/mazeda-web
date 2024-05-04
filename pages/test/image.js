@@ -23,8 +23,8 @@ export default function Home() {
               resolutions (e.g. phone, tablet, desktop ), the particular image
               loads up when accessed from those devices.
               <br />
-              The bottom image is using &lt;Image /&gt; tag and has three
-              different resolutions.
+              The bottom image is using special &lt;Image /&gt; tag from Nextjs
+              and has three different resolutions.
             </p>
           </div>
 
