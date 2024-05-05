@@ -48,7 +48,7 @@ function Navbar() {
                     {item.label === "Offers" && (
                       <div className="flex items-center justify-center h-full absolute -top-1.5 -right-1">
                         <div className=" bg-red-500 h-5 w-5 rounded-full flex items-center justify-center  text-white text-xs">
-                          1
+                          2
                         </div>
                       </div>
                     )}
@@ -116,7 +116,7 @@ function Navbar() {
                   {item.label === "Offers" && (
                     <div className="flex items-center justify-center h-full absolute -top-2 -right-3">
                       <div className="relative bg-red-500 h-5 w-5 rounded-full flex items-center justify-center  text-white text-xs">
-                        1
+                        2
                       </div>
                     </div>
                   )}
