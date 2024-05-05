@@ -23,8 +23,8 @@ export default function Home() {
               resolutions (e.g. phone, tablet, desktop ), the particular image
               loads up when accessed from those devices.
               <br />
-              The bottom image is using special &lt;Image /&gt; tag from Nextjs
-              and has three different resolutions.
+              The bottom image is using &lt;Image /&gt; tag from Nextjs and has
+              three different resolutions.
             </p>
           </div>
 
@@ -44,11 +44,11 @@ export default function Home() {
             Using HTML &lt;img /&gt; tag
           </h1>
           <p className="text-lg text-gray-700 mb-8">
-            The images in HTML has only one resolution, and it remains unchanged
-            for all the devices. The image below is using &lt;img /&gt; tag and
-            has only one resolution.
+            The images in HTML has only one resolution (raw, uncompressed), and
+            it remains unchanged for all the devices. The image below is using
+            &lt;img /&gt; tag and has only one resolution.
           </p>
-          <img src="/images/test/test.png" alt="Next.js Logo" className="" />
+          <img src="/images/test/test.png" alt="" className="" />
         </div>
       </main>
     </div>

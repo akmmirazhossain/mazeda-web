@@ -1,7 +1,12 @@
+// OffersPage.js
+
 import React from "react";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import Head from "next/head";
+import Image from "next/image";
+import Link from "next/link";
+import offersData from "../public/data/offersData.json";
 
 const OffersPage = () => {
   return (
@@ -22,42 +27,43 @@ const OffersPage = () => {
 
         <div className="container_akm ">
           <section className="page_body">
-            <div className="flex flex-col sm:flex-row gap_akm">
-              <div className="sm:w-1/3 text-center sm:pr-8 sm:py-8 box_round_shadow hidden sm:block">
-                <img
-                  src="/images/laptop-girl.jpg"
-                  alt=""
-                  className="rounded-2xl"
-                />
-              </div>
-              <div className="sm:w-2/3 sm:pl-8 sm:py-8 box_round_shadow mt-4 pt-4 sm:mt-0 text-center sm:text-left">
-                <div className="">
-                  <div className="mb-2">
-                    <p className="subheading_akm border-b">Current Offers</p>
-                  </div>
-                  <div
-                    className="grid grid-cols-1 lg:grid-cols-5 bg-cover bg-center rounded-2xl"
-                    style={{ backgroundImage: "url('/images/offers-bg.png')" }}
-                  >
-                    <div className="col-span-2 pt-2 flex items-center justify-center">
-                      <img
-                        src="/images/price-drop.png"
-                        alt=""
-                        className="rounded-2xl"
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap_akm">
+              {offersData.map((offer, index) => (
+                <Link href={`/offers/${offer.link}`} key={index}>
+                  <div className="rounded-t-2xl rounded-2xl shadow-xl bg-white  hover:shadow-2xl relative transition duration-300 ease-in-out transform hover:-translate-y-1">
+                    <div className="relative w-full h-64">
+                      <Image
+                        src={`${offer.thumbImg}`}
+                        alt={offer.title}
+                        layout="fill"
+                        objectFit="cover"
+                        className="rounded-t-2xl"
                       />
                     </div>
-                    <div className="col-span-3 flex flex-col items-center justify-center px-6 pb-8 sm:pb-0">
-                      <p className="text-4xl font-semibold italic text-center tracking-tight">
-                        Get 50% off on your connection charge with every new
-                        connection.
-                      </p>
-                      <p className="font-semibold text-center">
-                        (Call us now! 09613 334455)
-                      </p>
+
+                    <div className="pad_akm">
+                      <div className=" mb-1 ">
+                        {" "}
+                        <p className="subheading_akm line-clamp-2">
+                          {offer.title}
+                        </p>
+                      </div>
+
+                      <div
+                        className="mt-1 mb-3 text-justify line-clamp-5"
+                        dangerouslySetInnerHTML={{
+                          __html: offer.subtitle,
+                        }}
+                      ></div>
+
+                      <div className="">
+                        {" "}
+                        <p className="font-semibold text_green">Read More...</p>
+                      </div>
                     </div>
                   </div>
-                </div>
-              </div>
+                </Link>
+              ))}
             </div>
           </section>
         </div>

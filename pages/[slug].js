@@ -29,23 +29,24 @@ export default function InfoPage({ infoData }) {
       <main>
         <Navbar />
         <div className="container_akm nav_space_akm">
-          <section className="section_akm">
-            <div className="text-center ">
+          <section className="page_body">
+            {/* <div className="text-center ">
               <h1 className="heading_akm">{title}</h1>
-            </div>
+            </div> */}
 
-            <div className="flex flex-col sm:flex-row gap_akm">
-              <div className="sm:w-1/3 text-center sm:pr-8 sm:py-8 box_round_shadow hidden sm:block">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap_akm">
+              <div className="col-span-2 box_round_shadow mt-4 pt-4 sm:mt-0 text-center sm:text-left">
+                <h1 className="subheading_akm border-b mb-3">{title}</h1>
+                <div dangerouslySetInnerHTML={{ __html: content }} />
+              </div>
+
+              {/* <div className="col-span-1 text-center sm:pr-8 sm:py-8 box_round_shadow hidden sm:block">
                 <img
                   alt=""
                   src="/images/server-man.jpg"
                   className="rounded-2xl"
                 />
-              </div>
-              <div
-                className="sm:w-2/3 sm:pl-8 sm:py-8 box_round_shadow mt-4 pt-4 sm:mt-0 text-center sm:text-left"
-                dangerouslySetInnerHTML={{ __html: content }}
-              />
+              </div> */}
             </div>
           </section>
         </div>

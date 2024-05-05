@@ -236,8 +236,18 @@
     }
 
     @screen md {
-        @apply p-2;
+        @apply p-6;
     }
+
+}
+
+.pad_akm_sm {
+    @apply p-3;
+
+    @screen sm {
+        @apply p-4;
+    }
+
 
 }
 
