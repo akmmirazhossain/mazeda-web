@@ -35,7 +35,7 @@ export default function InfoPage({ infoData }) {
             </div> */}
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap_akm">
-              <div className="col-span-2 box_round_shadow mt-4 pt-4 sm:mt-0 text-center sm:text-left">
+              <div className="col-span-3 box_round_shadow mt-4 pt-4 sm:mt-0 text-center sm:text-left">
                 <h1 className="subheading_akm border-b mb-3">{title}</h1>
                 <div dangerouslySetInnerHTML={{ __html: content }} />
               </div>
