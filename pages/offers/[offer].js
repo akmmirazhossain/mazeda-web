@@ -40,7 +40,7 @@ const OfferPage = () => {
                 />
               </div>
               <div
-                className="pt_akm text_gray italic"
+                className="pt_akm  italic"
                 dangerouslySetInnerHTML={{ __html: selectedOffer.subtitle }}
               ></div>
               <div
