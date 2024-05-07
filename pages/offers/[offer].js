@@ -36,7 +36,14 @@ const OfferPage = () => {
                   alt={offer.title}
                   layout="fill"
                   objectFit="cover"
-                  className="rounded-2xl"
+                  className="rounded-2xl hidden md:block"
+                />
+                <Image
+                  src={selectedOffer.thumbImg}
+                  alt={offer.title}
+                  layout="fill"
+                  objectFit="cover"
+                  className="rounded-2xl block md:hidden"
                 />
               </div>
               <div

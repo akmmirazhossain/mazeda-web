@@ -8,9 +8,7 @@ const nextConfig = {
       // Define the remote pattern with hostname
       {
         // Hostname of the remote image domain
-        hostname: "new.mazedanetworks.net",
-        // Regular expression pattern to match the URLs of remote images
-        // Here, we use a pattern that matches URLs starting with "http://" or "https://" followed by "new.mazedanetworks.net/"
+        hostname: "mazedanetworks.net",
       },
     ],
   },
