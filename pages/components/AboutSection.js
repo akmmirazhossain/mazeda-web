@@ -2,12 +2,12 @@ import { useEffect, useState } from "react";
 import aboutData from "../../public/data/aboutData.json"; // Import JSON data
 
 function AboutSection() {
-  const [data, setData] = useState(null);
+  // const [data, setData] = useState(null);
 
-  useEffect(() => {
-    // Set the JSON data to state
-    setData(aboutData);
-  }, []);
+  // useEffect(() => {
+  //   // Set the JSON data to state
+  //   setData(aboutData);
+  // }, []);
 
   return (
     <section className="page_body">
@@ -28,14 +28,14 @@ function AboutSection() {
         <div className="col-span-4     sm:mt-0 text-center sm:text-left">
           <div className="box_round_shadow">
             <h1 className="subheading_akm mb_akm pb-1 border-b">
-              {data && data.title}
+              {aboutData.title}
             </h1>
-            {data &&
-              data.description.map((paragraph, index) => (
-                <p key={index} className="text-lg leading-relaxed mb-8">
-                  {paragraph}
-                </p>
-              ))}
+            <p
+              className="text-lg leading-relaxed mb-8"
+              dangerouslySetInnerHTML={{
+                __html: aboutData.description,
+              }}
+            ></p>
           </div>
 
           {/* Render mission and vision */}
@@ -44,14 +44,14 @@ function AboutSection() {
               <h1 className="subheading_akm mb_akm pb-1 border-b">
                 Our Mission
               </h1>
-              <p>{data && data.mission}</p>
+              <p>{aboutData.mission}</p>
             </div>
 
             <div className="mb_akm box_round_shadow">
               <h1 className="subheading_akm mb_akm pb-1 border-b">
                 Our Vision
               </h1>
-              <p>{data && data.vision}</p>
+              <p>{aboutData.vision}</p>
             </div>
 
             {/* Render partners */}
@@ -60,15 +60,14 @@ function AboutSection() {
                 Partnered With
               </h1>
               <div className="grid grid-cols-2 md:grid-cols-4 gap_akm ">
-                {data &&
-                  data.partners.map((partner, index) => (
-                    <img
-                      key={index}
-                      src={`/images/logos/partners-logo/${partner}`} // Assuming the images are located in the /images directory
-                      alt={`${partner} logo`} // Assuming the file name serves as the alt text for the logo
-                      className="rounded-2xl border shadow-[inset_0_-12px_8px_rgba(0,0,0,0.06)] py-4 px-2" // Adjust styling as needed
-                    />
-                  ))}
+                {aboutData.partners.map((partner, index) => (
+                  <img
+                    key={index}
+                    src={`/images/logos/partners-logo/${partner}`} // Assuming the images are located in the /images directory
+                    alt={`${partner} logo`} // Assuming the file name serves as the alt text for the logo
+                    className="rounded-2xl border shadow-[inset_0_-12px_8px_rgba(0,0,0,0.06)] py-4 px-2" // Adjust styling as needed
+                  />
+                ))}
               </div>
             </div>
           </div>
