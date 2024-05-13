@@ -1,22 +1,37 @@
 // pages/[offer].js
+import React, { useEffect, useState } from "react";
 
-import React from "react";
 import { useRouter } from "next/router";
 import Navbar from "./../components/Navbar";
 import Footer from "./../components/Footer";
 import Head from "next/head";
 import Image from "next/image";
-import offersData from "../../public/data/offersData.json";
+import { apiUrl, imgUrl } from "../../config/config";
 
 const OfferPage = () => {
   const router = useRouter();
   const { offer } = router.query;
-  const selectedOffer = offersData.find((item) => item.link === `/${offer}`);
+  const [selectedOffer, setSelectedOffer] = useState(null);
 
-  console.log("Offer parameter:", selectedOffer);
+  useEffect(() => {
+    const fetchOfferData = async () => {
+      try {
+        const response = await fetch(`${apiUrl}/offers.php`);
+        const data = await response.json();
+        const foundOffer = data.find((item) => item.offer_link === offer);
+        setSelectedOffer(foundOffer);
+      } catch (error) {
+        console.error("Error fetching offer data:", error);
+      }
+    };
+
+    if (offer) {
+      fetchOfferData();
+    }
+  }, [offer]);
 
   if (!selectedOffer) {
-    return <></>;
+    return <div></div>;
   }
 
   return (
@@ -27,19 +42,20 @@ const OfferPage = () => {
           <div className="grid grid-cols-1 md:grid-cols-3 gap_akm">
             <div className="col-span-3 box_round_shadow mt-4 pt-4 sm:mt-0 text-center sm:text-left ">
               <h1 className="subheading_akm border-b mb-3">
-                {selectedOffer.title}
+                {selectedOffer.offer_title}
               </h1>
 
               <div className="relative w-full h-96">
                 <Image
-                  src={selectedOffer.bannerImg}
-                  alt={offer.title}
+                  src={`${imgUrl}${selectedOffer.offer_bannerImg}`}
+                  alt={selectedOffer.offer_title}
                   layout="fill"
                   objectFit="cover"
-                  className="rounded-2xl hidden md:block"
+                  className="rounded-2xl"
                 />
+
                 <Image
-                  src={selectedOffer.thumbImg}
+                  src={`${imgUrl}${selectedOffer.offer_thumbImg}`}
                   alt={offer.title}
                   layout="fill"
                   objectFit="cover"
@@ -48,11 +64,15 @@ const OfferPage = () => {
               </div>
               <div
                 className="pt_akm  italic"
-                dangerouslySetInnerHTML={{ __html: selectedOffer.subtitle }}
+                dangerouslySetInnerHTML={{
+                  __html: selectedOffer.offer_subtitle,
+                }}
               ></div>
               <div
                 className="pt_akm"
-                dangerouslySetInnerHTML={{ __html: selectedOffer.content }}
+                dangerouslySetInnerHTML={{
+                  __html: selectedOffer.offer_content,
+                }}
               />
             </div>
 

@@ -5,15 +5,32 @@ import PhoneNumbers from "./components/common/phone-numbers";
 import Image from "next/image";
 import Link from "next/link";
 import Head from "next/head";
-import contactData from "../public/data/contactData.json";
+import { apiUrl, imgUrl } from "../config/config";
 
 const ContactPage = () => {
-  const [data, setData] = useState(null);
+  const [contactInfo, setContactInfo] = useState(null);
 
   useEffect(() => {
-    // Set the JSON data to state
-    setData(contactData);
+    const fetchData = async () => {
+      try {
+        const response = await fetch(`${apiUrl}/contact.php`);
+        if (!response.ok) {
+          throw new Error("Failed to fetch contact data");
+        }
+        const data = await response.json();
+        if (data && data.length > 0) {
+          setContactInfo(data[0]); // Assuming there's only one contact entry in the response
+        }
+      } catch (error) {
+        console.error("Error fetching contact data:", error);
+      }
+    };
+    fetchData();
   }, []);
+
+  if (!contactInfo) {
+    return <div></div>;
+  }
 
   return (
     <>
@@ -26,12 +43,17 @@ const ContactPage = () => {
       </Head>
       <main>
         <Navbar />
-        <div className="banner_bg  bg-[url('/images/call-center-banner.webp')] ">
+        <div
+          className="banner_bg"
+          style={{
+            backgroundImage: `url(${imgUrl}${contactInfo.contact_bannerimg})`,
+          }}
+        >
           <h1 className="banner_title text_shadow_black">
-            {data && data.title}
+            {contactInfo.contact_title}
           </h1>
           <p className="banner_subtitle text_shadow_black w-full lg:w-6/12">
-            {data && data.subtitle}
+            {contactInfo.contact_subtitle}
           </p>
         </div>
 
@@ -39,35 +61,25 @@ const ContactPage = () => {
           <section className="page_body">
             <div className="flex flex-col sm:flex-row gap_akm">
               <div className="sm:w-1/3 text-center sm:pr-8 sm:py-8 box_round_shadow hidden sm:block">
-                <img src={data && data.image} alt="" className="rounded-2xl" />
+                <Image
+                  src={`${imgUrl}${contactInfo.contact_sideimg}`}
+                  alt={contactInfo.contact_title}
+                  width={800}
+                  height={1067}
+                  className="rounded-2xl"
+                />
               </div>
               <div className="sm:w-2/3 sm:pl-8 sm:py-8 box_round_shadow mt-4 pt-4 sm:mt-0 text-center sm:text-left">
                 <div className="container mx-auto">
                   <div className="mb_akm">
                     <PhoneNumbers />
                   </div>
-                  <p className="mb-6">
-                    <span className="font-bold">Headquarters Address:</span>{" "}
-                    {data && data.address} {data && data.email}
-                  </p>
-                  {/* Render Facebook Page link if available */}
-                  {data && data.facebookPage && (
-                    <p>
-                      <span className="font-bold">Facebook Page: </span>{" "}
-                      <Link target="_blank" href={data.facebookPage}>
-                        facebook.com/mazedanetltd
-                      </Link>
-                    </p>
-                  )}
-                  {/* Render Facebook Group link if available */}
-                  {data && data.facebookGroup && (
-                    <p>
-                      <span className="font-bold">Facebook Group: </span>{" "}
-                      <Link target="_blank" href={data.facebookGroup}>
-                        facebook.com/groups/mazedabdserver
-                      </Link>
-                    </p>
-                  )}
+
+                  <p
+                    dangerouslySetInnerHTML={{
+                      __html: contactInfo.contact_content,
+                    }}
+                  ></p>
                 </div>
               </div>
             </div>
