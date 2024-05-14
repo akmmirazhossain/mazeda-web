@@ -12,7 +12,7 @@ const ClientsSection = () => {
             key={index}
             className="flex items-center p-4 justify-center h-full "
           >
-            <img alt="" src={logo} />
+            <img alt="" src={`/images/logos/${logo}`} />
           </div>
         ))}
       </div>
