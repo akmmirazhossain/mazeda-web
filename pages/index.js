@@ -20,27 +20,26 @@ function Home() {
           content="Discover the fastest internet service provider in Dhaka and Bangladesh, offering home internet, corporate internet, SME internet, and broadband internet solutions. Experience reliable network security and data connectivity with our fiber optic connection. Explore dedicated server hosting options for optimal performance. Enjoy bufferless streaming on 4K platforms like YouTube, Facebook, and Netflix. Benefit from gaming cache and 100 Mbps BDIX and other BD NIX speeds. Our home packages feature a 1:8 contention ratio for seamless browsing. Plus, access 24x7 call support and doorstep assistance from 9 am to 10 pm. Choose us for unparalleled speed, reliability, and support."
         />
       </Head>
-      <main className="h-screen">
-        <ScrollBar>
-          <Navbar />
-          <HeroSection />
-          <div className="container_akm custom-utility">
-            <ServicesSection />
-          </div>
-          <div className="container_akm ">
-            <LinksSection />
-          </div>
-          <div className="container_akm ">
-            <PackagesSection />
-          </div>
-          <div className="container_akm ">
-            {/* <PromotionsSection /> */}
-            {/* <StrengthSection /> */}
-            {/* <ContactForm /> */}
-            <ClientsSection />
-          </div>
-          <Footer />
-        </ScrollBar>
+      <main>
+        <Navbar />
+        <HeroSection />
+
+        <div className="container_akm custom-utility">
+          <ServicesSection />
+        </div>
+        <div className="container_akm ">
+          <LinksSection />
+        </div>
+        <div className="container_akm ">
+          <PackagesSection />
+        </div>
+        <div className="container_akm ">
+          {/* <PromotionsSection /> */}
+          {/* <StrengthSection /> */}
+          {/* <ContactForm /> */}
+          <ClientsSection />
+        </div>
+        <Footer />
       </main>
     </>
   );
