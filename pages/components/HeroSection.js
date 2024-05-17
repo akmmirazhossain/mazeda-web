@@ -3,36 +3,38 @@ import React, { useRef, useState } from "react";
 import Image from "next/image";
 // Import Swiper styles
 import { Swiper, SwiperSlide } from "swiper/react";
-import { EffectFade, Pagination, Autoplay } from "swiper/modules";
+import { Pagination, Autoplay, Navigation } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/pagination";
-import "swiper/css/effect-fade";
+import "swiper/css/navigation";
+
 import Link from "next/link";
 
 const HeroSection = () => {
   return (
     <Swiper
-      className="mySwiper mt-14 sm:mt-14 md:mt-14 lg:mt-14 xl:mt-14"
+      className="mySwiper nav_space_akm "
       slidesPerView={1}
       pagination={{
         dynamicBullets: true,
       }}
-      autoplay={{
-        delay: 5000,
-        disableOnInteraction: false,
-        pauseOnMouseEnter: false,
-      }}
-      modules={[Pagination, Autoplay]}
+      // autoplay={{
+      //   delay: 5000,
+      //   disableOnInteraction: false,
+      //   pauseOnMouseEnter: false,
+      // }}
+      navigation={true}
+      modules={[Pagination, Autoplay, Navigation]}
       loop={true}
     >
-      <SwiperSlide className="bg-secondary">
+      <SwiperSlide>
         <div
-          className="bg-cover bg-center  "
+          className="bg-cover bg-center h-600 "
           style={{
             backgroundImage: 'url("/images/slider/slide-bg-dhaka.webp")',
           }}
         >
-          <div className="container mx-auto sm:px-5 md:px-6 lg:px-4  max-w-7xl text-white h-600">
+          <div className=" mx-auto sm:px-5 md:px-6 lg:px-4  max-w-7xl text-white h-full">
             <div className="grid grid-rows-8 h-full">
               <div className="row-span-3 flex flex-col justify-end items-center text-[#03738C]  -skew-x-12">
                 <div className="text-center font-semibold bg-white bg-opacity-70  py-1 px-3 lg:p-3  text-xl sm:text-3xl lg:text-5xl">
@@ -45,7 +47,7 @@ const HeroSection = () => {
 
                   <Link
                     href="/about"
-                    className="rounded-full skew-x-12 my-4 bg-[#03738C] text-white px-4 py-2 block lg:hidden w-fit mx-auto"
+                    className="rounded-full green_gradient skew-x-12 my-4  text-white px-4 py-2 block lg:hidden w-fit mx-auto"
                   >
                     Know more
                   </Link>
@@ -53,13 +55,14 @@ const HeroSection = () => {
               </div>
 
               <div className="flex row-span-5 justify-center md:justify-between ">
-                <div className=" hidden md:block xl:pl-8">
+                <div className="hidden md:flex xl:pl-8 justify-center items-center h-full">
                   <img
                     alt=""
                     src="/images/slider/girl_on_phone.webp"
-                    className="transform -scale-x-100 pt-4"
+                    className="transform -scale-x-100 pt-4 max-h-full max-w-full"
                   />
                 </div>
+
                 <div className=" h-fit  text-center text-[#03738C] hidden lg:inline-block -skew-x-12 bg-white lg:w-2/4 bg-opacity-70 p-2 lg:p-4 text-xl sm:text-lg">
                   <p className="skew-x-12">
                     We are one of the premier internet service providers in
@@ -76,8 +79,12 @@ const HeroSection = () => {
                   </Link>
                 </div>
 
-                <div className="  xl:pr-8  max-w-full ">
-                  <img alt="" src="/images/slider/man_on_phone.webp" />
+                <div className=" flex xl:pl-8 justify-center items-center ">
+                  <img
+                    alt=""
+                    src="/images/slider/man_on_phone.webp"
+                    className="pt-4 max-h-full max-w-full"
+                  />
                 </div>
               </div>
             </div>
@@ -116,14 +123,14 @@ const HeroSection = () => {
         </div>
       </SwiperSlide>
 
-      <SwiperSlide className="bg-secondary">
+      <SwiperSlide>
         <div
-          className="bg-cover bg-center  "
+          className="bg-cover bg-center  h-600"
           style={{
             backgroundImage: 'url("/images/slider/slider-3-bg.webp")',
           }}
         >
-          <div className="container mx-auto sm:px-5 md:px-6 lg:px-4  max-w-7xl text-white h-full h-600 lg:h-600">
+          <div className=" mx-auto sm:px-5 md:px-6 lg:px-4  max-w-7xl text-white h-full  ">
             <div className="grid grid-cols-1  lg:grid-cols-3 grid-rows-5 lg:grid-rows-1 h-full">
               <div className="col-span-1 lg:col-span-2 row-span-2 flex flex-col justify-center items-center text-[#03738C] ">
                 <div className="text-center  ">
@@ -132,43 +139,38 @@ const HeroSection = () => {
                       What makes Mazeda stand out?{" "}
                     </p>
                   </div>
-                  <div className=" body_text_akm  md:text-2xl">
-                    <button className="green_gradient hover:bg_red text-white font-semibold py-1.5 px-4 rounded-full m-1">
+                  <div className="body_text_akm md:text-2xl">
+                    <button className="green_gradient hover:bg-red-500 text-white font-semibold py-1.5 px-4 rounded-full m-1">
                       99.99% Uptime
                     </button>
-                    <button className="green_gradient hover:bg_red text-white font-semibold py-1.5 px-4 rounded-full m-1">
+                    <button className="green_gradient hover:bg-red-500 text-white font-semibold py-1.5 px-4 rounded-full m-1">
                       4k YouTube, Facebook Anytime
                     </button>
-                    <button className="green_gradient hover:bg_red text-white font-semibold py-1.5 px-4 rounded-full m-1">
+                    <button className="green_gradient hover:bg-red-500 text-white font-semibold py-1.5 px-4 rounded-full m-1">
                       Multiple Local CDN Servers
                     </button>
-                    <button className="green_gradient hover:bg_red text-white font-semibold py-1.5 px-4 rounded-full m-1">
+                    <button className="green_gradient hover:bg-red-500 text-white font-semibold py-1.5 px-4 rounded-full m-1">
                       10 Gbps BDIX
                     </button>
-
-                    <button className="green_gradient hover:bg_red text-white font-semibold py-1.5 px-4 rounded-full m-1">
+                    <button className="green_gradient hover:bg-red-500 text-white font-semibold py-1.5 px-4 rounded-full m-1">
                       IPv6 Network
                     </button>
-
-                    <button className="green_gradient  hover:bg_red text-white font-semibold py-1.5 px-4 rounded-full m-1">
+                    <button className="green_gradient hover:bg-red-500 text-white font-semibold py-1.5 px-4 rounded-full m-1">
                       Available Real IPs
                     </button>
-
-                    <button className="green_gradient hover:bg_red text-white font-semibold py-1.5 px-4 rounded-full m-1">
+                    <button className="green_gradient hover:bg-red-500 text-white font-semibold py-1.5 px-4 rounded-full m-1">
                       Quick Doorstep Support
                     </button>
                   </div>
                 </div>
               </div>
 
-              <div className="flex col-span-1 row-span-3 justify-center ">
-                <div className="px-2">
-                  <img
-                    alt=""
-                    className="w-fit"
-                    src="/images/slider/girl-holding-cable.webp"
-                  />
-                </div>
+              <div className="row-span-3  flex xl:pl-8 justify-center items-center  h-full">
+                <img
+                  alt=""
+                  src="/images/slider/girl-holding-cable.webp"
+                  className="pt-4 max-h-full max-w-full"
+                />
               </div>
             </div>
           </div>
