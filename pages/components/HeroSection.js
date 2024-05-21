@@ -18,11 +18,11 @@ const HeroSection = () => {
       pagination={{
         dynamicBullets: true,
       }}
-      // autoplay={{
-      //   delay: 5000,
-      //   disableOnInteraction: false,
-      //   pauseOnMouseEnter: false,
-      // }}
+      autoplay={{
+        delay: 5000,
+        disableOnInteraction: false,
+        pauseOnMouseEnter: false,
+      }}
       navigation={true}
       modules={[Pagination, Autoplay, Navigation]}
       loop={true}
