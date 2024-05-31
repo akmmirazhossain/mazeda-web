@@ -6,6 +6,8 @@ import {
   faPhoneVolume,
   faCreditCard,
   faBars,
+  faHeadset,
+  faEnvelope,
 } from "@fortawesome/free-solid-svg-icons";
 
 const items = [
@@ -31,7 +33,17 @@ function Navbar() {
   };
 
   return (
-    <nav className="fixed mx-auto  h-14 w-full top-0 z-40 bg-[#FFFFFF]  ">
+    <nav className="fixed mx-auto w-full top-0 z-40 bg-[#FFFFFF]  ">
+      <div className="bg_green text-white text-sm  ">
+        <div className="mx-auto lg:px-4 max-w-7xl h-full py-1 flex justify-end ">
+          <div className="pr-4 ">
+            <FontAwesomeIcon icon={faEnvelope} /> mazeda@mazedanetworks.net
+          </div>
+          <div className="pr-1 ">
+            <FontAwesomeIcon icon={faHeadset} /> 09666 334455
+          </div>
+        </div>
+      </div>
       <div className="mx-auto pl-6 lg:px-4 max-w-7xl h-full">
         <div className="flex items-center justify-between h-full">
           <div className="flex items-center">
@@ -94,9 +106,9 @@ function Navbar() {
 
             <button
               onClick={toggleMenu}
-              className="py-2 pl-2 pr-6  hover:text-deep-purple-accent-400 focus:outline-none focus:text-deep-purple-accent-400"
+              className="py-2 pl-2 pr-6 lg:hidden hover:text-deep-purple-accent-400 focus:outline-none focus:text-deep-purple-accent-400"
             >
-              <div className="lg:hidden">
+              <div className="">
                 <FontAwesomeIcon className="text-lg" icon={faBars} />
               </div>
             </button>
