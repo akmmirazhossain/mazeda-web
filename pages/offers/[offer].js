@@ -1,6 +1,5 @@
 // pages/[offer].js
 import React, { useEffect, useState } from "react";
-
 import { useRouter } from "next/router";
 import Navbar from "./../components/Navbar";
 import Footer from "./../components/Footer";
@@ -9,6 +8,14 @@ import Image from "next/image";
 import { apiUrl, imgUrl } from "../../config/config";
 import ScrollBar from "react-perfect-scrollbar";
 import "react-perfect-scrollbar/dist/css/styles.css";
+import {
+  FacebookShareButton,
+  FacebookIcon,
+  WhatsappShareButton,
+  WhatsappIcon,
+  LinkedinShareButton,
+  LinkedinIcon,
+} from "react-share";
 
 const OfferPage = () => {
   const router = useRouter();
@@ -33,12 +40,30 @@ const OfferPage = () => {
   }, [offer]);
 
   if (!selectedOffer) {
-    return <div></div>;
+    return <div>Loading...</div>;
   }
+
+  const shareUrl = `https://mazedanetworks.net/offers/${offer}`;
+  const shareQuote = selectedOffer.offer_title;
+  const shareImage = `${imgUrl}${selectedOffer.offer_bannerImg}`; // Assuming you want to share the banner image
 
   return (
     <main className="h-screen">
       <ScrollBar>
+        <Head>
+          <title>{selectedOffer.offer_title}</title>
+          <meta property="og:title" content={selectedOffer.offer_title} />
+          <meta
+            property="og:description"
+            content={selectedOffer.offer_subtitle.replace(
+              /<\/?[^>]+(>|$)/g,
+              ""
+            )}
+          />
+          <meta property="og:image" content={shareImage} />
+          <meta property="og:url" content={shareUrl} />
+          <meta property="og:type" content="website" />
+        </Head>
         <Navbar />
         <div className="container_akm nav_space_akm">
           <section className="page_body">
@@ -56,17 +81,17 @@ const OfferPage = () => {
                     objectFit="cover"
                     className="rounded-2xl"
                   />
-
                   <Image
                     src={`${imgUrl}${selectedOffer.offer_thumbImg}`}
-                    alt={offer.title}
+                    alt={selectedOffer.offer_title}
                     layout="fill"
                     objectFit="cover"
                     className="rounded-2xl block md:hidden"
                   />
                 </div>
+
                 <div
-                  className="pt_akm  italic"
+                  className="pt_akm italic"
                   dangerouslySetInnerHTML={{
                     __html: selectedOffer.offer_subtitle,
                   }}
@@ -77,6 +102,39 @@ const OfferPage = () => {
                     __html: selectedOffer.offer_content,
                   }}
                 />
+
+                <div className="flex items-center mt-6 p-4 text-center justify-between  border w-full max-w-xs rounded-2xl mx-auto">
+                  <p className="font-bold ">Share this offer:</p>
+                  <div className="flex justify-between ">
+                    <div>
+                      <FacebookShareButton
+                        className="mx-1"
+                        url={shareUrl}
+                        quote={shareQuote}
+                      >
+                        <FacebookIcon size={40} round={true} />
+                      </FacebookShareButton>
+                    </div>
+                    <div>
+                      <WhatsappShareButton
+                        className="mx-1"
+                        url={shareUrl}
+                        title={shareQuote}
+                      >
+                        <WhatsappIcon size={40} round={true} />
+                      </WhatsappShareButton>
+                    </div>
+                    <div>
+                      <LinkedinShareButton
+                        className="mx-1"
+                        url={shareUrl}
+                        title={shareQuote}
+                      >
+                        <LinkedinIcon size={40} round={true} />
+                      </LinkedinShareButton>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </section>
