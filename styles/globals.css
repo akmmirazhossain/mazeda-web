@@ -155,8 +155,8 @@ body {
 
 /* SWIPER JS */
 .swiper {
-  width: 100%;
-  height: 100%;
+  /* width: 100%; */
+  /* height: 100%; */
 }
 
 .swiper-slide {
@@ -170,12 +170,12 @@ body {
   align-items: center;
 }
 
-.swiper-slide img {
+/* .swiper-slide img {
   display: block;
   width: 100%;
   height: 100%;
   object-fit: cover;
-}
+} */
 
 /* CSS file for animation */
 .slideContainer {
@@ -242,4 +242,13 @@ body {
   13% {
     transform: translateY(-1px);
   }
+}
+
+.fade-in {
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out; /* Adjust duration and timing function as needed */
+}
+
+.fade-in.loaded {
+  opacity: 1;
 }

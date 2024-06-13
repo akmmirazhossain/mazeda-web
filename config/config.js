@@ -1,8 +1,2 @@
-// pages/about.js
-import React from "react";
-
-const Config = () => {
-  return <div>{/* Your component content */}</div>;
-};
-
-export default Config;
+export const apiUrl = "https://apis.mazedanetworks.net/apis/";
+export const imgUrl = "https://apis.mazedanetworks.net/web_files/";

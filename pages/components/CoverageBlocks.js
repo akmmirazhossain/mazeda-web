@@ -2,11 +2,9 @@ import React, { useState, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faChevronDown,
-  faSpinner,
   faSearch,
   faLocationDot,
 } from "@fortawesome/free-solid-svg-icons";
-import coverageData from "../../public/data/coverageData.json";
 
 const CoverageBlocks = () => {
   const [initialData, setInitialData] = useState([]);
@@ -17,21 +15,39 @@ const CoverageBlocks = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   useEffect(() => {
-    setInitialData(coverageData);
+    const fetchCoverageData = async () => {
+      try {
+        const response = await fetch(
+          "https://apis.mazedanetworks.net/apis/coverage.php"
+        );
+        const data = await response.json();
+
+        // Sort the data by `coverage_serial`
+        const sortedData = data.sort(
+          (a, b) => parseInt(a.coverage_serial) - parseInt(b.coverage_serial)
+        );
+
+        setInitialData(sortedData);
+      } catch (error) {
+        console.error("Error fetching coverage data:", error);
+      }
+    };
+
+    fetchCoverageData();
   }, []);
 
   useEffect(() => {
     const updatedRegionData = {};
     initialData.forEach((item) => {
-      if (!updatedRegionData[item.region]) {
-        updatedRegionData[item.region] = [];
+      const region = item.coverage_region;
+      const areas = item.coverage_area
+        ? item.coverage_area.split(",").map((area) => area.trim())
+        : []; // If coverage_area is undefined, assign an empty array
+
+      if (!updatedRegionData[region]) {
+        updatedRegionData[region] = [];
       }
-      if (item.areas) {
-        const areas = item.areas.split(",");
-        updatedRegionData[item.region].push(...areas);
-      } else {
-        updatedRegionData[item.region].push(item.area);
-      }
+      updatedRegionData[region].push(...areas);
     });
     setRegionData(updatedRegionData);
 
@@ -89,7 +105,7 @@ const CoverageBlocks = () => {
 
   return (
     <section className="page_body">
-      <div className="grid grid-cols-1 md:grid-cols-3  box_round_shadow mb_akm gap_akm  ">
+      <div className="grid grid-cols-1 md:grid-cols-3 box_round_shadow mb_akm gap_akm">
         <div className="flex items-center pr-3 cursor-pointer border rounded-2xl">
           <input
             type="text"
@@ -101,7 +117,7 @@ const CoverageBlocks = () => {
           />
           <FontAwesomeIcon icon={faSearch} className="text-gray-400 ml-2" />
         </div>
-        <div className="relative w-full ">
+        <div className="relative w-full">
           <div
             className="flex items-center pr-3 cursor-pointer border rounded-2xl"
             onClick={toggleDropdown}
@@ -111,7 +127,7 @@ const CoverageBlocks = () => {
               type="text"
               readOnly
               value={selectedRegion}
-              className="block px-4 py-2 w-full rounded-2xl cursor-pointer focus:outline-none "
+              className="block px-4 py-2 w-full rounded-2xl cursor-pointer focus:outline-none"
             />
             <FontAwesomeIcon
               icon={faChevronDown}
@@ -147,18 +163,18 @@ const CoverageBlocks = () => {
         {Object.keys(filteredData.areas).map((region, regionIndex) => (
           <div key={regionIndex} className="">
             <h2 className="subheading_akm pad_akm">{region}</h2>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-6 gap-4 ">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-6 gap-4">
               {filteredData.areas[region].map((area, index) => (
                 <div
                   key={index}
-                  className="green_gradient h-20 pad_akm rounded-2xl text-white  flex flex-col justify-center items-center"
+                  className="green_gradient h-20 pad_akm rounded-2xl text-white flex flex-col justify-center items-center"
                 >
                   <div className="flex justify-center items-center">
                     <FontAwesomeIcon
                       icon={faLocationDot}
                       className="pr-2 text-lg text_red"
                     />
-                    <p className="text-lg ">{area}</p>
+                    <p className="text-lg">{area}</p>
                   </div>
                 </div>
               ))}
