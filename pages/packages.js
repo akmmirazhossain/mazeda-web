@@ -1,5 +1,5 @@
 import React from "react";
-import PackagesSection2 from "./components/PackagesSection2";
+import PackagesSection from "./components/PackagesSection";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import Head from "next/head";
@@ -22,7 +22,7 @@ const PackagesPage = () => {
         </div>
 
         <div className="container_akm ">
-          <PackagesSection2 />
+          <PackagesSection />
         </div>
         <Footer />
       </main>

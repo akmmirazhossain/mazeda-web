@@ -4,185 +4,46 @@ import {
   faCircleCheck,
   faArrowRightLong,
   faInfoCircle,
-  faBullhorn,
 } from "@fortawesome/free-solid-svg-icons";
-import theme from "@/config/theme";
 import Link from "next/link";
-import Image from "next/image";
 import { useRouter } from "next/router";
 
-const pricingData = [
-  {
-    type: "ONE",
-    speed: "7",
-    price: "৳500",
-    features: [
-      "Fiber Optic Connection",
-      "24x7 Call Center Support",
-      "Bufferless Cached Content",
-      "Public IP (IPv6)",
-      "1:8 Contention Ratio",
-    ],
-    group: "basic",
-  },
-  {
-    type: "TWO",
-    speed: "20",
-    price: "৳700",
-    features: [
-      "Fiber Optic Connection",
-      "24x7 Call Center Support",
-      "Bufferless Cached Content",
-      "Public IP (IPv6)",
-      "1:8 Contention Ratio",
-    ],
-    group: "basic",
-  },
-  {
-    type: "THREE",
-    speed: "30",
-    price: "৳1000",
-    features: [
-      "Fiber Optic Connection",
-      "24x7 Call Center Support",
-      "Bufferless Cached Content",
-      "Public IP (IPv6)",
-      "1:8 Contention Ratio",
-    ],
-    group: "standard",
-  },
-  {
-    type: "FOUR",
-    speed: "35",
-    price: "৳1200",
-    features: [
-      "Fiber Optic Connection",
-      "24x7 Call Center Support",
-      "Bufferless Cached Content",
-      "Public IP (IPv6)",
-      "1:8 Contention Ratio",
-    ],
-    popular: true,
-    group: "standard",
-  },
-
-  {
-    type: "FIVE",
-    speed: "45",
-    price: "৳1500",
-    features: [
-      "Fiber Optic Connection",
-      "24x7 Call Center Support",
-      "Bufferless Cached Content",
-      "Public IP (IPv6)",
-      "1:8 Contention Ratio",
-    ],
-    group: "standard",
-  },
-
-  {
-    type: "SIX",
-    speed: "60",
-    price: "৳2000",
-    features: [
-      "Fiber Optic Connection",
-      "24x7 Call Center Support",
-      "Bufferless Cached Content",
-      "Public IP (IPv6)",
-      "1:8 Contention Ratio",
-    ],
-    group: "standard",
-  },
-
-  {
-    type: "SEVEN",
-    speed: "80",
-    price: "৳3000",
-    features: [
-      "Fiber Optic Connection",
-      "24x7 Call Center Support",
-      "Bufferless Cached Content",
-      "Public IP (IPv6)",
-      "1:8 Contention Ratio",
-    ],
-    group: "power",
-  },
-
-  {
-    type: "EIGHT",
-    speed: "110",
-    price: "৳4000",
-    features: [
-      "Fiber Optic Connection",
-      "24x7 Call Center Support",
-      "Bufferless Cached Content",
-      "Public IP (IPv6)",
-      "1:8 Contention Ratio",
-    ],
-    group: "power",
-  },
-
-  {
-    type: "STARTUP",
-    speed: "50",
-    price: "(Call for Price)",
-    features: [
-      "Ideal for small offices",
-      "Dedicated bandwidth",
-      "Free (multi room) logistics setup",
-      "FHD meeting live streaming",
-      "High priority support",
-    ],
-    group: "corporate",
-  },
-  {
-    type: "PROFESSIONAL",
-    speed: "75",
-    price: "(Call for Price)",
-    features: [
-      "Ideal for medium offices",
-      "Dedicated bandwidth",
-      "Free (multi room) logistics setup",
-      "2K meeting live streaming",
-      "Very high priority support",
-    ],
-    group: "corporate",
-  },
-  {
-    type: "ENTERPRISE",
-    speed: "100",
-    price: "(Call for Price)",
-    features: [
-      "Ideal for big multi-level office complexes",
-      "Dedicated bandwidth",
-      "Free (multi floor) logistics setup",
-      "4K meeting live streaming",
-      "Very high priority support",
-    ],
-    group: "corporate",
-  },
-];
-
-const features = [
-  "Fiber Optic Connection",
-  "4k Youtube, Facebook, Netflix and more Streaming",
-  "Bufferless Cached Content",
-  "Gaming Cache (100 Mbps)",
-  "100 Mbps BDIX and other BD NIX Speed",
-  "Home Packages 1:8 Contention Ratio",
-  "24x7 Call Support",
-  "Doorstep Support (9 am - 10 pm)",
-];
+// Utility function to sort data by price
+const sortBySpeed = (data) => {
+  return data.sort((a, b) => {
+    const speedA = parseFloat(a.package_speed);
+    const speedB = parseFloat(b.package_speed);
+    return speedA - speedB;
+  });
+};
 
 const PackagesSection = () => {
-  const [activeTab, setActiveTab] = useState(1);
+  const [activeTab, setActiveTab] = useState(2); // Default tab to 'Standard'
   const [filteredData, setFilteredData] = useState([]);
+  const [allPackages, setAllPackages] = useState([]);
 
   useEffect(() => {
-    // Set the default tab content to "Standard" group when the component mounts
-    const defaultData = pricingData.filter((item) => item.group === "standard");
-    setFilteredData(defaultData);
-    setActiveTab(2); // Set the activeTab state to 2 (index of the "Standard" category)
+    // Fetch data from the API when the component mounts
+    fetch("https://apis.mazedanetworks.net/apis/packages.php")
+      .then((response) => response.json())
+      .then((data) => {
+        // Process and sort data by package_speed for each group
+        const sortedData = data.reduce((acc, curr) => {
+          if (!acc[curr.package_group]) acc[curr.package_group] = [];
+          acc[curr.package_group].push(curr);
+          return acc;
+        }, {});
+
+        for (let group in sortedData) {
+          sortedData[group] = sortBySpeed(sortedData[group]);
+        }
+
+        setAllPackages(sortedData);
+
+        // Set the default tab content to "Standard" group
+        setFilteredData(sortedData["standard"]);
+      })
+      .catch((error) => console.error("Error fetching data:", error));
   }, []);
 
   const handleTabClick = (tabIndex) => {
@@ -203,18 +64,19 @@ const PackagesSection = () => {
       default:
         group = "standard";
     }
-    const newData = pricingData.filter((item) => item.group === group);
-    setFilteredData(newData);
+
+    setFilteredData(allPackages[group] || []);
     setActiveTab(tabIndex);
   };
 
   const router = useRouter();
   const isMyPage = router.pathname === "/packages";
+
   return (
     <section className="page_body">
-      {isMyPage ? <></> : <div className="heading_akm">Monthly Pricing</div>}
+      {!isMyPage && <div className="heading_akm">Monthly Pricing</div>}
 
-      <div className="grid grid-cols-1 grid-flow-row   lg:grid-flow-col  lg:grid-cols-6   gap_akm justify-items-center">
+      <div className="grid grid-cols-1 grid-flow-row lg:grid-flow-col lg:grid-cols-6 gap_akm justify-items-center">
         <div className="box_round_shadow w-full lg:col-span-2">
           <p className="body_text_akm font-bold pb-4">
             All packages include these features.
@@ -231,8 +93,7 @@ const PackagesSection = () => {
             </div>
           ))}
           <Link href="../files/Mazeda_tariff_permission_of_BTRC.pdf">
-            <button className=" items-center mt-2 text-center text-white green_gradient border-0 py-2 px-4 w-full focus:outline-none hover:red_gradient rounded-full">
-              {" "}
+            <button className="items-center mt-2 text-center text-white green_gradient border-0 py-2 px-4 w-full focus:outline-none hover:red_gradient rounded-full">
               BTRC Approved Tariff <FontAwesomeIcon icon={faInfoCircle} />
             </button>
           </Link>
@@ -247,7 +108,7 @@ const PackagesSection = () => {
           </div>
         </div>
         <div className="w-full lg:col-span-4">
-          <div className="grid grid-cols-4  items-center rounded-2xl shadow-xl overflow-hidden  bg-white">
+          <div className="grid grid-cols-4 items-center rounded-2xl shadow-xl overflow-hidden bg-white">
             <div className="w-full flex justify-center items-center">
               <TabButton
                 title="Basic"
@@ -279,34 +140,33 @@ const PackagesSection = () => {
           </div>
           <div className="mt_akm">
             <TabContent>
-              <div className="grid grid-cols-1 gap_akm ">
+              <div className="grid grid-cols-1 gap_akm">
                 {filteredData.map((pricing, index) => (
                   <div
                     key={index}
-                    className="  rounded-2xl shadow-xl hover:shadow-2xl bg-white relative transition duration-300 ease-in-out transform hover:-translate-y-1"
+                    className="rounded-2xl shadow-xl hover:shadow-2xl bg-white relative transition duration-300 ease-in-out transform hover:-translate-y-1"
                   >
                     <div
-                      className={`h-full  rounded-2xl  ${
-                        pricing.popular
+                      className={`h-full rounded-2xl ${
+                        pricing.package_popular === "1"
                           ? "border-2 border-red-500 rounded-2xl"
-                          : " border-2 lg:border-0"
+                          : "border-2 lg:border-0"
                       } flex flex-col relative overflow-hidden`}
                     >
-                      {pricing.popular && (
+                      {pricing.package_popular === "1" && (
                         <span className="bg-red-500 text-white px-3 py-1 tracking-widest text-xs absolute right-0 top-0 rounded-bl z-10">
                           POPULAR
                         </span>
                       )}
-
-                      <div className="grid grid-col-1 md:grid-col-9 grid-flow-row md:grid-flow-col  ">
-                        <div className="flex flex-row md:col-span-3 justify-center items-center  pl-6 bg_green md:-skew-x-12 -ml-6 text-white green_gradient">
-                          <div className=" lg:-mt-1 lg:pl-3 md:skew-x-12 py-3">
-                            <h2 className="text-2xl tracking-widest title-font  pl-1 text_red font-extrabold">
-                              {pricing.type}
+                      <div className="grid grid-col-1 md:grid-col-9 grid-flow-row md:grid-flow-col">
+                        <div className="flex flex-row md:col-span-3 justify-center items-center pl-6 bg_green md:-skew-x-12 -ml-6 text-white green_gradient">
+                          <div className="lg:-mt-1 lg:pl-3 md:skew-x-12 py-3">
+                            <h2 className="text-2xl tracking-widest title-font pl-1 text_red font-extrabold">
+                              {pricing.package_name}
                             </h2>
                             <div className="flex flex-row">
                               <p className="text-5xl font-bold leading-none mr-1">
-                                {pricing.speed}
+                                {pricing.package_speed}
                               </p>
                               <p className="flex items-end text-lg tracking-widest font-medium">
                                 Mbps
@@ -314,10 +174,10 @@ const PackagesSection = () => {
                             </div>
                           </div>
                         </div>
-                        <div className="md:col-span-3 flex flex-col justify-center -skew-x-12   pl-16 p-6 bg-gradient-to-b from-white  via-gray-100 to-white">
+                        <div className="md:col-span-3 flex flex-col justify-center -skew-x-12 pl-16 p-6 bg-gradient-to-b from-white via-gray-100 to-white">
                           <div className="skew-x-12">
-                            {pricing.features.map((feature, idx) => (
-                              <div key={idx} className="flex mb-2 ">
+                            {pricing.package_features.map((feature, idx) => (
+                              <div key={idx} className="flex mb-2">
                                 <div className="mr-2 text-white rounded-full">
                                   <FontAwesomeIcon
                                     icon={faCircleCheck}
@@ -329,34 +189,28 @@ const PackagesSection = () => {
                             ))}
                           </div>
                         </div>
-                        <div className="md:col-span-3 flex flex-col justify-center  items-center p-6 md:-skew-x-12 bg-gradient-to-b from-[#0296b8] via-[#03738c] to-[#0296b8] -mr-5 text-white">
+                        <div className="md:col-span-3 flex flex-col justify-center items-center p-6 md:-skew-x-12 bg-gradient-to-b from-[#0296b8] via-[#03738c] to-[#0296b8] -mr-5 text-white">
                           <p
                             className={
-                              pricing.price === "(Call for Price)"
+                              pricing.package_price === "(Call for Price)"
                                 ? "text-white text-sm italic font-bold tracking-wide"
                                 : "text-3xl md:skew-x-12 -ml-4 tracking-wide font-semibold"
                             }
                           >
-                            {pricing.price}
+                            {pricing.package_price}
                           </p>
-
                           <Link
                             href="/contact"
-                            className="items-center rounded-full text-center md:skew-x-12 text-white red_gradient hover:deep_red_gradient  py-2 px-4 mt-2 font-semibold"
+                            className="items-center rounded-full text-center md:skew-x-12 text-white red_gradient hover:deep_red_gradient py-2 px-4 mt-4"
                           >
-                            <button className="mr-1 ">Purchase </button>
-                            <FontAwesomeIcon icon={faArrowRightLong} />
+                            Contact Us
+                            <FontAwesomeIcon
+                              icon={faArrowRightLong}
+                              className="ml-2 text-sm"
+                            />
                           </Link>
                         </div>
                       </div>
-
-                      {/* <button className=" items-center mt-auto text-center text-white bg-[#03738C] border-0 py-2 px-4 w-full focus:outline-none hover:bg-red-700 rounded-full">
-                        <Link href="/contact">
-                          {" "}
-                          Proceed with this plan{" "}
-                          <FontAwesomeIcon icon={faArrowRightLong} />
-                        </Link>
-                      </button> */}
                     </div>
                   </div>
                 ))}
@@ -385,8 +239,13 @@ const TabButton = ({ title, onClick, isActive }) => {
   );
 };
 
-const TabContent = ({ children }) => {
-  return <div>{children}</div>;
-};
+const TabContent = ({ children }) => <div>{children}</div>;
+
+const features = [
+  "Unlimited Bandwidth",
+  "24/7 Support",
+  "Free Router",
+  "No Installation Fees",
+];
 
 export default PackagesSection;
