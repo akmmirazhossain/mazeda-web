@@ -242,10 +242,21 @@ const TabButton = ({ title, onClick, isActive }) => {
 const TabContent = ({ children }) => <div>{children}</div>;
 
 const features = [
-  "Unlimited Bandwidth",
-  "24/7 Support",
-  "Free Router",
-  "No Installation Fees",
+  "Fiber optic connection",
+  "4K Youtube, Facebook, Netflix and more streaming",
+  "Bufferless Cached Content",
+  "Gaming cache (100 Mbps)",
+  "100 Mbps BDIX and other BD NIX speed",
+  "24x7 call center Support",
+  "Doorstep support (9 am - 10 pm)",
+  "Home Packages 1:8 Contention Ratio",
 ];
+
+// const features = [
+//   "Unlimited Bandwidth",
+//   "24/7 Support",
+//   "Free Router",
+//   "No Installation Fees",
+// ];
 
 export default PackagesSection;
