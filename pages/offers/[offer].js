@@ -42,7 +42,7 @@ const OfferPage = ({ selectedOffer }) => {
       </Head>
       <Navbar />
       <div className="container_akm nav_space_akm">
-        <section className="page_body">
+        {/* <section className="page_body">
           <div className="grid grid-cols-1 md:grid-cols-3 gap_akm">
             <div className="col-span-3 box_round_shadow mt-4 pt-4 sm:mt-0 text-center sm:text-left ">
               <h1 className="subheading_akm border-b mb-3">
@@ -109,7 +109,7 @@ const OfferPage = ({ selectedOffer }) => {
               </div>
             </div>
           </div>
-        </section>
+        </section> */}
       </div>
       <Footer />
     </main>
