@@ -2,7 +2,7 @@ import React from "react";
 import { useRouter } from "next/router";
 import Navbar from "./../components/Navbar";
 import Footer from "./../components/Footer";
-// import Head from "next/head";
+import Head from "next/head";
 import Image from "next/image";
 import { apiUrl, imgUrl } from "../../config/config";
 
@@ -20,7 +20,7 @@ const OfferPage = ({ selectedOffer }) => {
   const { offer } = router.query;
 
   if (!selectedOffer) {
-    return <div>Failed to load API</div>;
+    return <div></div>;
   }
 
   const shareUrl = `https://mazedanetworks.net/offers/${offer}`;
@@ -29,7 +29,7 @@ const OfferPage = ({ selectedOffer }) => {
 
   return (
     <main>
-      {/* <Head>
+      <Head>
         <meta property="og:type" content="website" />
         <meta property="og:url" content={shareUrl} />
         <meta property="og:title" content={selectedOffer.offer_title} />
@@ -39,7 +39,7 @@ const OfferPage = ({ selectedOffer }) => {
         />
         <meta property="og:image" content={shareImage} />
         <title>{selectedOffer.offer_title}</title>
-      </Head> */}
+      </Head>
       <Navbar />
       <div className="container_akm nav_space_akm">
         <section className="page_body">
@@ -53,18 +53,16 @@ const OfferPage = ({ selectedOffer }) => {
                 <Image
                   src={`${imgUrl}${selectedOffer.offer_bannerImg}`}
                   alt={selectedOffer.offer_title}
-                  fill
-                  className="rounded-2xl object-cover"
-                  sizes="(max-width: 768px) 100vw, (min-width: 769px) 50vw"
-                  priority
+                  layout="fill"
+                  objectFit="cover"
+                  className="rounded-2xl"
                 />
                 <Image
                   src={`${imgUrl}${selectedOffer.offer_thumbImg}`}
                   alt={selectedOffer.offer_title}
-                  fill
-                  className="rounded-2xl block md:hidden object-cover"
-                  sizes="(max-width: 768px) 100vw, (min-width: 769px) 50vw"
-                  priority
+                  layout="fill"
+                  objectFit="cover"
+                  className="rounded-2xl block md:hidden"
                 />
               </div>
 
