@@ -53,16 +53,18 @@ const OfferPage = ({ selectedOffer }) => {
                 <Image
                   src={`${imgUrl}${selectedOffer.offer_bannerImg}`}
                   alt={selectedOffer.offer_title}
-                  layout="fill"
-                  objectFit="cover"
-                  className="rounded-2xl"
+                  fill
+                  className="rounded-2xl object-cover"
+                  sizes="(max-width: 768px) 100vw, (min-width: 769px) 50vw"
+                  priority
                 />
                 <Image
                   src={`${imgUrl}${selectedOffer.offer_thumbImg}`}
                   alt={selectedOffer.offer_title}
-                  layout="fill"
-                  objectFit="cover"
-                  className="rounded-2xl block md:hidden"
+                  fill
+                  className="rounded-2xl block md:hidden object-cover"
+                  sizes="(max-width: 768px) 100vw, (min-width: 769px) 50vw"
+                  priority
                 />
               </div>
 
