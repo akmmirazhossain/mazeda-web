@@ -2,7 +2,7 @@ import React from "react";
 import { useRouter } from "next/router";
 import Navbar from "./../components/Navbar";
 import Footer from "./../components/Footer";
-import Head from "next/head";
+// import Head from "next/head";
 import Image from "next/image";
 import { apiUrl, imgUrl } from "../../config/config";
 
@@ -20,7 +20,7 @@ const OfferPage = ({ selectedOffer }) => {
   const { offer } = router.query;
 
   if (!selectedOffer) {
-    return <div></div>;
+    return <div>Failed to load API</div>;
   }
 
   const shareUrl = `https://mazedanetworks.net/offers/${offer}`;
