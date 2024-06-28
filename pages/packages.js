@@ -3,8 +3,11 @@ import PackagesSection from "./components/PackagesSection";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import Head from "next/head";
+import { useIntl } from "react-intl";
 
 const PackagesPage = () => {
+  const intl = useIntl();
+  const packageTitle = intl.messages.component.packageTitle;
   return (
     <>
       <Head>
@@ -18,7 +21,7 @@ const PackagesPage = () => {
         <Navbar />
 
         <div className="banner_bg bg-[url('/images/packages-banner.jpg')] ">
-          <h1 className="banner_title text_shadow_black">Monthly Pricing</h1>
+          <h1 className="banner_title text_shadow_black">{packageTitle}</h1>
         </div>
 
         <div className="container_akm ">

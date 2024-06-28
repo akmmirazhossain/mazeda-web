@@ -1,11 +1,15 @@
 // pages/about.js
 import React from "react";
 import Link from "next/link";
-import footerData from "../../public/data/footerData.json";
+
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeadset } from "@fortawesome/free-solid-svg-icons";
+import { useIntl } from "react-intl";
 
 const Footer = () => {
+  const intl = useIntl();
+  const footerData = intl.messages.component.footerData;
+  const footerSubtitle = intl.messages.component.footerSubtitle;
   return (
     <>
       <footer className="shadow-xl text_gray bg-white ">
@@ -17,17 +21,14 @@ const Footer = () => {
               </Link>
             </div>
 
-            <p className="mt-2  text-sm">
-              We&apos;re more than an ISP, your digital ally for robust,
-              high-speed internet and exceptional customer care.
-            </p>
+            <p className="mt-2  text-sm">{footerSubtitle}</p>
 
             <div className="pt-2 text-sm">
               <FontAwesomeIcon icon={faHeadset} /> 09666 334455
             </div>
           </div>
           <div className="grid grid-cols-2 md:col-span-8  md:grid-cols-4 px-8 md:pl-20 -mb-10 md:mt-0 mt-10 md:text-left text-center">
-            {footerData.footerData.map((section, index) => (
+            {footerData.map((section, index) => (
               <div key={index} className=" w-full px-4">
                 <h2 className="title-font font-bold text_green tracking-widest text-sm mb-3">
                   {section.title}

@@ -5,12 +5,15 @@ import {
   faBriefcase,
   faVideo,
 } from "@fortawesome/free-solid-svg-icons";
-import servicesData from "../../public/data/servicesData.json";
+import { useIntl } from "react-intl";
 
 const Services = () => {
+  const intl = useIntl();
+  const servicesTitle = intl.messages.component.servicesTitle;
+  const servicesData = intl.messages.component.services;
   return (
     <section className="page_body">
-      <div className="heading_akm content">Our Services</div>
+      <div className="heading_akm content">{servicesTitle}</div>
 
       <div className="grid gap_akm sm:grid-cols-2 lg:grid-cols-3">
         {servicesData.map((service, index) => (

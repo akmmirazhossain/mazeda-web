@@ -9,18 +9,34 @@ import {
   faHeadset,
   faEnvelope,
 } from "@fortawesome/free-solid-svg-icons";
+import { Switch } from "@nextui-org/react";
 
-const items = [
-  { href: "/", label: "Home" },
-  { href: "/about", label: "About" },
-  { href: "/packages", label: "Packages" },
-  { href: "/coverage", label: "Coverage" },
-  { href: "/offers", label: "Offers" },
-  { href: "/pay-bill", label: "Pay Bill" },
-  { href: "/contact", label: "Contact" },
-];
+import { useIntl } from "react-intl";
 
 function Navbar() {
+  const { locales, locale, asPath } = useRouter();
+  const intl = useIntl();
+  const items = intl.messages.component.navbar;
+  const navbarButtons = intl.messages.component.navbarButtons;
+
+  const [localeBn, localeEn] = locales || ["bn", "en"];
+  const handleLocaleChange = (selectedLocale) => {
+    router.push(asPath, asPath, { locale: selectedLocale });
+  };
+
+  console.log(``);
+
+  const getIcon = (iconName) => {
+    switch (iconName) {
+      case "faCreditCard":
+        return faCreditCard;
+      case "faPhoneVolume":
+        return faPhoneVolume;
+      default:
+        return null;
+    }
+  };
+
   const [menuOpen, setMenuOpen] = useState(false);
   const router = useRouter();
 
@@ -53,7 +69,7 @@ function Navbar() {
                   <img alt="" src="/logo.webp" className="pr-10" />
                 </Link>
               </div>
-              <ul className="items-center hidden space-x-6 lg:flex text-base font-medium  h-full">
+              <ul className="items-center hidden space-x-4 lg:flex text-base font-medium  h-full">
                 {items.map((item, index) => (
                   <Link
                     href={item.href}
@@ -69,46 +85,70 @@ function Navbar() {
                           </div>
                         </div>
                       )}
+
+                      {item.label === "অফার" && (
+                        <div className="flex items-center justify-center h-full absolute -top-1.5 -right-1">
+                          <div className=" bg-red-500 h-5 w-5 rounded-full flex items-center justify-center  text-white text-xs">
+                            ২
+                          </div>
+                        </div>
+                      )}
                     </li>
                     {isActive(item.href) && (
                       <div className="border-b-2 border-red-500 absolute bottom-0 left-0 w-full"></div>
                     )}
                   </Link>
                 ))}
+
+                {/* {[...locales].sort().map((locale) => (
+                  <Switch
+                    defaultSelected
+                    size="lg"
+                    color="danger"
+                    startContent={<span style={{ fontSize: "14px" }}>BN</span>}
+                    endContent={<span style={{ fontSize: "14px" }}>EN</span>}
+                  ></Switch>
+                ))} */}
+
+                {/* <Link href="" locale={bnLocale}>
+                  <div>{bnLocale}</div>
+                </Link>
+
+                <Link href="" locale={enLocale}>
+                  <div>{enLocale}</div>
+                </Link> */}
               </ul>
             </div>
 
             <div className="flex">
+              <Switch
+                className="hidden sm:flex"
+                isSelected={locale === "en"} // Check if current locale is 'en'
+                onChange={(e) =>
+                  handleLocaleChange(e.target.checked ? localeEn : localeBn)
+                }
+                size="lg"
+                color="danger"
+                startContent={<span style={{ fontSize: "13px" }}>BN</span>}
+                endContent={<span style={{ fontSize: "13px" }}>EN</span>}
+              />
               <ul className="items-center space-x-2 hidden sm:flex">
-                <li>
-                  <Link
-                    href="https://isperp.mazedanetworks.net/ispcare"
-                    target="_blank"
-                    className="justify-center px-4 py-2 font-sm green_gradient hover:red_gradient text-[#FFF]  rounded-full shadow-md"
-                  >
-                    <FontAwesomeIcon
-                      size="xs"
-                      className="pr-1"
-                      icon={faCreditCard}
-                    />
-                    Quick Pay
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    href="/support"
-                    className="justify-center px-4 py-2 font-sm green_gradient hover:red_gradient text-[#FFF]  rounded-full shadow-md"
-                  >
-                    <FontAwesomeIcon
-                      size="xs"
-                      className="pr-1"
-                      icon={faPhoneVolume}
-                    />
-                    Support
-                  </Link>
-                </li>
+                {navbarButtons.map((button, index) => (
+                  <li key={index}>
+                    <Link
+                      href={button.href}
+                      className="justify-center px-4 py-2 font-sm green_gradient hover:red_gradient text-[#FFF] rounded-full shadow-md"
+                    >
+                      <FontAwesomeIcon
+                        icon={getIcon(button.icon)}
+                        size="xs"
+                        className="pr-1"
+                      />
+                      {button.label}
+                    </Link>
+                  </li>
+                ))}
               </ul>
-
               <button
                 onClick={toggleMenu}
                 className="py-2 pl-2 pr-6 lg:hidden hover:text-deep-purple-accent-400 focus:outline-none focus:text-deep-purple-accent-400"
@@ -131,9 +171,17 @@ function Navbar() {
                   <li className={`p-2 lg:p-4 ${isActive(item.href)} relative`}>
                     {item.label}
                     {item.label === "Offers" && (
-                      <div className="flex items-center justify-center h-full absolute -top-2 -right-3">
-                        <div className="relative bg-red-500 h-5 w-5 rounded-full flex items-center justify-center  text-white text-xs">
+                      <div className="flex items-center justify-center h-full absolute -top-1.5 -right-1">
+                        <div className=" bg-red-500 h-5 w-5 rounded-full flex items-center justify-center  text-white text-xs">
                           2
+                        </div>
+                      </div>
+                    )}
+
+                    {item.label === "অফার" && (
+                      <div className="flex items-center justify-center h-full absolute -top-1.5 -right-1">
+                        <div className=" bg-red-500 h-5 w-5 rounded-full flex items-center justify-center  text-white text-xs">
+                          ২
                         </div>
                       </div>
                     )}
@@ -145,32 +193,36 @@ function Navbar() {
               ))}
             </ul>
 
+            <div className="flex justify-center mt-4">
+              <Switch
+                className="flex sm:hidden"
+                isSelected={locale === "en"} // Check if current locale is 'en'
+                onChange={(e) =>
+                  handleLocaleChange(e.target.checked ? localeEn : localeBn)
+                }
+                size="lg"
+                color="danger"
+                startContent={<span style={{ fontSize: "13px" }}>BN</span>}
+                endContent={<span style={{ fontSize: "13px" }}>EN</span>}
+              />
+            </div>
+
             <ul className="flex sm:hidden justify-center my-4 space-x-2">
-              <li>
-                <Link
-                  className="justify-center px-4 py-2 font-sm green_gradient hover:red_gradient text-[#FFF]  rounded-full shadow-md "
-                  href="https://isperp.mazedanetworks.net/ispcare"
-                  target="_blank"
-                >
-                  <FontAwesomeIcon
-                    className="text-xs pr-1"
-                    icon={faCreditCard}
-                  />
-                  Quick Pay
-                </Link>
-              </li>
-              <li>
-                <Link
-                  className="justify-center px-4 py-2 font-sm green_gradient hover:red_gradient text-[#FFF]  rounded-full shadow-md "
-                  href="/support"
-                >
-                  <FontAwesomeIcon
-                    className="text-xs pr-1"
-                    icon={faPhoneVolume}
-                  />
-                  Support
-                </Link>
-              </li>
+              {navbarButtons.map((button, index) => (
+                <li key={index}>
+                  <Link
+                    href={button.href}
+                    className="justify-center px-4 py-2 font-sm green_gradient hover:red_gradient text-[#FFF] rounded-full shadow-md"
+                  >
+                    <FontAwesomeIcon
+                      icon={getIcon(button.icon)}
+                      size="xs"
+                      className="pr-1"
+                    />
+                    {button.label}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
         )}

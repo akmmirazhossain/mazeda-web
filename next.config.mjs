@@ -5,6 +5,11 @@ const nextConfig = {
   images: {
     domains: ["apis.mazedanetworks.net"],
   },
+  i18n: {
+    locales: ["en", "bn"],
+    defaultLocale: "bn",
+    localeDetection: false,
+  },
 };
 
 export default nextConfig;

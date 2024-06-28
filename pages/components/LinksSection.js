@@ -3,10 +3,11 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faImage } from "@fortawesome/free-solid-svg-icons";
 import Image from "next/image";
 import Link from "next/link";
-
-import linkData from "../../public/data/linksData.json";
+import { useIntl } from "react-intl";
 
 const LinkSection = () => {
+  const intl = useIntl();
+  const linkData = intl.messages.component.links;
   return (
     <section className="page_body ">
       <div className="grid grid-cols-2  md:grid-cols-3 lg:grid-cols-4 text-center gap_akm">

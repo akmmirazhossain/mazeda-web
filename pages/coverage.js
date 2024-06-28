@@ -4,8 +4,12 @@ import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import CoverageBlocks from "./components/CoverageBlocks";
 import Head from "next/head";
+import { useIntl } from "react-intl";
 
 const CoveragePage = () => {
+  const intl = useIntl();
+  const coverageTitle = intl.messages.component.coverageTitle;
+  const coverageSubtitle = intl.messages.component.coverageSubtitle;
   return (
     <>
       <Head>
@@ -18,9 +22,9 @@ const CoveragePage = () => {
       <main>
         <Navbar />
         <div className="banner_bg bg-[url('/images/coverage-page.webp')] ">
-          <h1 className="banner_title text_shadow_black">Our coverage</h1>
+          <h1 className="banner_title text_shadow_black">{coverageTitle}</h1>
           <p className="banner_subtitle text_shadow_black">
-            Our network grows daily, so stay tuned for updates here.
+            {coverageSubtitle}
           </p>
         </div>
         <div className="container_akm  min-h-screen">

@@ -2,8 +2,12 @@ import Navbar from "./components/Navbar";
 import PayBillSection from "./components/PayBillSection";
 import Footer from "./components/Footer";
 import Head from "next/head";
+import { useIntl } from "react-intl";
 
 function PayBillPage() {
+  const intl = useIntl();
+  const paybillTitle = intl.messages.component.paybillTitle;
+
   return (
     <>
       <Head>
@@ -17,9 +21,7 @@ function PayBillPage() {
         <Navbar />
 
         <div className="banner_bg bg-[url('/images/pay-bill-cover.webp')] ">
-          <h1 className="banner_title text_shadow_black">
-            Seeking payment options?
-          </h1>
+          <h1 className="banner_title text_shadow_black">{paybillTitle}</h1>
         </div>
         <div className="container_akm ">
           <PayBillSection />

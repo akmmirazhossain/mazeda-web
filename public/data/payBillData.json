@@ -2,61 +2,61 @@
   "bkash": [
     {
       "step": "Select the <span class=\"font-bold\">Pay Bill</span> option.",
-      "image": "images/slider/bkash/b1.png"
+      "image": "/images/slider/bkash/b1.png"
     },
     {
       "step": "Search <span class=\"font-bold\">Mazeda Networks Ltd</span> and tap on it.",
-      "image": "images/slider/bkash/b2.png"
+      "image": "/images/slider/bkash/b2.png"
     },
     {
       "step": "Choose current month and enter your <span class=\"font-bold\">Subscriber ID</span>.",
-      "image": "images/slider/bkash/b3.png",
+      "image": "/images/slider/bkash/b3.png",
       "note": "No Subscriber ID? Please contact us 09666 334455"
     },
     {
       "step": "<span class=\"font-bold\">Tap and hold for Pay Bill</span> until the payment is successful.",
-      "image": "images/slider/bkash/b5.png"
+      "image": "/images/slider/bkash/b5.png"
     }
   ]
 ,
  "nagad": [
     {
       "step": "Select the <span class=\"font-bold\">Bill Pay</span> option.",
-      "image": "images/slider/nagad/n1.jpg"
+      "image": "/images/slider/nagad/n1.jpg"
     },
     {
       "step": "Search <span class=\"font-bold\">Mazeda Networks Ltd</span> and tap on it.",
-      "image": "images/slider/nagad/n2.jpg"
+      "image": "/images/slider/nagad/n2.jpg"
     },
     {
       "step": "Type your <span class=\"font-bold\">Customer ID</span>, then tap on <span class=\"font-bold\">NEXT</span>.",
-      "image": "images/slider/nagad/n3.jpg",
+      "image": "/images/slider/nagad/n3.jpg",
       "note": "No Subscriber ID? Please contact us 09666 334455"
     },
     {
       "step": "Type your name on <span class=\"font-bold\">Bill Reference Name</span> and tap <span class=\"font-bold\">NEXT</span> until the payment is successful.",
-      "image": "images/slider/nagad/n4.png"
+      "image": "/images/slider/nagad/n4.png"
     }
   ],
 
   "userPortal": [
     {
       "step": "Click here and login.",
-      "image": "images/slider/user-portal/up1.jpg",
+      "image": "/images/slider/user-portal/up1.jpg",
       "link": "https://isperp.mazedanetworks.net/ispcare",
       "linkText": "<span class=\"font-bold\">Click here </span>"
     },
     {
       "step": "Click on <span class=\"font-bold\">PAY BILL.</span>",
-      "image": "images/slider/user-portal/up2.jpg"
+      "image": "/images/slider/user-portal/up2.jpg"
     },
     {
       "step": "Click on <span class=\"font-bold\">PAY NOW - SSL GATEWAY.</span>",
-      "image": "images/slider/user-portal/up3.jpg"
+      "image": "/images/slider/user-portal/up3.jpg"
     },
     {
       "step": "Enter your card details and make a safe transaction.",
-      "image": "images/slider/user-portal/up4.jpg"
+      "image": "/images/slider/user-portal/up4.jpg"
     }
   ],
   "option": [

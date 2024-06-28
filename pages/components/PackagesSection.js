@@ -7,6 +7,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import Link from "next/link";
 import { useRouter } from "next/router";
+import { useIntl } from "react-intl";
 
 // Utility function to sort data by price
 const sortBySpeed = (data) => {
@@ -18,6 +19,13 @@ const sortBySpeed = (data) => {
 };
 
 const PackagesSection = () => {
+  const intl = useIntl();
+  const packageFeatures = intl.messages.component.packageFeatures;
+  const packageFeaturesTitle = intl.messages.component.packageFeaturesTitle;
+  const packageFeaturesBTRC = intl.messages.component.packageFeaturesBTRC;
+  const packageTitle = intl.messages.component.packageTitle;
+  const packageGroups = intl.messages.component.packageGroups;
+
   const [activeTab, setActiveTab] = useState(2); // Default tab to 'Standard'
   const [filteredData, setFilteredData] = useState([]);
   const [allPackages, setAllPackages] = useState([]);
@@ -74,14 +82,15 @@ const PackagesSection = () => {
 
   return (
     <section className="page_body">
-      {!isMyPage && <div className="heading_akm">Monthly Pricing</div>}
+      {!isMyPage && <div className="heading_akm">{packageTitle}</div>}
 
       <div className="grid grid-cols-1 grid-flow-row lg:grid-flow-col lg:grid-cols-6 gap_akm justify-items-center">
         <div className="box_round_shadow w-full lg:col-span-2">
           <p className="body_text_akm font-bold pb-4">
-            All packages include these features.
+            {packageFeaturesTitle}
+            {/* All packages include these features. */}
           </p>
-          {features.map((feature, index) => (
+          {packageFeatures.map((feature, index) => (
             <div key={index} className="flex items-start mb-2">
               <div className="mr-2 text-white rounded-full">
                 <FontAwesomeIcon
@@ -94,7 +103,7 @@ const PackagesSection = () => {
           ))}
           <Link href="../files/Mazeda_tariff_permission_of_BTRC.pdf">
             <button className="items-center mt-2 text-center text-white green_gradient border-0 py-2 px-4 w-full focus:outline-none hover:red_gradient rounded-full">
-              BTRC Approved Tariff <FontAwesomeIcon icon={faInfoCircle} />
+              {packageFeaturesBTRC} <FontAwesomeIcon icon={faInfoCircle} />
             </button>
           </Link>
           <div className="p-14 bounce">
@@ -109,7 +118,19 @@ const PackagesSection = () => {
         </div>
         <div className="w-full lg:col-span-4">
           <div className="grid grid-cols-4 items-center rounded-2xl shadow-xl overflow-hidden bg-white">
-            <div className="w-full flex justify-center items-center">
+            {packageGroups.map((group, index) => (
+              <div
+                key={index}
+                className="w-full flex justify-center items-center"
+              >
+                <TabButton
+                  title={group.title}
+                  onClick={() => handleTabClick(group.tabIndex)}
+                  isActive={group.tabIndex === activeTab}
+                />
+              </div>
+            ))}
+            {/* <div className="w-full flex justify-center items-center">
               <TabButton
                 title="Basic"
                 onClick={() => handleTabClick(1)}
@@ -136,7 +157,7 @@ const PackagesSection = () => {
                 onClick={() => handleTabClick(4)}
                 isActive={activeTab === 4}
               />
-            </div>
+            </div> */}
           </div>
           <div className="mt_akm">
             <TabContent>
@@ -240,23 +261,5 @@ const TabButton = ({ title, onClick, isActive }) => {
 };
 
 const TabContent = ({ children }) => <div>{children}</div>;
-
-const features = [
-  "Fiber optic connection",
-  "4K Youtube, Facebook, Netflix and more streaming",
-  "Bufferless Cached Content",
-  "Gaming cache (100 Mbps)",
-  "100 Mbps BDIX and other BD NIX speed",
-  "24x7 call center Support",
-  "Doorstep support (9 am - 10 pm)",
-  "Home Packages 1:8 Contention Ratio",
-];
-
-// const features = [
-//   "Unlimited Bandwidth",
-//   "24/7 Support",
-//   "Free Router",
-//   "No Installation Fees",
-// ];
 
 export default PackagesSection;

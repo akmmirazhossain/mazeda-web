@@ -7,8 +7,13 @@ import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
 import { apiUrl, imgUrl } from "../config/config";
+import { useIntl } from "react-intl";
 
 const OffersPage = () => {
+  const intl = useIntl();
+  const offerTitle = intl.messages.component.offerTitle;
+  const offerSubtitle = intl.messages.component.offerSubtitle;
+
   const [offers, setOffers] = useState([]);
 
   useEffect(() => {
@@ -34,11 +39,8 @@ const OffersPage = () => {
         <Navbar />
 
         <div className="banner_bg  bg-[url('/images/offers.webp')]">
-          <h1 className="banner_title text_shadow_black">Exclusive Offers</h1>
-          <p className="banner_subtitle text_shadow_black ">
-            Unlock exclusive deals and incentives as you get our internet
-            connection.
-          </p>
+          <h1 className="banner_title text_shadow_black">{offerTitle}</h1>
+          <p className="banner_subtitle text_shadow_black ">{offerSubtitle}</p>
         </div>
 
         <div className="container_akm ">
