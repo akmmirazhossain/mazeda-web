@@ -4,12 +4,14 @@ import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import Head from "next/head";
 import { apiUrl, imgUrl } from "../config/config";
+import Cookies from "js-cookie";
 
 const AboutPage = () => {
   const [aboutInfo, setAboutInfo] = useState(null);
 
   useEffect(() => {
     const fetchData = async () => {
+      const apiUrl = Cookies.get("baseApi");
       try {
         const response = await fetch(`${apiUrl}/about.php`);
         if (!response.ok) {
@@ -46,7 +48,7 @@ const AboutPage = () => {
         <div
           className="banner_bg"
           style={{
-            backgroundImage: `url(${imgUrl}${aboutInfo.about_bannerimg})`,
+            backgroundImage: `url(${imgUrl}${aboutInfo.bannerimg})`,
           }}
         >
           <h1 className="banner_title text_shadow_black">About Us</h1>
@@ -58,7 +60,7 @@ const AboutPage = () => {
               <div
                 className="col-span-2 text-center pad_akm box_round_shadow min-h-48 max-h-[600px] hidden md:block"
                 style={{
-                  backgroundImage: `url(${imgUrl}${aboutInfo.about_sideimg})`,
+                  backgroundImage: `url(${imgUrl}${aboutInfo.sideimg})`,
                   backgroundSize: "cover",
                   backgroundPosition: "center",
                   backgroundRepeat: "no-repeat",
@@ -70,7 +72,7 @@ const AboutPage = () => {
                   <p
                     className="text-lg leading-relaxed mb-8"
                     dangerouslySetInnerHTML={{
-                      __html: aboutInfo.about_desc,
+                      __html: aboutInfo.description,
                     }}
                   ></p>
                 </div>
@@ -82,7 +84,7 @@ const AboutPage = () => {
                     </h1>
                     <p
                       dangerouslySetInnerHTML={{
-                        __html: aboutInfo.about_mission,
+                        __html: aboutInfo.mission,
                       }}
                     ></p>
                   </div>
@@ -93,7 +95,7 @@ const AboutPage = () => {
                     </h1>
                     <p
                       dangerouslySetInnerHTML={{
-                        __html: aboutInfo.about_vision,
+                        __html: aboutInfo.vision,
                       }}
                     ></p>
                   </div>
@@ -103,7 +105,7 @@ const AboutPage = () => {
                       Partnered With
                     </h1>
                     <div className="grid grid-cols-2 md:grid-cols-4 gap_akm ">
-                      {aboutInfo.about_partners.map((partner, index) => (
+                      {aboutInfo.partners.map((partner, index) => (
                         <img
                           key={index}
                           src={`${imgUrl}${partner}`}

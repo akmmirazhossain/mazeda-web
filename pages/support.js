@@ -1,5 +1,5 @@
 // pages/about.js
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Navbar from "./components/Navbar";
 import Link from "next/link";
 import Image from "next/image";
@@ -8,11 +8,33 @@ import PhoneNumbers from "./components/common/phone-numbers";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircleQuestion } from "@fortawesome/free-solid-svg-icons";
 import Head from "next/head";
-import supportData from "../public/data/supportData.json";
+import { useIntl } from "react-intl";
+
+import { apiUrl, imgUrl } from "../config/config";
 
 const Support = () => {
-  const { faqContent, workflowImage, networkDiagramImage, subtitle, title } =
-    supportData;
+  const [faqContent, setFaqContent] = useState([]);
+
+  const intl = useIntl();
+  const popularInquiries = intl.messages.component.supportPage.popularInquiries;
+  const supportWorkflow = intl.messages.component.supportPage.supportWorkflow;
+  const diagram = intl.messages.component.supportPage.diagram;
+  const title = intl.messages.component.supportPage.title;
+  const subtitle = intl.messages.component.supportPage.subtitle;
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch(`${apiUrl}/faq.php`);
+        const data = await response.json();
+        setFaqContent(data);
+      } catch (error) {
+        console.error("Error fetching offers:", error);
+      }
+    };
+
+    fetchData();
+  }, []);
 
   return (
     <>
@@ -48,7 +70,7 @@ const Support = () => {
                 </div>
                 <div id="faqSection" className="mt-10 pt_akm border-t">
                   <div className="mb-2">
-                    <p className="subheading_akm">Popular Inquiries</p>
+                    <p className="subheading_akm">{popularInquiries}</p>
                   </div>
                   {faqContent.map((item, index) => (
                     <div key={index} className="my-6">
@@ -69,20 +91,24 @@ const Support = () => {
 
                 <div className="mt-10 pt_akm border-t">
                   <div className="mb-2">
-                    <p className="subheading_akm">Support Workflow</p>
-                  </div>
-                  <div>
-                    <img alt="" src={workflowImage} className="rounded-2xl" />
-                  </div>
-                </div>
-                <div className="mt-10 pt_akm border-t">
-                  <div className="mb-2">
-                    <p className="subheading_akm">Home Network Diagram</p>
+                    <p className="subheading_akm">{supportWorkflow}</p>
                   </div>
                   <div>
                     <img
                       alt=""
-                      src={networkDiagramImage}
+                      src="/images/support-workflow.png"
+                      className="rounded-2xl"
+                    />
+                  </div>
+                </div>
+                <div className="mt-10 pt_akm border-t">
+                  <div className="mb-2">
+                    <p className="subheading_akm">{diagram}</p>
+                  </div>
+                  <div>
+                    <img
+                      alt=""
+                      src="/images/support-workflow.png"
                       className="rounded-2xl"
                     />
                   </div>

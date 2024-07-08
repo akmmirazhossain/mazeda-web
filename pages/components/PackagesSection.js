@@ -8,12 +8,13 @@ import {
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useIntl } from "react-intl";
+import Cookies from "js-cookie";
 
 // Utility function to sort data by price
 const sortBySpeed = (data) => {
   return data.sort((a, b) => {
-    const speedA = parseFloat(a.package_speed);
-    const speedB = parseFloat(b.package_speed);
+    const speedA = parseFloat(a.packageSpeed);
+    const speedB = parseFloat(b.packageSpeed);
     return speedA - speedB;
   });
 };
@@ -31,14 +32,15 @@ const PackagesSection = () => {
   const [allPackages, setAllPackages] = useState([]);
 
   useEffect(() => {
+    const apiUrl = Cookies.get("baseApi");
     // Fetch data from the API when the component mounts
-    fetch("https://apis.mazedanetworks.net/apis/packages.php")
+    fetch(`${apiUrl}/packages.php`)
       .then((response) => response.json())
       .then((data) => {
         // Process and sort data by package_speed for each group
         const sortedData = data.reduce((acc, curr) => {
-          if (!acc[curr.package_group]) acc[curr.package_group] = [];
-          acc[curr.package_group].push(curr);
+          if (!acc[curr.packageGroup]) acc[curr.packageGroup] = [];
+          acc[curr.packageGroup].push(curr);
           return acc;
         }, {});
 
@@ -169,12 +171,12 @@ const PackagesSection = () => {
                   >
                     <div
                       className={`h-full rounded-2xl ${
-                        pricing.package_popular === "1"
+                        pricing.packagePopular === "1"
                           ? "border-2 border-red-500 rounded-2xl"
                           : "border-2 lg:border-0"
                       } flex flex-col relative overflow-hidden`}
                     >
-                      {pricing.package_popular === "1" && (
+                      {pricing.packagePopular === "1" && (
                         <span className="bg-red-500 text-white px-3 py-1 tracking-widest text-xs absolute right-0 top-0 rounded-bl z-10">
                           POPULAR
                         </span>
@@ -183,11 +185,11 @@ const PackagesSection = () => {
                         <div className="flex flex-row md:col-span-3 justify-center items-center pl-6 bg_green md:-skew-x-12 -ml-6 text-white green_gradient">
                           <div className="lg:-mt-1 lg:pl-3 md:skew-x-12 py-3">
                             <h2 className="text-2xl tracking-widest title-font pl-1 text_red font-extrabold">
-                              {pricing.package_name}
+                              {pricing.packageName}
                             </h2>
                             <div className="flex flex-row">
                               <p className="text-5xl font-bold leading-none mr-1">
-                                {pricing.package_speed}
+                                {pricing.packageSpeed}
                               </p>
                               <p className="flex items-end text-lg tracking-widest font-medium">
                                 Mbps
@@ -197,7 +199,7 @@ const PackagesSection = () => {
                         </div>
                         <div className="md:col-span-3 flex flex-col justify-center -skew-x-12 pl-16 p-6 bg-gradient-to-b from-white via-gray-100 to-white">
                           <div className="skew-x-12">
-                            {pricing.package_features.map((feature, idx) => (
+                            {pricing.packageFeatures.map((feature, idx) => (
                               <div key={idx} className="flex mb-2">
                                 <div className="mr-2 text-white rounded-full">
                                   <FontAwesomeIcon
@@ -213,12 +215,12 @@ const PackagesSection = () => {
                         <div className="md:col-span-3 flex flex-col justify-center items-center p-6 md:-skew-x-12 bg-gradient-to-b from-[#0296b8] via-[#03738c] to-[#0296b8] -mr-5 text-white">
                           <p
                             className={
-                              pricing.package_price === "(Call for Price)"
+                              pricing.packagePrice === "(Call for Price)"
                                 ? "text-white text-sm italic font-bold tracking-wide"
                                 : "text-3xl md:skew-x-12 -ml-4 tracking-wide font-semibold"
                             }
                           >
-                            {pricing.package_price}
+                            {pricing.packagePrice}
                           </p>
                           <Link
                             href="/contact"

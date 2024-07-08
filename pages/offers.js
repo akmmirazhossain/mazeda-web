@@ -8,6 +8,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { apiUrl, imgUrl } from "../config/config";
 import { useIntl } from "react-intl";
+import Cookies from "js-cookie";
 
 const OffersPage = () => {
   const intl = useIntl();
@@ -18,6 +19,7 @@ const OffersPage = () => {
 
   useEffect(() => {
     const fetchData = async () => {
+      const apiUrl = Cookies.get("baseApi");
       try {
         const response = await fetch(`${apiUrl}/offers.php`);
         const data = await response.json();

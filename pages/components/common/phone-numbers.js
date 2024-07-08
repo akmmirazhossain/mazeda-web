@@ -2,14 +2,21 @@ import React from "react";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import { apiUrl, imgUrl } from "../../../config/config";
+import { useIntl } from "react-intl";
+import Cookies from "js-cookie";
 
 const PhoneNumbers = () => {
   const [phoneData, setPhoneData] = useState(null);
-  const imgUrl = "https://apis.mazedanetworks.net/web_files/";
+
+  const intl = useIntl();
+  const aiChat = intl.messages.component.phoneNumbers.aiChat;
+  const aiChatComingSoon =
+    intl.messages.component.phoneNumbers.aiChatComingSoon;
 
   useEffect(() => {
     const fetchData = async () => {
       try {
+        const apiUrl = Cookies.get("baseApi");
         const response = await fetch(`${apiUrl}/phone.php`);
         if (!response.ok) {
           throw new Error("Failed to fetch phone data");
@@ -46,9 +53,9 @@ const PhoneNumbers = () => {
         ))}
 
         <div className="text-center border pad_akm_sm rounded-2xl  shadow-[inset_0_-12px_8px_rgba(0,0,0,0.06)]">
-          <p className="font-bold body_text_akm">AI Chat Support</p>
+          <p className="font-bold body_text_akm">{aiChat}</p>
           <img src="/images/chat-bot.png" alt="" className="p-6" />
-          <p className=" text_gray italic">(Coming Soon)</p>
+          <p className=" text_gray italic">{aiChatComingSoon}</p>
         </div>
       </div>
     </>

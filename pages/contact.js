@@ -6,12 +6,14 @@ import Image from "next/image";
 import Link from "next/link";
 import Head from "next/head";
 import { apiUrl, imgUrl } from "../config/config";
+import Cookies from "js-cookie";
 
 const ContactPage = () => {
   const [contactInfo, setContactInfo] = useState(null);
 
   useEffect(() => {
     const fetchData = async () => {
+      const apiUrl = Cookies.get("baseApi");
       try {
         const response = await fetch(`${apiUrl}/contact.php`);
         if (!response.ok) {
@@ -52,14 +54,14 @@ const ContactPage = () => {
         <div
           className="banner_bg"
           style={{
-            backgroundImage: `url(${imgUrl}${contactInfo.contact_bannerimg})`,
+            backgroundImage: `url(${imgUrl}${contactInfo.contactBannerimg})`,
           }}
         >
           <h1 className="banner_title text_shadow_black">
-            {contactInfo.contact_title}
+            {contactInfo.contactTitle}
           </h1>
           <p className="banner_subtitle text_shadow_black w-full lg:w-6/12">
-            {contactInfo.contact_subtitle}
+            {contactInfo.contactSubtitle}
           </p>
         </div>
 
@@ -68,8 +70,8 @@ const ContactPage = () => {
             <div className="flex flex-col sm:flex-row gap_akm">
               <div className="sm:w-1/3 text-center sm:pr-8 sm:py-8 box_round_shadow hidden sm:block">
                 <Image
-                  src={`${imgUrl}${contactInfo.contact_sideimg}`}
-                  alt={contactInfo.contact_title}
+                  src={`${imgUrl}${contactInfo.contactSideimg}`}
+                  alt={contactInfo.contactTitle}
                   width={800}
                   height={1067}
                   className="rounded-2xl"
@@ -83,7 +85,7 @@ const ContactPage = () => {
 
                   <p
                     dangerouslySetInnerHTML={{
-                      __html: contactInfo.contact_content,
+                      __html: contactInfo.contactContent,
                     }}
                   ></p>
                 </div>

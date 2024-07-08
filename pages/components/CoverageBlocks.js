@@ -5,6 +5,7 @@ import {
   faSearch,
   faLocationDot,
 } from "@fortawesome/free-solid-svg-icons";
+import Cookies from "js-cookie";
 
 const CoverageBlocks = () => {
   const [initialData, setInitialData] = useState([]);
@@ -16,15 +17,14 @@ const CoverageBlocks = () => {
 
   useEffect(() => {
     const fetchCoverageData = async () => {
+      const apiUrl = Cookies.get("baseApi");
       try {
-        const response = await fetch(
-          "https://apis.mazedanetworks.net/apis/coverage.php"
-        );
+        const response = await fetch(`${apiUrl}/coverage.php`);
         const data = await response.json();
 
         // Sort the data by `coverage_serial`
         const sortedData = data.sort(
-          (a, b) => parseInt(a.coverage_serial) - parseInt(b.coverage_serial)
+          (a, b) => parseInt(a.coverageSerial) - parseInt(b.coverageSerial)
         );
 
         setInitialData(sortedData);
@@ -39,9 +39,9 @@ const CoverageBlocks = () => {
   useEffect(() => {
     const updatedRegionData = {};
     initialData.forEach((item) => {
-      const region = item.coverage_region;
-      const areas = item.coverage_area
-        ? item.coverage_area.split(",").map((area) => area.trim())
+      const region = item.coverageRegion;
+      const areas = item.coverageArea
+        ? item.coverageArea.split(",").map((area) => area.trim())
         : []; // If coverage_area is undefined, assign an empty array
 
       if (!updatedRegionData[region]) {

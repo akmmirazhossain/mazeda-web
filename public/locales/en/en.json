@@ -1,52 +1,49 @@
 {
   "component": {
     "navbar": [
-    {
-      "href": "/",
-      "label": "Home"
-    },
-    {
-      "href": "/about",
-      "label": "About"
-    },
-    {
-      "href": "/packages",
-      "label": "Packages"
-    },
-    {
-      "href": "/coverage",
-      "label": "Coverage"
-    },
-    {
-      "href": "/offers",
-      "label": "Offers"
-    },
-    {
-      "href": "/pay-bill",
-      "label": "Pay Bill"
-    },
-    {
-      "href": "/contact",
-      "label": "Contact"
-    }
-  ],
-
-   "navbarButtons": [
-    {
-      "href": "https://isperp.mazedanetworks.net/ispcare",
-      "icon": "faCreditCard",
-      "label": "Quick Pay"
-    },
-    {
-      "href": "/support",
-      "icon": "faPhoneVolume",
-      "label": "Support"
-    }
-  ]
-  ,
-
-   "coverageTitle": "Our coverage",
-  "coverageSubtitle": "Our network grows daily, so stay tuned for updates here.",
+      {
+        "href": "/",
+        "label": "Home"
+      },
+      {
+        "href": "/about",
+        "label": "About"
+      },
+      {
+        "href": "/packages",
+        "label": "Packages"
+      },
+      {
+        "href": "/coverage",
+        "label": "Coverage"
+      },
+      {
+        "href": "/offers",
+        "label": "Offers"
+      },
+      {
+        "href": "/pay-bill",
+        "label": "Pay Bill"
+      },
+      {
+        "href": "/contact",
+        "label": "Contact"
+      }
+    ],
+    "navbarButtons": [
+      {
+        "href": "https://isperp.mazedanetworks.net/ispcare",
+        "icon": "faCreditCard",
+        "label": "Quick Pay"
+      },
+      {
+        "href": "/support",
+        "icon": "faPhoneVolume",
+        "label": "Support"
+      }
+    ],
+    "coverageTitle": "Our coverage",
+    "coverageSubtitle": "Our network grows daily, so stay tuned for updates here.",
     "links": [
       {
         "image": "coverage.webp",
@@ -70,239 +67,232 @@
       }
     ],
     "servicesTitle": "Our Services",
-
-    "services":[
-  {
-    "icon": "faHouseSignal",
-    "title": "Home Internet",
-    "description": "Elevate your home experience with high-speed internet at your fingertips."
-  },
-  {
-    "icon": "faBriefcase",
-    "title": "Corporate Internet",
-    "description": "Boost your business efficiency with our Corporate Internet: fast, secure, and reliable connectivity solutions."
-  },
-  {
-    "icon": "faVideo",
-    "title": "CCTV Solutions",
-    "description": "Securing peace of mind with our advanced CCTV solutions for comprehensive and reliable surveillance."
-  }
-],
-"clientSectionTitle": "Our Successful Clients",
-"packageTitle": [
-    "Monthly Pricing"
-
-  ],
-"packageFeaturesTitle": [
-    "All packages include these features."
-
-  ],
-
-"packageFeatures": [
-    "Fiber optic connection",
-    "4K Youtube, Facebook, Netflix and more streaming",
-    "Bufferless Cached Content",
-    "Gaming cache (100 Mbps)",
-    "100 Mbps BDIX and other BD NIX speed",
-    "24x7 call center Support",
-    "Doorstep support (9 am - 10 pm)",
-    "Home Packages 1:8 Contention Ratio"
-  ],
-   "packageFeaturesBTRC": [
-    "BTRC Approved Tariff"
-
-  ],
-
-   "packageGroups": [
-    {
-      "title": "Basic",
-      "tabIndex": 1,
-      "isActive": true
-    },
-    {
-      "title": "Standard",
-      "tabIndex": 2,
-      "isActive": false
-    },
-    {
-      "title": "Power",
-      "tabIndex": 3,
-      "isActive": false
-    },
-    {
-      "title": "Corporate",
-      "tabIndex": 4,
-      "isActive": false
-    }
-  ],
+    "services": [
+      {
+        "icon": "faHouseSignal",
+        "title": "Home Internet",
+        "description": "Elevate your home experience with high-speed internet at your fingertips."
+      },
+      {
+        "icon": "faBriefcase",
+        "title": "Corporate Internet",
+        "description": "Boost your business efficiency with our Corporate Internet: fast, secure, and reliable connectivity solutions."
+      },
+      {
+        "icon": "faVideo",
+        "title": "CCTV Solutions",
+        "description": "Securing peace of mind with our advanced CCTV solutions for comprehensive and reliable surveillance."
+      }
+    ],
+    "clientSectionTitle": "Our Successful Clients",
+    "packageTitle": [
+      "Monthly Pricing"
+    ],
+    "packageFeaturesTitle": [
+      "All packages include these features."
+    ],
+    "packageFeatures": [
+      "Fiber optic connection",
+      "4K Youtube, Facebook, Netflix and more streaming",
+      "Bufferless Cached Content",
+      "Gaming cache (100 Mbps)",
+      "100 Mbps BDIX and other BD NIX speed",
+      "24x7 call center Support",
+      "Doorstep support (9 am - 10 pm)",
+      "Home Packages 1:8 Contention Ratio"
+    ],
+    "packageFeaturesBTRC": [
+      "BTRC Approved Tariff"
+    ],
+    "packageGroups": [
+      {
+        "title": "Basic",
+        "tabIndex": 1,
+        "isActive": true
+      },
+      {
+        "title": "Standard",
+        "tabIndex": 2,
+        "isActive": false
+      },
+      {
+        "title": "Power",
+        "tabIndex": 3,
+        "isActive": false
+      },
+      {
+        "title": "Corporate",
+        "tabIndex": 4,
+        "isActive": false
+      }
+    ],
     "header": {
       "title": "Welcome to Our Service",
       "subtitle": "Your satisfaction is our priority"
     },
- "offerTitle": "Exclusive Offers",
-
-  "offerSubtitle": "Unlock exclusive deals and incentives as you get our internet connection.",
-
-   "paybillTitle": "Seeking payment options?",
-
-  "paybillSubtitle": "This page shows a comprehensive range of payment solutions, find your best suited option to make a safe online transection.",
-  "paybillPortalButton": "Pay from online portal",
-  "paybillPortalButtonText": "(Pay with Visa, Debit, or Credit cards.)",
-   "paybillBkashTitle": "Steps for Bkash app payment",
-
-   "paybillBkashSteps": [
-    {
-      "step": "Select the <span class=\"font-bold\">Pay Bill</span> option.",
-      "image": "/images/slider/bkash/b1.png"
+    "offerTitle": "Exclusive Offers",
+    "offerSubtitle": "Unlock exclusive deals and incentives as you get our internet connection.",
+    "paybillTitle": "Seeking payment options?",
+    "paybillSubtitle": "This page shows a comprehensive range of payment solutions, find your best suited option to make a safe online transection.",
+    "paybillPortalButton": "Pay from online portal",
+    "paybillPortalButtonText": "(Pay with Visa, Debit, or Credit cards.)",
+    "paybillBkashTitle": "Steps for Bkash app payment",
+    "paybillBkashSteps": [
+      {
+        "step": "Select the <span class=\"font-bold\">Pay Bill</span> option.",
+        "image": "/images/slider/bkash/b1.png"
+      },
+      {
+        "step": "Search <span class=\"font-bold\">Mazeda Networks Ltd</span> and tap on it.",
+        "image": "/images/slider/bkash/b2.png"
+      },
+      {
+        "step": "Choose current month and enter your <span class=\"font-bold\">Subscriber ID</span>.",
+        "image": "/images/slider/bkash/b3.png",
+        "note": "No Subscriber ID? Please contact us 09666 334455"
+      },
+      {
+        "step": "<span class=\"font-bold\">Tap and hold for Pay Bill</span> until the payment is successful.",
+        "image": "/images/slider/bkash/b5.png"
+      }
+    ],
+    "paybillNagadTitle": "Steps for Nagad app payment",
+    "paybillNagadSteps": [
+      {
+        "step": "Select the <span class=\"font-bold\">Bill Pay</span> option.",
+        "image": "/images/slider/nagad/n1.jpg"
+      },
+      {
+        "step": "Search <span class=\"font-bold\">Mazeda Networks Ltd</span> and tap on it.",
+        "image": "/images/slider/nagad/n2.jpg"
+      },
+      {
+        "step": "Type your <span class=\"font-bold\">Customer ID</span>, then tap on <span class=\"font-bold\">NEXT</span>.",
+        "image": "/images/slider/nagad/n3.jpg",
+        "note": "No Subscriber ID? Please contact us 09666 334455"
+      },
+      {
+        "step": "Type your name on <span class=\"font-bold\">Bill Reference Name</span> and tap <span class=\"font-bold\">NEXT</span> until the payment is successful.",
+        "image": "/images/slider/nagad/n4.png"
+      }
+    ],
+    "paybillPortalTitle": "Steps for Visa, Debit, or Credit card payment",
+    "paybillPortalSteps": [
+      {
+        "step": "Click here and login.",
+        "image": "/images/slider/user-portal/up1.jpg",
+        "link": "https://isperp.mazedanetworks.net/ispcare",
+        "linkText": "<span class=\"font-bold\">Click here </span>"
+      },
+      {
+        "step": "Click on <span class=\"font-bold\">PAY BILL.</span>",
+        "image": "/images/slider/user-portal/up2.jpg"
+      },
+      {
+        "step": "Click on <span class=\"font-bold\">PAY NOW - SSL GATEWAY.</span>",
+        "image": "/images/slider/user-portal/up3.jpg"
+      },
+      {
+        "step": "Enter your card details and make a safe transaction.",
+        "image": "/images/slider/user-portal/up4.jpg"
+      }
+    ],
+    "paybillNoSubId": "No Subscriber ID? Please contact us   <span class=\"font-bold\">09666 334455</span>",
+    "paybillOtherTitle": "Other Payment Options",
+    "paybillOtherSubtitle": "Bill payment on Mazeda Networks is doable in all sorts of ways, but for these payment portals, you need to call our office and confirm our billing team about it.",
+    "phoneNumbers": {
+      "aiChat": "AI Chat Support",
+      "aiChatComingSoon": "(Coming Soon)"
     },
-    {
-      "step": "Search <span class=\"font-bold\">Mazeda Networks Ltd</span> and tap on it.",
-      "image": "/images/slider/bkash/b2.png"
+    "supportPage": {
+      "title": "Support",
+      "subtitle": "Mazeda network support is only a phone call away",
+      "popularInquiries": "Popular Inquiries",
+      "supportWorkflow": "Support Workflow",
+      "diagram": "Home Network Diagram"
     },
-    {
-      "step": "Choose current month and enter your <span class=\"font-bold\">Subscriber ID</span>.",
-      "image": "/images/slider/bkash/b3.png",
-      "note": "No Subscriber ID? Please contact us 09666 334455"
-    },
-    {
-      "step": "<span class=\"font-bold\">Tap and hold for Pay Bill</span> until the payment is successful.",
-      "image": "/images/slider/bkash/b5.png"
-    }
-  ] ,
-
-
-  "paybillNagadTitle": "Steps for Nagad app payment",
-
-   "paybillNagadSteps": [
-    {
-      "step": "Select the <span class=\"font-bold\">Bill Pay</span> option.",
-      "image": "/images/slider/nagad/n1.jpg"
-    },
-    {
-      "step": "Search <span class=\"font-bold\">Mazeda Networks Ltd</span> and tap on it.",
-      "image": "/images/slider/nagad/n2.jpg"
-    },
-    {
-      "step": "Type your <span class=\"font-bold\">Customer ID</span>, then tap on <span class=\"font-bold\">NEXT</span>.",
-      "image": "/images/slider/nagad/n3.jpg",
-      "note": "No Subscriber ID? Please contact us 09666 334455"
-    },
-    {
-      "step": "Type your name on <span class=\"font-bold\">Bill Reference Name</span> and tap <span class=\"font-bold\">NEXT</span> until the payment is successful.",
-      "image": "/images/slider/nagad/n4.png"
-    }
-  ] ,
-
-
-"paybillPortalTitle": "Steps for Visa, Debit, or Credit card payment",
-
-   "paybillPortalSteps": [
-    {
-      "step": "Click here and login.",
-      "image": "/images/slider/user-portal/up1.jpg",
-      "link": "https://isperp.mazedanetworks.net/ispcare",
-      "linkText": "<span class=\"font-bold\">Click here </span>"
-    },
-    {
-      "step": "Click on <span class=\"font-bold\">PAY BILL.</span>",
-      "image": "/images/slider/user-portal/up2.jpg"
-    },
-    {
-      "step": "Click on <span class=\"font-bold\">PAY NOW - SSL GATEWAY.</span>",
-      "image": "/images/slider/user-portal/up3.jpg"
-    },
-    {
-      "step": "Enter your card details and make a safe transaction.",
-      "image": "/images/slider/user-portal/up4.jpg"
-    }
-  ] ,
-
-  "paybillNoSubId": "No Subscriber ID? Please contact us   <span class=\"font-bold\">09666 334455</span>",
-  "paybillOtherTitle": "Other Payment Options",
-  "paybillOtherSubtitle": "Bill payment on Mazeda Networks is doable in all sorts of ways, but for these payment portals, you need to call our office and confirm our billing team about it.",
-
     "footerSubtitle": "We're more than an ISP, your digital ally for robust, high-speed internet and exceptional customer care.",
     "footerData": [
-    {
-      "title": "SERVICES",
-      "links": [
-        {
-          "text": "Home Internet",
-          "url": "#"
-        },
-        {
-          "text": "Corporate Internet",
-          "url": "#"
-        },
-        {
-          "text": "CCTV Solutions",
-          "url": "#"
-        }
-      ]
-    },
-    {
-      "title": "ASSISTANCE",
-      "links": [
-        {
-          "text": "Support",
-          "url": "support"
-        },
-        {
-          "text": "Pay Bill",
-          "url": "pay-bill"
-        },
-        {
-          "text": "Contact",
-          "url": "contact"
-        },
-        {
-          "text": "FAQs",
-          "url": "support#faqSection"
-        }
-      ]
-    },
-    {
-      "title": "PAGES",
-      "links": [
-        {
-          "text": "About",
-          "url": "about"
-        },
-        {
-          "text": "Packages",
-          "url": "packages"
-        },
-        {
-          "text": "Coverage",
-          "url": "coverage"
-        },
-        {
-          "text": "Offers",
-          "url": "offers"
-        }
-      ]
-    },
-    {
-      "title": "LINKS",
-      "links": [
-        {
-          "text": "Join group",
-          "url": "https://www.facebook.com/groups/212808672067129"
-        },
-        {
-          "text": "Privacy Policy",
-          "url": "/privacy-policy"
-        },
-        {
-          "text": "Terms & Conditions",
-          "url": "/terms-conditions"
-        },
-        {
-          "text": "About Refund",
-          "url": "/about-refund"
-        }
-      ]
-    }
-  ]
+      {
+        "title": "SERVICES",
+        "links": [
+          {
+            "text": "Home Internet",
+            "url": "#"
+          },
+          {
+            "text": "Corporate Internet",
+            "url": "#"
+          },
+          {
+            "text": "CCTV Solutions",
+            "url": "#"
+          }
+        ]
+      },
+      {
+        "title": "ASSISTANCE",
+        "links": [
+          {
+            "text": "Support",
+            "url": "support"
+          },
+          {
+            "text": "Pay Bill",
+            "url": "pay-bill"
+          },
+          {
+            "text": "Contact",
+            "url": "contact"
+          },
+          {
+            "text": "FAQs",
+            "url": "support#faqSection"
+          }
+        ]
+      },
+      {
+        "title": "PAGES",
+        "links": [
+          {
+            "text": "About",
+            "url": "about"
+          },
+          {
+            "text": "Packages",
+            "url": "packages"
+          },
+          {
+            "text": "Coverage",
+            "url": "coverage"
+          },
+          {
+            "text": "Offers",
+            "url": "offers"
+          }
+        ]
+      },
+      {
+        "title": "LINKS",
+        "links": [
+          {
+            "text": "Join group",
+            "url": "https://www.facebook.com/groups/212808672067129"
+          },
+          {
+            "text": "Privacy Policy",
+            "url": "/privacy-policy"
+          },
+          {
+            "text": "Terms & Conditions",
+            "url": "/terms-conditions"
+          },
+          {
+            "text": "About Refund",
+            "url": "/about-refund"
+          }
+        ]
+      }
+    ]
   }
 }

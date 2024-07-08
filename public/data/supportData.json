@@ -1,34 +1,22 @@
 {
-    
   "title": "Support",
   "subtitle": "Guiding your internet journey, expert support at your fingertips",
   "faqContent": [
     {
       "question": "If I experience slow internet, what steps should I take?",
-      "answer":
-        "i) Reboot the WiFi router, ii) Attempt to use the internet in close proximity to the router. If you continue to experience slow internet, please reach out to our support hotline."
+      "answer": "i) Reboot the WiFi router, ii) Attempt to use the internet in close proximity to the router. If you continue to experience slow internet, please reach out to our support hotline."
     },
     {
-      "question":
-        "If I shift to a different location, will I need to pay the new connection fee again?",
-      "answer":
-        "If the new residence is within proximity to our closest fiber optic hub, no further payments will be required. However, if it's too distant, there may be additional charges for the extra fiber optic cable."
+      "question": "If I shift to a different location, will I need to pay the new connection fee again?",
+      "answer": "If the new residence is within proximity to our closest fiber optic hub, no further payments will be required. However, if it's too distant, there may be additional charges for the extra fiber optic cable."
     },
     {
-      "question":
-        "Upon activating an internet connection, does the support team offer free support for setting up WiFi router?",
-      "answer":
-        "Yes, we provide free-of-charge router configuration services for any model upon each new connection."
+      "question": "Upon activating an internet connection, does the support team offer free support for setting up WiFi router?",
+      "answer": "Yes, we provide free-of-charge router configuration services for any model upon each new connection."
     },
-
     {
-      "question":
-        "If I decide to relocate my router, ONU, or cables to another room, what do I need to do?",
-      "answer":
-        "In this case our support team will be able to help, there could be a basic charge for initial adjustments, with costs for changes like wire length or drilling to be determined after gathering all necessary information."
+      "question": "If I decide to relocate my router, ONU, or cables to another room, what do I need to do?",
+      "answer": "In this case our support team will be able to help, there could be a basic charge for initial adjustments, with costs for changes like wire length or drilling to be determined after gathering all necessary information."
     }
-]
-,
-  "workflowImage": "/images/support-workflow.png",
-  "networkDiagramImage": "/images/home-network-diagram.png"
+  ]
 }

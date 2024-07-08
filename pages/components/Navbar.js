@@ -9,22 +9,56 @@ import {
   faHeadset,
   faEnvelope,
 } from "@fortawesome/free-solid-svg-icons";
+import Cookies from "js-cookie";
 import { Switch } from "@nextui-org/react";
-
 import { useIntl } from "react-intl";
+import { apiUrl, apiUrl_en } from "../../config/config";
 
 function Navbar() {
   const { locales, locale, asPath } = useRouter();
+  const router = useRouter();
   const intl = useIntl();
   const items = intl.messages.component.navbar;
   const navbarButtons = intl.messages.component.navbarButtons;
 
   const [localeBn, localeEn] = locales || ["bn", "en"];
   const handleLocaleChange = (selectedLocale) => {
-    router.push(asPath, asPath, { locale: selectedLocale });
-  };
+    if (selectedLocale === "bn") {
+      Cookies.set("baseApi", apiUrl);
+      console.log("🚀 ~ handleLocaleChange ~ apiUrl:", apiUrl);
+    }
 
-  console.log(``);
+    if (selectedLocale === "en") {
+      Cookies.set("baseApi", apiUrl_en);
+      console.log("🚀 ~ handleLocaleChange ~ apiUrl_en:", apiUrl_en);
+    }
+
+    let currentURL = window.location.href;
+
+    // Check if '/en' exists right after the domain
+    const domainIndex = currentURL.indexOf("//");
+    const afterDomainIndex = currentURL.indexOf("/", domainIndex + 2);
+    const isENAfterDomain =
+      currentURL.substring(afterDomainIndex + 1, afterDomainIndex + 4) ===
+      "en/";
+
+    if (isENAfterDomain) {
+      // Remove '/en' from the URL
+      currentURL = currentURL.replace("/en", "");
+    } else {
+      // Add '/en' after the domain if it doesn't exist
+      currentURL =
+        currentURL.substring(0, afterDomainIndex + 1) +
+        "en" +
+        currentURL.substring(afterDomainIndex);
+    }
+
+    console.log(currentURL);
+
+    router.push(asPath, asPath, { locale: selectedLocale });
+
+    window.location.href = currentURL;
+  };
 
   const getIcon = (iconName) => {
     switch (iconName) {
@@ -38,7 +72,6 @@ function Navbar() {
   };
 
   const [menuOpen, setMenuOpen] = useState(false);
-  const router = useRouter();
 
   const toggleMenu = () => {
     setMenuOpen(!menuOpen);

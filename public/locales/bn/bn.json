@@ -1,304 +1,292 @@
 {
   "component": {
-     "navbar": [
-    {
-      "href": "/",
-      "label": "হোম"
-    },
-    {
-      "href": "/about",
-      "label": "সম্পর্কিত"
-    },
-    {
-      "href": "/packages",
-      "label": "প্যাকেজ"
-    },
-    {
-      "href": "/coverage",
-      "label": "কভারেজ"
-    },
-    {
-      "href": "/offers",
-      "label": "অফার"
-    },
-    {
-      "href": "/pay-bill",
-      "label": "বিল পরিশোধ"
-    },
-    {
-      "href": "/contact",
-      "label": "যোগাযোগ"
-    }
-  ],
-  
-  "navbarButtons": [
-    {
-      "href": "https://isperp.mazedanetworks.net/ispcare",
-      "icon": "faCreditCard",
-      "label": "দ্রুত বিল পে"
-    },
-    {
-      "href": "/support",
-      "icon": "faPhoneVolume",
-      "label": "সাপোর্ট"
-    }
-  ]
-  ,
-
-  "coverageTitle": "আমাদের কভারেজ",
-  "coverageSubtitle": "আমাদের নেটওয়ার্ক প্রতিদিন বৃদ্ধি পাচ্ছে, তাই আপডেটের জন্য এখানে থাকুন।",
-    "links": [
-       {
-      "image": "coverage.webp",
-      "count": "কভারেজ",
-      "link": "/coverage"
-    },
-    {
-      "image": "pay.webp",
-      "count": "বিল প্রদানের ধাপ",
-      "link": "/pay-bill"
-    },
-    {
-      "image": "faq.webp",
-      "count": "এফ.এ.কিউ ",
-      "link": "/support#faqSection"
-    },
-    {
-      "image": "new-connection.webp",
-      "count": "নতুন সংযোগ",
-      "link": "/contact"
-    }
+    "navbar": [
+      {
+        "href": "/",
+        "label": "হোম"
+      },
+      {
+        "href": "/about",
+        "label": "সম্পর্কিত"
+      },
+      {
+        "href": "/packages",
+        "label": "প্যাকেজ"
+      },
+      {
+        "href": "/coverage",
+        "label": "কভারেজ"
+      },
+      {
+        "href": "/offers",
+        "label": "অফার"
+      },
+      {
+        "href": "/pay-bill",
+        "label": "বিল পরিশোধ"
+      },
+      {
+        "href": "/contact",
+        "label": "যোগাযোগ"
+      }
     ],
-"servicesTitle": "আমাদের সেবা",
-    "services":[
-  {
-    "icon": "faHouseSignal",
-    "title": "হোম ইন্টারনেট ",
-    "description": "Elevate your home experience with high-speed internet at your fingertips."
-  },
-  {
-    "icon": "faBriefcase",
-    "title": "কর্পোরেট ইন্টারনেট",
-    "description": "Boost your business efficiency with our Corporate Internet: fast, secure, and reliable connectivity solutions."
-  },
-  {
-    "icon": "faVideo",
-    "title": "সিসিটিভি সিস্টেম",
-    "description": "Securing peace of mind with our advanced CCTV solutions for comprehensive and reliable surveillance."
-  }
-],
-"clientSectionTitle": "আমাদের সফল ক্লায়েন্ট",
-
- "packageTitle": [
-    "মাসিক প্যাকেজ"
-
-  ],
-"packageFeaturesTitle": [
-    "সমস্ত প্যাকেজ এই বৈশিষ্ট্য অন্তর্ভুক্ত"
-
-  ],
-"packageFeatures": [
-    "ফাইবার অপটিক সংযোগ",
-    "4K ইউটিউব, ফেইসবুক, নেটফ্লিক্স এবং আরও স্ট্রিমিং",
-    "বাফারলেস ক্যাশ কন্টেন্ট",
-    "গেমিং ক্যাশে (১০০ এমবিপিএস)",
-    "১০০ এমবিপিএস BDIX এবং অন্যান্য BD NIX গতি",
-    "24x7 কল সেন্টার সাপোর্ট",
-    "ডোরস্টেপ সাপোর্ট (সকাল ৯ - রাত ১০)",
-    "হোম প্যাকেজ ১:৮ কনটেন্ট রেশিও"
-  ],
-  "packageFeaturesBTRC": [
-    "বিটিআরসি অনুমোদিত ট্যারিফ"
-
-  ],
-
-  "packageGroups": [
-    {
-      "title": "বেসিক",
-      "tabIndex": 1,
-      "isActive": true
+    "navbarButtons": [
+      {
+        "href": "https://isperp.mazedanetworks.net/ispcare",
+        "icon": "faCreditCard",
+        "label": "দ্রুত বিল পে"
+      },
+      {
+        "href": "/support",
+        "icon": "faPhoneVolume",
+        "label": "সাপোর্ট"
+      }
+    ],
+    "coverageTitle": "আমাদের কভারেজ",
+    "coverageSubtitle": "আমাদের নেটওয়ার্ক প্রতিদিন বৃদ্ধি পাচ্ছে, তাই আপডেটের জন্য এখানে থাকুন।",
+    "links": [
+      {
+        "image": "coverage.webp",
+        "count": "কভারেজ",
+        "link": "/coverage"
+      },
+      {
+        "image": "pay.webp",
+        "count": "বিল প্রদানের ধাপ",
+        "link": "/pay-bill"
+      },
+      {
+        "image": "faq.webp",
+        "count": "এফ.এ.কিউ ",
+        "link": "/support#faqSection"
+      },
+      {
+        "image": "new-connection.webp",
+        "count": "নতুন সংযোগ",
+        "link": "/contact"
+      }
+    ],
+    "servicesTitle": "আমাদের সেবা",
+    "services": [
+      {
+        "icon": "faHouseSignal",
+        "title": "হোম ইন্টারনেট ",
+        "description": "Elevate your home experience with high-speed internet at your fingertips."
+      },
+      {
+        "icon": "faBriefcase",
+        "title": "কর্পোরেট ইন্টারনেট",
+        "description": "Boost your business efficiency with our Corporate Internet: fast, secure, and reliable connectivity solutions."
+      },
+      {
+        "icon": "faVideo",
+        "title": "সিসিটিভি সিস্টেম",
+        "description": "Securing peace of mind with our advanced CCTV solutions for comprehensive and reliable surveillance."
+      }
+    ],
+    "clientSectionTitle": "আমাদের সফল ক্লায়েন্ট",
+    "packageTitle": [
+      "মাসিক প্যাকেজ"
+    ],
+    "packageFeaturesTitle": [
+      "সমস্ত প্যাকেজ এই বৈশিষ্ট্য অন্তর্ভুক্ত"
+    ],
+    "packageFeatures": [
+      "ফাইবার অপটিক সংযোগ",
+      "4K ইউটিউব, ফেইসবুক, নেটফ্লিক্স এবং আরও স্ট্রিমিং",
+      "বাফারলেস ক্যাশ কন্টেন্ট",
+      "গেমিং ক্যাশে (১০০ এমবিপিএস)",
+      "১০০ এমবিপিএস BDIX এবং অন্যান্য BD NIX গতি",
+      "24x7 কল সেন্টার সাপোর্ট",
+      "ডোরস্টেপ সাপোর্ট (সকাল ৯ - রাত ১০)",
+      "হোম প্যাকেজ ১:৮ কনটেন্ট রেশিও"
+    ],
+    "packageFeaturesBTRC": [
+      "বিটিআরসি অনুমোদিত ট্যারিফ"
+    ],
+    "packageGroups": [
+      {
+        "title": "বেসিক",
+        "tabIndex": 1,
+        "isActive": true
+      },
+      {
+        "title": "স্ট্যান্ডার্ড",
+        "tabIndex": 2,
+        "isActive": false
+      },
+      {
+        "title": "পাওয়ার ",
+        "tabIndex": 3,
+        "isActive": false
+      },
+      {
+        "title": "কর্পোরেট",
+        "tabIndex": 4,
+        "isActive": false
+      }
+    ],
+    "offerTitle": "এক্সক্লুসিভ অফার",
+    "offerSubtitle": "আমাদের ইন্টারনেট সংযোগ পাওয়ার সাথে সাথে এক্সক্লুসিভ ডিল আনলক করুন।",
+    "paybillTitle": "  বিল পে করার কথা ভাবছেন?",
+    "paybillSubtitle": " এই পেজটিতে সব ভাবে বিল পে করার উপায় গুলো উল্লেখ করা রয়েছে, আপনার পছন্দের   পদ্ধতিটি বেছে নিন। ",
+    "paybillPortalButton": " অনলাইন পোর্টাল থেকে বিল পে করুন",
+    "paybillPortalButtonText": "(ভিসা, ডেবিট, ক্রেডিট কার্ড দিয়ে বিল পে করুন।)",
+    "paybillBkashTitle": " বিকাশ দিয়ে বিল পে করুন",
+    "paybillBkashSteps": [
+      {
+        "step": "<span class=\"font-bold\">Pay Bill</span> অপশন সিলেক্ট করুন",
+        "image": "/images/slider/bkash/b1.png"
+      },
+      {
+        "step": "<span class=\"font-bold\">Mazeda Networks Ltd</span>  খুঁজুন এবং টেপ করুন",
+        "image": "/images/slider/bkash/b2.png"
+      },
+      {
+        "step": "বর্তমান মাসটি সিলেক্ট করুন এবং <span class=\"font-bold\">Subscriber ID</span> প্রবেশ করুন  ",
+        "image": "/images/slider/bkash/b3.png",
+        "note": "No Subscriber ID?"
+      },
+      {
+        "step": "<span class=\"font-bold\">Tap and hold for Pay Bill</span>  এবং পেমেন্ট সম্পন্ন করুন। ",
+        "image": "/images/slider/bkash/b5.png"
+      }
+    ],
+    "paybillNagadTitle": "নগদ দিয়ে বিল পে করুন",
+    "paybillNagadSteps": [
+      {
+        "step": "<span class=\"font-bold\">Bill Pay</span> অপশনে প্রবেশ করুন",
+        "image": "/images/slider/nagad/n1.jpg"
+      },
+      {
+        "step": "<span class=\"font-bold\">Mazeda Networks Ltd</span> খুঁজুন এবং টেপ করুন",
+        "image": "/images/slider/nagad/n2.jpg"
+      },
+      {
+        "step": "আপনার <span class=\"font-bold\">Customer ID</span> প্রবেশ করে <span class=\"font-bold\">NEXT</span> চাপুন",
+        "image": "/images/slider/nagad/n3.jpg",
+        "note": "No Subscriber ID?"
+      },
+      {
+        "step": "বিল পেমেন্ট সম্পন্ন করতে <span class=\"font-bold\">Bill Reference Name</span> এ আপনার নাম লিখুন এবং <span class=\"font-bold\">NEXT</span> চাপুন।",
+        "image": "/images/slider/nagad/n4.png"
+      }
+    ],
+    "paybillPortalTitle": "ভিসা, ডেবিট, ক্রেডিট কার্ড দিয়ে বিল পে করুন",
+    "paybillPortalSteps": [
+      {
+        "step": "<a class=\"font-bold\" href=\"https://isperp.mazedanetworks.net/ispcare\">Click here</a> এবং লগইন করুন",
+        "image": "/images/slider/user-portal/up1.jpg"
+      },
+      {
+        "step": "<span class=\"font-bold\">PAY BILL</span> এ ক্লিক করুন",
+        "image": "/images/slider/user-portal/up2.jpg"
+      },
+      {
+        "step": "<span class=\"font-bold\">PAY NOW - SSL GATEWAY</span> এ ক্লিক করুন",
+        "image": "/images/slider/user-portal/up3.jpg"
+      },
+      {
+        "step": " আপনার কার্ডের তথ্য দিন এবং  ট্রানসেকশনটি সম্পন্ন করুন",
+        "image": "/images/slider/user-portal/up4.jpg"
+      }
+    ],
+    "paybillNoSubId": "সাবস্ক্রাইবার আইডি নেই?  আমাদের কল করুন  <span class=\"font-bold\">09666 334455</span>",
+    "paybillOtherTitle": "অন্যান্য পেমেন্ট অপশন",
+    "paybillOtherSubtitle": "Mazeda Networks-এ বিল পেমেন্ট সব ধরনের উপায়ে সম্ভব, কিন্তু এই পেমেন্ট পোর্টালগুলির জন্য, আপনাকে আমাদের অফিসে কল করতে হবে এবং আমাদের বিলিং টিমকে নিশ্চিত করতে হবে।",
+    "phoneNumbers": {
+      "aiChat": "এ.আই. চেট ",
+      "aiChatComingSoon": "(শীঘ্রই আসছে)"
     },
-    {
-      "title": "স্ট্যান্ডার্ড",
-      "tabIndex": 2,
-      "isActive": false
+    "supportPage": {
+      "title": "সাপোর্ট",
+      "subtitle": "মাজেদা নেটওয়ার্ক সাপোর্ট শুধুমাত্র একটি ফোন কল দূরে",
+      "popularInquiries": "জনপ্রিয় অনুসন্ধান",
+      "supportWorkflow": "সাপোর্ট কর্মপ্রণালী",
+      "diagram": "হোম নেটওয়ার্ক ডায়াগ্রাম"
     },
-    {
-      "title": "পাওয়ার ",
-      "tabIndex": 3,
-      "isActive": false
-    },
-    {
-      "title": "কর্পোরেট",
-      "tabIndex": 4,
-      "isActive": false
-    }
-  ],
-
- "offerTitle": "এক্সক্লুসিভ অফার",
-
-  "offerSubtitle": "আমাদের ইন্টারনেট সংযোগ পাওয়ার সাথে সাথে এক্সক্লুসিভ ডিল আনলক করুন।",
-
-   "paybillTitle": "  বিল পে করার কথা ভাবছেন?",
-
-  "paybillSubtitle": " এই পেজটিতে সব ভাবে বিল পে করার উপায় গুলো উল্লেখ করা রয়েছে, আপনার পছন্দের   পদ্ধতিটি বেছে নিন। ",
-  "paybillPortalButton": " অনলাইন পোর্টাল থেকে বিল পে করুন",
-  "paybillPortalButtonText": "(ভিসা, ডেবিট, ক্রেডিট কার্ড দিয়ে বিল পে করুন।)",
-
-  "paybillBkashTitle": " বিকাশ দিয়ে বিল পে করুন",
-
-   "paybillBkashSteps": [
-    {
-      "step": "<span class=\"font-bold\">Pay Bill</span> অপশন সিলেক্ট করুন",
-      "image": "/images/slider/bkash/b1.png"
-    },
-    {
-      "step": "<span class=\"font-bold\">Mazeda Networks Ltd</span>  খুঁজুন এবং টেপ করুন",
-      "image": "/images/slider/bkash/b2.png"
-    },
-    {
-      "step": "বর্তমান মাসটি সিলেক্ট করুন এবং <span class=\"font-bold\">Subscriber ID</span> প্রবেশ করুন  ",
-      "image": "/images/slider/bkash/b3.png",
-      "note": "No Subscriber ID?"
-    },
-    {
-      "step": "<span class=\"font-bold\">Tap and hold for Pay Bill</span>  এবং পেমেন্ট সম্পন্ন করুন। ",
-      "image": "/images/slider/bkash/b5.png"
-    }
-  ] ,
-
-
-  "paybillNagadTitle": "নগদ দিয়ে বিল পে করুন",
-
-   "paybillNagadSteps": [
-    {
-      "step": "<span class=\"font-bold\">Bill Pay</span> অপশনে প্রবেশ করুন",
-      "image": "/images/slider/nagad/n1.jpg"
-    },
-    {
-      "step": "<span class=\"font-bold\">Mazeda Networks Ltd</span> খুঁজুন এবং টেপ করুন",
-      "image": "/images/slider/nagad/n2.jpg"
-    },
-    {
-      "step": "আপনার <span class=\"font-bold\">Customer ID</span> প্রবেশ করে <span class=\"font-bold\">NEXT</span> চাপুন",
-      "image": "/images/slider/nagad/n3.jpg",
-      "note":"No Subscriber ID?"
-    },
-    {
-      "step": "বিল পেমেন্ট সম্পন্ন করতে <span class=\"font-bold\">Bill Reference Name</span> এ আপনার নাম লিখুন এবং <span class=\"font-bold\">NEXT</span> চাপুন।",
-      "image": "/images/slider/nagad/n4.png"
-    }
-  ] ,
-
-
-"paybillPortalTitle": "ভিসা, ডেবিট, ক্রেডিট কার্ড দিয়ে বিল পে করুন",
-
-   "paybillPortalSteps": [
-    {
-      "step": "<a class=\"font-bold\" href=\"https://isperp.mazedanetworks.net/ispcare\">Click here</a> এবং লগইন করুন",
-      "image": "/images/slider/user-portal/up1.jpg"
-      
-    },
-    {
-      "step": "<span class=\"font-bold\">PAY BILL</span> এ ক্লিক করুন",
-      "image": "/images/slider/user-portal/up2.jpg"
-    },
-    {
-      "step": "<span class=\"font-bold\">PAY NOW - SSL GATEWAY</span> এ ক্লিক করুন",
-      "image": "/images/slider/user-portal/up3.jpg"
-    },
-    {
-      "step": " আপনার কার্ডের তথ্য দিন এবং  ট্রানসেকশনটি সম্পন্ন করুন",
-      "image": "/images/slider/user-portal/up4.jpg"
-    }
-  ] ,
-
-  "paybillNoSubId": "সাবস্ক্রাইবার আইডি নেই?  আমাদের কল করুন  <span class=\"font-bold\">09666 334455</span>",
-  "paybillOtherTitle": "অন্যান্য পেমেন্ট অপশন",
-  "paybillOtherSubtitle": "Mazeda Networks-এ বিল পেমেন্ট সব ধরনের উপায়ে সম্ভব, কিন্তু এই পেমেন্ট পোর্টালগুলির জন্য, আপনাকে আমাদের অফিসে কল করতে হবে এবং আমাদের বিলিং টিমকে নিশ্চিত করতে হবে।",
-
     "footerSubtitle": "শক্তিশালী, উচ্চ-গতির ইন্টারনেট এবং ব্যতিক্রমী কাস্টমার কেয়ারের জন্য আমরা একটি আইএসপির চেয়েও বেশি, আপনার ডিজিটাল সহযোগী।",
     "footerData": [
-    {
-      "title": "আমাদের সেবা",
-      "links": [
-        {
-          "text": "হোম ইন্টারনেট",
-          "url": "#"
-        },
-        {
-          "text": "কর্পোরেট ইন্টারনেট",
-          "url": "#"
-        },
-        {
-          "text": "সিসিটিভি সিস্টেম",
-          "url": "#"
-        }
-      ]
-    },
-    {
-      "title": "সহায়তা",
-      "links": [
-        {
-          "text": "সাপোর্ট",
-          "url": "support"
-        },
-        {
-          "text": "বিল প্রদান",
-          "url": "pay-bill"
-        },
-        {
-          "text": "যোগাযোগ",
-          "url": "contact"
-        },
-        {
-          "text": "এফ.এ.কিউ",
-          "url": "support#faqSection"
-        }
-      ]
-    },
-    {
-      "title": "পেইজ",
-      "links": [
-        {
-          "text": "সম্পর্কিত",
-          "url": "about"
-        },
-        {
-          "text": "প্যাকেজ",
-          "url": "packages"
-        },
-        {
-          "text": "কভারেজ",
-          "url": "coverage"
-        },
-        {
-          "text": "অফার",
-          "url": "offers"
-        }
-      ]
-    },
-    {
-      "title": "লিঙ্ক",
-      "links": [
-        {
-          "text": "গ্রুপে যোগ দিন ",
-          "url": "https://www.facebook.com/groups/212808672067129"
-        },
-        {
-          "text": "প্রাইভেসি পলিসি ",
-          "url": "/privacy-policy"
-        },
-        {
-          "text": "শর্তাবলী",
-          "url": "/terms-conditions"
-        },
-        {
-          "text": "রিফান্ড সম্পর্কে",
-          "url": "/about-refund"
-        }
-      ]
-    }
-  ]
+      {
+        "title": "আমাদের সেবা",
+        "links": [
+          {
+            "text": "হোম ইন্টারনেট",
+            "url": "#"
+          },
+          {
+            "text": "কর্পোরেট ইন্টারনেট",
+            "url": "#"
+          },
+          {
+            "text": "সিসিটিভি সিস্টেম",
+            "url": "#"
+          }
+        ]
+      },
+      {
+        "title": "সহায়তা",
+        "links": [
+          {
+            "text": "সাপোর্ট",
+            "url": "support"
+          },
+          {
+            "text": "বিল প্রদান",
+            "url": "pay-bill"
+          },
+          {
+            "text": "যোগাযোগ",
+            "url": "contact"
+          },
+          {
+            "text": "এফ.এ.কিউ",
+            "url": "support#faqSection"
+          }
+        ]
+      },
+      {
+        "title": "পেইজ",
+        "links": [
+          {
+            "text": "সম্পর্কিত",
+            "url": "about"
+          },
+          {
+            "text": "প্যাকেজ",
+            "url": "packages"
+          },
+          {
+            "text": "কভারেজ",
+            "url": "coverage"
+          },
+          {
+            "text": "অফার",
+            "url": "offers"
+          }
+        ]
+      },
+      {
+        "title": "লিঙ্ক",
+        "links": [
+          {
+            "text": "গ্রুপে যোগ দিন ",
+            "url": "https://www.facebook.com/groups/212808672067129"
+          },
+          {
+            "text": "প্রাইভেসি পলিসি ",
+            "url": "/privacy-policy"
+          },
+          {
+            "text": "শর্তাবলী",
+            "url": "/terms-conditions"
+          },
+          {
+            "text": "রিফান্ড সম্পর্কে",
+            "url": "/about-refund"
+          }
+        ]
+      }
+    ]
   }
 }
