@@ -6,29 +6,23 @@ import Image from "next/image";
 import Link from "next/link";
 import Head from "next/head";
 import { apiUrl, imgUrl } from "../config/config";
-import Cookies from "js-cookie";
+
+import { useApi } from "../lib/ApiContext";
 
 const ContactPage = () => {
+  const { apiBaseUrl } = useApi();
   const [contactInfo, setContactInfo] = useState(null);
 
   useEffect(() => {
-    const fetchData = async () => {
-      const apiUrl = Cookies.get("baseApi");
-      try {
-        const response = await fetch(`${apiUrl}/contact.php`);
-        if (!response.ok) {
-          throw new Error("Failed to fetch contact data");
-        }
-        const data = await response.json();
+    fetch(`${apiBaseUrl}/contact.php`)
+      .then((response) => response.json())
+      .then((data) => {
         if (data && data.length > 0) {
           setContactInfo(data[0]); // Assuming there's only one contact entry in the response
         }
-      } catch (error) {
-        console.error("Error fetching contact data:", error);
-      }
-    };
-    fetchData();
-  }, []);
+      })
+      .catch((error) => console.error("Error fetching data:", error));
+  }, [apiBaseUrl]);
 
   if (!contactInfo) {
     return (

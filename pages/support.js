@@ -10,9 +10,10 @@ import { faCircleQuestion } from "@fortawesome/free-solid-svg-icons";
 import Head from "next/head";
 import { useIntl } from "react-intl";
 
-import { apiUrl, imgUrl } from "../config/config";
+import { useApi } from "../lib/ApiContext";
 
 const Support = () => {
+  const { apiBaseUrl } = useApi();
   const [faqContent, setFaqContent] = useState([]);
 
   const intl = useIntl();
@@ -23,18 +24,11 @@ const Support = () => {
   const subtitle = intl.messages.component.supportPage.subtitle;
 
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await fetch(`${apiUrl}/faq.php`);
-        const data = await response.json();
-        setFaqContent(data);
-      } catch (error) {
-        console.error("Error fetching offers:", error);
-      }
-    };
-
-    fetchData();
-  }, []);
+    fetch(`${apiBaseUrl}/faq.php`)
+      .then((response) => response.json())
+      .then((data) => setFaqContent(data))
+      .catch((error) => console.error("Error fetching data:", error));
+  }, [apiBaseUrl]);
 
   return (
     <>
@@ -80,11 +74,11 @@ const Support = () => {
                         </div>
                         <div>
                           <p className="body_text_akm text-left pl-2 font-semibold">
-                            {item.question}
+                            {item.questionFaq}
                           </p>
                         </div>
                       </div>
-                      <div className="pl-6 text-left">{item.answer}</div>
+                      <div className="pl-6 text-left">{item.answerFaq}</div>
                     </div>
                   ))}
                 </div>

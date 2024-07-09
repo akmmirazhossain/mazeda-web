@@ -3,9 +3,11 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 import { apiUrl, imgUrl } from "../../../config/config";
 import { useIntl } from "react-intl";
-import Cookies from "js-cookie";
+
+import { useApi } from "../../../lib/ApiContext";
 
 const PhoneNumbers = () => {
+  const { apiBaseUrl } = useApi();
   const [phoneData, setPhoneData] = useState(null);
 
   const intl = useIntl();
@@ -14,21 +16,13 @@ const PhoneNumbers = () => {
     intl.messages.component.phoneNumbers.aiChatComingSoon;
 
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const apiUrl = Cookies.get("baseApi");
-        const response = await fetch(`${apiUrl}/phone.php`);
-        if (!response.ok) {
-          throw new Error("Failed to fetch phone data");
-        }
-        const data = await response.json();
+    fetch(`${apiBaseUrl}/phone.php`)
+      .then((response) => response.json())
+      .then((data) => {
         setPhoneData(data);
-      } catch (error) {
-        console.error("Error fetching phone data:", error);
-      }
-    };
-    fetchData();
-  }, []);
+      })
+      .catch((error) => console.error("Error fetching data:", error));
+  }, [apiBaseUrl]);
 
   if (!phoneData) {
     return <div>Loading...</div>;

@@ -5,9 +5,10 @@ import {
   faSearch,
   faLocationDot,
 } from "@fortawesome/free-solid-svg-icons";
-import Cookies from "js-cookie";
+import { useApi } from "../../lib/ApiContext";
 
 const CoverageBlocks = () => {
+  const { apiBaseUrl } = useApi();
   const [initialData, setInitialData] = useState([]);
   const [regionData, setRegionData] = useState({});
   const [searchValue, setSearchValue] = useState("");
@@ -16,25 +17,33 @@ const CoverageBlocks = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   useEffect(() => {
-    const fetchCoverageData = async () => {
-      const apiUrl = Cookies.get("baseApi");
-      try {
-        const response = await fetch(`${apiUrl}/coverage.php`);
-        const data = await response.json();
-
+    fetch(`${apiBaseUrl}/coverage.php`)
+      .then((response) => response.json())
+      .then((data) => {
         // Sort the data by `coverage_serial`
         const sortedData = data.sort(
           (a, b) => parseInt(a.coverageSerial) - parseInt(b.coverageSerial)
         );
 
         setInitialData(sortedData);
-      } catch (error) {
-        console.error("Error fetching coverage data:", error);
-      }
-    };
+      })
+      .catch((error) => console.error("Error fetching data:", error));
+  }, [apiBaseUrl]);
 
-    fetchCoverageData();
-  }, []);
+  // useEffect(() => {
+  //   const fetchCoverageData = async () => {
+  //     const apiUrl = Cookies.get("baseApi");
+  //     try {
+  //       const response = await fetch(`${apiUrl}/coverage.php`);
+  //       const data = await response.json();
+
+  //     } catch (error) {
+  //       console.error("Error fetching coverage data:", error);
+  //     }
+  //   };
+
+  //   fetchCoverageData();
+  // }, []);
 
   useEffect(() => {
     const updatedRegionData = {};

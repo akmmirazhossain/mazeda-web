@@ -42,6 +42,12 @@
         "label": "Support"
       }
     ],
+    "about": {
+      "title": "About Us",
+      "mission": "Our Mission",
+      "vision": "Our Vision",
+      "partner": "Tech Partners"
+    },
     "coverageTitle": "Our coverage",
     "coverageSubtitle": "Our network grows daily, so stay tuned for updates here.",
     "links": [

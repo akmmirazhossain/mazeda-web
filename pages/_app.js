@@ -8,6 +8,7 @@ import en from "../public/locales/en/en.json";
 import { useEffect } from "react";
 import Cookies from "js-cookie";
 import { apiUrl, apiUrl_en } from "../config/config";
+import { ApiProvider } from "../lib/ApiContext";
 
 const messages = {
   en,
@@ -21,22 +22,24 @@ function getDirection(locale) {
 export default function App({ Component, pageProps }) {
   const { locale } = useRouter();
 
-  useEffect(() => {
-    const fullURL = window.location.href;
-    const hasEn = /^https?:\/\/[^\/]+\/en\b/.test(fullURL);
+  // useEffect(() => {
+  //   const fullURL = window.location.href;
+  //   const hasEn = /^https?:\/\/[^\/]+\/en\b/.test(fullURL);
 
-    if (hasEn) {
-      Cookies.set("baseApi", apiUrl_en);
-    } else {
-      Cookies.set("baseApi", apiUrl);
-    }
-  }, []);
+  //   if (hasEn) {
+  //     Cookies.set("baseApi", apiUrl_en);
+  //   } else {
+  //     Cookies.set("baseApi", apiUrl);
+  //   }
+  // }, []);
 
   return (
-    <NextUIProvider>
-      <IntlProvider locale={locale} messages={messages[locale]}>
-        <Component {...pageProps} dir={getDirection(locale)} />
-      </IntlProvider>
-    </NextUIProvider>
+    <ApiProvider>
+      <NextUIProvider>
+        <IntlProvider locale={locale} messages={messages[locale]}>
+          <Component {...pageProps} dir={getDirection(locale)} />
+        </IntlProvider>
+      </NextUIProvider>
+    </ApiProvider>
   );
 }

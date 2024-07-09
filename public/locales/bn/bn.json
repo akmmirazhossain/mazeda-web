@@ -42,6 +42,12 @@
         "label": "সাপোর্ট"
       }
     ],
+    "about": {
+      "title": "আমাদের সম্পর্কে",
+      "mission": "আমাদের লক্ষ্য",
+      "vision": "আমাদের দৃষ্টি",
+      "partner": "টেক পার্টনার"
+    },
     "coverageTitle": "আমাদের কভারেজ",
     "coverageSubtitle": "আমাদের নেটওয়ার্ক প্রতিদিন বৃদ্ধি পাচ্ছে, তাই আপডেটের জন্য এখানে থাকুন।",
     "links": [
@@ -71,17 +77,17 @@
       {
         "icon": "faHouseSignal",
         "title": "হোম ইন্টারনেট ",
-        "description": "Elevate your home experience with high-speed internet at your fingertips."
+        "description": " আমাদের উচ্চগতির কানেক্টিভিটি দিয়ে আপনার সর্বোচ্চ ইন্টারনেট এক্সপেরিয়েন্স  উপভোগ করুন"
       },
       {
         "icon": "faBriefcase",
         "title": "কর্পোরেট ইন্টারনেট",
-        "description": "Boost your business efficiency with our Corporate Internet: fast, secure, and reliable connectivity solutions."
+        "description": "আমাদের কর্পোরেট ইন্টারনেটের মাধ্যমে আপনার ব্যবসা বিস্তৃত করুন। উচ্চগতি, সাইবার নিরাপত্তা, এবং নির্ভরতাই আমাদের দৃঢ় লক্ষ্য"
       },
       {
         "icon": "faVideo",
         "title": "সিসিটিভি সিস্টেম",
-        "description": "Securing peace of mind with our advanced CCTV solutions for comprehensive and reliable surveillance."
+        "description": " আপনার বাসা, অফিস, গ্যারেজ অথবা যে কোন জায়গার জন্য আমাদের উন্নত প্রযুক্তির  সিসিটিভি সমাধান"
       }
     ],
     "clientSectionTitle": "আমাদের সফল ক্লায়েন্ট",

@@ -8,7 +8,8 @@ import {
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useIntl } from "react-intl";
-import Cookies from "js-cookie";
+
+import { useApi } from "../../lib/ApiContext";
 
 // Utility function to sort data by price
 const sortBySpeed = (data) => {
@@ -20,6 +21,7 @@ const sortBySpeed = (data) => {
 };
 
 const PackagesSection = () => {
+  const { apiBaseUrl } = useApi();
   const intl = useIntl();
   const packageFeatures = intl.messages.component.packageFeatures;
   const packageFeaturesTitle = intl.messages.component.packageFeaturesTitle;
@@ -32,9 +34,7 @@ const PackagesSection = () => {
   const [allPackages, setAllPackages] = useState([]);
 
   useEffect(() => {
-    const apiUrl = Cookies.get("baseApi");
-    // Fetch data from the API when the component mounts
-    fetch(`${apiUrl}/packages.php`)
+    fetch(`${apiBaseUrl}/packages.php`)
       .then((response) => response.json())
       .then((data) => {
         // Process and sort data by package_speed for each group
@@ -54,7 +54,7 @@ const PackagesSection = () => {
         setFilteredData(sortedData["standard"]);
       })
       .catch((error) => console.error("Error fetching data:", error));
-  }, []);
+  }, [apiBaseUrl]);
 
   const handleTabClick = (tabIndex) => {
     let group;

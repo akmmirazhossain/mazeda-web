@@ -9,13 +9,13 @@ import {
   faHeadset,
   faEnvelope,
 } from "@fortawesome/free-solid-svg-icons";
-import Cookies from "js-cookie";
 import { Switch } from "@nextui-org/react";
 import { useIntl } from "react-intl";
-import { apiUrl, apiUrl_en } from "../../config/config";
+import { useApi } from "../../lib/ApiContext";
 
 function Navbar() {
   const { locales, locale, asPath } = useRouter();
+  const { switchToEnApi, switchToBnApi } = useApi();
   const router = useRouter();
   const intl = useIntl();
   const items = intl.messages.component.navbar;
@@ -23,41 +23,13 @@ function Navbar() {
 
   const [localeBn, localeEn] = locales || ["bn", "en"];
   const handleLocaleChange = (selectedLocale) => {
-    if (selectedLocale === "bn") {
-      Cookies.set("baseApi", apiUrl);
-      console.log("🚀 ~ handleLocaleChange ~ apiUrl:", apiUrl);
-    }
-
     if (selectedLocale === "en") {
-      Cookies.set("baseApi", apiUrl_en);
-      console.log("🚀 ~ handleLocaleChange ~ apiUrl_en:", apiUrl_en);
-    }
-
-    let currentURL = window.location.href;
-
-    // Check if '/en' exists right after the domain
-    const domainIndex = currentURL.indexOf("//");
-    const afterDomainIndex = currentURL.indexOf("/", domainIndex + 2);
-    const isENAfterDomain =
-      currentURL.substring(afterDomainIndex + 1, afterDomainIndex + 4) ===
-      "en/";
-
-    if (isENAfterDomain) {
-      // Remove '/en' from the URL
-      currentURL = currentURL.replace("/en", "");
+      switchToEnApi();
     } else {
-      // Add '/en' after the domain if it doesn't exist
-      currentURL =
-        currentURL.substring(0, afterDomainIndex + 1) +
-        "en" +
-        currentURL.substring(afterDomainIndex);
+      switchToBnApi();
     }
 
-    console.log(currentURL);
-
-    router.push(asPath, asPath, { locale: selectedLocale });
-
-    window.location.href = currentURL;
+    router.replace(asPath, asPath, { locale: selectedLocale, scroll: false });
   };
 
   const getIcon = (iconName) => {
@@ -132,24 +104,6 @@ function Navbar() {
                     )}
                   </Link>
                 ))}
-
-                {/* {[...locales].sort().map((locale) => (
-                  <Switch
-                    defaultSelected
-                    size="lg"
-                    color="danger"
-                    startContent={<span style={{ fontSize: "14px" }}>BN</span>}
-                    endContent={<span style={{ fontSize: "14px" }}>EN</span>}
-                  ></Switch>
-                ))} */}
-
-                {/* <Link href="" locale={bnLocale}>
-                  <div>{bnLocale}</div>
-                </Link>
-
-                <Link href="" locale={enLocale}>
-                  <div>{enLocale}</div>
-                </Link> */}
               </ul>
             </div>
 
