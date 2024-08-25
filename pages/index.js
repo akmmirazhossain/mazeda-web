@@ -11,7 +11,7 @@ import Modal from "./components/offerModal";
 import Head from "next/head";
 
 function Home() {
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(true);
 
   const openModal = () => setIsModalOpen(true);
   const closeModal = () => setIsModalOpen(false);

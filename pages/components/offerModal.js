@@ -27,7 +27,9 @@ const Modal = ({ isOpen, onClose }) => {
         .then((response) => response.json())
         .then((data) => {
           // Find the first offer that is featured
-          const featured = data.find((offer) => offer.offer_featured === "yes");
+          const featured = data.find((offer) => offer.offerFeatured === "yes");
+          console.log("🚀 ~ .then ~ featured:", featured);
+
           if (featured) {
             setFeaturedOffer(featured);
           } else {
@@ -42,6 +44,8 @@ const Modal = ({ isOpen, onClose }) => {
   }, [isOpen, onClose]);
 
   if (!isOpen || !featuredOffer) return null;
+
+  // console.log("zzzz", featuredOffer);
 
   return (
     <div
@@ -59,24 +63,24 @@ const Modal = ({ isOpen, onClose }) => {
           &times;
         </button>
         <Link
-          href={`https://mazedanetworks.net/offers/${featuredOffer.offer_link}`}
+          href={`https://mazedanetworks.net/offers/${featuredOffer.offerLink}`}
           target="_blank"
         >
           <div className="modal-content">
             <h2 className="text-2xl mt-6 mx-6 mb-4 font-bold ">
-              {featuredOffer.offer_title}
+              {featuredOffer.offerTitle}
             </h2>
             <div
               className="mb-6  mx-6"
               dangerouslySetInnerHTML={{
-                __html: `${featuredOffer.offer_subtitle} <a href='https://mazedanetworks.net/offers/${featuredOffer.offer_link}' target='_blank' rel='noopener noreferrer' class='text-blue-500 hover:underline'>Read more...</a>`,
+                __html: `${featuredOffer.offerSubtitle} <a href='https://mazedanetworks.net/offers/${featuredOffer.offerLink}' target='_blank' rel='noopener noreferrer' class='text-blue-500 hover:underline'>Read more...</a>`,
               }}
             />
 
             <img
               className="rounded-b-2xl"
-              src={`https://apis.mazedanetworks.net/web_files/${featuredOffer.offer_thumbImg}`}
-              alt={featuredOffer.offer_title}
+              src={`https://apis.mazedanetworks.net/web_files/${featuredOffer.offerThumbImg}`}
+              alt={featuredOffer.offerTitle}
             />
           </div>
         </Link>

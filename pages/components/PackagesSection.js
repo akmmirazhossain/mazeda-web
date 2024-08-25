@@ -213,15 +213,23 @@ const PackagesSection = () => {
                           </div>
                         </div>
                         <div className="md:col-span-3 flex flex-col justify-center items-center p-6 md:-skew-x-12 bg-gradient-to-b from-[#0296b8] via-[#03738c] to-[#0296b8] -mr-5 text-white">
-                          <p
+                          <div
                             className={
                               pricing.packagePrice === "(Call for Price)"
                                 ? "text-white text-sm italic font-bold tracking-wide"
                                 : "text-3xl md:skew-x-12 -ml-4 tracking-wide font-semibold"
                             }
                           >
-                            {pricing.packagePrice}
-                          </p>
+                            <div className="flex items-center">
+                              <span> {pricing.packagePrice}</span>
+
+                              {pricing.packagePrice != "(Call for Price)" && (
+                                <span className="text-sm font-extralight  rounded-full pl-0.5 pr-1 tracking-tighter italic">
+                                  + vat
+                                </span>
+                              )}
+                            </div>
+                          </div>
                           <Link
                             href="/contact"
                             className="items-center rounded-full text-center md:skew-x-12 text-white red_gradient hover:deep_red_gradient py-2 px-4 mt-4"
