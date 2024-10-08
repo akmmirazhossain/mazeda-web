@@ -12,6 +12,7 @@ import {
 import { Switch } from "@nextui-org/react";
 import { useIntl } from "react-intl";
 import { useApi } from "../../lib/ApiContext";
+import axios from "axios";
 
 function Navbar() {
   const { locales, locale, asPath } = useRouter();
@@ -20,6 +21,8 @@ function Navbar() {
   const intl = useIntl();
   const items = intl.messages.component.navbar;
   const navbarButtons = intl.messages.component.navbarButtons;
+  const [offersCount, setOffersCount] = useState("");
+  const { apiBaseUrl } = useApi();
 
   const [localeBn, localeEn] = locales || ["bn", "en"];
   const handleLocaleChange = (selectedLocale) => {
@@ -42,6 +45,32 @@ function Navbar() {
         return null;
     }
   };
+
+  useEffect(() => {
+    const fetchOffers = async () => {
+      try {
+        const response = await axios.get(`${apiBaseUrl}/offers.php`);
+
+        // Get today's date in 'DD-MM-YYYY' format
+        const today = new Date();
+        const todayString = today.toLocaleDateString("en-GB"); // 'DD-MM-YYYY'
+
+        // Count offers with offerDateExpire before today's date
+        const validOffersCount = response.data.filter((offer) => {
+          const offerExpireDate = new Date(
+            offer.offerDateExpire.split("-").reverse().join("-")
+          ); // Convert 'DD-MM-YYYY' to 'YYYY-MM-DD'
+          return offerExpireDate > today;
+        }).length;
+
+        setOffersCount(validOffersCount); // Update count of valid offers
+      } catch (error) {
+        console.error("Error fetching offers:", error);
+      }
+    };
+
+    fetchOffers();
+  }, []);
 
   const [menuOpen, setMenuOpen] = useState(false);
 
@@ -83,18 +112,18 @@ function Navbar() {
                   >
                     <li className={`p-2 lg:p-4  relative `}>
                       {item.label}
-                      {item.label === "Offers" && (
+                      {item.label === "Offers" && offersCount != 0 && (
                         <div className="flex items-center justify-center h-full absolute -top-1.5 -right-1">
                           <div className=" bg-red-500 h-5 w-5 rounded-full flex items-center justify-center  text-white text-xs">
-                            2
+                            {offersCount}
                           </div>
                         </div>
                       )}
 
-                      {item.label === "অফার" && (
+                      {item.label === "অফার" && offersCount != 0 && (
                         <div className="flex items-center justify-center h-full absolute -top-1.5 -right-1">
                           <div className=" bg-red-500 h-5 w-5 rounded-full flex items-center justify-center  text-white text-xs">
-                            ২
+                            {offersCount}
                           </div>
                         </div>
                       )}

@@ -28,6 +28,22 @@ const OfferDetailsPage = () => {
     }
   }, [apiBaseUrl, offerLink]);
 
+  const isOfferExpired = (expirationDate) => {
+    const today = new Date();
+    const expDate = new Date(expirationDate.split("-").reverse().join("-"));
+    return today > expDate;
+  };
+
+  const formatDate = (dateString) => {
+    const [day, month, year] = dateString.split("-");
+    const date = new Date(year, month - 1, day);
+    return date.toLocaleDateString("en-US", {
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+    });
+  };
+
   if (!offer) {
     return;
 
@@ -67,6 +83,16 @@ const OfferDetailsPage = () => {
           <section className="page_body">
             <div className="grid grid-cols-1 md:grid-cols-3 gap_akm">
               <div className="col-span-3 box_round_shadow mt-4 pt-4 sm:mt-0 text-center sm:text-left ">
+                {isOfferExpired(offer.offerDateExpire) && (
+                  <div className="bg_green text-white p-4 rounded-t-lg mb-4 text-center">
+                    <p className="text-lg font-semibold">
+                      This Offer Has Expired
+                    </p>
+                    <p className="text-sm">
+                      This offer expired on {formatDate(offer.offerDateExpire)}
+                    </p>
+                  </div>
+                )}
                 <h1 className="subheading_akm border-b mb-3">
                   {offer.offerTitle}
                 </h1>
