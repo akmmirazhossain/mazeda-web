@@ -55,7 +55,7 @@ const HeroSection = () => {
               </div>
 
               <div className="flex row-span-5 justify-center md:justify-between ">
-                <div className="hidden md:flex xl:pl-8 justify-center items-center h-full">
+                <div className="xl:pl-8 justify-center items-center h-full">
                   <img
                     alt=""
                     src="/images/slider/girl_on_phone.webp"
@@ -83,7 +83,7 @@ const HeroSection = () => {
                   <img
                     alt=""
                     src="/images/slider/man_on_phone.webp"
-                    className="pt-4 max-h-full max-w-full"
+                    className="hidden md:flex pt-4 max-h-full max-w-full"
                   />
                 </div>
               </div>

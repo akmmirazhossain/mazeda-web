@@ -138,7 +138,6 @@ function Navbar() {
 
             <div className="flex">
               <Switch
-                className="hidden sm:flex"
                 isSelected={locale === "en"} // Check if current locale is 'en'
                 onChange={(e) =>
                   handleLocaleChange(e.target.checked ? localeEn : localeBn)
@@ -186,18 +185,18 @@ function Navbar() {
                 <Link href={item.href} key={index}>
                   <li className={`p-2 lg:p-4 ${isActive(item.href)} relative`}>
                     {item.label}
-                    {item.label === "Offers" && (
+                    {item.label === "Offers" && offersCount != 0 && (
                       <div className="flex items-center justify-center h-full absolute -top-1.5 -right-1">
                         <div className=" bg-red-500 h-5 w-5 rounded-full flex items-center justify-center  text-white text-xs">
-                          2
+                          {offersCount}
                         </div>
                       </div>
                     )}
 
-                    {item.label === "অফার" && (
+                    {item.label === "অফার" && offersCount != 0 && (
                       <div className="flex items-center justify-center h-full absolute -top-1.5 -right-1">
                         <div className=" bg-red-500 h-5 w-5 rounded-full flex items-center justify-center  text-white text-xs">
-                          ২
+                          {offersCount}
                         </div>
                       </div>
                     )}
@@ -209,7 +208,7 @@ function Navbar() {
               ))}
             </ul>
 
-            <div className="flex justify-center mt-4">
+            {/* <div className="flex justify-center mt-4">
               <Switch
                 className="flex sm:hidden"
                 isSelected={locale === "en"} // Check if current locale is 'en'
@@ -221,7 +220,7 @@ function Navbar() {
                 startContent={<span style={{ fontSize: "13px" }}>BN</span>}
                 endContent={<span style={{ fontSize: "13px" }}>EN</span>}
               />
-            </div>
+            </div> */}
 
             <ul className="flex sm:hidden justify-center my-4 space-x-2">
               {navbarButtons.map((button, index) => (
