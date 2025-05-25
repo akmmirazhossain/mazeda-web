@@ -9,6 +9,7 @@ import { useEffect } from "react";
 import Cookies from "js-cookie";
 import { apiUrl, apiUrl_en } from "../config/config";
 import { ApiProvider } from "../lib/ApiContext";
+import ChatBubble from "./components/ChatBubble";
 
 const messages = {
   en,
@@ -38,6 +39,7 @@ export default function App({ Component, pageProps }) {
       <NextUIProvider>
         <IntlProvider locale={locale} messages={messages[locale]}>
           <Component {...pageProps} dir={getDirection(locale)} />
+          <ChatBubble />
         </IntlProvider>
       </NextUIProvider>
     </ApiProvider>

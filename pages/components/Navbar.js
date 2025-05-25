@@ -86,11 +86,13 @@ function Navbar() {
     <nav className="fixed mx-auto w-full top-0 z-40 bg-[#FFFFFF]  ">
       <div className="bg_green text-white text-sm  h-6">
         <div className="mx-auto lg:px-4 max-w-7xl h-full flex justify-end items-center">
-          <div className="pr-4 ">
-            <FontAwesomeIcon icon={faEnvelope} /> mazeda@mazedanetworks.net
+          <div className="pr-4 flex items-center gap-1">
+            <FontAwesomeIcon icon={faEnvelope} className="h-3.5 w-3.5" />{" "}
+            mazeda@mazedanetworks.net
           </div>
-          <div className="pr-1 ">
-            <FontAwesomeIcon icon={faHeadset} /> 09666 334455
+          <div className="pr-1 flex items-center gap-1">
+            <FontAwesomeIcon icon={faHeadset} className="h-3.5 w-3.5" /> 09666
+            334455
           </div>
         </div>
       </div>
@@ -152,12 +154,11 @@ function Navbar() {
                   <li key={index}>
                     <Link
                       href={button.href}
-                      className="justify-center px-4 py-2 font-sm green_gradient hover:red_gradient text-[#FFF] rounded-full shadow-md"
+                      className="flex items-center  px-4 py-2 font-sm green_gradient hover:red_gradient text-[#FFF] rounded-full shadow-md"
                     >
                       <FontAwesomeIcon
                         icon={getIcon(button.icon)}
-                        size="xs"
-                        className="pr-1"
+                        className="pr-1 h-3.5 w-3.5 "
                       />
                       {button.label}
                     </Link>

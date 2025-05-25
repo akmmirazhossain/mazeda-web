@@ -30,21 +30,6 @@ const CoverageBlocks = () => {
       .catch((error) => console.error("Error fetching data:", error));
   }, [apiBaseUrl]);
 
-  // useEffect(() => {
-  //   const fetchCoverageData = async () => {
-  //     const apiUrl = Cookies.get("baseApi");
-  //     try {
-  //       const response = await fetch(`${apiUrl}/coverage.php`);
-  //       const data = await response.json();
-
-  //     } catch (error) {
-  //       console.error("Error fetching coverage data:", error);
-  //     }
-  //   };
-
-  //   fetchCoverageData();
-  // }, []);
-
   useEffect(() => {
     const updatedRegionData = {};
     initialData.forEach((item) => {
@@ -172,7 +157,7 @@ const CoverageBlocks = () => {
         {Object.keys(filteredData.areas).map((region, regionIndex) => (
           <div key={regionIndex} className="">
             <h2 className="subheading_akm pad_akm">{region}</h2>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-6 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-5 gap-4">
               {filteredData.areas[region].map((area, index) => (
                 <div
                   key={index}

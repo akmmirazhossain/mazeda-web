@@ -46,6 +46,7 @@ function Home() {
         <div className="container_akm">
           <ClientsSection />
         </div>
+
         <Footer />
 
         {/* Modal Component */}
