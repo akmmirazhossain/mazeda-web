@@ -87,41 +87,36 @@
   }
 }
 
-/******* CUSTOM COLORS *********/
-
-/* 
-.text_red {
-  color: #e6242d;
-}
-.bg_red {
-  background-color: #e6242d;
+@font-face {
+  font-family: "BalooDa2";
+  src: url("/fonts/BalooDa2-VariableFont_wght.ttf") format("truetype");
+  font-weight: 100 900; /* full weight range */
+  font-stretch: 75% 125%; /* optional: for wdth axis */
+  font-display: swap;
 }
 
-.text_green {
-  color: #03738c;
+@font-face {
+  font-family: "NotoSansBengali";
+  src: url("/fonts/NotoSansBengali-VariableFont_wdth,wght.ttf")
+    format("truetype");
+  font-weight: 100 900; /* full weight range */
+  font-stretch: 75% 125%; /* optional: for wdth axis */
+  font-display: swap;
 }
-
-.bg_green {
-  background-color: #03738c;
-}
-
-.text_gray {
-  color: #64748b;
-}
-
-.bg_orange {
-  background-color: #ffa34d;
-}
-
-.bg_mint {
-  background-color: #d4f8e8;
-} */
 
 body {
   background: #f4f4f4;
-  font-family: "Inter", sans-serif;
   color: #181818;
+  font-family: "NotoSansBengali", "Inter", sans-serif;
+  font-weight: 400; /* You can set 100–900 dynamically */
+  font-size: 17px;
 }
+
+/* body {
+  background: #f4f4f4;
+  font-family: "Inter", sans-serif;
+
+} */
 
 /* COVERAGE SEARCH */
 .highlighted {

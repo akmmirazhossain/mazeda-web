@@ -12,7 +12,7 @@ export default async function handler(req, res) {
       {
         method: "POST",
         headers: {
-          Authorization: `Bearer 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`,
+          Authorization: `Bearer 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`,
           "Content-Type": "application/json",
           "HTTP-Referer": "http://web.mazedanetworks.net/",
           "X-Title": "Mazeda Chat",

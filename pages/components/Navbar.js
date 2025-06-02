@@ -105,7 +105,7 @@ function Navbar() {
                   <img alt="" src="/logo.webp" className="pr-10" />
                 </Link>
               </div>
-              <ul className="items-center hidden space-x-4 lg:flex text-base font-medium  h-full">
+              <ul className="items-center hidden space-x-4 lg:flex    h-full">
                 {items.map((item, index) => (
                   <Link
                     href={item.href}
