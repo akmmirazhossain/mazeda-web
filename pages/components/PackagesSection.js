@@ -225,7 +225,7 @@ const PackagesSection = () => {
 
                               {pricing.packagePrice != "(Call for Price)" && (
                                 <span className="text-sm font-extralight  rounded-full pl-0.5 pr-1 tracking-tighter italic">
-                                  + vat
+                                  (Including vat)
                                 </span>
                               )}
                             </div>

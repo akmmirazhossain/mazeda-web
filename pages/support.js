@@ -102,7 +102,7 @@ const Support = () => {
                   <div>
                     <img
                       alt=""
-                      src="/images/support-workflow.png"
+                      src="/images/home-network-diagram.png"
                       className="rounded-2xl"
                     />
                   </div>

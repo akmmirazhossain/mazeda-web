@@ -207,8 +207,8 @@
     "paybillOtherTitle": "Other Payment Options",
     "paybillOtherSubtitle": "Bill payment on Mazeda Networks is doable in all sorts of ways, but for these payment portals, you need to call our office and confirm our billing team about it.",
     "phoneNumbers": {
-      "aiChat": "AI Chat Support",
-      "aiChatComingSoon": "(Coming Soon)"
+      "aiChat": "Ask MazedaAI",
+      "aiChatComingSoon": ""
     },
     "supportPage": {
       "title": "Support",
