@@ -6,7 +6,7 @@ import { nanoid } from "nanoid";
 
 const ChatBubble = () => {
   const [showChat, setShowChat] = useState(false);
-  const [showTooltip, setShowTooltip] = useState(true);
+  const [showTooltip, setShowTooltip] = useState(false);
   const [chatLog, setChatLog] = useState([]);
 
   const showChatWindow = async () => {
@@ -17,11 +17,28 @@ const ChatBubble = () => {
 
   //SHOW TOOLTIP ON CHAT
   useEffect(() => {
-    const timer = setTimeout(() => {
-      setShowTooltip(false);
-    }, 3000); // Hide after 3 seconds
+    // Get how many times tooltip has been shown
+    const shownCount = parseInt(
+      localStorage.getItem("tooltipShown") || "0",
+      10
+    );
 
-    return () => clearTimeout(timer);
+    if (shownCount >= 5) return; // Don't show anymore if shown 3+ times
+
+    // Show tooltip after 2 seconds
+    const showTimer = setTimeout(() => setShowTooltip(true), 4000);
+
+    // Hide tooltip after 5 seconds total
+    const hideTimer = setTimeout(() => setShowTooltip(false), 10000);
+
+    // Update shown count
+    localStorage.setItem("tooltipShown", shownCount + 1);
+
+    // Cleanup
+    return () => {
+      clearTimeout(showTimer);
+      clearTimeout(hideTimer);
+    };
   }, []);
 
   // Add this function inside your component
@@ -37,16 +54,18 @@ const ChatBubble = () => {
           setChatLog([
             {
               role: "assistant",
-              content: "হ্যালো আমি MazedaAI, কিভাবে আপনাকে সাহায্য করতে পারি?",
+              content: "Hi, I’m MazedaAI. How can I assist you today?",
             },
           ]);
         } else {
           // If chats exist, map them
           setChatLog(
-            data.chats.map((c) => ({
-              role: c.chat_role,
-              content: c.chat_content,
-            }))
+            data.chats
+              .map((c) => ({
+                role: c.chat_role,
+                content: c.chat_content,
+              }))
+              .reverse()
           );
         }
       } catch (error) {
@@ -54,7 +73,7 @@ const ChatBubble = () => {
       }
     } else {
       const chatId = nanoid(12);
-      Cookies.set("mazeda_chat_id", chatId, { expires: 1 });
+      Cookies.set("mazeda_chat_id", chatId, { expires: 30 });
       console.log("New chat ID created:", chatId);
 
       // SHOW FIRST MESSAGE
@@ -261,22 +280,45 @@ const ChatBubble = () => {
       {/* Floating Open Button */}
       {!showChat && (
         <div className="fixed bottom-4 right-4 z-50">
-          <Tooltip content="I am a tooltip" showArrow={true}>
-            <Button
-              onClick={() => showChatWindow(true)}
-              className=" green_gradient text-sm hover:red_gradient  text-white rounded-full shadow-lg flex items-center gap-2"
+          <div
+            className={`relative bg-white text-black p-2 rounded-2xl shadow-md text-sm transition-opacity duration-500 mb-2 ${
+              showTooltip ? "opacity-100" : "opacity-0"
+            }`}
+          >
+            যেকোনো তথ্য জানতে
+            <br />
+            আমার সাথে চ্যাট করুন!
+            {/* Arrow */}
+            <div className="absolute bottom-[-4px] left-1/2 transform -translate-x-1/2 w-2 h-2 bg-white rotate-45 shadow-xl"></div>
+          </div>
+
+          <Button
+            onClick={() => showChatWindow(true)}
+            size="sm"
+            className=" green_gradient text-sm hover:red_gradient  text-white rounded-full shadow-lg flex items-center gap-2"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              height="24px"
+              viewBox="0 -960 960 960"
+              fill="currentColor"
             >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                height="24px"
-                viewBox="0 -960 960 960"
-                fill="currentColor"
-              >
-                <path d="m240-240-92 92q-19 19-43.5 8.5T80-177v-623q0-33 23.5-56.5T160-880h640q33 0 56.5 23.5T880-800v480q0 33-23.5 56.5T800-240H240Zm40-160h240q17 0 28.5-11.5T560-440q0-17-11.5-28.5T520-480H280q-17 0-28.5 11.5T240-440q0 17 11.5 28.5T280-400Zm0-120h400q17 0 28.5-11.5T720-560q0-17-11.5-28.5T680-600H280q-17 0-28.5 11.5T240-560q0 17 11.5 28.5T280-520Zm0-120h400q17 0 28.5-11.5T720-680q0-17-11.5-28.5T680-720H280q-17 0-28.5 11.5T240-680q0 17 11.5 28.5T280-640Z" />
-              </svg>
-              Ask MazedaAI
-            </Button>
-          </Tooltip>
+              <path d="m240-240-92 92q-19 19-43.5 8.5T80-177v-623q0-33 23.5-56.5T160-880h640q33 0 56.5 23.5T880-800v480q0 33-23.5 56.5T800-240H240Zm40-160h240q17 0 28.5-11.5T560-440q0-17-11.5-28.5T520-480H280q-17 0-28.5 11.5T240-440q0 17 11.5 28.5T280-400Zm0-120h400q17 0 28.5-11.5T720-560q0-17-11.5-28.5T680-600H280q-17 0-28.5 11.5T240-560q0 17 11.5 28.5T280-520Zm0-120h400q17 0 28.5-11.5T720-680q0-17-11.5-28.5T680-720H280q-17 0-28.5 11.5T240-680q0 17 11.5 28.5T280-640Z" />
+            </svg>
+            MazedaAI Chat
+          </Button>
+          {/* <Tooltip
+            content={
+              <span
+                dangerouslySetInnerHTML={{
+                  __html: "যেকোনো তথ্য জানতে<br />আমার সাথে চ্যাট করুন!<br />",
+                }}
+              />
+            }
+            showArrow={true}
+            isOpen={showTooltip}
+            position="fixed"
+          ></Tooltip> */}
         </div>
       )}
 
@@ -287,7 +329,7 @@ const ChatBubble = () => {
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: 20 }}
           transition={{ duration: 0.3 }}
-          className="fixed z-50 text-sm bottom-16 right-4 w-96 bg-white shadow-lg rounded-lg flex flex-col overflow-hidden"
+          className="fixed z-50 text-sm bottom-16 right-4 w-96  bg-white shadow-lg rounded-lg flex flex-col overflow-hidden"
         >
           {/* Header */}
           <div className="p-3 green_gradient text-white flex justify-between items-center">
@@ -303,7 +345,7 @@ const ChatBubble = () => {
           {/* Chat Messages */}
           <div
             ref={chatboxRef}
-            className="p-4 h-80 overflow-y-auto space-y-2 hide-scrollbar"
+            className="p-4 h-96 overflow-y-auto space-y-2 hide-scrollbar"
           >
             {chatLog.map((msg, idx) => (
               <div

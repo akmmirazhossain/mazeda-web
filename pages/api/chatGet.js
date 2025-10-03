@@ -12,7 +12,7 @@ export default async function handler(req, res) {
     let params = [];
 
     if (req.query.chat_cookie_id) {
-      sql += " WHERE chat_cookie_id = ? ORDER BY chat_created_at ASC";
+      sql += " WHERE chat_cookie_id = ? ORDER BY chat_id DESC LIMIT 10";
       params = [req.query.chat_cookie_id];
     } else {
       sql += " ORDER BY chat_created_at ASC";
