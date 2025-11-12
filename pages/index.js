@@ -1,7 +1,7 @@
 // pages/index.js
 import React, { useState, useEffect } from "react";
 import Navbar from "./components/Navbar";
-import HeroSection from "./components/HeroSection";
+
 import ServicesSection from "./components/ServicesSection";
 import LinksSection from "./components/LinksSection";
 import PackagesSection from "./components/PackagesSection";
@@ -9,12 +9,32 @@ import ClientsSection from "./components/ClientsSection";
 import Footer from "./components/Footer";
 import Modal from "./components/offerModal";
 import Head from "next/head";
+import dynamic from "next/dynamic";
+const HeroSectionDesktop = dynamic(
+  () => import("./components/HeroSectionDesktop"),
+  {
+    ssr: false,
+  }
+);
+const HeroSectionMobile = dynamic(
+  () => import("./components/HeroSectionMobile"),
+  {
+    ssr: false,
+  }
+);
 
 function Home() {
   const [isModalOpen, setIsModalOpen] = useState(true);
-
+  const [isMobile, setIsMobile] = useState(null);
   const openModal = () => setIsModalOpen(true);
   const closeModal = () => setIsModalOpen(false);
+
+  useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth < 768);
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
 
   useEffect(() => {
     // Automatically open the modal when the component mounts
@@ -32,7 +52,13 @@ function Home() {
       </Head>
       <main>
         <Navbar />
-        <HeroSection />
+        {isMobile === null ? (
+          <div className="h-[600px] w-full" />
+        ) : isMobile ? (
+          <HeroSectionMobile />
+        ) : (
+          <HeroSectionDesktop />
+        )}
 
         <div className="container_akm custom-utility">
           <ServicesSection />

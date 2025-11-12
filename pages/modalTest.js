@@ -1,7 +1,7 @@
 // pages/index.js
 import { useEffect } from "react";
 import Navbar from "./components/Navbar";
-import HeroSection from "./components/HeroSection";
+import HeroSection from "./components/HeroSectionDesktop";
 import ServicesSection from "./components/ServicesSection";
 import LinksSection from "./components/LinksSection";
 import PackagesSection from "./components/PackagesSection";

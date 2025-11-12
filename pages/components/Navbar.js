@@ -84,39 +84,41 @@ function Navbar() {
 
   return (
     <nav className="fixed mx-auto w-full top-0 z-40 bg-[#FFFFFF]  ">
-      <div className="bg_green text-white text-sm  h-6">
-        <div className="mx-auto lg:px-4 max-w-7xl h-full flex justify-end items-center">
-          <div className="pr-4 flex items-center gap-1">
+      <div className="h-6 text-sm text-white bg_green">
+        <div className="flex items-center justify-end h-full mx-auto lg:px-4 max-w-7xl">
+          <div className="flex items-center gap-1 pr-4">
             <FontAwesomeIcon icon={faEnvelope} className="h-3.5 w-3.5" />{" "}
             mazeda@mazedanetworks.net
           </div>
-          <div className="pr-1 flex items-center gap-1">
-            <FontAwesomeIcon icon={faHeadset} className="h-3.5 w-3.5" /> 09666
-            334455
+          <div className="flex items-center gap-1 pr-1">
+            <FontAwesomeIcon icon={faHeadset} className="h-3.5 w-3.5" />
+            <a href="tel:09666334455" className="hover:underline">
+              09666 334455
+            </a>
           </div>
         </div>
       </div>
       <div className="h-14">
-        <div className="mx-auto pl-6 lg:px-4 max-w-7xl h-full">
+        <div className="h-full pl-6 mx-auto lg:px-4 max-w-7xl">
           <div className="flex items-center justify-between h-full">
-            <div className="flex items-center  h-full">
+            <div className="flex items-center h-full">
               <div className="py-2">
                 <Link href="/">
                   <img alt="" src="/logo.webp" className="pr-10" />
                 </Link>
               </div>
-              <ul className="items-center hidden space-x-4 lg:flex    h-full">
+              <ul className="items-center hidden h-full space-x-4 lg:flex">
                 {items.map((item, index) => (
                   <Link
                     href={item.href}
                     key={index}
-                    className="relative  h-full"
+                    className="relative h-full"
                   >
                     <li className={`p-2 lg:p-4  relative `}>
                       {item.label}
                       {item.label === "Offers" && offersCount != 0 && (
                         <div className="flex items-center justify-center h-full absolute -top-1.5 -right-1">
-                          <div className=" bg-red-500 h-5 w-5 rounded-full flex items-center justify-center  text-white text-xs">
+                          <div className="flex items-center justify-center w-5 h-5 text-xs text-white bg-red-500 rounded-full ">
                             {offersCount}
                           </div>
                         </div>
@@ -124,14 +126,14 @@ function Navbar() {
 
                       {item.label === "অফার" && offersCount != 0 && (
                         <div className="flex items-center justify-center h-full absolute -top-1.5 -right-1">
-                          <div className=" bg-red-500 h-5 w-5 rounded-full flex items-center justify-center  text-white text-xs">
+                          <div className="flex items-center justify-center w-5 h-5 text-xs text-white bg-red-500 rounded-full ">
                             {offersCount}
                           </div>
                         </div>
                       )}
                     </li>
                     {isActive(item.href) && (
-                      <div className="border-b-2 border-red-500 absolute bottom-0 left-0 w-full"></div>
+                      <div className="absolute bottom-0 left-0 w-full border-b-2 border-red-500"></div>
                     )}
                   </Link>
                 ))}
@@ -149,7 +151,7 @@ function Navbar() {
                 startContent={<span style={{ fontSize: "13px" }}>BN</span>}
                 endContent={<span style={{ fontSize: "13px" }}>EN</span>}
               />
-              <ul className="items-center space-x-2 hidden sm:flex">
+              <ul className="items-center hidden space-x-2 sm:flex">
                 {navbarButtons.map((button, index) => (
                   <li key={index}>
                     <Link
@@ -188,7 +190,7 @@ function Navbar() {
                     {item.label}
                     {item.label === "Offers" && offersCount != 0 && (
                       <div className="flex items-center justify-center h-full absolute -top-1.5 -right-1">
-                        <div className=" bg-red-500 h-5 w-5 rounded-full flex items-center justify-center  text-white text-xs">
+                        <div className="flex items-center justify-center w-5 h-5 text-xs text-white bg-red-500 rounded-full ">
                           {offersCount}
                         </div>
                       </div>
@@ -196,13 +198,13 @@ function Navbar() {
 
                     {item.label === "অফার" && offersCount != 0 && (
                       <div className="flex items-center justify-center h-full absolute -top-1.5 -right-1">
-                        <div className=" bg-red-500 h-5 w-5 rounded-full flex items-center justify-center  text-white text-xs">
+                        <div className="flex items-center justify-center w-5 h-5 text-xs text-white bg-red-500 rounded-full ">
                           {offersCount}
                         </div>
                       </div>
                     )}
                     {isActive(item.href) && (
-                      <div className="border-b-2 border-red-500 absolute bottom-0 left-0 w-full"></div>
+                      <div className="absolute bottom-0 left-0 w-full border-b-2 border-red-500"></div>
                     )}
                   </li>
                 </Link>
@@ -223,7 +225,7 @@ function Navbar() {
               />
             </div> */}
 
-            <ul className="flex sm:hidden justify-center my-4 space-x-2">
+            <ul className="flex justify-center my-4 space-x-2 sm:hidden">
               {navbarButtons.map((button, index) => (
                 <li key={index}>
                   <Link

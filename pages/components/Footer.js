@@ -12,31 +12,38 @@ const Footer = () => {
   const footerSubtitle = intl.messages.component.footerSubtitle;
   return (
     <>
-      <footer className="shadow-xl text_gray bg-white ">
-        <div className="grid grid-col-1 md:grid-cols-11 section_akm   items-center   lg:items-start ">
-          <div className="md:col-span-3 w-64  md:mx-0 my-6 md:my-0 mx-auto text-center justify-center md:text-left">
+      <footer className="bg-white shadow-xl text_gray ">
+        <div className="grid items-center grid-col-1 md:grid-cols-11 section_akm lg:items-start ">
+          <div className="justify-center w-64 mx-auto my-6 text-center md:col-span-3 md:mx-0 md:my-0 md:text-left">
             <div className="grid place-items-center md:place-items-start">
               <Link href="/">
                 <img alt="" src="/logo.webp" />
               </Link>
             </div>
 
-            <p className="mt-2  text-sm">{footerSubtitle}</p>
+            <p className="mt-2 text-sm">{footerSubtitle}</p>
 
             <div className="pt-2 text-sm">
-              <FontAwesomeIcon icon={faHeadset} /> 09666 334455
+              <FontAwesomeIcon icon={faHeadset} />{" "}
+              <a href="tel:09666334455" className="hover:underline">
+                09666 334455
+              </a>
+              ,{" "}
+              <a href="tel:09613334455" className="hover:underline">
+                09613 334455
+              </a>
             </div>
           </div>
-          <div className="grid grid-cols-2 md:col-span-8  md:grid-cols-4 px-8 md:pl-20 -mb-10 md:mt-0 mt-10 md:text-left text-center">
+          <div className="grid grid-cols-2 px-8 mt-10 -mb-10 text-center md:col-span-8 md:grid-cols-4 md:pl-20 md:mt-0 md:text-left">
             {footerData.map((section, index) => (
-              <div key={index} className=" w-full px-4">
-                <h2 className="title-font font-bold text_green tracking-widest text-sm mb-3">
+              <div key={index} className="w-full px-4 ">
+                <h2 className="mb-3 text-sm font-bold tracking-widest title-font text_green">
                   {section.title}
                 </h2>
-                <nav className="list-none mb-10">
+                <nav className="mb-10 list-none">
                   {section.links.map((link, linkIndex) => (
                     <li key={linkIndex} className="py-1.5 lg:py-1">
-                      <Link href={link.url} className=" hover:text_red ">
+                      <Link href={link.url} className=" hover:text_red">
                         {link.text}
                       </Link>
                     </li>
@@ -46,17 +53,17 @@ const Footer = () => {
             ))}
           </div>
         </div>
-        <div className=" border-t bg_green text-white">
-          <div className="container  mx-auto max-w-7xl py-2 px-5 flex flex-wrap flex-col sm:flex-row items-center">
-            <p className=" text-sm text-center sm:text-left">
-              © 2024 Mazeda Networks Ltd.
+        <div className="text-white border-t bg_green">
+          <div className="container flex flex-col flex-wrap items-center px-5 py-2 mx-auto max-w-7xl sm:flex-row">
+            <p className="text-sm text-center sm:text-left">
+              © {new Date().getFullYear()} Mazeda Networks Ltd.
             </p>
 
-            <span className="inline-flex sm:ml-auto sm:mt-0 mt-2 justify-center sm:justify-start ">
+            <span className="inline-flex justify-center mt-2 sm:ml-auto sm:mt-0 sm:justify-start ">
               <a
                 href="https://www.facebook.com/mazedanetltd"
                 target="_blank"
-                className="border rounded-full p-1"
+                className="p-1 border rounded-full"
               >
                 <svg
                   fill="currentColor"

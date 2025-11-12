@@ -35,6 +35,12 @@
   .text_red {
     color: #e6242d;
   }
+
+  .text_gray {
+    color: #465162;
+  }
+
+  /* BG COLORS */
   .bg_red {
     background-color: #e6242d;
   }
@@ -45,18 +51,6 @@
 
   .bg_green {
     background-color: #03738c;
-  }
-
-  .text_gray {
-    color: #64748b;
-  }
-
-  .bg_orange {
-    background-color: #ffa34d;
-  }
-
-  .bg_mint {
-    background-color: #d4f8e8;
   }
 
   .green_gradient {
@@ -87,20 +81,43 @@
   }
 }
 
-@font-face {
+/* @font-face {
   font-family: "BalooDa2";
   src: url("/fonts/BalooDa2-VariableFont_wght.ttf") format("truetype");
-  font-weight: 100 900; /* full weight range */
-  font-stretch: 75% 125%; /* optional: for wdth axis */
+  font-weight: 100 900;
+  font-stretch: 75% 125%;
   font-display: swap;
-}
+} */
 
 @font-face {
   font-family: "NotoSansBengali";
   src: url("/fonts/NotoSansBengali-VariableFont_wdth,wght.ttf")
     format("truetype");
-  font-weight: 100 900; /* full weight range */
-  font-stretch: 75% 125%; /* optional: for wdth axis */
+  font-weight: 100 900;
+  font-stretch: 75% 125%;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Montserrat";
+  src: url("/fonts/Montserrat-VariableFont_wght.ttf") format("truetype");
+  font-weight: 100 900;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "PoppinsMedium";
+  src: url("/fonts/Poppins/Poppins-Medium.ttf") format("truetype");
+  font-weight: 100 900;
+  font-stretch: 75% 125%;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "PoppinsRegular";
+  src: url("/fonts/Poppins/Poppins-Regular.ttf") format("truetype");
+  font-weight: 100 900;
+  font-stretch: 75% 125%;
   font-display: swap;
 }
 
