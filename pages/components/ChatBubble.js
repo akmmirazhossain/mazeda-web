@@ -1,5 +1,6 @@
+// mazeda-web/pages/components/ChatBubble.js
 import React, { useState, useEffect, useRef } from "react";
-import { Button, Textarea, Tooltip } from "@nextui-org/react";
+import { Button } from "@nextui-org/react";
 import { motion } from "framer-motion";
 import Cookies from "js-cookie";
 import { nanoid } from "nanoid";
@@ -8,64 +9,49 @@ const ChatBubble = () => {
   const [showChat, setShowChat] = useState(false);
   const [showTooltip, setShowTooltip] = useState(false);
   const [chatLog, setChatLog] = useState([]);
+  const [userInput, setUserInput] = useState("");
+  const [loading, setLoading] = useState(false);
 
-  const showChatWindow = async () => {
-    setShowChat(true);
-    const chatIdCookie = Cookies.get("mazeda_chat_id");
-    await fetchChatLog(chatIdCookie);
-  };
+  const chatboxRef = useRef(null);
+  const lastAssistantMsgRef = useRef(null);
 
-  //SHOW TOOLTIP ON CHAT
+  // ── Tooltip (show max 5 times) ─────────────────────────
   useEffect(() => {
-    // Get how many times tooltip has been shown
     const shownCount = parseInt(
       localStorage.getItem("tooltipShown") || "0",
-      10
+      10,
     );
+    if (shownCount >= 5) return;
 
-    if (shownCount >= 5) return; // Don't show anymore if shown 3+ times
-
-    // Show tooltip after 2 seconds
     const showTimer = setTimeout(() => setShowTooltip(true), 4000);
-
-    // Hide tooltip after 5 seconds total
     const hideTimer = setTimeout(() => setShowTooltip(false), 10000);
-
-    // Update shown count
     localStorage.setItem("tooltipShown", shownCount + 1);
 
-    // Cleanup
     return () => {
       clearTimeout(showTimer);
       clearTimeout(hideTimer);
     };
   }, []);
 
-  // Add this function inside your component
+  // ── Fetch chat history ─────────────────────────────────
   const fetchChatLog = async (chatIdCookie) => {
     if (chatIdCookie) {
-      console.log("🚀 ~ fetchChatLog ~ chatIdCookie:", chatIdCookie);
       try {
         const res = await fetch(`/api/chatGet?chat_cookie_id=${chatIdCookie}`);
         const data = await res.json();
 
         if (!data.chats || data.chats.length === 0) {
-          // If no chats found, show first message
           setChatLog([
             {
               role: "assistant",
-              content: "Hi, I’m MazedaAI. How can I assist you today?",
+              content: "Hi, I'm MazedaAI. How can I assist you today?",
             },
           ]);
         } else {
-          // If chats exist, map them
           setChatLog(
             data.chats
-              .map((c) => ({
-                role: c.chat_role,
-                content: c.chat_content,
-              }))
-              .reverse()
+              .map((c) => ({ role: c.chat_role, content: c.chat_content }))
+              .reverse(),
           );
         }
       } catch (error) {
@@ -74,9 +60,6 @@ const ChatBubble = () => {
     } else {
       const chatId = nanoid(12);
       Cookies.set("mazeda_chat_id", chatId, { expires: 30 });
-      console.log("New chat ID created:", chatId);
-
-      // SHOW FIRST MESSAGE
       setChatLog([
         {
           role: "assistant",
@@ -86,7 +69,13 @@ const ChatBubble = () => {
     }
   };
 
-  //AUTO RRFRESH CHAT
+  const showChatWindow = async () => {
+    setShowChat(true);
+    const chatIdCookie = Cookies.get("mazeda_chat_id");
+    await fetchChatLog(chatIdCookie);
+  };
+
+  // ── Auto-refresh on tab focus ──────────────────────────
   useEffect(() => {
     const handleVisibilityChange = async () => {
       if (document.visibilityState === "visible") {
@@ -96,52 +85,52 @@ const ChatBubble = () => {
     };
 
     document.addEventListener("visibilitychange", handleVisibilityChange);
-
-    return () => {
+    return () =>
       document.removeEventListener("visibilitychange", handleVisibilityChange);
-    };
   }, []);
 
-  // AUTO SCROLL
-  const chatboxRef = useRef(null);
+  // ── Smart scroll ───────────────────────────────────────
+  // User message → scroll to bottom
+  // AI message   → scroll to top of that reply
   useEffect(() => {
-    if (chatboxRef.current) {
+    if (!chatboxRef.current) return;
+
+    const lastMsg = chatLog[chatLog.length - 1];
+
+    if (lastMsg?.role === "assistant" && lastAssistantMsgRef.current) {
+      lastAssistantMsgRef.current.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
+    } else {
       chatboxRef.current.scrollTop = chatboxRef.current.scrollHeight;
     }
   }, [chatLog, showChat]);
 
-  const [userInput, setUserInput] = useState("");
-
-  const [loading, setLoading] = useState(false);
-
+  // ── Send message ───────────────────────────────────────
   const sendMessage = async () => {
     if (!userInput.trim()) return;
+
     setUserInput("");
     const chatIdCookie = Cookies.get("mazeda_chat_id");
-    // Add user message
     const newChatLog = [...chatLog, { role: "user", content: userInput }];
-    // console.log("🚀 ~ sendMessage ~ newChatLog:", newChatLog);
     setChatLog(newChatLog);
     setLoading(true);
 
     try {
       const response = await fetch("/api/ChatRoute", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           messages: newChatLog.map((msg) => ({
             ...msg,
-            chat_cookie_id: chatIdCookie, // ✅ Attach chatId to every message
+            chat_cookie_id: chatIdCookie,
           })),
         }),
       });
 
       const data = await response.json();
       const aiMessage = data.message || "No response received.";
-      console.log("🚀 ~ sendMessage ~ aiMessage:", aiMessage);
-
       setChatLog([...newChatLog, { role: "assistant", content: aiMessage }]);
     } catch (error) {
       console.error("Error:", error);
@@ -154,127 +143,13 @@ const ChatBubble = () => {
     setLoading(false);
   };
 
-  // const sendMessage = async () => {
-  //   if (!input.trim()) return;
+  // ── Helpers ────────────────────────────────────────────
+  const lastAssistantIdx = chatLog.reduce(
+    (last, msg, idx) => (msg.role === "assistant" ? idx : last),
+    -1,
+  );
 
-  //   const userMessage = { role: "user", content: input };
-  //   setMessages((prev) => [...prev, userMessage]);
-  //   setInput("");
-  //   setLoading(true);
-
-  //   try {
-  //     const chatIdCookie = Cookies.get("mazeda_chat_id");
-
-  //     // Send as array of messages like backend expects
-  //     const res = await fetch("/api/ChatRoute", {
-  //       method: "POST",
-  //       headers: { "Content-Type": "application/json" },
-  //       body: JSON.stringify({
-  //         messages: [...messages, userMessage].map((m) => ({
-  //           ...m,
-  //           //chat_cookie_id: chatIdCookie, // include cookie for DB if needed
-  //         })),
-  //       }),
-  //     });
-
-  //     const data = await res.json();
-
-  //     console.log("🚀 ~ sendMessage ~ data:", data);
-
-  //     setMessages((prev) => [
-  //       ...prev,
-  //       { role: "assistant", content: data.message },
-  //     ]);
-  //   } catch (err) {
-  //     console.error("Error sending message:", err);
-  //   } finally {
-  //     setLoading(false);
-  //   }
-  // };
-
-  // Send Message
-  // const sendMessage = () => {
-  //   // if (!input.trim()) return;
-
-  //   // //SET ROLE AS USER AND CONTEST AS INPUT
-  //   // const userMessage = { role: "user", content: input }; // <-- declare it here
-  //   // setInput("");
-  //   // setLoading(true);
-
-  //   // // Add user message + loading bubble
-  //   // setMessages((prev) => [
-  //   //   ...prev,
-  //   //   userMessage,
-  //   //   { role: "assistant", content: "__loading__" },
-  //   // ]);
-
-  //   // fetch("/api/ChatRoute", {
-  //   //   method: "POST",
-  //   //   headers: { "Content-Type": "application/json" },
-  //   //   body: JSON.stringify({ messages: [...messages, userMessage] }),
-  //   // })
-  //   //   .then((res) => res.json())
-  //   //   .then((data) => {
-  //   //     const reply = data.message || "No response";
-
-  //   //     setMessages((prev) => {
-  //   //       const newMessages = [...prev];
-
-  //   //       const loadingIndex = newMessages.findIndex(
-  //   //         (m) => m.content === "__loading__"
-  //   //       );
-  //   //       if (loadingIndex !== -1) {
-  //   //         newMessages[loadingIndex] = { role: "assistant", content: reply };
-  //   //       }
-
-  //   //       // ✅ Update cookie immediately after setting new message
-  //   //       const oneHour = new Date(new Date().getTime() + 60 * 60 * 1000);
-  //   //       Cookies.set("mazeda_chat", JSON.stringify(newMessages), {
-  //   //         expires: oneHour,
-  //   //       });
-
-  //   //       return newMessages;
-  //   //     });
-
-  //   //     // Assistant reply SAVE IN DB
-  //   //     fetch("/api/saveMessage", {
-  //   //       method: "POST",
-  //   //       headers: { "Content-Type": "application/json" },
-  //   //       body: JSON.stringify({
-  //   //         session_id: sessionId,
-  //   //         role: "assistant",
-  //   //         content: reply,
-  //   //       }),
-  //   //     });
-  //   //   })
-  //   //   .catch(() => {
-  //   //     setMessages((prev) => {
-  //   //       const newMessages = [...prev];
-  //   //       const loadingIndex = newMessages.findIndex(
-  //   //         (m) => m.content === "__loading__"
-  //   //       );
-  //   //       if (loadingIndex !== -1)
-  //   //         newMessages[loadingIndex] = {
-  //   //           role: "assistant",
-  //   //           content: "Error getting response",
-  //   //         };
-  //   //       return newMessages;
-  //   //     });
-  //   //   })
-  //   //   .finally(() => setLoading(false));
-
-  //   // //SAVE IN DB FOR USER
-  //   // fetch("/api/saveMessage", {
-  //   //   method: "POST",
-  //   //   headers: { "Content-Type": "application/json" },
-  //   //   body: JSON.stringify({
-  //   //     session_id: sessionId,
-  //   //     role: "user",
-  //   //     content: input,
-  //   //   }),
-  //   // });
-  // };
-
+  // ── Render ─────────────────────────────────────────────
   return (
     <>
       {/* Floating Open Button */}
@@ -288,14 +163,13 @@ const ChatBubble = () => {
             যেকোনো তথ্য জানতে
             <br />
             আমার সাথে চ্যাট করুন!
-            {/* Arrow */}
             <div className="absolute bottom-[-4px] left-1/2 transform -translate-x-1/2 w-2 h-2 bg-white rotate-45 shadow-xl"></div>
           </div>
 
           <Button
-            onClick={() => showChatWindow(true)}
+            onClick={showChatWindow}
             size="sm"
-            className=" green_gradient text-sm hover:red_gradient  text-white rounded-full shadow-lg flex items-center gap-2"
+            className="green_gradient text-sm text-white rounded-full shadow-lg flex items-center gap-2"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -307,18 +181,6 @@ const ChatBubble = () => {
             </svg>
             MazedaAI Chat
           </Button>
-          {/* <Tooltip
-            content={
-              <span
-                dangerouslySetInnerHTML={{
-                  __html: "যেকোনো তথ্য জানতে<br />আমার সাথে চ্যাট করুন!<br />",
-                }}
-              />
-            }
-            showArrow={true}
-            isOpen={showTooltip}
-            position="fixed"
-          ></Tooltip> */}
         </div>
       )}
 
@@ -329,7 +191,7 @@ const ChatBubble = () => {
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: 20 }}
           transition={{ duration: 0.3 }}
-          className="fixed z-50 text-sm bottom-16 right-4 w-96  bg-white shadow-lg rounded-lg flex flex-col overflow-hidden"
+          className="fixed z-50 text-sm bottom-16 right-4 w-96 bg-white shadow-lg rounded-lg flex flex-col overflow-hidden"
         >
           {/* Header */}
           <div className="p-3 green_gradient text-white flex justify-between items-center">
@@ -350,6 +212,7 @@ const ChatBubble = () => {
             {chatLog.map((msg, idx) => (
               <div
                 key={idx}
+                ref={idx === lastAssistantIdx ? lastAssistantMsgRef : null}
                 className={`mb-2 ${
                   msg.role === "user" ? "text-right" : "text-left"
                 }`}
@@ -366,7 +229,7 @@ const ChatBubble = () => {
               </div>
             ))}
 
-            {/* Spinner for upcoming assistant reply */}
+            {/* Loading spinner */}
             {loading && (
               <div className="mb-2 text-left">
                 <div className="inline-block rounded-lg py-2 px-4 bg-gray-200 text-gray-800">
@@ -391,9 +254,7 @@ const ChatBubble = () => {
               onClick={sendMessage}
               disabled={loading}
               className={`${
-                loading
-                  ? "bg-gray-400"
-                  : "green_gradient hover:red_gradient  text-white px-4 py-2 rounded-r-md"
+                loading ? "bg-gray-400" : "green_gradient"
               } text-white px-4 py-2 rounded-r-md transition`}
             >
               Send

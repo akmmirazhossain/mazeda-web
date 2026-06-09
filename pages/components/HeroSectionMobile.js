@@ -1,3 +1,4 @@
+// mazeda-web/pages/components/HeroSectionMobile.js
 // Import Swiper React components
 import React, { useRef, useState, useEffect } from "react";
 import Image from "next/image";
@@ -12,7 +13,7 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 
 const HeroSectionMobile = () => {
-  const videoRef = useRef(null);
+  const videoRefs = useRef([]);
   const [activeSlide, setActiveSlide] = useState(0);
 
   useEffect(() => {

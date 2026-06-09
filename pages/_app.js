@@ -5,11 +5,15 @@ import { NextUIProvider } from "@nextui-org/react";
 import { IntlProvider } from "react-intl";
 import bn from "../public/locales/bn/bn.json";
 import en from "../public/locales/en/en.json";
-import { useEffect } from "react";
-import Cookies from "js-cookie";
-import { apiUrl, apiUrl_en } from "../config/config";
+// import { useEffect } from "react";
+// import Cookies from "js-cookie";
+// import { apiUrl, apiUrl_en } from "../config/config";
 import { ApiProvider } from "../lib/ApiContext";
 import ChatBubble from "./components/ChatBubble";
+
+import { config } from "@fortawesome/fontawesome-svg-core";
+import "@fortawesome/fontawesome-svg-core/styles.css";
+config.autoAddCss = false;
 
 const messages = {
   en,

@@ -70,14 +70,17 @@
   }
 
   .text_shadow_black {
-    text-shadow: 2px 4px 2px rgba(0, 0, 0, 0.5), 1px 2px 1px rgba(0, 0, 0, 0.1);
+    text-shadow:
+      2px 4px 2px rgba(0, 0, 0, 0.5),
+      1px 2px 1px rgba(0, 0, 0, 0.1);
   }
 
   .box_inner_shadow {
     --tw-shadow: inset 0 -12px 8px rgba(0, 0, 0, 0.06);
     --tw-shadow-colored: inset 0 -12px 8px var(--tw-shadow-color);
-    box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000),
-      var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+    box-shadow:
+      var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000),
+      var(--tw-shadow);
   }
 }
 
@@ -193,7 +196,9 @@ body {
 .slideContainer {
   opacity: 0;
   transform: translateY(70%);
-  transition: opacity 0.5s ease, transform 0.5s ease;
+  transition:
+    opacity 0.5s ease,
+    transform 0.5s ease;
 }
 .slide {
   opacity: 1;
@@ -271,4 +276,132 @@ body {
   background-color: rgba(255, 255, 255, 0.2); /* Optional */
   mask-image: linear-gradient(to bottom, black 80%, transparent 100%);
   -webkit-mask-image: linear-gradient(to bottom, black 80%, transparent 100%);
+}
+
+/* AI Chat - Table */
+.chat-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.75rem;
+  margin-top: 4px;
+}
+
+.chat-table th {
+  background-color: #03738c;
+  color: #ffffff;
+  padding: 5px 8px;
+  text-align: left;
+  font-weight: 600;
+}
+
+.chat-table td {
+  padding: 4px 8px;
+  border-bottom: 1px solid #e5e7eb;
+  color: #181818;
+}
+
+.chat-table tr.group-header td {
+  background-color: #e8f4f7;
+  font-weight: 700;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #03738c;
+}
+
+.chat-table tr:not(.group-header):hover td {
+  background-color: #f0f9fb;
+}
+
+/* AI Chat - Action Button */
+.chat-action-btn {
+  position: relative;
+  display: inline-block;
+  margin-top: 10px;
+  padding: 6px 14px;
+  background: linear-gradient(to bottom, #0296b8, #03738c, #0296b8);
+  color: #ffffff;
+  border-radius: 6px;
+  font-size: 0.75rem;
+  text-decoration: none;
+  font-weight: 600;
+  overflow: hidden;
+  transition: color 0.2s ease;
+}
+
+.chat-action-btn::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, #fc323c, #e6242d, #fc323c);
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  border-radius: 6px;
+}
+
+.chat-action-btn:hover::after {
+  opacity: 1;
+}
+
+.chat-action-btn span {
+  position: relative;
+  z-index: 1;
+}
+
+/* AI Chat - Payment Methods */
+.payment-method {
+  margin-bottom: 12px;
+}
+
+.payment-method-title {
+  background: linear-gradient(to bottom, #0296b8, #03738c, #0296b8);
+  color: #ffffff;
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 6px 6px 0 0;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.payment-steps {
+  list-style: none;
+  counter-reset: step-counter;
+  margin: 0;
+  padding: 0;
+  border: 1px solid #e5e7eb;
+  border-top: none;
+  border-radius: 0 0 6px 6px;
+  overflow: hidden;
+}
+
+.payment-steps li {
+  counter-increment: step-counter;
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  padding: 5px 10px;
+  font-size: 0.72rem;
+  color: #181818;
+  border-bottom: 1px solid #f3f4f6;
+}
+
+.payment-steps li:last-child {
+  border-bottom: none;
+}
+
+.payment-steps li::before {
+  content: counter(step-counter);
+  min-width: 18px;
+  height: 18px;
+  background-color: #e8f4f7;
+  color: #03738c;
+  font-size: 0.65rem;
+  font-weight: 700;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-top: 1px;
 }
