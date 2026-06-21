@@ -1,8 +1,4 @@
-// export const apiUrl = "http://localhost/php/mazeda-admin/apis/";
-// export const apiUrl_en = "http://localhost/php/mazeda-admin/apis_en/";
-// export const imgUrl = "https://apis.mazedanetworks.net/web_files/";
-
-//WAN
-export const apiUrl = "https://apis.mazedanetworks.net/apis/";
-export const apiUrl_en = "https://apis.mazedanetworks.net/apis_en/";
-export const imgUrl = "https://apis.mazedanetworks.net/web_files/";
+export const apiUrl = process.env.NEXT_PUBLIC_API_URL;
+export const apiUrl_en = process.env.NEXT_PUBLIC_API_URL_EN;
+export const imgUrl = process.env.NEXT_PUBLIC_IMG_URL;
+export const strapiUrl = process.env.NEXT_PUBLIC_STRAPI_URL;

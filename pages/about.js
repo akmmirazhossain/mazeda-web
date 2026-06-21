@@ -1,3 +1,4 @@
+// mazeda-web/pages/about.js
 import React, { useEffect, useState } from "react";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
@@ -56,39 +57,19 @@ const AboutPage = () => {
                       <h1 className="subheading_akm mb_akm pb-1 border-b">
                         {mission}
                       </h1>
-
-                      {/* <p
-                        dangerouslySetInnerHTML={{
-                          __html: aboutData.vision,
-                        }}
-                      ></p> */}
                     </Skeleton>
 
                     <Skeleton className="mb_akm box_round_shadow">
                       <h1 className="subheading_akm mb_akm pb-1 border-b">
                         {vision}
                       </h1>
-                      {/* <p
-                        dangerouslySetInnerHTML={{
-                          __html: aboutData.vision,
-                        }}
-                      ></p> */}
                     </Skeleton>
 
                     <Skeleton className="mb_akm box_round_shadow">
                       <h1 className="subheading_akm mb_akm pb-1 border-b">
                         {partner}
                       </h1>
-                      <Skeleton className="grid grid-cols-2 md:grid-cols-4 gap_akm ">
-                        {/* {aboutData.partners.map((partner, index) => (
-                          <img
-                            key={index}
-                            src={`${imgUrl}${partner}`}
-                            alt={`Partner ${index}`}
-                            className="rounded-2xl border shadow-[inset_0_-12px_8px_rgba(0,0,0,0.06)] py-4 px-2"
-                          />
-                        ))} */}
-                      </Skeleton>
+                      <Skeleton className="grid grid-cols-2 md:grid-cols-4 gap_akm "></Skeleton>
                     </Skeleton>
                   </div>
                 </div>
