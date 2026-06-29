@@ -1,3 +1,4 @@
+// mazeda-web/pages/components/Navbar.js
 import React, { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import Link from "next/link";
@@ -58,7 +59,7 @@ function Navbar() {
         // Count offers with offerDateExpire before today's date
         const validOffersCount = response.data.filter((offer) => {
           const offerExpireDate = new Date(
-            offer.offerDateExpire.split("-").reverse().join("-")
+            offer.offerDateExpire.split("-").reverse().join("-"),
           ); // Convert 'DD-MM-YYYY' to 'YYYY-MM-DD'
           return offerExpireDate > today;
         }).length;

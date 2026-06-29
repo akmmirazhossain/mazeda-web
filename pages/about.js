@@ -1,16 +1,24 @@
 // mazeda-web/pages/about.js
 import React, { useEffect, useState } from "react";
+import { useRouter } from "next/router";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import Head from "next/head";
-import { imgUrl } from "../config/config";
-import { useApi } from "../lib/ApiContext";
 import { useIntl } from "react-intl";
 import { Skeleton } from "@nextui-org/react";
 
+const log = 1 ? console.log : () => {};
+
+const getMediaUrl = (url) => {
+  if (!url) return "";
+  return url.startsWith("http")
+    ? url
+    : `${process.env.NEXT_PUBLIC_STRAPI_URL}${url}`;
+};
+
 const AboutPage = () => {
-  const { apiBaseUrl } = useApi();
-  const [aboutInfo, setAboutInfo] = useState([]);
+  const { locale } = useRouter(); // "en" or "bn", driven by the Navbar switch + Next.js routing
+  const [aboutData, setAboutData] = useState(null);
   const intl = useIntl();
   const title = intl.messages.component.about.title;
   const mission = intl.messages.component.about.mission;
@@ -18,20 +26,19 @@ const AboutPage = () => {
   const partner = intl.messages.component.about.partner;
 
   useEffect(() => {
-    fetch(`${apiBaseUrl}/about.php`)
+    setAboutData(null); // show skeleton again while refetching on locale switch
+    fetch(
+      `${process.env.NEXT_PUBLIC_STRAPI_URL}/api/about?locale=${locale}&populate[top_banner]=true&populate[side_image]=true&populate[tech_partners][populate]=image`,
+    )
       .then((response) => response.json())
-      .then((data) => {
-        setAboutInfo(data);
-        if (data.length > 0) {
-          console.log("🚀 ~ AboutPage ~ bannerimg:", data[0].bannerimg);
-        } else {
-          console.log("No data available");
-        }
+      .then((json) => {
+        log("🚀 about data:", json.data);
+        setAboutData(json.data);
       })
-      .catch((error) => console.error("Error fetching data:", error));
-  }, [apiBaseUrl]);
+      .catch((error) => console.error("Error fetching about data:", error));
+  }, [locale]);
 
-  if (aboutInfo.length === 0) {
+  if (!aboutData) {
     return (
       <>
         <Head>
@@ -82,22 +89,23 @@ const AboutPage = () => {
     );
   }
 
-  const aboutData = aboutInfo[0];
-
   return (
     <>
       <Head>
-        <title>About Us</title>
+        <title>{aboutData.page_title || "About Us"}</title>
       </Head>
       <main>
         <Navbar />
         <div
           className="banner_bg"
           style={{
-            backgroundImage: `url(${imgUrl}${aboutData.bannerimg})`,
+            backgroundImage: `url(${getMediaUrl(aboutData.top_banner?.url)})`,
           }}
         >
           <h1 className="banner_title text_shadow_black">{title}</h1>
+          <p className="banner_subtitle text_shadow_black">
+            {aboutData.page_subtitle}
+          </p>
         </div>
 
         <div className="container_akm ">
@@ -106,7 +114,10 @@ const AboutPage = () => {
               <div
                 className="col-span-2 text-center pad_akm box_round_shadow min-h-48 max-h-[600px] hidden md:block"
                 style={{
-                  backgroundImage: `url(${imgUrl}${aboutData.sideimg})`,
+                  backgroundImage: `url(${getMediaUrl(
+                    aboutData.side_image?.formats?.medium?.url ||
+                      aboutData.side_image?.url,
+                  )})`,
                   backgroundSize: "cover",
                   backgroundPosition: "center",
                   backgroundRepeat: "no-repeat",
@@ -117,10 +128,10 @@ const AboutPage = () => {
                 <div className="box_round_shadow">
                   <p
                     className="text-lg leading-relaxed mb-8"
-                    dangerouslySetInnerHTML={{
-                      __html: aboutData.description,
-                    }}
-                  ></p>
+                    style={{ whiteSpace: "pre-line" }}
+                  >
+                    {aboutData.main}
+                  </p>
                 </div>
 
                 <div className="grid grid-col-1 md:grid-col-2 mt_akm">
@@ -128,22 +139,14 @@ const AboutPage = () => {
                     <h1 className="subheading_akm mb_akm pb-1 border-b">
                       {mission}
                     </h1>
-                    <p
-                      dangerouslySetInnerHTML={{
-                        __html: aboutData.mission,
-                      }}
-                    ></p>
+                    <p>{aboutData.our_mission}</p>
                   </div>
 
                   <div className="mb_akm box_round_shadow">
                     <h1 className="subheading_akm mb_akm pb-1 border-b">
                       {vision}
                     </h1>
-                    <p
-                      dangerouslySetInnerHTML={{
-                        __html: aboutData.vision,
-                      }}
-                    ></p>
+                    <p>{aboutData.our_vision}</p>
                   </div>
 
                   <div className="mb_akm box_round_shadow">
@@ -151,14 +154,16 @@ const AboutPage = () => {
                       {partner}
                     </h1>
                     <div className="grid grid-cols-2 md:grid-cols-4 gap_akm ">
-                      {aboutData.partners.map((partner, index) => (
-                        <img
-                          key={index}
-                          src={`${imgUrl}${partner}`}
-                          alt={`Partner ${index}`}
-                          className="rounded-2xl border shadow-[inset_0_-12px_8px_rgba(0,0,0,0.06)] py-4 px-2"
-                        />
-                      ))}
+                      {aboutData.tech_partners?.map((p) =>
+                        p.image?.map((img) => (
+                          <img
+                            key={img.id}
+                            src={getMediaUrl(img.url)}
+                            alt={img.alternativeText || img.name}
+                            className="rounded-2xl border shadow-[inset_0_-12px_8px_rgba(0,0,0,0.06)] py-4 px-2"
+                          />
+                        )),
+                      )}
                     </div>
                   </div>
                 </div>

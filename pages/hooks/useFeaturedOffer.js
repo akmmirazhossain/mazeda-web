@@ -1,25 +1,26 @@
-// hooks/useFeaturedOffer.js
+// mazeda-web/pages/hooks/useFeaturedOffer.js
 import { useState, useEffect } from "react";
+import { useRouter } from "next/router";
 
 const useFeaturedOffer = () => {
+  const { locale } = useRouter();
   const [featuredOffer, setFeaturedOffer] = useState(null);
 
   useEffect(() => {
     const fetchOffers = async () => {
       try {
         const response = await fetch(
-          "https://apis.mazedanetworks.net/apis/offers.php"
+          `${process.env.NEXT_PUBLIC_STRAPI_URL}/api/offers?locale=${locale}&filters[is_featured][$eq]=true&populate[0]=thumb_image&pagination[limit]=1`,
         );
-        const offers = await response.json();
-        const featured = offers.find((offer) => offer.offer_featured === "yes");
-        setFeaturedOffer(featured);
+        const json = await response.json();
+        setFeaturedOffer(json.data?.[0] || null);
       } catch (error) {
         console.error("Failed to fetch offers", error);
       }
     };
 
     fetchOffers();
-  }, []);
+  }, [locale]);
 
   return featuredOffer;
 };

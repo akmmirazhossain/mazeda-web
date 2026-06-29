@@ -1,9 +1,18 @@
-// components/Modal.js
+// mazeda-web/pages/components/offerModal.js
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
+import { useRouter } from "next/router";
 import Cookies from "js-cookie";
 
+const getMediaUrl = (url) => {
+  if (!url) return "";
+  return url.startsWith("http")
+    ? url
+    : `${process.env.NEXT_PUBLIC_STRAPI_URL}${url}`;
+};
+
 const Modal = ({ isOpen, onClose }) => {
+  const { locale } = useRouter();
   const [featuredOffer, setFeaturedOffer] = useState(null);
 
   // Function to handle setting the cookie
@@ -22,13 +31,12 @@ const Modal = ({ isOpen, onClose }) => {
     }
 
     if (isOpen) {
-      // Fetch data from the API
-      fetch("https://apis.mazedanetworks.net/apis/offers.php")
+      fetch(
+        `${process.env.NEXT_PUBLIC_STRAPI_URL}/api/offers?locale=${locale}&filters[is_featured][$eq]=true&populate[0]=thumb_image&pagination[limit]=1`,
+      )
         .then((response) => response.json())
-        .then((data) => {
-          // Find the first offer that is featured
-          const featured = data.find((offer) => offer.offerFeatured === "yes");
-          console.log("🚀 ~ .then ~ featured:", featured);
+        .then((json) => {
+          const featured = json.data?.[0];
 
           if (featured) {
             setFeaturedOffer(featured);
@@ -41,11 +49,9 @@ const Modal = ({ isOpen, onClose }) => {
           onClose();
         });
     }
-  }, [isOpen, onClose]);
+  }, [isOpen, onClose, locale]);
 
   if (!isOpen || !featuredOffer) return null;
-
-  // console.log("zzzz", featuredOffer);
 
   return (
     <div
@@ -62,25 +68,22 @@ const Modal = ({ isOpen, onClose }) => {
         >
           &times;
         </button>
-        <Link
-          href={`https://mazedanetworks.net/offers/${featuredOffer.offerLink}`}
-          target="_blank"
-        >
+        <Link href={`/offers/${featuredOffer.slug}`}>
           <div className="modal-content">
             <h2 className="text-2xl mt-6 mx-6 mb-4 font-bold ">
-              {featuredOffer.offerTitle}
+              {featuredOffer.title}
             </h2>
-            <div
-              className="mb-6  mx-6"
-              dangerouslySetInnerHTML={{
-                __html: `${featuredOffer.offerSubtitle} <a href='https://mazedanetworks.net/offers/${featuredOffer.offerLink}' target='_blank' rel='noopener noreferrer' class='text-blue-500 hover:underline'>Read more...</a>`,
-              }}
-            />
+            <div className="mb-6 mx-6">
+              {featuredOffer.excerpt}{" "}
+              <span className="text-blue-500 hover:underline">
+                Read more...
+              </span>
+            </div>
 
             <img
               className="rounded-b-2xl"
-              src={`https://apis.mazedanetworks.net/web_files/${featuredOffer.offerThumbImg}`}
-              alt={featuredOffer.offerTitle}
+              src={getMediaUrl(featuredOffer.thumb_image?.url)}
+              alt={featuredOffer.title}
             />
           </div>
         </Link>

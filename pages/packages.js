@@ -1,4 +1,6 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import { useRouter } from "next/router";
+
 import PackagesSection from "./components/PackagesSection";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
@@ -8,6 +10,14 @@ import { useIntl } from "react-intl";
 const PackagesPage = () => {
   const intl = useIntl();
   const packageTitle = intl.messages.component.packageTitle;
+
+  const getMediaUrl = (url) => {
+    if (!url) return "";
+    return url.startsWith("http")
+      ? url
+      : `${process.env.NEXT_PUBLIC_STRAPI_URL}${url}`;
+  };
+
   return (
     <>
       <Head>

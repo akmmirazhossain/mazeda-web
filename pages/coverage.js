@@ -1,3 +1,5 @@
+// mazeda-web/pages/coverage.js
+
 import React from "react";
 
 import Navbar from "./components/Navbar";

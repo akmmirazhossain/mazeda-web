@@ -5,97 +5,75 @@ import {
   faSearch,
   faLocationDot,
 } from "@fortawesome/free-solid-svg-icons";
-import { useApi } from "../../lib/ApiContext";
+import { useRouter } from "next/router";
+
+const log = 0 ? console.log : () => {};
 
 const CoverageBlocks = () => {
-  const { apiBaseUrl } = useApi();
-  const [initialData, setInitialData] = useState([]);
-  const [regionData, setRegionData] = useState({});
+  const { locale } = useRouter();
+  const [districts, setDistricts] = useState([]);
+  const [filteredDistricts, setFilteredDistricts] = useState([]);
   const [searchValue, setSearchValue] = useState("");
-  const [filteredData, setFilteredData] = useState({ regions: [], areas: {} });
-  const [selectedRegion, setSelectedRegion] = useState("All regions");
+  const [selectedDistrict, setSelectedDistrict] = useState("All districts");
   const [isOpen, setIsOpen] = useState(false);
 
   useEffect(() => {
-    fetch(`${apiBaseUrl}/coverage.php`)
-      .then((response) => response.json())
-      .then((data) => {
-        // Sort the data by `coverage_serial`
-        const sortedData = data.sort(
-          (a, b) => parseInt(a.coverageSerial) - parseInt(b.coverageSerial)
-        );
-
-        setInitialData(sortedData);
+    fetch(
+      `${process.env.NEXT_PUBLIC_STRAPI_URL}/api/coverage?locale=${locale}&populate[districts][populate][0]=district_rel_area`,
+    )
+      .then((res) => res.json())
+      .then((json) => {
+        log("coverage:", json.data);
+        const sorted = (json.data?.districts || [])
+          .slice()
+          .sort((a, b) => a.district_serial - b.district_serial)
+          .map((district) => ({
+            ...district,
+            district_rel_area: [...(district.district_rel_area || [])].sort(
+              (a, b) => a.area_serial - b.area_serial,
+            ),
+          }));
+        setDistricts(sorted);
+        setFilteredDistricts(sorted);
       })
-      .catch((error) => console.error("Error fetching data:", error));
-  }, [apiBaseUrl]);
-
-  useEffect(() => {
-    const updatedRegionData = {};
-    initialData.forEach((item) => {
-      const region = item.coverageRegion;
-      const areas = item.coverageArea
-        ? item.coverageArea.split(",").map((area) => area.trim())
-        : []; // If coverage_area is undefined, assign an empty array
-
-      if (!updatedRegionData[region]) {
-        updatedRegionData[region] = [];
-      }
-      updatedRegionData[region].push(...areas);
-    });
-    setRegionData(updatedRegionData);
-
-    if (searchValue === "") {
-      setFilteredData({
-        regions: Object.keys(updatedRegionData),
-        areas: updatedRegionData,
-      });
-    }
-  }, [initialData, searchValue]);
+      .catch((err) => console.error("Error fetching coverage:", err));
+  }, [locale]);
 
   const handleSearchChange = (e) => {
-    const updatedSearchValue = e.target.value.toLowerCase();
-    setSearchValue(updatedSearchValue);
+    const value = e.target.value.toLowerCase();
+    setSearchValue(value);
 
-    const filteredRegions = Object.keys(regionData).filter((region) =>
-      region.toLowerCase().includes(updatedSearchValue)
-    );
-
-    const filteredAreas = {};
-    Object.keys(regionData).forEach((region) => {
-      const filteredAreasInRegion = regionData[region].filter((area) =>
-        area.toLowerCase().includes(updatedSearchValue)
+    const filtered = districts
+      .map((district) => ({
+        ...district,
+        district_rel_area: district.district_rel_area.filter((area) =>
+          area.area_name.toLowerCase().includes(value),
+        ),
+      }))
+      .filter(
+        (district) =>
+          district.district_name.toLowerCase().includes(value) ||
+          district.district_rel_area.length > 0,
       );
-      if (filteredAreasInRegion.length > 0) {
-        filteredAreas[region] = filteredAreasInRegion;
-      }
-    });
 
-    setFilteredData({ regions: filteredRegions, areas: filteredAreas });
+    setFilteredDistricts(filtered);
   };
 
-  const handleRegionSelect = (region, event) => {
-    setSelectedRegion(region);
-    setSearchValue("");
-
-    if (region === "All regions") {
-      setFilteredData({ regions: Object.keys(regionData), areas: regionData });
-    } else {
-      setFilteredData({
-        regions: [region],
-        areas: { [region]: regionData[region] },
-      });
-    }
-
-    setIsOpen(false); // Close dropdown after selecting a region
-
-    // Prevent default behavior (page scrolling to top) when clicking on dropdown item
+  const handleDistrictSelect = (district, event) => {
     event.preventDefault();
+    setSearchValue("");
+    setIsOpen(false);
+
+    if (district === "All districts") {
+      setSelectedDistrict("All districts");
+      setFilteredDistricts(districts);
+    } else {
+      setSelectedDistrict(district.district_name);
+      setFilteredDistricts([district]);
+    }
   };
 
-  const toggleDropdown = () => {
-    setIsOpen(!isOpen);
-  };
+  const toggleDropdown = () => setIsOpen(!isOpen);
 
   return (
     <section className="page_body">
@@ -117,10 +95,10 @@ const CoverageBlocks = () => {
             onClick={toggleDropdown}
           >
             <input
-              id="region"
+              id="district"
               type="text"
               readOnly
-              value={selectedRegion}
+              value={selectedDistrict}
               className="block px-4 py-2 w-full rounded-2xl cursor-pointer focus:outline-none"
             />
             <FontAwesomeIcon
@@ -135,18 +113,18 @@ const CoverageBlocks = () => {
               <a
                 href="#"
                 className="block px-4 py-2 text-gray-800 hover:bg-gray-200"
-                onClick={(e) => handleRegionSelect("All regions", e)}
+                onClick={(e) => handleDistrictSelect("All districts", e)}
               >
-                All regions
+                All districts
               </a>
-              {Object.keys(regionData).map((region) => (
+              {districts.map((district) => (
                 <a
-                  key={region}
+                  key={district.id}
                   href="#"
                   className="block px-4 py-2 text-gray-800 hover:bg-gray-200"
-                  onClick={(e) => handleRegionSelect(region, e)}
+                  onClick={(e) => handleDistrictSelect(district, e)}
                 >
-                  {region}
+                  {district.district_name}
                 </a>
               ))}
             </div>
@@ -154,13 +132,13 @@ const CoverageBlocks = () => {
         </div>
       </div>
       <div className="grid grid-cols-1 box_round_shadow gap_akm">
-        {Object.keys(filteredData.areas).map((region, regionIndex) => (
-          <div key={regionIndex} className="">
-            <h2 className="subheading_akm pad_akm">{region}</h2>
+        {filteredDistricts.map((district) => (
+          <div key={district.id}>
+            <h2 className="subheading_akm pad_akm">{district.district_name}</h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-5 gap-4">
-              {filteredData.areas[region].map((area, index) => (
+              {district.district_rel_area.map((area) => (
                 <div
-                  key={index}
+                  key={area.id}
                   className="green_gradient h-20 pad_akm rounded-2xl text-white flex flex-col justify-center items-center"
                 >
                   <div className="flex justify-center items-center">
@@ -168,7 +146,7 @@ const CoverageBlocks = () => {
                       icon={faLocationDot}
                       className="pr-2 text-lg text_red"
                     />
-                    <p className="text-lg">{area}</p>
+                    <p className="text-lg">{area.area_name}</p>
                   </div>
                 </div>
               ))}
