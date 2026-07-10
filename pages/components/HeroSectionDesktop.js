@@ -110,7 +110,7 @@ const HeroSectionDesktop = () => {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 1.3 }}
               >
-                <Link href={"/contact"}>
+                <Link href={"/packages"}>
                   <motion.button
                     className="relative px-5 py-2.5 md:px-8 md:py-4 text-white font-bold text-sm md:text-lg rounded-full overflow-hidden group"
                     style={{
@@ -119,7 +119,7 @@ const HeroSectionDesktop = () => {
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
                   >
-                    <span className="relative z-10">Starting from ৳500</span>
+                    <span className="relative z-10">View Packages</span>
                     <motion.div
                       className="absolute inset-0"
                       style={{

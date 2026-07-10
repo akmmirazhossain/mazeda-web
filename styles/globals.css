@@ -16,6 +16,10 @@
   }
 }
 
+:root {
+  color-scheme: light only;
+}
+
 /* TAILWIND CUSTOM STYLES */
 
 @layer utilities {

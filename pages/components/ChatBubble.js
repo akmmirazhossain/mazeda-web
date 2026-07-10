@@ -191,7 +191,7 @@ const ChatBubble = () => {
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: 20 }}
           transition={{ duration: 0.3 }}
-          className="fixed z-50 text-sm bottom-16 right-4 w-96 bg-white shadow-lg rounded-lg flex flex-col overflow-hidden"
+          className="fixed z-50 text-sm bottom-16 right-4 w-96 bg-white shadow-2xl rounded-lg flex flex-col overflow-hidden"
         >
           {/* Header */}
           <div className="p-3 green_gradient text-white flex justify-between items-center">
@@ -233,7 +233,11 @@ const ChatBubble = () => {
             {loading && (
               <div className="mb-2 text-left">
                 <div className="inline-block rounded-lg py-2 px-4 bg-gray-200 text-gray-800">
-                  <span className="loading loading-dots loading-xs"></span>
+                  <span className="flex gap-1">
+                    <span className="w-1.5 h-1.5 bg-gray-500 rounded-full animate-bounce [animation-delay:-0.3s]"></span>
+                    <span className="w-1.5 h-1.5 bg-gray-500 rounded-full animate-bounce [animation-delay:-0.15s]"></span>
+                    <span className="w-1.5 h-1.5 bg-gray-500 rounded-full animate-bounce"></span>
+                  </span>
                 </div>
               </div>
             )}

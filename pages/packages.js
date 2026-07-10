@@ -1,3 +1,4 @@
+// mazeda-web/pages/packages.js
 import React, { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 

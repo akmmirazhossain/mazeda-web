@@ -1,4 +1,4 @@
-// next.config.mjs
+// mazeda-web/next.config.mjs
 
 const nextConfig = {
   reactStrictMode: true,
@@ -6,12 +6,13 @@ const nextConfig = {
     domains: [
       "apis.mazedanetworks.net",
       "data.mazedanetworks.net",
+      "mzadmin.dalbhathdev.xyz",
       "localhost",
     ],
   },
   i18n: {
     locales: ["en", "bn"],
-    defaultLocale: "bn",
+    defaultLocale: "en",
     localeDetection: false,
   },
 };

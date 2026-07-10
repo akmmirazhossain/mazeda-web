@@ -47,31 +47,31 @@ function Navbar() {
     }
   };
 
-  useEffect(() => {
-    const fetchOffers = async () => {
-      try {
-        const response = await axios.get(`${apiBaseUrl}/offers.php`);
+  // useEffect(() => {
+  //   const fetchOffers = async () => {
+  //     try {
+  //       const response = await axios.get(`${apiBaseUrl}/offers.php`);
 
-        // Get today's date in 'DD-MM-YYYY' format
-        const today = new Date();
-        const todayString = today.toLocaleDateString("en-GB"); // 'DD-MM-YYYY'
+  //       // Get today's date in 'DD-MM-YYYY' format
+  //       const today = new Date();
+  //       const todayString = today.toLocaleDateString("en-GB"); // 'DD-MM-YYYY'
 
-        // Count offers with offerDateExpire before today's date
-        const validOffersCount = response.data.filter((offer) => {
-          const offerExpireDate = new Date(
-            offer.offerDateExpire.split("-").reverse().join("-"),
-          ); // Convert 'DD-MM-YYYY' to 'YYYY-MM-DD'
-          return offerExpireDate > today;
-        }).length;
+  //       // Count offers with offerDateExpire before today's date
+  //       const validOffersCount = response.data.filter((offer) => {
+  //         const offerExpireDate = new Date(
+  //           offer.offerDateExpire.split("-").reverse().join("-"),
+  //         ); // Convert 'DD-MM-YYYY' to 'YYYY-MM-DD'
+  //         return offerExpireDate > today;
+  //       }).length;
 
-        setOffersCount(validOffersCount); // Update count of valid offers
-      } catch (error) {
-        console.error("Error fetching offers:", error);
-      }
-    };
+  //       setOffersCount(validOffersCount); // Update count of valid offers
+  //     } catch (error) {
+  //       console.error("Error fetching offers:", error);
+  //     }
+  //   };
 
-    fetchOffers();
-  }, []);
+  //   fetchOffers();
+  // }, []);
 
   const [menuOpen, setMenuOpen] = useState(false);
 
@@ -141,11 +141,11 @@ function Navbar() {
               </ul>
             </div>
 
-            <div className="flex">
+            <div className="flex gap-2">
               <Switch
                 isSelected={locale === "en"} // Check if current locale is 'en'
                 onChange={(e) =>
-                  handleLocaleChange(e.target.checked ? localeEn : localeBn)
+                  handleLocaleChange(e.target.checked ? "en" : "bn")
                 }
                 size="lg"
                 color="danger"
@@ -211,20 +211,6 @@ function Navbar() {
                 </Link>
               ))}
             </ul>
-
-            {/* <div className="flex justify-center mt-4">
-              <Switch
-                className="flex sm:hidden"
-                isSelected={locale === "en"} // Check if current locale is 'en'
-                onChange={(e) =>
-                  handleLocaleChange(e.target.checked ? localeEn : localeBn)
-                }
-                size="lg"
-                color="danger"
-                startContent={<span style={{ fontSize: "13px" }}>BN</span>}
-                endContent={<span style={{ fontSize: "13px" }}>EN</span>}
-              />
-            </div> */}
 
             <ul className="flex justify-center my-4 space-x-2 sm:hidden">
               {navbarButtons.map((button, index) => (

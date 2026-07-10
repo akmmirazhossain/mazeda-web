@@ -123,7 +123,7 @@ const HeroSectionMobile = () => {
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.8, delay: 0.8 }}
               >
-                <Link href={"/contact"}>
+                <Link href={"/packages"}>
                   <motion.button
                     className="relative px-6 py-3 overflow-hidden text-sm font-bold text-white rounded-full"
                     whileHover={{ scale: 1.05 }}
@@ -132,7 +132,7 @@ const HeroSectionMobile = () => {
                       background: "linear-gradient(to right, #03738c, #0296b8)",
                     }}
                   >
-                    <span className="relative z-10">Starting from ৳500</span>
+                    <span className="relative z-10">View Packages</span>
                     <motion.div
                       className="absolute inset-0"
                       style={{

@@ -13,12 +13,6 @@ const CACHE_TTL_MS = 5 * 60 * 1000; // 5 minutes
  * Strips all HTML tags from a string.
  * Used to clean package_features before sending to AI.
  */
-function stripHtml(str = "") {
-  return str
-    .replace(/<[^>]*>/g, " ")
-    .replace(/\s+/g, " ")
-    .trim();
-}
 
 /**
  * Builds a lean plain-text block with live data from:

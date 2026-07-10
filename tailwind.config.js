@@ -18,7 +18,7 @@ module.exports = {
     },
   },
   darkMode: "class",
-  plugins: [nextui(), require("daisyui")],
+  plugins: [nextui()],
   experimental: {
     applyComplexClasses: true, // Enable support for custom properties in responsive variants
   },

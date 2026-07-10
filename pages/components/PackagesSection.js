@@ -211,7 +211,9 @@ const PackageCard = ({ pkg, themeColor }) => (
             }
           >
             <div className="flex items-center">
-              <span>{pkg.call_for_price ? "(Call for Price)" : pkg.price}</span>
+              <span>
+                {pkg.call_for_price ? "(Call for Price)" : <>৳{pkg.price}</>}
+              </span>
               {!pkg.call_for_price && (
                 <span className="text-sm font-extralight rounded-full pl-0.5 pr-1 tracking-tighter italic">
                   (Including vat)
