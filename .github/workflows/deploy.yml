@@ -56,5 +56,5 @@ jobs:
           key: ${{ secrets.VPS_SSH_KEY }}
           script: |
             cd /var/www/mazeda/mazeda-web-frontend/LIVE
-            npm ci --omit=dev
+            npm ci
             pm2 restart mazeda-web
