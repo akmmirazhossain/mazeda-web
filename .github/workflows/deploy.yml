@@ -23,7 +23,7 @@ jobs:
         run: npm ci
 
       - name: Build (production)
-        run: npm run build
+        run: npx next build
         env:
           NEXT_PUBLIC_STRAPI_URL: ${{ secrets.NEXT_PUBLIC_STRAPI_URL }}
 
