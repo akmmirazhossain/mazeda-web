@@ -41,7 +41,7 @@ jobs:
       - name: Deploy to VPS via rsync
         uses: burnett01/rsync-deployments@7.0.1
         with:
-          switches: -avzr --delete --exclude=node_modules/ --exclude=.git/ --exclude=.github/
+          switches: -avzr --delete --exclude=node_modules/ --exclude=.git/ --exclude=.github/ --exclude=.env* --exclude='#.env'
           path: ./
           remote_path: /var/www/mazeda/mazeda-web-frontend/LIVE/
           remote_host: ${{ secrets.VPS_HOST }}
