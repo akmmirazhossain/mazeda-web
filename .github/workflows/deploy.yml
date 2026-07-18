@@ -13,6 +13,16 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
+      - name: Debug secrets (temporary)
+        run: |
+          echo "VPS_HOST length: ${#VPS_HOST}"
+          echo "VPS_USER length: ${#VPS_USER}"
+          echo "VPS_SSH_KEY length: ${#VPS_SSH_KEY}"
+        env:
+          VPS_HOST: ${{ secrets.VPS_HOST }}
+          VPS_USER: ${{ secrets.VPS_USER }}
+          VPS_SSH_KEY: ${{ secrets.VPS_SSH_KEY }}
+
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
