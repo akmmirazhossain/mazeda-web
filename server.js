@@ -1,4 +1,6 @@
 // mazeda-web/server.js
+require("dotenv").config({ path: ".env.live" });
+
 const { createServer } = require("http");
 const { parse } = require("url");
 const next = require("next");

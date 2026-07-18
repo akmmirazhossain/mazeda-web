@@ -16,6 +16,7 @@
     "@nextui-org/react": "^2.4.2",
     "@strapi/blocks-react-renderer": "^1.0.2",
     "axios": "^1.7.2",
+    "dotenv": "^17.4.2",
     "framer-motion": "^11.2.12",
     "js-cookie": "^3.0.5",
     "mysql2": "^3.14.3",
