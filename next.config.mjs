@@ -3,12 +3,7 @@
 const nextConfig = {
   reactStrictMode: true,
   images: {
-    domains: [
-      "apis.mazedanetworks.net",
-      "data.mazedanetworks.net",
-      "mzadmin.dalbhathdev.xyz",
-      "localhost",
-    ],
+    domains: ["api.mazeda.net", "localhost"],
   },
   i18n: {
     locales: ["en", "bn"],
