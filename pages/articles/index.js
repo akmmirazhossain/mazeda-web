@@ -46,7 +46,7 @@ const ArticlesPage = () => {
       <main>
         <Navbar />
 
-        <div className="banner_bg bg-[url('/images/offers.webp')]">
+        <div className="banner_bg bg-[url('/images/articles_banner.webp')]">
           <h1 className="banner_title text_shadow_black">News & Blogs</h1>
         </div>
 

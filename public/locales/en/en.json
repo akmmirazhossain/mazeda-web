@@ -262,23 +262,23 @@
         "links": [
           {
             "text": "News & Blogs",
-            "url": "articles"
+            "url": "/articles"
           },
           {
             "text": "About",
-            "url": "about"
+            "url": "/about"
           },
           {
             "text": "Packages",
-            "url": "packages"
+            "url": "/packages"
           },
           {
             "text": "Coverage",
-            "url": "coverage"
+            "url": "/coverage"
           },
           {
             "text": "Offers",
-            "url": "offers"
+            "url": "/offers"
           }
         ]
       },

@@ -256,23 +256,23 @@
         "links": [
           {
             "text": "সংবাদ ও ব্লগ",
-            "url": "articles"
+            "url": "/articles"
           },
           {
             "text": "সম্পর্কিত",
-            "url": "about"
+            "url": "/about"
           },
           {
             "text": "প্যাকেজ",
-            "url": "packages"
+            "url": "/packages"
           },
           {
             "text": "কভারেজ",
-            "url": "coverage"
+            "url": "/coverage"
           },
           {
             "text": "অফার",
-            "url": "offers"
+            "url": "/offers"
           }
         ]
       },
