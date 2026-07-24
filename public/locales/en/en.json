@@ -261,6 +261,10 @@
         "title": "PAGES",
         "links": [
           {
+            "text": "News & Blogs",
+            "url": "articles"
+          },
+          {
             "text": "About",
             "url": "about"
           },

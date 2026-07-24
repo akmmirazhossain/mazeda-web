@@ -255,6 +255,10 @@
         "title": "পেইজ",
         "links": [
           {
+            "text": "সংবাদ ও ব্লগ",
+            "url": "articles"
+          },
+          {
             "text": "সম্পর্কিত",
             "url": "about"
           },
