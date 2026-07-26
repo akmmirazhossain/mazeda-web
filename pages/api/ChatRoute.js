@@ -1,6 +1,8 @@
 // mazeda-web/pages/api/ChatRoute.js
 import connection from "../../lib/db";
 
+const STRAPI_URL = process.env.NEXT_PUBLIC_STRAPI_URL;
+
 // ─────────────────────────────────────────────
 // Module-level cache (lives for the lifetime of
 // the Node process, refreshed every 5 minutes)
@@ -31,39 +33,22 @@ async function buildDynamicContext() {
     return cachedDynamicContext;
   }
 
-  // ── Packages ──────────────────────────────────────────
-  const [packageRows] = await connection.query(`
-  SELECT package_name_en, package_speed_en, package_price_en, package_group
-  FROM packages
-  ORDER BY package_group, package_id
-`);
+  // ── Packages (grouped by category, same shape as PackagesSection.js) ──
+  const pkgRes = await fetch(
+    `${STRAPI_URL}/api/package-categories?locale=en&sort=order:asc` +
+      `&populate[packages][sort]=order:asc`,
+  );
+  const pkgJson = await pkgRes.json();
+  const categories = pkgJson.data || [];
 
-  // Group packages by their package_group
-
-  const groupMap = new Map();
-  for (const p of packageRows) {
-    const group = p.package_group;
-    if (!groupMap.has(group)) groupMap.set(group, []);
-
-    const price =
-      p.package_price_en?.trim() === "(Call for Price)"
-        ? "Call for Price"
-        : p.package_price_en?.trim();
-
-    const popularBadge = p.package_popular == 1 ? " [POPULAR]" : "";
-
-    groupMap
-      .get(group)
-      .push(
-        `    - ${p.package_name_en}${popularBadge}: ${p.package_speed_en} Mbps — ${price}`,
-      );
-  }
-
-  const packageLines = [];
-  for (const [group, lines] of groupMap) {
-    const groupLabel = group.charAt(0).toUpperCase() + group.slice(1); // e.g. "Basic"
-    packageLines.push(`  ${groupLabel}:\n${lines.join("\n")}`);
-  }
+  const packageLines = categories.map((category) => {
+    const lines = (category.packages || []).map((p) => {
+      const price = p.call_for_price ? "Call for Price" : p.price;
+      const popularBadge = p.is_popular ? " [POPULAR]" : "";
+      return `    - ${p.name}${popularBadge}: ${p.speed} Mbps — ${price}`;
+    });
+    return `  ${category.name}:\n${lines.join("\n")}`;
+  });
 
   const packagesBlock = `
 ## Current Internet Packages (always use these prices, never use hardcoded values):
@@ -71,28 +56,20 @@ ${packageLines.join("\n\n")}
 All prices include VAT.
 `.trim();
 
-  // ── Coverage (regions + areas) ─────────────────────────
-  const [coverageRows] = await connection.query(`
-    SELECT r.regions_name_en, c.coverage_area_en
-    FROM regions r
-    LEFT JOIN coverage c ON c.coverage_region_id = r.regions_id
-    ORDER BY r.regions_serial
-  `);
+  // ── Coverage (districts → areas, same shape as CoverageBlocks.js) ──
+  const covRes = await fetch(
+    `${STRAPI_URL}/api/coverage?locale=en` +
+      `&populate[districts][populate][0]=district_rel_area`,
+  );
+  const covJson = await covRes.json();
+  const districts = covJson.data?.districts || [];
 
-  // Group coverage areas under their region
-  const regionMap = new Map();
-  for (const row of coverageRows) {
-    const region = row.regions_name_en;
-    if (!regionMap.has(region)) regionMap.set(region, []);
-    if (row.coverage_area_en) {
-      regionMap.get(region).push(row.coverage_area_en.trim());
-    }
-  }
-
-  const coverageLines = [];
-  for (const [region, areas] of regionMap) {
-    coverageLines.push(`  ${region}: ${areas.join(", ") || "—"}`);
-  }
+  const coverageLines = districts.map((district) => {
+    const areas = (district.district_rel_area || [])
+      .map((a) => a.area_name)
+      .join(", ");
+    return `  ${district.district_name}: ${areas || "—"}`;
+  });
 
   const coverageBlock = `
 ## Current Service Coverage (always use this list, never use hardcoded values):
