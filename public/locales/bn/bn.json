@@ -32,7 +32,7 @@
     ],
     "navbarButtons": [
       {
-        "href": "https://isperp.mazedanetworks.net/ispcare",
+        "href": "https://isperp.mazeda.net/ispcare",
         "icon": "faCreditCard",
         "label": "দ্রুত বিল পে"
       },
@@ -86,8 +86,8 @@
       },
       {
         "icon": "faVideo",
-        "title": "সিসিটিভি সিস্টেম",
-        "description": " আপনার বাসা, অফিস, গ্যারেজ অথবা যে কোন জায়গার জন্য আমাদের উন্নত প্রযুক্তির  সিসিটিভি সমাধান"
+        "title": "ডেটা সংযোগ",
+        "description": "মাজেদা নেটওয়ার্কস লিমিটেড ঢাকা বিভাগে ডেডিকেটেড কর্পোরেট ইন্টারনেট এবং ডেটা কানেক্টিভিটি সলিউশন প্রদান করে। হাই-স্পিড ফাইবার, এসএলএ-নিশ্চিত আপটাইম এবং ২৪/৭ বিজনেস সাপোর্ট।"
       }
     ],
     "clientSectionTitle": "আমাদের সফল ক্লায়েন্ট",
@@ -181,7 +181,7 @@
     "paybillPortalTitle": "ভিসা, ডেবিট, ক্রেডিট কার্ড দিয়ে বিল পে করুন",
     "paybillPortalSteps": [
       {
-        "step": "<a class=\"font-bold\" href=\"https://isperp.mazedanetworks.net/ispcare\">Click here</a> এবং লগইন করুন",
+        "step": "<a class=\"font-bold\" href=\"https://isperp.mazeda.net/ispcare\">Click here</a> এবং লগইন করুন",
         "image": "/images/slider/user-portal/up1.jpg"
       },
       {

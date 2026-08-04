@@ -427,7 +427,7 @@ const HeroSectionDesktop = () => {
                   </motion.button>
                 </Link>
 
-                <Link href="https://isperp.mazedanetworks.net/ispcare" passHref>
+                <Link href="https://isperp.mazeda.net/ispcare" passHref>
                   <motion.button
                     key={`button-${activeSlide}`}
                     className="relative px-5 py-2.5 md:px-8 md:py-4 text-white font-bold text-sm md:text-lg rounded-full overflow-hidden group"

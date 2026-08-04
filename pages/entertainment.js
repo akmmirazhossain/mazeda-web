@@ -7,7 +7,7 @@ import Link from "next/link";
 
 const EntertainLinks = [
   {
-    link: "http://172.22.22.101/home/list_files.php?link=data102.mazedanetworks.net/s1d4/&parent=Latest%20Uploads&cat_name=Latest%20Week",
+    link: "http://172.22.22.101/home/list_files.php?link=data102.mazeda.net/s1d4/&parent=Latest%20Uploads&cat_name=Latest%20Week",
     imageSrc: "/images/old-ftp.svg",
     altText: "Old FTP",
   },

@@ -17,9 +17,8 @@
       "step": "<span class=\"font-bold\">Tap and hold for Pay Bill</span> until the payment is successful.",
       "image": "/images/slider/bkash/b5.png"
     }
-  ]
-,
- "nagad": [
+  ],
+  "nagad": [
     {
       "step": "Select the <span class=\"font-bold\">Bill Pay</span> option.",
       "image": "/images/slider/nagad/n1.jpg"
@@ -38,12 +37,11 @@
       "image": "/images/slider/nagad/n4.png"
     }
   ],
-
   "userPortal": [
     {
       "step": "Click here and login.",
       "image": "/images/slider/user-portal/up1.jpg",
-      "link": "https://isperp.mazedanetworks.net/ispcare",
+      "link": "https://isperp.mazeda.net/ispcare",
       "linkText": "<span class=\"font-bold\">Click here </span>"
     },
     {
@@ -65,6 +63,4 @@
       "description": "Bill payment on Mazeda Networks is doable in all sorts of ways, but for these payment portals, you need to call our office and confirm our billing team about it."
     }
   ]
-
-
 }

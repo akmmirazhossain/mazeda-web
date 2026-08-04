@@ -56,7 +56,7 @@ export default function ChatGroups() {
       <div className="p-4 text-center text-red-600 font-semibold">
         Unauthorized access. Provide the correct password in the URL like this:{" "}
         <br />
-        https://www.mazedanetworks.net/chat-show?pass=mazedanetiscool!
+        https://www.mazeda.net/chat-show?pass=mazedanetiscool!
       </div>
     );
   }

@@ -57,7 +57,7 @@ function Home() {
         {/* OG - Facebook, WhatsApp, LinkedIn */}
         <meta property="og:type" content="website" />
         <meta property="og:site_name" content="Mazeda Networks" />
-        <meta property="og:url" content="https://www.mazedanetworks.net" />
+        <meta property="og:url" content="https://www.mazeda.net" />
         <meta
           property="og:title"
           content="Mazeda Networks — Fast Fiber Internet in Dhaka"
@@ -68,7 +68,7 @@ function Home() {
         />
         <meta
           property="og:image"
-          content="https://www.mazedanetworks.net/images/connect-in-1-hour.png"
+          content="https://www.mazeda.net/images/connect-in-1-hour.png"
         />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
@@ -85,11 +85,11 @@ function Home() {
         />
         <meta
           name="twitter:image"
-          content="https://www.mazedanetworks.net/images/connect-in-1-hour.png"
+          content="https://www.mazeda.net/images/connect-in-1-hour.png"
         />
 
         {/* Canonical */}
-        <link rel="canonical" href="https://www.mazedanetworks.net" />
+        <link rel="canonical" href="https://www.mazeda.net" />
       </Head>
       <main>
         <Navbar />

@@ -74,7 +74,7 @@ All prices include VAT.
   const coverageBlock = `
 ## Current Service Coverage (always use this list, never use hardcoded values):
 ${coverageLines.join("\n")}
-For exact up-to-date coverage, users can visit: https://www.mazedanetworks.net/en/coverage
+For exact up-to-date coverage, users can visit: https://www.mazeda.net/en/coverage
 `.trim();
 
   cachedDynamicContext = `${packagesBlock}\n\n${coverageBlock}`;

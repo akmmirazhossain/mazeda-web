@@ -86,8 +86,8 @@
       },
       {
         "icon": "faVideo",
-        "title": "CCTV Solutions",
-        "description": "Securing peace of mind with our advanced CCTV solutions for comprehensive and reliable surveillance."
+        "title": "Data Connectivity",
+        "description": "Mazeda Networks Limited delivers dedicated corporate internet and data connectivity solutions in Dhaka Division. High-speed fiber, SLA-backed uptime, and 24/7 business support."
       }
     ],
     "clientSectionTitle": "Our Successful Clients",
@@ -187,7 +187,7 @@
       {
         "step": "Click here and login.",
         "image": "/images/slider/user-portal/up1.jpg",
-        "link": "https://isperp.mazedanetworks.net/ispcare",
+        "link": "https://isperp.mazeda.net/ispcare",
         "linkText": "<span class=\"font-bold\">Click here </span>"
       },
       {

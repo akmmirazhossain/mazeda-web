@@ -469,7 +469,7 @@ const HeroSectionMobile = () => {
                   </motion.button>
                 </Link>
 
-                <Link href="https://isperp.mazedanetworks.net/ispcare" passHref>
+                <Link href="https://isperp.mazeda.net/ispcare" passHref>
                   <motion.button
                     className="relative w-full px-5 py-2.5 text-white font-bold text-xs sm:text-sm rounded-full overflow-hidden"
                     style={{

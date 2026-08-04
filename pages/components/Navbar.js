@@ -89,7 +89,7 @@ function Navbar() {
         <div className="flex items-center justify-end h-full mx-auto lg:px-4 max-w-7xl">
           <div className="flex items-center gap-1 pr-4">
             <FontAwesomeIcon icon={faEnvelope} className="h-3.5 w-3.5" />{" "}
-            mazeda@mazedanetworks.net
+            mazeda@mazeda.net
           </div>
           <div className="flex items-center gap-1 pr-1">
             <FontAwesomeIcon icon={faHeadset} className="h-3.5 w-3.5" />

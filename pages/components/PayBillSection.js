@@ -33,10 +33,7 @@ const PayBillSection = () => {
         <div className="col-span-2 mb-4 md:mb-0">{paybillSubtitle}</div>
         <div className="flex items-center justify-center flex-col text-center lg:text-right">
           <button className=" items-center mt-auto text-center rounded-full text-white green_gradient hover:red_gradient  border-0 py-2 px-4 focus:outline-nonerounded-full">
-            <Link
-              href="https://isperp.mazedanetworks.net/ispcare"
-              target="_blank"
-            >
+            <Link href="https://isperp.mazeda.net/ispcare" target="_blank">
               {" "}
               {paybillPortalButton}
             </Link>
