@@ -6,7 +6,7 @@ import Footer from "../components/Footer";
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import { Skeleton } from "@nextui-org/react";
-import { BlocksRenderer } from "@strapi/blocks-react-renderer";
+import RichText from "../components/RichText";
 
 const log = 0 ? console.log : () => {};
 
@@ -110,7 +110,7 @@ const OfferDetailsPage = () => {
                   <div className="pt_akm italic">{offer.excerpt}</div>
                 )}
                 <div className="pt_akm">
-                  <BlocksRenderer content={offer.body} />
+                  <RichText content={offer.body} />
                 </div>
               </div>
             </div>
