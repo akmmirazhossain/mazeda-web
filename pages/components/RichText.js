@@ -10,72 +10,78 @@ const headingStyles = {
   6: "font-semibold text-sm mt-3 mb-1",
 };
 
-const RichText = ({ content }) => (
-  <BlocksRenderer
-    content={content}
-    blocks={{
-      heading: ({ children, level }) => {
-        const Tag = `h${level}`;
-        return (
-          <Tag className={headingStyles[level] ?? "font-semibold"}>
-            {children}
-          </Tag>
-        );
-      },
-      paragraph: ({ children }) => (
-        <p className="body_text_akm mb-4">{children}</p>
-      ),
-      list: ({ children, format }) =>
-        format === "ordered" ? (
-          <ol className="list-decimal pl-6 mb-4 space-y-1">{children}</ol>
-        ) : (
-          <ul className="list-disc pl-6 mb-4 space-y-1">{children}</ul>
+const RichText = ({ content }) => {
+  if (!content || content.length === 0) return null;
+
+  return (
+    <BlocksRenderer
+      content={content}
+      blocks={{
+        heading: ({ children, level }) => {
+          const Tag = `h${level}`;
+          return (
+            <Tag className={headingStyles[level] ?? "font-semibold"}>
+              {children}
+            </Tag>
+          );
+        },
+        paragraph: ({ children }) => (
+          <p className="body_text_akm mb-4">{children}</p>
         ),
-      "list-item": ({ children }) => <li>{children}</li>,
-      link: ({ children, url }) => (
-        <a
-          href={url}
-          className="text_green hover:underline"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          {children}
-        </a>
-      ),
-      quote: ({ children }) => (
-        <blockquote className="border-l-4 border-gray-300 pl-4 italic my-4 text-gray-600">
-          {children}
-        </blockquote>
-      ),
-      code: ({ children }) => (
-        <pre className="bg-gray-100 rounded-lg p-4 overflow-x-auto my-4 text-sm">
-          <code>{children}</code>
-        </pre>
-      ),
-      image: ({ image }) => (
-        <img
-          src={image.url}
-          alt={image.alternativeText || ""}
-          className="rounded-2xl my-4 w-full"
-        />
-      ),
-    }}
-    modifiers={{
-      bold: ({ children }) => <strong className="font-bold">{children}</strong>,
-      italic: ({ children }) => <em className="italic">{children}</em>,
-      underline: ({ children }) => (
-        <span className="underline">{children}</span>
-      ),
-      strikethrough: ({ children }) => (
-        <span className="line-through">{children}</span>
-      ),
-      code: ({ children }) => (
-        <code className="bg-gray-100 px-1.5 py-0.5 rounded text-sm">
-          {children}
-        </code>
-      ),
-    }}
-  />
-);
+        list: ({ children, format }) =>
+          format === "ordered" ? (
+            <ol className="list-decimal pl-6 mb-4 space-y-1">{children}</ol>
+          ) : (
+            <ul className="list-disc pl-6 mb-4 space-y-1">{children}</ul>
+          ),
+        "list-item": ({ children }) => <li>{children}</li>,
+        link: ({ children, url }) => (
+          <a
+            href={url}
+            className="text_green hover:underline"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            {children}
+          </a>
+        ),
+        quote: ({ children }) => (
+          <blockquote className="border-l-4 border-gray-300 pl-4 italic my-4 text-gray-600">
+            {children}
+          </blockquote>
+        ),
+        code: ({ children }) => (
+          <pre className="bg-gray-100 rounded-lg p-4 overflow-x-auto my-4 text-sm">
+            <code>{children}</code>
+          </pre>
+        ),
+        image: ({ image }) => (
+          <img
+            src={image.url}
+            alt={image.alternativeText || ""}
+            className="rounded-2xl my-4 w-full"
+          />
+        ),
+      }}
+      modifiers={{
+        bold: ({ children }) => (
+          <strong className="font-bold">{children}</strong>
+        ),
+        italic: ({ children }) => <em className="italic">{children}</em>,
+        underline: ({ children }) => (
+          <span className="underline">{children}</span>
+        ),
+        strikethrough: ({ children }) => (
+          <span className="line-through">{children}</span>
+        ),
+        code: ({ children }) => (
+          <code className="bg-gray-100 px-1.5 py-0.5 rounded text-sm">
+            {children}
+          </code>
+        ),
+      }}
+    />
+  );
+};
 
 export default RichText;
