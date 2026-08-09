@@ -54,7 +54,7 @@ const ArticlesPage = () => {
           <section className="page_body">
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap_akm">
               {articles.map((article) => (
-                <Link href={`/news-&-blogs/${article.slug}`} key={article.id}>
+                <Link href={`/news-and-blogs/${article.slug}`} key={article.id}>
                   <div className="rounded-t-2xl rounded-2xl shadow-xl bg-white hover:shadow-2xl relative transition duration-300 ease-in-out transform hover:-translate-y-1">
                     <div className="relative w-full h-64">
                       <Image
