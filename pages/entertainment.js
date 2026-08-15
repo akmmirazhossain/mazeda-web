@@ -5,24 +5,6 @@ import Footer from "./components/Footer";
 import Image from "next/image";
 import Link from "next/link";
 
-const EntertainLinks = [
-  {
-    link: "http://172.22.22.101/home/list_files.php?link=data102.mazeda.net/s1d4/&parent=Latest%20Uploads&cat_name=Latest%20Week",
-    imageSrc: "/images/old-ftp.svg",
-    altText: "Old FTP",
-  },
-  {
-    link: "http://172.22.22.100",
-    imageSrc: "/images/new-ftp.webp",
-    altText: "New FTP",
-  },
-  {
-    link: "http://172.22.22.10:32400/",
-    imageSrc: "/images/plex.webp",
-    altText: "Plex Movies",
-  },
-];
-
 const Entertainment = () => {
   return (
     <main>

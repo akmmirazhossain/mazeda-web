@@ -1,15 +1,15 @@
-# mazeda-webpublicrobots.txt
-User-agent 
-Allow 
+# mazeda-web public/robots.txt
+User-agent: *
+Allow: /
 
-Disallow api
-Disallow chat-show
-Disallow gpt
-Disallow chat-text
-Disallow modalTest
-Disallow test
-Disallow scroll
-Disallow gridslider
-Disallow lang-switcher
+Disallow: /api
+Disallow: /chat-show
+Disallow: /gpt
+Disallow: /chat-text
+Disallow: /modalTest
+Disallow: /test
+Disallow: /scroll
+Disallow: /gridslider
+Disallow: /lang-switcher
 
-Sitemap httpswww.mazeda.netsitemap.xml
+Sitemap: https://www.mazeda.net/sitemap.xml

@@ -1,4 +1,5 @@
 // mazeda-web/pages/sitemap.xml.js
+
 const STRAPI_URL = process.env.NEXT_PUBLIC_STRAPI_URL;
 const SITE_URL = "https://www.mazeda.net";
 
