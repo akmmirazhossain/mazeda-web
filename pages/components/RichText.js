@@ -1,5 +1,5 @@
 // mazeda-web/pages/components/RichText.js
-import { BlocksRenderer } from "@strapi/blocks-react-renderer";
+import { BlocksRenderer } from "@qkix/better-blocks-react-renderer";
 
 const headingStyles = {
   1: "heading_akm mt-8 mb-4",
@@ -50,9 +50,10 @@ const RichText = ({ content }) => {
             {children}
           </blockquote>
         ),
-        code: ({ children }) => (
+        // NOTE: new renderer passes `plainText`, not `children`, for code blocks
+        code: ({ plainText }) => (
           <pre className="bg-gray-100 rounded-lg p-4 overflow-x-auto my-4 text-sm">
-            <code>{children}</code>
+            <code>{plainText}</code>
           </pre>
         ),
         image: ({ image }) => (
@@ -62,6 +63,8 @@ const RichText = ({ content }) => {
             className="rounded-2xl my-4 w-full"
           />
         ),
+        // table / table-header-cell / table-cell intentionally left unset
+        // → renders with built-in bb-table GitHub-style defaults, zero config
       }}
       modifiers={{
         bold: ({ children }) => (
