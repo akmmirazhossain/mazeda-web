@@ -17,7 +17,7 @@ const getMediaUrl = (url) => {
 };
 
 const AboutPage = () => {
-  const { locale } = useRouter(); // "en" or "bn", driven by the Navbar switch + Next.js routing
+  const { locale, asPath } = useRouter();
   const [aboutData, setAboutData] = useState(null);
   const intl = useIntl();
   const title = intl.messages.component.about.title;
@@ -43,6 +43,7 @@ const AboutPage = () => {
       <>
         <Head>
           <title>About Us</title>
+          <link rel="canonical" href={canonicalUrl} />
         </Head>
         <main>
           <Navbar />

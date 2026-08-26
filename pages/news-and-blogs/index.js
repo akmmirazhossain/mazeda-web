@@ -18,7 +18,8 @@ const getMediaUrl = (url) => {
 };
 
 const ArticlesPage = () => {
-  const { locale } = useRouter();
+  const { locale, asPath } = useRouter();
+  const canonicalUrl = `https://www.mazeda.net${asPath.split("?")[0]}`;
 
   const [articles, setArticles] = useState([]);
 
@@ -42,6 +43,7 @@ const ArticlesPage = () => {
           name="description"
           content="Read the latest news, updates, and articles from Mazeda Networks."
         />
+        <link rel="canonical" href={canonicalUrl} />
       </Head>
       <main>
         <Navbar />

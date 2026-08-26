@@ -7,11 +7,14 @@ import Footer from "./components/Footer";
 import CoverageBlocks from "./components/CoverageBlocks";
 import Head from "next/head";
 import { useIntl } from "react-intl";
+import { useRouter } from "next/router";
 
 const CoveragePage = () => {
   const intl = useIntl();
   const coverageTitle = intl.messages.component.coverageTitle;
   const coverageSubtitle = intl.messages.component.coverageSubtitle;
+  const { asPath } = useRouter();
+  const canonicalUrl = `https://www.mazeda.net${asPath.split("?")[0]}`;
   return (
     <>
       <Head>
@@ -20,6 +23,7 @@ const CoveragePage = () => {
           name="description"
           content="Discover Mazeda Networks' internet coverage areas in Dhaka, Gazipur, and Tangail. We currently provide reliable internet services in Dhanmondi, Uttara, Banani, Bashundhara, Mohammadpur, Nobodoy Housing Society, Salimullah Road, Chawk Bazar, Panthapath, Malibagh, Mirpur, Matikata, Rupnagar, Hazaribag, Khilgaon, Kallyanpur, Kamrangirchor, Ati Bazar, Rayer Bazar, Khilkhet, Jigatola, Bosila, Green Road Area, North Balur-Chor, Kolatia, Elephant Road, and more. Stay tuned as we expand to cover Aftab Nagar, Agargaon, Anondo Police Housing Society, Armanitola, Azampur, Azimpur, Bailey Road, Banani DOHS, Banasree, Bangabazar, Bangla Bazar, Baridhara, Baridhara DOHS, Basabo, Bashundhara Residential Area, Begun Bari, Birulia, Chandni Chowk, Chowk Bazaar, Chowkbazar Thana, Dholaikhal, Diabari, East Nakhalpara, Farashganj, Farmgate, Hatirpool, House Building in Uttara, Jhilmil Residential Area, Jolshiri Abashon, Kakrail, Kallyanpur, Kamalapur, Kawran Bazar, Lalbagh Thana, Lalmatia, Maghbazar, Matuail, Mohakhali, Mohakhali DOHS, Nakhalpara, Narinda, Nazirabazar, New Eskaton, New Market, New Paltan, Niketan, Nilkhet, Panthapath, Paribagh, Pilkhana, Rajarbagh, Rayer Bazaar, Rupayan City, Savar DOHS, Segunbagicha, Shahbag, Shahjadpur, Shankhari Bazaar, Shantinagar, Solmaid, Tejturi Bazar, Tikatuli, Uttara, and West Rajabazar."
         />
+        <link rel="canonical" href={canonicalUrl} />
       </Head>
       <main>
         <Navbar />

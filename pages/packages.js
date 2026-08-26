@@ -2,6 +2,8 @@
 import React, { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 
+const SITE_URL = "https://www.mazeda.net";
+
 import PackagesSection from "./components/PackagesSection";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
@@ -10,14 +12,9 @@ import { useIntl } from "react-intl";
 
 const PackagesPage = () => {
   const intl = useIntl();
+  const { asPath } = useRouter();
   const packageTitle = intl.messages.component.packageTitle;
-
-  const getMediaUrl = (url) => {
-    if (!url) return "";
-    return url.startsWith("http")
-      ? url
-      : `${process.env.NEXT_PUBLIC_STRAPI_URL}${url}`;
-  };
+  const canonicalUrl = `${SITE_URL}${asPath.split("?")[0]}`;
 
   return (
     <>
@@ -27,6 +24,7 @@ const PackagesPage = () => {
           name="description"
           content="Explore Mazeda Networks' range of internet packages designed to meet your connectivity needs. Choose from our Basic, Standard, Power, and Corporate plans, each offering a tailored experience to suit your requirements. Our Basic plans start at just ৳500/month, providing speeds from 7 Mbps to 20 Mbps with features like fiber optic connection, 24x7 call center support, and bufferless cached content. Upgrade to our Standard plans for speeds up to 60 Mbps, or opt for Power plans offering bandwidth up to 110 Mbps. For businesses, our Corporate plans provide dedicated bandwidth, logistics setup, and priority support. Contact us for details on our other packages, including Startup, Professional, and Enterprise options. Join Mazeda Networks today for reliable internet and exceptional service!"
         />
+        <link rel="canonical" href={canonicalUrl} />
       </Head>
       <main>
         <Navbar />

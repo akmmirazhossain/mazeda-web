@@ -15,8 +15,10 @@ const getMediaUrl = (url) => {
 };
 
 const Support = () => {
-  const { locale } = useRouter();
+  const { locale, asPath } = useRouter();
   const [support, setSupport] = useState(null);
+
+  const canonicalUrl = `https://www.mazeda.net${asPath.split("?")[0]}`;
 
   const faqTitle = locale === "bn" ? "জনপ্রিয় জিজ্ঞাসা" : "Popular Inquiries";
   const workflowTitle =
@@ -62,6 +64,7 @@ const Support = () => {
           name="description"
           content="Experience the reliability of Mazeda Networks support team."
         />
+        <link rel="canonical" href={canonicalUrl} />
       </Head>
 
       <main>

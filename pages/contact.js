@@ -15,8 +15,9 @@ const getMediaUrl = (url) => {
 };
 
 const ContactPage = () => {
-  const { locale } = useRouter();
+  const { locale, asPath } = useRouter();
   const [contact, setContact] = useState(null);
+  const canonicalUrl = `https://www.mazeda.net${asPath.split("?")[0]}`;
 
   useEffect(() => {
     fetch(
@@ -43,6 +44,7 @@ const ContactPage = () => {
           name="description"
           content="Get in touch with Mazeda Networks' dedicated support team for any inquiries, assistance, or feedback. Contact us via phone, email, or visit our office to experience unparalleled customer service and resolve any queries swiftly."
         />
+        <link rel="canonical" href={canonicalUrl} />
       </Head>
       <main>
         <Navbar />

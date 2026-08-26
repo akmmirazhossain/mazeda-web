@@ -19,10 +19,11 @@ const getMediaUrl = (url) => {
 };
 
 const OffersPage = () => {
-  const { locale } = useRouter();
+  const { locale, asPath } = useRouter();
   const intl = useIntl();
   const offerTitle = intl.messages.component.offerTitle;
   const offerSubtitle = intl.messages.component.offerSubtitle;
+  const canonicalUrl = `https://www.mazeda.net${asPath.split("?")[0]}`;
 
   const [offers, setOffers] = useState([]);
 
