@@ -1,14 +1,11 @@
 // mazeda-web/pages/offers/[offerLink].js
-import { useRouter } from "next/router";
 import Head from "next/head";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
-import { useEffect, useState } from "react";
 import Image from "next/image";
-import { Skeleton } from "@nextui-org/react";
 import RichText from "../components/RichText";
 
-const log = 0 ? console.log : () => {};
+const SITE_URL = "https://www.mazeda.net";
 
 const getMediaUrl = (url) => {
   if (!url) return "";
@@ -17,68 +14,50 @@ const getMediaUrl = (url) => {
     : `${process.env.NEXT_PUBLIC_STRAPI_URL}${url}`;
 };
 
-const OfferDetailsPage = () => {
-  const router = useRouter();
-  const { offerLink } = router.query;
-  const { locale } = router;
-  const [offer, setOffer] = useState(null);
+const isOfferExpired = (expiryDate) => {
+  if (!expiryDate) return false;
+  return new Date() > new Date(expiryDate);
+};
 
-  useEffect(() => {
-    if (!offerLink) return;
+const formatDate = (dateString) => {
+  return new Date(dateString).toLocaleDateString("en-US", {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  });
+};
 
-    fetch(
-      `${process.env.NEXT_PUBLIC_STRAPI_URL}/api/offers/${offerLink}?locale=${locale}&populate[0]=banner_image`,
-    )
-      .then((res) => res.json())
-      .then((json) => {
-        setOffer(json.data || null);
-      })
-      .catch((err) => console.error("Error fetching offer:", err));
-  }, [offerLink, locale]);
-
-  const isOfferExpired = (expiryDate) => {
-    if (!expiryDate) return false;
-    return new Date() > new Date(expiryDate);
-  };
-
-  const formatDate = (dateString) => {
-    return new Date(dateString).toLocaleDateString("en-US", {
-      year: "numeric",
-      month: "long",
-      day: "numeric",
-    });
-  };
-
-  if (!offer) {
-    return (
-      <>
-        <Head>
-          <title>Offer</title>
-        </Head>
-        <main>
-          <Navbar />
-          <div className="container_akm nav_space_akm">
-            <section className="page_body">
-              <div className="grid grid-cols-1 md:grid-cols-3 gap_akm">
-                <div className="col-span-3 box_round_shadow mt-4 pt-4 sm:mt-0 text-center sm:text-left ">
-                  <Skeleton className="subheading_akm border-b mb-3 h-8" />
-                  <Skeleton className="relative w-full h-96" />
-                  <Skeleton className="pt_akm italic h-6" />
-                  <Skeleton className="pt_akm h-32" />
-                </div>
-              </div>
-            </section>
-          </div>
-          <Footer />
-        </main>
-      </>
-    );
-  }
+const OfferDetailsPage = ({ offer }) => {
+  const expired = isOfferExpired(offer.expiry_date);
+  const canonicalUrl = `${SITE_URL}/offers/${offer.documentId}`;
+  const description =
+    offer.excerpt || `Check out ${offer.title} from Mazeda Networks.`;
+  const ogImage = offer.banner_image?.url
+    ? getMediaUrl(offer.banner_image.url)
+    : `${SITE_URL}/images/connect-in-1-hour.png`;
 
   return (
     <>
       <Head>
         <title>{offer.title}</title>
+        <meta name="description" content={description} />
+        <link rel="canonical" href={canonicalUrl} />
+        {/* Expired offers stay reachable for users but shouldn't rank */}
+        {expired && <meta name="robots" content="noindex, follow" />}
+
+        <meta property="og:type" content="article" />
+        <meta property="og:site_name" content="Mazeda Networks" />
+        <meta property="og:url" content={canonicalUrl} />
+        <meta property="og:title" content={offer.title} />
+        <meta property="og:description" content={description} />
+        <meta property="og:image" content={ogImage} />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={offer.title} />
+        <meta name="twitter:description" content={description} />
+        <meta name="twitter:image" content={ogImage} />
       </Head>
       <main>
         <Navbar />
@@ -86,7 +65,7 @@ const OfferDetailsPage = () => {
           <section className="page_body">
             <div className="grid grid-cols-1 md:grid-cols-3 gap_akm">
               <div className="col-span-3 box_round_shadow mt-4 pt-4 sm:mt-0 text-center sm:text-left ">
-                {isOfferExpired(offer.expiry_date) && (
+                {expired && (
                   <div className="bg_green text-white p-4 rounded-t-lg mb-4 text-center">
                     <p className="text-lg font-semibold">
                       This Offer Has Expired
@@ -121,5 +100,41 @@ const OfferDetailsPage = () => {
     </>
   );
 };
+
+export async function getServerSideProps({ params, locale, res }) {
+  const { offerLink } = params;
+
+  try {
+    const response = await fetch(
+      `${process.env.NEXT_PUBLIC_STRAPI_URL}/api/offers/${offerLink}` +
+        `?locale=${locale}&populate[0]=banner_image`,
+    );
+
+    // Strapi returns 404 for invalid/non-existent documentId — this is
+    // exactly what stops junk paths like /offers/support, /offers/about,
+    // /offers/50-percent-off from soft-404ing at 200.
+    if (response.status === 404) {
+      return { notFound: true };
+    }
+    if (!response.ok) throw new Error(`Strapi responded ${response.status}`);
+
+    const json = await response.json();
+    const offer = json.data;
+
+    if (!offer) {
+      return { notFound: true };
+    }
+
+    res.setHeader(
+      "Cache-Control",
+      "public, s-maxage=600, stale-while-revalidate=3600",
+    );
+
+    return { props: { offer } };
+  } catch (err) {
+    console.error("Error fetching offer:", err);
+    return { notFound: true };
+  }
+}
 
 export default OfferDetailsPage;
