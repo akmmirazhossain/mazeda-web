@@ -18,6 +18,7 @@ const getMediaUrl = (url) => {
 
 const AboutPage = () => {
   const { locale, asPath } = useRouter();
+  const canonicalUrl = `https://www.mazeda.net${asPath.split("?")[0]}`;
   const [aboutData, setAboutData] = useState(null);
   const intl = useIntl();
   const title = intl.messages.component.about.title;
