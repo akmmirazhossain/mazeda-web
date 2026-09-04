@@ -220,23 +220,6 @@
     "footerSubtitle": "We're more than an ISP, your digital ally for robust, high-speed internet and exceptional customer care.",
     "footerData": [
       {
-        "title": "SERVICES",
-        "links": [
-          {
-            "text": "Home Internet",
-            "url": "#"
-          },
-          {
-            "text": "Corporate Internet",
-            "url": "#"
-          },
-          {
-            "text": "Data Connectivity",
-            "url": "#"
-          }
-        ]
-      },
-      {
         "title": "ASSISTANCE",
         "links": [
           {

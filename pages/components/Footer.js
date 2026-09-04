@@ -34,7 +34,7 @@ const Footer = () => {
               </a>
             </div>
           </div>
-          <div className="grid grid-cols-2 px-8 mt-10 -mb-10 text-center md:col-span-8 md:grid-cols-4 md:pl-20 md:mt-0 md:text-left">
+          <div className="grid grid-cols-2 px-8 mt-10 -mb-10 text-center md:col-span-8 md:grid-cols-3 md:pl-20 md:mt-0 md:text-left">
             {footerData.map((section, index) => (
               <div key={index} className="w-full px-4 ">
                 <h2 className="mb-3 text-sm font-bold tracking-widest title-font text_green">
