@@ -48,6 +48,23 @@ const Footer = () => {
                       </Link>
                     </li>
                   ))}
+                  {index === footerData.length - 1 && (
+                    <li className="py-1.5 lg:py-1">
+                      <a
+                        href="https://www.facebook.com/mazedanetltd"
+                        target="_blank"
+                        className="inline-flex items-center justify-center p-1 border rounded-full hover:border-[#e6242d]"
+                      >
+                        <svg
+                          fill="currentColor"
+                          className="w-4 h-4"
+                          viewBox="0 0 24 24"
+                        >
+                          <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z" />
+                        </svg>
+                      </a>
+                    </li>
+                  )}
                 </nav>
               </div>
             ))}
@@ -59,22 +76,13 @@ const Footer = () => {
               © {new Date().getFullYear()} Mazeda Networks Ltd.
             </p>
 
-            <span className="inline-flex justify-center mt-2 sm:ml-auto sm:mt-0 sm:justify-start ">
+            <span className="inline-flex justify-center mt-2 sm:ml-auto sm:mt-0 sm:justify-start text-sm">
               <a
-                href="https://www.facebook.com/mazedanetltd"
+                href="https://epicodeit.com/"
                 target="_blank"
-                className="p-1 border rounded-full"
+                className="hover:underline"
               >
-                <svg
-                  fill="currentColor"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  className="w-4 h-4"
-                  viewBox="0 0 24 24"
-                >
-                  <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z" />
-                </svg>
+                Developed by EpicodeIT
               </a>
             </span>
           </div>
