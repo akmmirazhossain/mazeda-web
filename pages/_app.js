@@ -43,7 +43,7 @@ export default function App({ Component, pageProps }) {
       <NextUIProvider>
         <IntlProvider locale={locale} messages={messages[locale]}>
           <Component {...pageProps} dir={getDirection(locale)} />
-          {/* <ChatBubble /> */}
+          <ChatBubble />
         </IntlProvider>
       </NextUIProvider>
     </ApiProvider>

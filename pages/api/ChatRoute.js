@@ -120,22 +120,25 @@ export default async function handler(req, res) {
       content,
     }));
 
-    // ── Call OpenAI ────────────────────────────────────────
-    const response = await fetch("https://api.openai.com/v1/chat/completions", {
+    // ── Call Claude ────────────────────────────────────────
+    const response = await fetch("https://api.anthropic.com/v1/messages", {
       method: "POST",
       headers: {
-        Authorization: `Bearer ${process.env.OPENAI_API_KEY}`,
+        "x-api-key": process.env.ANTHROPIC_API_KEY,
+        "anthropic-version": "2023-06-01",
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        model: "gpt-4.1-mini",
-        messages: [{ role: "system", content: systemPrompt }, ...cleanMessages],
+        model: "claude-haiku-4-5-20251001",
+        max_tokens: 1024,
+        system: systemPrompt,
+        messages: cleanMessages,
       }),
     });
 
     if (!response.ok) {
       const errBody = await response.text();
-      console.error("OpenAI error:", response.status, errBody);
+      console.error("Claude error:", response.status, errBody);
       return res
         .status(502)
         .json({ message: "AI service error. Please try again later." });
@@ -143,7 +146,7 @@ export default async function handler(req, res) {
 
     const data = await response.json();
     const aiMessage =
-      data.choices?.[0]?.message?.content ||
+      data.content?.[0]?.text ||
       "Something went wrong, please contact Mazeda support directly. 09666 334455";
 
     // ── Persist to DB ──────────────────────────────────────
