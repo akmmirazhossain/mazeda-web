@@ -32,7 +32,7 @@
     ],
     "navbarButtons": [
       {
-        "href": "https://isperp.mazedanetworks.net/",
+        "href": "https://isperp.mazedanetworks.net/ispcare",
         "icon": "faCreditCard",
         "label": "Quick Pay"
       },
@@ -187,7 +187,7 @@
       {
         "step": "Click here and login.",
         "image": "/images/slider/user-portal/up1.jpg",
-        "link": "https://isperp.mazedanetworks.net/",
+        "link": "https://isperp.mazedanetworks.net/ispcare",
         "linkText": "<span class=\"font-bold\">Click here </span>"
       },
       {

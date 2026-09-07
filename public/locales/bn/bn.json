@@ -32,7 +32,7 @@
     ],
     "navbarButtons": [
       {
-        "href": "https://isperp.mazedanetworks.net/",
+        "href": "https://isperp.mazedanetworks.net/ispcare",
         "icon": "faCreditCard",
         "label": "দ্রুত বিল পে"
       },
@@ -181,7 +181,7 @@
     "paybillPortalTitle": "ভিসা, ডেবিট, ক্রেডিট কার্ড দিয়ে বিল পে করুন",
     "paybillPortalSteps": [
       {
-        "step": "<a class=\"font-bold\" href=\"https://isperp.mazedanetworks.net/\">Click here</a> এবং লগইন করুন",
+        "step": "<a class=\"font-bold\" href=\"https://isperp.mazedanetworks.net/ispcare\">Click here</a> এবং লগইন করুন",
         "image": "/images/slider/user-portal/up1.jpg"
       },
       {
