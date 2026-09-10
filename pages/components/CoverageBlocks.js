@@ -17,6 +17,16 @@ const CoverageBlocks = () => {
   const [selectedDistrict, setSelectedDistrict] = useState("All districts");
   const [isOpen, setIsOpen] = useState(false);
 
+  const [expandedAreas, setExpandedAreas] = useState(new Set());
+
+  const toggleArea = (areaId) => {
+    setExpandedAreas((prev) => {
+      const next = new Set(prev);
+      next.has(areaId) ? next.delete(areaId) : next.add(areaId);
+      return next;
+    });
+  };
+
   useEffect(() => {
     fetch(
       `${process.env.NEXT_PUBLIC_STRAPI_URL}/api/coverage?locale=${locale}&populate[districts][populate][0]=district_rel_area`,
@@ -135,21 +145,55 @@ const CoverageBlocks = () => {
         {filteredDistricts.map((district) => (
           <div key={district.id}>
             <h2 className="subheading_akm pad_akm">{district.district_name}</h2>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-5 gap-4">
-              {district.district_rel_area.map((area) => (
-                <div
-                  key={area.id}
-                  className="green_gradient h-20 pad_akm rounded-2xl text-white flex flex-col justify-center items-center"
-                >
-                  <div className="flex justify-center items-center">
-                    <FontAwesomeIcon
-                      icon={faLocationDot}
-                      className="pr-2 text-lg text_red"
-                    />
-                    <p className="text-lg">{area.area_name}</p>
+            <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4">
+              {district.district_rel_area.map((area) => {
+                const isOpen = expandedAreas.has(area.id);
+                const tags = area.region_tag
+                  ? area.region_tag.split(",").map((t) => t.trim())
+                  : [];
+
+                return (
+                  <div
+                    key={area.id}
+                    onClick={() => toggleArea(area.id)}
+                    className="green_gradient rounded-2xl text-white cursor-pointer overflow-hidden"
+                  >
+                    <div className="h-20 pad_akm flex flex-col justify-center items-center">
+                      <div className="flex justify-center items-center">
+                        <FontAwesomeIcon
+                          icon={faLocationDot}
+                          className="pr-2 text-lg text_red"
+                        />
+                        <p className="text-lg">{area.area_name}</p>
+                        {tags.length > 0 && (
+                          <FontAwesomeIcon
+                            icon={faChevronDown}
+                            className={`ml-2 text-xs transition-transform ${
+                              isOpen ? "rotate-180" : ""
+                            }`}
+                          />
+                        )}
+                      </div>
+                    </div>
+
+                    {isOpen && tags.length > 0 && (
+                      <div
+                        className="bg-white/10 px-4 pb-3 pt-1 flex flex-wrap gap-2"
+                        onClick={(e) => e.stopPropagation()}
+                      >
+                        {tags.map((tag, i) => (
+                          <span
+                            key={i}
+                            className="bg-white/20 text-xs px-2 py-1 rounded-full"
+                          >
+                            {tag}
+                          </span>
+                        ))}
+                      </div>
+                    )}
                   </div>
-                </div>
-              ))}
+                );
+              })}
             </div>
           </div>
         ))}
