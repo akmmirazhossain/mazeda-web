@@ -58,7 +58,7 @@ const ArticlesPage = () => {
               {articles.map((article) => (
                 <Link href={`/news-and-blogs/${article.slug}`} key={article.id}>
                   <div className="rounded-t-2xl rounded-2xl shadow-xl bg-white hover:shadow-2xl relative transition duration-300 ease-in-out transform hover:-translate-y-1">
-                    <div className="relative w-full h-64">
+                    <div className="relative w-full aspect-square">
                       <Image
                         src={getMediaUrl(article.thumb_image?.url)}
                         alt={article.title}
