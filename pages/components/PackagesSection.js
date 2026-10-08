@@ -119,21 +119,32 @@ const PackagesSection = () => {
             const packages = category.packages;
             if (!packages?.length) return null;
 
+            const categoryHeader = (
+              <div
+                className="rounded-2xl shadow-xl relative overflow-hidden mb_akm pad_akm"
+                style={gradientStyle(category.theme_color)}
+              >
+                <div className="flex flex-row items-center justify-center gap-5">
+                  <p className="flex-2 text-2xl font-bold leading-tight text-white">
+                    {category.name}
+                  </p>
+                  <p className="flex-1 text-white font-medium text-sm ">
+                    {category.subtitle}
+                  </p>
+                </div>
+              </div>
+            );
+
             return (
               <div key={category.id}>
-                <div
-                  className="rounded-2xl shadow-xl relative overflow-hidden mb_akm pad_akm"
-                  style={gradientStyle(category.theme_color)}
-                >
-                  <div className="flex flex-row items-center justify-center gap-5">
-                    <p className="flex-2 text-2xl font-bold leading-tight text-white">
-                      {category.name}
-                    </p>
-                    <p className="flex-1 text-white font-medium text-sm ">
-                      {category.subtitle}
-                    </p>
-                  </div>
-                </div>
+                {/* Link to the category landing page once a slug is set in Strapi */}
+                {category.slug ? (
+                  <Link href={`/packages/${category.slug}`} className="block">
+                    {categoryHeader}
+                  </Link>
+                ) : (
+                  categoryHeader
+                )}
 
                 <div className="grid grid-cols-1 gap_akm">
                   {packages.map((pkg) => (
@@ -234,4 +245,6 @@ const PackageCard = ({ pkg, themeColor }) => (
   </div>
 );
 
+// Named exports are used by pages/packages/[slug].js
+export { PackageCard, gradientStyle };
 export default PackagesSection;

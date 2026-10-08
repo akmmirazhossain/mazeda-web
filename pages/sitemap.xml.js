@@ -40,15 +40,22 @@ const urlEntry = (loc, lastmod, changefreq, priority) => `  <url>
 export async function getServerSideProps({ res }) {
   // NOTE: offers are routed by documentId (see pages/offers/[offerLink].js,
   // which fetches /api/offers/{documentId} — NOT by the offer's `slug` field).
-  const [offers, articles] = await Promise.all([
+  const [offers, articles, categories] = await Promise.all([
     fetchEntries("offers", ["updatedAt"]),
     fetchEntries("articles", ["slug", "updatedAt"]),
+    fetchEntries("package-categories", ["slug", "updatedAt"]),
   ]);
 
   const entries = [
     ...STATIC_PATHS.map((p) =>
       urlEntry(`${SITE_URL}${p.path}`, null, p.changefreq, p.priority),
     ),
+    // Package category landing pages (pages/packages/[slug].js)
+    ...categories
+      .filter((c) => c.slug)
+      .map((c) =>
+        urlEntry(`${SITE_URL}/packages/${c.slug}`, c.updatedAt, "weekly", 0.8),
+      ),
     ...offers.map((o) =>
       urlEntry(
         `${SITE_URL}/offers/${o.documentId}`,
