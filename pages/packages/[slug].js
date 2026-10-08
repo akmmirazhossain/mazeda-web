@@ -2,12 +2,68 @@
 import Head from "next/head";
 import Link from "next/link";
 import { useIntl } from "react-intl";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCheck, faArrowRightLong } from "@fortawesome/free-solid-svg-icons";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import RichText from "../components/RichText";
-import { PackageCard, gradientStyle } from "../components/PackagesSection";
 
 const SITE_URL = "https://www.mazeda.net";
+
+// One compact row per package: name + speed | features | price
+const PackageRow = ({ pkg }) => (
+  <div className="grid grid-cols-2 md:grid-cols-12 items-center gap-x-4 gap-y-2 py-3 border-b last:border-b-0 hover:bg-gray-50">
+    {/* Name + speed */}
+    <div className="md:col-span-3">
+      <div className="flex items-center gap-2">
+        <span className="text-sm font-bold tracking-widest uppercase text_red">
+          {pkg.name}
+        </span>
+        {pkg.is_popular && (
+          <span className="px-1.5 text-[10px] tracking-wider text-white rounded bg_red">
+            POPULAR
+          </span>
+        )}
+      </div>
+      <div className="leading-none">
+        <span className="text-3xl font-bold">{pkg.speed}</span>
+        <span className="ml-1 text-sm tracking-widest text_gray">Mbps</span>
+      </div>
+    </div>
+
+    {/* Price (shown second on mobile, last on desktop) */}
+    <div className="text-right md:order-last md:col-span-3">
+      {pkg.call_for_price ? (
+        <span className="text-sm italic font-semibold text_green">
+          (Call for Price)
+        </span>
+      ) : (
+        <>
+          <span className="text-2xl font-semibold text_green">
+            ৳{pkg.price}
+          </span>{" "}
+          <span className="text-xs italic text_gray">(Including vat)</span>
+        </>
+      )}
+      <div>
+        <Link href="/contact" className="text-sm text_green hover:underline">
+          Contact Us{" "}
+          <FontAwesomeIcon icon={faArrowRightLong} className="text-xs" />
+        </Link>
+      </div>
+    </div>
+
+    {/* Features (full width under name/price on mobile) */}
+    <ul className="col-span-2 md:col-span-6 flex flex-wrap gap-x-4 gap-y-0.5 text-sm text_gray">
+      {pkg.features?.map((feature, idx) => (
+        <li key={idx} className="flex items-center gap-1">
+          <FontAwesomeIcon icon={faCheck} className="text-xs text_green" />
+          {feature.texts}
+        </li>
+      ))}
+    </ul>
+  </div>
+);
 
 const PackageCategoryPage = ({ category }) => {
   const intl = useIntl();
@@ -58,13 +114,12 @@ const PackageCategoryPage = ({ category }) => {
         <div className="container_akm">
           <section className="page_body">
             {packages.length > 0 && (
-              <div className="grid grid-cols-1 gap_akm">
+              <div
+                className="px-4 bg-white shadow-xl rounded-2xl md:px-6 border-t-4"
+                style={{ borderTopColor: category.theme_color || "#03738c" }}
+              >
                 {packages.map((pkg) => (
-                  <PackageCard
-                    key={pkg.id}
-                    pkg={pkg}
-                    themeColor={category.theme_color}
-                  />
+                  <PackageRow key={pkg.id} pkg={pkg} />
                 ))}
               </div>
             )}
@@ -79,11 +134,6 @@ const PackageCategoryPage = ({ category }) => {
               <Link
                 href="/packages"
                 className="inline-block px-4 py-2 text-white rounded-full shadow-md green_gradient hover:red_gradient"
-                style={
-                  category.theme_color
-                    ? gradientStyle(category.theme_color)
-                    : undefined
-                }
               >
                 {allPackagesLabel}
               </Link>
