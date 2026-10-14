@@ -224,15 +224,15 @@
         "links": [
           {
             "text": "Support",
-            "url": "support"
+            "url": "/support"
           },
           {
             "text": "Pay Bill",
-            "url": "pay-bill"
+            "url": "/pay-bill"
           },
           {
             "text": "Contact",
-            "url": "contact"
+            "url": "/contact"
           }
         ]
       },

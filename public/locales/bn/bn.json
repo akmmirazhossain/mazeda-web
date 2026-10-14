@@ -218,15 +218,15 @@
         "links": [
           {
             "text": "সাপোর্ট",
-            "url": "support"
+            "url": "/support"
           },
           {
             "text": "বিল প্রদান",
-            "url": "pay-bill"
+            "url": "/pay-bill"
           },
           {
             "text": "যোগাযোগ",
-            "url": "contact"
+            "url": "/contact"
           }
         ]
       },
