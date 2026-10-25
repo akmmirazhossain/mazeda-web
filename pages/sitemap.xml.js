@@ -68,7 +68,7 @@ export async function getServerSideProps({ res }) {
       .filter((a) => a.slug)
       .map((a) =>
         urlEntry(
-          `${SITE_URL}/news-and-blogs/${a.slug}`,
+          `${SITE_URL}/news-and-blogs/${a.slug.toLowerCase()}`,
           a.updatedAt,
           "weekly",
           0.6,

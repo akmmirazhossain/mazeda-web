@@ -61,36 +61,20 @@ const Page = ({ infoData }) => {
 
 export async function getServerSideProps({ params }) {
   const slug = params.slug;
-  // console.log("🚀 ~ getServerSideProps ~ slug:", slug);
-  // const apiUrl = Cookies.get("baseApi");
-  // console.log("🚀 ~ getServerSideProps ~ apiUrl:", apiUrl);
 
   try {
-    // Fetch data from your PHP API endpoint
     const response = await fetch(`${apiUrl}/pages.php`);
-
-    if (!response.ok) {
-      throw new Error("Failed to fetch data");
-    }
+    if (!response.ok) throw new Error("Failed to fetch data");
 
     const responseData = await response.json();
-    console.log("API Response:", responseData);
 
-    // Find the specific page data based on slug
     const infoData = responseData.find((data) => data.pageUrl === slug);
+    if (!infoData) return { notFound: true };
 
-    return {
-      props: {
-        infoData: infoData || null,
-      },
-    };
+    return { props: { infoData } };
   } catch (error) {
     console.error("Error fetching data:", error);
-    return {
-      props: {
-        infoData: null,
-      },
-    };
+    return { notFound: true };
   }
 }
 

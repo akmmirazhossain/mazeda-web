@@ -1,5 +1,4 @@
 // mazeda-web/pages/articles/index.js
-import React, { useEffect, useState } from "react";
 
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
@@ -17,23 +16,25 @@ const getMediaUrl = (url) => {
     : `${process.env.NEXT_PUBLIC_STRAPI_URL}${url}`;
 };
 
-const ArticlesPage = () => {
+export async function getServerSideProps({ locale, res }) {
+  try {
+    const r = await fetch(
+      `${process.env.NEXT_PUBLIC_STRAPI_URL}/api/articles?locale=${locale}&sort=publishedAt:desc&populate[0]=thumb_image`,
+    );
+    const json = await r.json();
+    res.setHeader(
+      "Cache-Control",
+      "public, s-maxage=600, stale-while-revalidate=3600",
+    );
+    return { props: { articles: json.data || [] } };
+  } catch {
+    return { props: { articles: [] } };
+  }
+}
+
+const ArticlesPage = ({ articles }) => {
   const { locale, asPath } = useRouter();
   const canonicalUrl = `https://www.mazeda.net${asPath.split("?")[0]}`;
-
-  const [articles, setArticles] = useState([]);
-
-  useEffect(() => {
-    fetch(
-      `${process.env.NEXT_PUBLIC_STRAPI_URL}/api/articles?locale=${locale}&sort=publishedAt:desc&populate[0]=thumb_image`,
-    )
-      .then((res) => res.json())
-      .then((json) => {
-        log("🔵 articles:", json.data);
-        setArticles(json.data || []);
-      })
-      .catch((err) => console.error("Error fetching articles:", err));
-  }, [locale]);
 
   return (
     <>
@@ -56,7 +57,10 @@ const ArticlesPage = () => {
           <section className="page_body">
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap_akm">
               {articles.map((article) => (
-                <Link href={`/news-and-blogs/${article.slug}`} key={article.id}>
+                <Link
+                  href={`/news-and-blogs/${article.slug.toLowerCase()}`}
+                  key={article.id}
+                >
                   <div className="rounded-t-2xl rounded-2xl shadow-xl bg-white hover:shadow-2xl relative transition duration-300 ease-in-out transform hover:-translate-y-1">
                     <div className="relative w-full aspect-square">
                       <Image

@@ -68,7 +68,7 @@ const Modal = ({ isOpen, onClose }) => {
         >
           &times;
         </button>
-        <Link href={`/offers/${featuredOffer.slug}`}>
+        <Link href={`/offers/${featuredOffer.documentId}`}>
           <div className="modal-content">
             <h2 className="text-2xl mt-6 mx-6 mb-4 font-bold ">
               {featuredOffer.title}

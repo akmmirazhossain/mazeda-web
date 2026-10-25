@@ -15,7 +15,7 @@ const getMediaUrl = (url) => {
 };
 
 const ArticleDetailsPage = ({ article }) => {
-  const canonicalUrl = `${SITE_URL}/news-and-blogs/${article.slug}`;
+  const canonicalUrl = `${SITE_URL}/news-and-blogs/${article.slug.toLowerCase()}`;
   const description =
     article.excerpt || `Read ${article.title} on Mazeda Networks.`;
   const ogImage = article.banner_image?.url
