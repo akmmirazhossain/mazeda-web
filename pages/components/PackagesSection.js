@@ -37,8 +37,14 @@ export const fetchPackageCategories = async (locale) => {
     const res = await fetch(
       `${process.env.NEXT_PUBLIC_STRAPI_URL}/api/package-categories?locale=${locale}&sort=order:asc&populate[packages][sort]=order:asc&populate[packages][populate]=features`,
     );
+    console.log(
+      "SSR categories:",
+      res.status,
+      process.env.NEXT_PUBLIC_STRAPI_URL,
+    ); // REMOVE after debugging
     return (await res.json()).data || [];
-  } catch {
+  } catch (e) {
+    console.error("fetchPackageCategories failed:", e); // INSERT (catch was silent)
     return [];
   }
 };
