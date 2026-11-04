@@ -167,6 +167,7 @@ const CoverageBlocks = () => {
                           icon={faLocationDot}
                           className="pr-2 text-lg text_red"
                         />
+                        <p className="text-lg">{area.area_name}</p>
                         {hasDetails && (
                           <FontAwesomeIcon
                             icon={faChevronDown}
@@ -175,14 +176,14 @@ const CoverageBlocks = () => {
                             }`}
                           />
                         )}
-                        {tags.length > 0 && (
+                        {/* {tags.length > 0 && (
                           <FontAwesomeIcon
                             icon={faChevronDown}
                             className={`ml-2 text-xs transition-transform ${
                               isOpen ? "rotate-180" : ""
                             }`}
                           />
-                        )}
+                        )} */}
                       </div>
                     </div>
 
