@@ -17,7 +17,6 @@ const PackagesPage = ({ categories }) => {
   const { asPath } = useRouter();
   const packageTitle = intl.messages.component.packageTitle;
   const canonicalUrl = `${SITE_URL}${asPath.split("?")[0]}`;
-  <PackagesSection initialCategories={categories} />;
 
   return (
     <>
@@ -37,7 +36,7 @@ const PackagesPage = ({ categories }) => {
         </div>
 
         <div className="container_akm ">
-          <PackagesSection />
+          <PackagesSection initialCategories={categories} />
         </div>
         <Footer />
       </main>
