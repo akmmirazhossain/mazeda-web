@@ -4,17 +4,20 @@ import { useRouter } from "next/router";
 
 const SITE_URL = "https://www.mazeda.net";
 
-import PackagesSection from "./components/PackagesSection";
+import PackagesSection, {
+  fetchPackageCategories,
+} from "./components/PackagesSection";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import Head from "next/head";
 import { useIntl } from "react-intl";
 
-const PackagesPage = () => {
+const PackagesPage = ({ categories }) => {
   const intl = useIntl();
   const { asPath } = useRouter();
   const packageTitle = intl.messages.component.packageTitle;
   const canonicalUrl = `${SITE_URL}${asPath.split("?")[0]}`;
+  <PackagesSection initialCategories={categories} />;
 
   return (
     <>
@@ -41,5 +44,13 @@ const PackagesPage = () => {
     </>
   );
 };
+
+export async function getServerSideProps({ locale, res }) {
+  res.setHeader(
+    "Cache-Control",
+    "public, s-maxage=600, stale-while-revalidate=3600",
+  );
+  return { props: { categories: await fetchPackageCategories(locale) } };
+}
 
 export default PackagesPage;

@@ -32,15 +32,29 @@ const getMediaUrl = (url) => {
     : `${process.env.NEXT_PUBLIC_STRAPI_URL}${url}`;
 };
 
-const PackagesSection = () => {
+export const fetchPackageCategories = async (locale) => {
+  try {
+    const res = await fetch(
+      `${process.env.NEXT_PUBLIC_STRAPI_URL}/api/package-categories?locale=${locale}&sort=order:asc&populate[packages][sort]=order:asc&populate[packages][populate]=features`,
+    );
+    return (await res.json()).data || [];
+  } catch {
+    return [];
+  }
+};
+
+const PackagesSection = ({ initialCategories }) => {
   const { locale } = useRouter();
   const intl = useIntl();
   const packageTitle = intl.messages.component.packageTitle;
 
-  const [categories, setCategories] = useState([]);
+  const [categories, setCategories] = useState(initialCategories || []);
   const [globalFeatures, setGlobalFeatures] = useState(null);
 
   useEffect(() => {
+    if (initialCategories) setCategories(initialCategories);
+    else fetchPackageCategories(locale).then(setCategories);
+
     fetch(
       `${process.env.NEXT_PUBLIC_STRAPI_URL}/api/package-categories?locale=${locale}&sort=order:asc&populate[packages][sort]=order:asc&populate[packages][populate]=features`,
     )
@@ -60,7 +74,7 @@ const PackagesSection = () => {
         setGlobalFeatures(json.data?.pkg_global_features_block || null);
       })
       .catch((err) => console.error("Error fetching packages page:", err));
-  }, [locale]);
+  }, [locale, initialCategories]);
 
   const router = useRouter();
   const isMyPage = router.pathname === "/packages";

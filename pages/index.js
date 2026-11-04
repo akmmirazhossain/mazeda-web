@@ -4,7 +4,9 @@ import Navbar from "./components/Navbar";
 
 import ServicesSection from "./components/ServicesSection";
 import LinksSection from "./components/LinksSection";
-import PackagesSection from "./components/PackagesSection";
+import PackagesSection, {
+  fetchPackageCategories,
+} from "./components/PackagesSection";
 import ClientsSection from "./components/ClientsSection";
 import Footer from "./components/Footer";
 import Modal from "./components/offerModal";
@@ -23,7 +25,7 @@ const HeroSectionMobile = dynamic(
   },
 );
 
-function Home() {
+function Home({ categories }) {
   const [isModalOpen, setIsModalOpen] = useState(true);
   const [isMobile, setIsMobile] = useState(null);
   const openModal = () => setIsModalOpen(true);
@@ -108,7 +110,7 @@ function Home() {
           <LinksSection />
         </div>
         <div className="container_akm">
-          <PackagesSection />
+          <PackagesSection initialCategories={categories} />
         </div>
         <div className="container_akm">
           <ClientsSection />
@@ -121,6 +123,14 @@ function Home() {
       </main>
     </>
   );
+}
+
+export async function getServerSideProps({ locale, res }) {
+  res.setHeader(
+    "Cache-Control",
+    "public, s-maxage=600, stale-while-revalidate=3600",
+  );
+  return { props: { categories: await fetchPackageCategories(locale) } };
 }
 
 export default Home;
