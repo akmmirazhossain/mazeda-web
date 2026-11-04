@@ -6,6 +6,7 @@ import {
   faLocationDot,
 } from "@fortawesome/free-solid-svg-icons";
 import { useRouter } from "next/router";
+import Link from "next/link";
 
 const log = 0 ? console.log : () => {};
 
@@ -151,6 +152,8 @@ const CoverageBlocks = () => {
                 const tags = area.region_tag
                   ? area.region_tag.split(",").map((t) => t.trim())
                   : [];
+                const blogSlug = area.blog_slug?.trim().toLowerCase();
+                const hasDetails = tags.length > 0 || !!blogSlug;
 
                 return (
                   <div
@@ -164,7 +167,14 @@ const CoverageBlocks = () => {
                           icon={faLocationDot}
                           className="pr-2 text-lg text_red"
                         />
-                        <p className="text-lg">{area.area_name}</p>
+                        {hasDetails && (
+                          <FontAwesomeIcon
+                            icon={faChevronDown}
+                            className={`ml-2 text-xs transition-transform ${
+                              isOpen ? "rotate-180" : ""
+                            }`}
+                          />
+                        )}
                         {tags.length > 0 && (
                           <FontAwesomeIcon
                             icon={faChevronDown}
@@ -176,19 +186,31 @@ const CoverageBlocks = () => {
                       </div>
                     </div>
 
-                    {isOpen && tags.length > 0 && (
+                    {isOpen && hasDetails && (
                       <div
-                        className="bg-white/10 px-4 pb-3 pt-1 flex flex-wrap gap-2"
+                        className="bg-white/10 px-4 pb-3 pt-1 flex flex-col gap-2"
                         onClick={(e) => e.stopPropagation()}
                       >
-                        {tags.map((tag, i) => (
-                          <span
-                            key={i}
-                            className="bg-white/20 text-xs px-2 py-1 rounded-full"
+                        {tags.length > 0 && (
+                          <div className="flex flex-wrap gap-2">
+                            {tags.map((tag, i) => (
+                              <span
+                                key={i}
+                                className="bg-white/20 text-xs px-2 py-1 rounded-full"
+                              >
+                                {tag}
+                              </span>
+                            ))}
+                          </div>
+                        )}
+                        {blogSlug && (
+                          <Link
+                            href={`/news-and-blogs/${blogSlug}`}
+                            className="text-xs underline hover:no-underline"
                           >
-                            {tag}
-                          </span>
-                        ))}
+                            Internet in {area.area_name} →
+                          </Link>
+                        )}
                       </div>
                     )}
                   </div>
