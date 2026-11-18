@@ -83,7 +83,6 @@ const PackageCategoryPage = ({ category }) => {
       <Head>
         <title>{title}</title>
         <meta name="description" content={description} />
-        <link rel="canonical" href={canonicalUrl} />
 
         <meta property="og:type" content="website" />
         <meta property="og:site_name" content="Mazeda Networks" />

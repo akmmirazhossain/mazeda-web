@@ -41,7 +41,7 @@ const OfferDetailsPage = ({ offer }) => {
       <Head>
         <title>{offer.title}</title>
         <meta name="description" content={description} />
-        <link rel="canonical" href={canonicalUrl} />
+
         {/* Expired offers stay reachable for users but shouldn't rank */}
         {expired && <meta name="robots" content="noindex, follow" />}
 

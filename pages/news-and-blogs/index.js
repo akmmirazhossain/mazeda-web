@@ -44,7 +44,6 @@ const ArticlesPage = ({ articles }) => {
           name="description"
           content="Read the latest news, updates, and articles from Mazeda Networks."
         />
-        <link rel="canonical" href={canonicalUrl} />
       </Head>
       <main>
         <Navbar />

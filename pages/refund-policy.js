@@ -87,7 +87,7 @@ const RefundPolicyPage = () => {
       <Head>
         <title>{t.pageTitle}</title>
         <meta name="description" content={t.metaDescription} />
-        <link rel="canonical" href={canonicalUrl} />
+
         <meta name="robots" content="noindex, follow" />
       </Head>
       <main>

@@ -27,7 +27,6 @@ const ArticleDetailsPage = ({ article }) => {
       <Head>
         <title>{article.title}</title>
         <meta name="description" content={description} />
-        <link rel="canonical" href={canonicalUrl} />
 
         <meta property="og:type" content="article" />
         <meta property="og:site_name" content="Mazeda Networks" />

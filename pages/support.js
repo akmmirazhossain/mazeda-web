@@ -64,7 +64,6 @@ const Support = () => {
           name="description"
           content="Experience the reliability of Mazeda Networks support team."
         />
-        <link rel="canonical" href={canonicalUrl} />
       </Head>
 
       <main>

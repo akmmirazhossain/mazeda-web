@@ -9,16 +9,17 @@ const STATIC_PATHS = [
   { path: "/offers", changefreq: "daily", priority: 0.8 },
   { path: "/coverage", changefreq: "weekly", priority: 0.7 },
   { path: "/news-and-blogs", changefreq: "daily", priority: 0.7 },
+  { path: "/bn/news-and-blogs", changefreq: "daily", priority: 0.7 },
   { path: "/pay-bill", changefreq: "monthly", priority: 0.6 },
   { path: "/support", changefreq: "monthly", priority: 0.6 },
   { path: "/about", changefreq: "monthly", priority: 0.5 },
   { path: "/contact", changefreq: "monthly", priority: 0.5 },
 ];
 
-async function fetchEntries(endpoint, fields) {
+async function fetchEntries(endpoint, fields, locale = "en") {
   try {
     const res = await fetch(
-      `${STRAPI_URL}/api/${endpoint}?locale=en&fields=${fields.join(
+      `${STRAPI_URL}/api/${endpoint}?locale=${locale}&fields=${fields.join(
         ",",
       )}&pagination[pageSize]=100`,
     );
@@ -40,9 +41,10 @@ const urlEntry = (loc, lastmod, changefreq, priority) => `  <url>
 export async function getServerSideProps({ res }) {
   // NOTE: offers are routed by documentId (see pages/offers/[offerLink].js,
   // which fetches /api/offers/{documentId} — NOT by the offer's `slug` field).
-  const [offers, articles, categories] = await Promise.all([
+  const [offers, articles, articlesBn, categories] = await Promise.all([
     fetchEntries("offers", ["updatedAt"]),
     fetchEntries("articles", ["slug", "updatedAt"]),
+    fetchEntries("articles", ["slug", "updatedAt"], "bn"),
     fetchEntries("package-categories", ["slug", "updatedAt"]),
   ]);
 
@@ -69,6 +71,16 @@ export async function getServerSideProps({ res }) {
       .map((a) =>
         urlEntry(
           `${SITE_URL}/news-and-blogs/${a.slug.toLowerCase()}`,
+          a.updatedAt,
+          "weekly",
+          0.6,
+        ),
+      ),
+    ...articlesBn
+      .filter((a) => a.slug)
+      .map((a) =>
+        urlEntry(
+          `${SITE_URL}/bn/news-and-blogs/${a.slug.toLowerCase()}`,
           a.updatedAt,
           "weekly",
           0.6,
