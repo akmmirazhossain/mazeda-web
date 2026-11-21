@@ -192,57 +192,40 @@ export default async function handler(req, res) {
       if (needsCoverageData) strapiText += `\n\n${coverageBlock}`;
     }
 
-    // ── Strip internal chat_cookie_id before sending to Claude ──
-    const cleanMessages = trimmedMessages.map(({ role, content }) => ({
-      role,
-      content,
+    // Gemini uses role "model"; history must start with "user"
+    const contents = trimmedMessages.map(({ role, content }) => ({
+      role: role === "assistant" ? "model" : "user",
+      parts: [{ text: content }],
     }));
+    while (contents.length && contents[0].role === "model") contents.shift();
 
-    // ── Build system blocks (each cache_control breakpoint caches
-    //    everything up to and including that block) ──
-    const systemBlocks = [
+    const systemText = [
+      alwaysInstructions,
+      conditionalDbText,
+      strapiText.trim(),
+    ]
+      .filter(Boolean)
+      .join("\n\n");
+
+    const response = await fetch(
+      "https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash-lite:generateContent",
       {
-        type: "text",
-        text: alwaysInstructions,
-        cache_control: { type: "ephemeral" },
+        method: "POST",
+        headers: {
+          "x-goog-api-key": process.env.GEMINI_API_KEY,
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          systemInstruction: { parts: [{ text: systemText }] },
+          contents,
+          generationConfig: { maxOutputTokens: 1024 },
+        }),
       },
-    ];
-
-    if (conditionalDbText) {
-      systemBlocks.push({
-        type: "text",
-        text: conditionalDbText,
-        cache_control: { type: "ephemeral" },
-      });
-    }
-
-    if (strapiText) {
-      systemBlocks.push({
-        type: "text",
-        text: strapiText.trim(),
-        cache_control: { type: "ephemeral" },
-      });
-    }
-
-    // ── Call Claude ──
-    const response = await fetch("https://api.anthropic.com/v1/messages", {
-      method: "POST",
-      headers: {
-        "x-api-key": process.env.ANTHROPIC_API_KEY,
-        "anthropic-version": "2023-06-01",
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        model: "claude-haiku-4-5-20251001",
-        max_tokens: 1024,
-        system: systemBlocks,
-        messages: cleanMessages,
-      }),
-    });
+    );
 
     if (!response.ok) {
       const errBody = await response.text();
-      console.error("Claude error:", response.status, errBody);
+      console.error("Gemini error:", response.status, errBody);
       return res
         .status(502)
         .json({ message: "AI service error. Please try again later." });
@@ -250,11 +233,11 @@ export default async function handler(req, res) {
 
     const data = await response.json();
     const aiMessage =
-      data.content?.[0]?.text ||
+      data.candidates?.[0]?.content?.parts?.[0]?.text ||
       "Something went wrong, please contact Mazeda support directly. 09666 334455";
 
     // Uncomment while tuning cache hit rate:
-    console.log("cache usage:", data.usage);
+    // console.log("cache usage:", data.usage);
 
     // ── Persist to DB ──────────────────────────────────────
     const chatIdCookie = messages[0]?.chat_cookie_id ?? null;
