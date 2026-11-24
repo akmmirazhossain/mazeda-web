@@ -9,7 +9,7 @@ import Head from "next/head";
 import { useIntl } from "react-intl";
 import { useRouter } from "next/router";
 
-const CoveragePage = () => {
+const CoveragePage = ({ districts }) => {
   const intl = useIntl();
   const coverageTitle = intl.messages.component.coverageTitle;
   const coverageSubtitle = intl.messages.component.coverageSubtitle;
@@ -34,7 +34,7 @@ const CoveragePage = () => {
         </div>
         <div className="container_akm  min-h-screen">
           <div>
-            <CoverageBlocks />
+            <CoverageBlocks initialDistricts={districts} />
           </div>
           <div></div>
         </div>
@@ -43,5 +43,30 @@ const CoveragePage = () => {
     </>
   );
 };
+
+export async function getServerSideProps({ locale, res }) {
+  try {
+    const r = await fetch(
+      `${process.env.NEXT_PUBLIC_STRAPI_URL}/api/coverage?locale=${locale}&populate[districts][populate][0]=district_rel_area`,
+    );
+    const json = await r.json();
+    const districts = (json.data?.districts || [])
+      .slice()
+      .sort((a, b) => a.district_serial - b.district_serial)
+      .map((d) => ({
+        ...d,
+        district_rel_area: [...(d.district_rel_area || [])].sort(
+          (a, b) => a.area_serial - b.area_serial,
+        ),
+      }));
+    res.setHeader(
+      "Cache-Control",
+      "public, s-maxage=600, stale-while-revalidate=3600",
+    );
+    return { props: { districts } };
+  } catch {
+    return { props: { districts: [] } };
+  }
+}
 
 export default CoveragePage;

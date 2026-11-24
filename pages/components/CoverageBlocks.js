@@ -10,10 +10,10 @@ import Link from "next/link";
 
 const log = 0 ? console.log : () => {};
 
-const CoverageBlocks = () => {
+const CoverageBlocks = ({ initialDistricts = [] }) => {
   const { locale } = useRouter();
-  const [districts, setDistricts] = useState([]);
-  const [filteredDistricts, setFilteredDistricts] = useState([]);
+  const [districts, setDistricts] = useState(initialDistricts);
+  const [filteredDistricts, setFilteredDistricts] = useState(initialDistricts);
   const [searchValue, setSearchValue] = useState("");
   const [selectedDistrict, setSelectedDistrict] = useState("All districts");
   const [isOpen, setIsOpen] = useState(false);
@@ -29,26 +29,9 @@ const CoverageBlocks = () => {
   };
 
   useEffect(() => {
-    fetch(
-      `${process.env.NEXT_PUBLIC_STRAPI_URL}/api/coverage?locale=${locale}&populate[districts][populate][0]=district_rel_area`,
-    )
-      .then((res) => res.json())
-      .then((json) => {
-        log("coverage:", json.data);
-        const sorted = (json.data?.districts || [])
-          .slice()
-          .sort((a, b) => a.district_serial - b.district_serial)
-          .map((district) => ({
-            ...district,
-            district_rel_area: [...(district.district_rel_area || [])].sort(
-              (a, b) => a.area_serial - b.area_serial,
-            ),
-          }));
-        setDistricts(sorted);
-        setFilteredDistricts(sorted);
-      })
-      .catch((err) => console.error("Error fetching coverage:", err));
-  }, [locale]);
+    setDistricts(initialDistricts);
+    setFilteredDistricts(initialDistricts);
+  }, [initialDistricts]);
 
   const handleSearchChange = (e) => {
     const value = e.target.value.toLowerCase();
@@ -187,10 +170,9 @@ const CoverageBlocks = () => {
                       </div>
                     </div>
 
-                    {isOpen && hasDetails && (
+                    {hasDetails && (
                       <div
-                        className="bg-white/10 px-4 pb-3 pt-1 flex flex-col gap-2"
-                        onClick={(e) => e.stopPropagation()}
+                        className={`bg-white/10 px-4 pb-3 pt-1 flex flex-col gap-2 ${isOpen ? "" : "hidden"}`}
                       >
                         {tags.length > 0 && (
                           <div className="flex flex-wrap gap-2">
