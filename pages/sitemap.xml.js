@@ -14,6 +14,7 @@ const STATIC_PATHS = [
   { path: "/support", changefreq: "monthly", priority: 0.6 },
   { path: "/about", changefreq: "monthly", priority: 0.5 },
   { path: "/contact", changefreq: "monthly", priority: 0.5 },
+  { path: "/careers", changefreq: "monthly", priority: 0.5 },
 ];
 
 async function fetchEntries(endpoint, fields, locale = "en") {

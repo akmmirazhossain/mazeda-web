@@ -259,6 +259,10 @@
         "title": "লিঙ্ক",
         "links": [
           {
+            "text": "ক্যারিয়ার",
+            "url": "/careers"
+          },
+          {
             "text": "গ্রুপে যোগ দিন ",
             "url": "https://www.facebook.com/groups/212808672067129"
           },
