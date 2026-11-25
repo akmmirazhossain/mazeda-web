@@ -13,18 +13,24 @@ const formatDate = (d, locale) =>
     { day: "numeric", month: "long", year: "numeric" },
   );
 
+const fetchJob = async (slug, loc, today) => {
+  const r = await fetch(
+    `${process.env.NEXT_PUBLIC_STRAPI_URL}/api/jobs?locale=${loc}` +
+      `&filters[slug][$eq]=${encodeURIComponent(slug)}` +
+      `&filters[is_open][$eq]=true` +
+      `&filters[$or][0][deadline][$null]=true` +
+      `&filters[$or][1][deadline][$gte]=${today}`,
+  );
+  if (!r.ok) throw new Error(`Strapi responded ${r.status}`);
+  return (await r.json()).data?.[0] || null;
+};
+
 export async function getServerSideProps({ params, locale, res }) {
   const today = new Date().toISOString().slice(0, 10);
   try {
-    const r = await fetch(
-      `${process.env.NEXT_PUBLIC_STRAPI_URL}/api/jobs?locale=${locale}` +
-        `&filters[slug][$eq]=${encodeURIComponent(params.slug)}` +
-        `&filters[is_open][$eq]=true` +
-        `&filters[$or][0][deadline][$null]=true` +
-        `&filters[$or][1][deadline][$gte]=${today}`,
-    );
-    if (!r.ok) throw new Error(`Strapi responded ${r.status}`);
-    const job = (await r.json()).data?.[0];
+    const job =
+      (await fetchJob(params.slug, locale, today)) ||
+      (locale !== "en" ? await fetchJob(params.slug, "en", today) : null); // English fallback
     if (!job) return { notFound: true };
 
     res.setHeader(

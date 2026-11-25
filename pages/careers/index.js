@@ -11,22 +11,32 @@ const formatDate = (d, locale) =>
     { day: "numeric", month: "long", year: "numeric" },
   );
 
+const fetchJobs = async (loc, today) => {
+  const r = await fetch(
+    `${process.env.NEXT_PUBLIC_STRAPI_URL}/api/jobs?locale=${loc}` +
+      `&filters[is_open][$eq]=true` +
+      `&filters[$or][0][deadline][$null]=true` +
+      `&filters[$or][1][deadline][$gte]=${today}` +
+      `&sort=createdAt:desc`,
+  );
+  return (await r.json()).data || [];
+};
+
 export async function getServerSideProps({ locale, res }) {
   const today = new Date().toISOString().slice(0, 10);
   try {
-    const r = await fetch(
-      `${process.env.NEXT_PUBLIC_STRAPI_URL}/api/jobs?locale=${locale}` +
-        `&filters[is_open][$eq]=true` +
-        `&filters[$or][0][deadline][$null]=true` +
-        `&filters[$or][1][deadline][$gte]=${today}` +
-        `&sort=createdAt:desc`,
-    );
-    const json = await r.json();
+    const en = await fetchJobs("en", today);
+    const local = locale === "en" ? [] : await fetchJobs(locale, today);
+
+    // translated version wins; English fills the gaps
+    const byDoc = new Map(en.map((j) => [j.documentId, j]));
+    local.forEach((j) => byDoc.set(j.documentId, j));
+
     res.setHeader(
       "Cache-Control",
       "public, s-maxage=600, stale-while-revalidate=3600",
     );
-    return { props: { jobs: json.data || [] } };
+    return { props: { jobs: [...byDoc.values()] } };
   } catch {
     return { props: { jobs: [] } };
   }
