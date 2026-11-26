@@ -49,7 +49,7 @@ const Footer = () => {
                     </li>
                   ))}
                   {index === footerData.length - 1 && (
-                    <li className="py-1.5 lg:py-1">
+                    <li className="py-1.5 lg:py-1 flex justify-center gap-2 md:justify-start">
                       <a
                         href="https://www.facebook.com/mazedanetltd"
                         target="_blank"
@@ -61,6 +61,22 @@ const Footer = () => {
                           viewBox="0 0 24 24"
                         >
                           <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z" />
+                        </svg>
+                      </a>
+
+                      <a
+                        href="https://www.linkedin.com/company/mazeda-networks-ltd/home/" // set real URL
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label="LinkedIn"
+                        className="inline-flex items-center justify-center p-1 border rounded-full hover:border-[#e6242d]"
+                      >
+                        <svg
+                          fill="currentColor"
+                          className="w-4 h-4"
+                          viewBox="0 0 24 24"
+                        >
+                          <path d="M20.45 20.45h-3.56v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 110-4.12 2.06 2.06 0 010 4.12zM7.12 20.45H3.56V9h3.56v11.45z" />
                         </svg>
                       </a>
                     </li>
